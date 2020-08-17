@@ -1,4 +1,4 @@
-## About butikShop
+## About butikShop [On progress..]
 
 butikShop is a ecommerce framework built with laravel and idea with Magento. This combination makes a new ecommerce platfrom which is fast and more minimized than Magento. We will have the following features:
 
@@ -15,6 +15,20 @@ butikShop is a ecommerce framework built with laravel and idea with Magento. Thi
 <a href="https://github.com/shiftenterdev/butikshop/graphs/contributors">
   <img src="https://contributors-img.web.app/image?repo=shiftenterdev/butikshop" />
 </a>
+
+## Installation
+
+```shell script
+$ git clone https://github.com/shiftenterdev/butikshop.git
+$ cd butikshop
+$ composer install
+$ cp .env.example .env
+$ php artisan key:generate
+# create database ad it .env file
+$ php artisan migrate:fresh --seed
+$ php artisan serve
+```
+**Now serve http://127.0.0.1:8000**
 
 ## Security Vulnerabilities
 
