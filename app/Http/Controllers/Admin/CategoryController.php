@@ -32,17 +32,17 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function edit($id)
+    public function edit(Category $category)
     {
         return view('admin.category.edit')->with([
-            'c' => Category::find($id),
+            'category'   => $category,
             'categories' => Category::get()
         ]);
     }
 
-    public function update(CategoryRequest $request, $id)
+    public function update(CategoryRequest $request, Category $category)
     {
-        Category::where('id', $id)->update($request->except('_token'));
+        $category->update($request->except('_token'));
         return redirect()->route('admin.category')->with('success', 'Category updated successfully');
     }
 }

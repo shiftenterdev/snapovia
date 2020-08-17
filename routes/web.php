@@ -35,9 +35,12 @@ Route::namespace('Front')->group(function(){
     Route::get('blog', 'BlogController@index')->name('blog');
 
 
+    /**
+     * Customer routes
+     */
     Route::namespace('Customer')->group(function(){
-        Route::get('/customer/account/login', 'AuthController@login')->name('customer.login');
-        Route::post('/customer/account/login', 'AuthController@loginPost')->name('customer.login.post');
+        Route::get('/customer/account/login', 'LoginController@index')->name('customer.login');
+        Route::post('/customer/account/login', 'LoginController@login')->name('customer.login.post');
         Route::post('/customer/account/create', 'AuthController@createPost')->name('customer.create.post');
         Route::get('/customer/account/logout', 'AuthController@logout')->name('customer.logout');
         Route::get('/customer/account/forgotpassword', 'AuthController@forgotPassword')->name('forgot.password');
@@ -56,16 +59,6 @@ Route::namespace('Front')->group(function(){
 
 });
 
-/**
- * Customer Routes
- */
-
-
-
-/**
- * Vendor routes
- */
-
 
 /**
  * Backend Routes
@@ -80,22 +73,14 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
     Route::get('logout', 'AuthController@logout')->name('admin.logout');
 
     Route::middleware('backend.auth')->group(function (){
+
         Route::redirect('/','/adminportal/dashboard' );
-        Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
 
-        Route::get('product', 'ProductController@index')->name('admin.product');
-        Route::get('product/create', 'ProductController@create')->name('admin.product.create');
-        Route::post('product/create', 'ProductController@store')->name('admin.product.store');
-        Route::get('product/{id}', 'ProductController@edit')->name('admin.product.edit');
-        Route::post('product/{id}', 'ProductController@update')->name('admin.product.update');
-        Route::get('product/delete/{id}', 'ProductController@destroy')->name('admin.product.delete');
+        Route::get('dashboard', 'DashboardController')->name('admin.dashboard');
 
-        Route::get('category', 'CategoryController@index')->name('admin.category');
-        Route::get('category/create', 'CategoryController@create')->name('admin.category.create');
-        Route::post('category/create', 'CategoryController@store')->name('admin.category.store');
-        Route::get('category/{id}', 'CategoryController@edit')->name('admin.category.edit');
-        Route::post('category/{id}', 'CategoryController@update')->name('admin.category.update');
-        Route::get('category/delete/{id}', 'CategoryController@destroy')->name('admin.category.delete');
+        Route::resource('product', 'ProductController',['as'=>'admin']);
+
+        Route::resource('category', 'CategoryController',['as'=>'admin']);
 
         Route::resource('brand', 'BrandController',['as'=>'admin']);
 
@@ -109,13 +94,21 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
         Route::resource('vendor', 'VendorController',['as'=>'admin']);
 
+        Route::resource('user', 'UserController',['as'=>'admin']);
+
+        Route::resource('role', 'RoleController',['as'=>'admin']);
+
+        Route::resource('permission', 'PermissionController',['as'=>'admin']);
+
         Route::get('order', 'OrderController@index')->name('admin.order');
+
         Route::get('invoice', 'InvoiceController@index')->name('admin.invoice');
+
         Route::get('refund', 'RefundController@index')->name('admin.refund');
-//    Route::get('customer/create', 'CustomerController@create')->name('admin.customer.create');
+
         Route::resource('customer/group', 'CustomerGroupController',['as'=>'admin']);
 
-        Route::get('configuration', 'ConfigurationController@index')->name('admin.configuration');
+        Route::resource('configuration', 'ConfigurationController',['as'=>'admin']);
     });
 
 });

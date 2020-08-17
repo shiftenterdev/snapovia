@@ -143,7 +143,7 @@
                     <div class="slider__container slider--one">
                         <div class="slider__activation__wrap owl-carousel owl-theme">
                             <!-- Start Single Slide -->
-                            <div class="slide slider__full--screen slider-height-inherit slider-text-right" style="background: rgba(0, 0, 0, 0) url({{asset('frontend/images/slider/bg/1.png')}}) no-repeat scroll center center / cover ;">
+                            <div class="slide slider__full--screen slider-height-inherit slider-text-right" style="background: rgba(0, 0, 0, 0) url('http://lorempixel.com/1920/800/fashion') no-repeat scroll center center / cover ;">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-10 col-lg-8 col-md-offset-2 col-lg-offset-4 col-sm-12 col-xs-12">
@@ -159,7 +159,7 @@
                             </div>
                             <!-- End Single Slide -->
                             <!-- Start Single Slide -->
-                            <div class="slide slider__full--screen slider-height-inherit  slider-text-left" style="background: rgba(0, 0, 0, 0) url({{asset('frontend/images/slider/bg/2.png')}}) no-repeat scroll center center / cover ;">
+                            <div class="slide slider__full--screen slider-height-inherit  slider-text-left" style="background: rgba(0, 0, 0, 0) url('http://lorempixel.com/1920/800/fashion') no-repeat scroll center center / cover ;">
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
@@ -422,7 +422,7 @@
     <div class="only-banner ptb--100 bg__white">
         <div class="container">
             <div class="only-banner-img">
-                <a href="shop-sidebar.html"><img src="/frontend/images/new-product/3.jpg" alt="new product"></a>
+                <a href="shop-sidebar.html"><img src="http://lorempixel.com/1171/300" alt="new product"></a>
             </div>
         </div>
     </div>
@@ -494,7 +494,7 @@
                                                 <div class="product__inner">
                                                     <div class="pro__thumb">
                                                         <a href="#">
-                                                            <img src="/frontend/images/product/1.png" alt="product images">
+                                                            <img src="http://lorempixel.com/270/270" alt="product images">
                                                         </a>
                                                     </div>
                                                     <div class="product__hover__info">
@@ -519,7 +519,7 @@
                                                 <div class="product__inner">
                                                     <div class="pro__thumb">
                                                         <a href="#">
-                                                            <img src="/frontend/images/product/2.png" alt="product images">
+                                                            <img src="http://lorempixel.com/270/270" alt="product images">
                                                         </a>
                                                     </div>
                                                     <div class="product__hover__info">
@@ -544,7 +544,7 @@
                                                 <div class="product__inner">
                                                     <div class="pro__thumb">
                                                         <a href="#">
-                                                            <img src="/frontend/images/product/3.png" alt="product images">
+                                                            <img src="http://lorempixel.com/270/270" alt="product images">
                                                         </a>
                                                     </div>
                                                     <div class="product__hover__info">
@@ -569,7 +569,7 @@
                                                 <div class="product__inner">
                                                     <div class="pro__thumb">
                                                         <a href="#">
-                                                            <img src="/frontend/images/product/4.png" alt="product images">
+                                                            <img src="http://lorempixel.com/270/270" alt="product images">
                                                         </a>
                                                     </div>
                                                     <div class="product__hover__info">
@@ -594,7 +594,7 @@
                                                 <div class="product__inner">
                                                     <div class="pro__thumb">
                                                         <a href="#">
-                                                            <img src="/frontend/images/product/5.png" alt="product images">
+                                                            <img src="http://lorempixel.com/270/270" alt="product images">
                                                         </a>
                                                     </div>
                                                     <div class="product__hover__info">
@@ -2110,7 +2110,7 @@
                             <div class="blog__inner">
                                 <div class="blog__thumb">
                                     <a href="blog-details.html">
-                                        <img src="/frontend/images/blog/blog-img/1.jpg" alt="blog images">
+                                        <img src="http://lorempixel.com/370/347" alt="blog images">
                                     </a>
                                     <div class="blog__post__time">
                                         <div class="post__time--inner">
@@ -2141,7 +2141,7 @@
                             <div class="blog__inner">
                                 <div class="blog__thumb">
                                     <a href="blog-details.html">
-                                        <img src="/frontend/images/blog/blog-img/2.jpg" alt="blog images">
+                                        <img src="http://lorempixel.com/370/347" alt="blog images">
                                     </a>
                                     <div class="blog__post__time">
                                         <div class="post__time--inner">
@@ -2172,7 +2172,7 @@
                             <div class="blog__inner">
                                 <div class="blog__thumb">
                                     <a href="blog-details.html">
-                                        <img src="/frontend/images/blog/blog-img/3.jpg" alt="blog images">
+                                        <img src="http://lorempixel.com/370/347" alt="blog images">
                                     </a>
                                     <div class="blog__post__time">
                                         <div class="post__time--inner">
