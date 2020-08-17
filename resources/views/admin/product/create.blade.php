@@ -1,4 +1,4 @@
-@extends('admin.partials.app')
+@extends('admin.layouts.app')
 @section('title','Create Product | ')
 @section('content')
     <!-- Content Header (Page header) -->

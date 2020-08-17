@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{route('admin.dashboard')}}" class="brand-link">
-        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+        <img src="{{asset('adminhtml/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
              style="opacity: .8">
         <span class="brand-text font-weight-light">{{env('APP_NAME')}} Admin</span>
     </a>
@@ -74,7 +74,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('admin.brand')}}" class="nav-link {{request()->is('admin/brand*')?'active':''}}">
+                    <a href="{{route('admin.brand.index')}}" class="nav-link {{request()->is('admin/brand*')?'active':''}}">
                         <i class="nav-icon fas fa-bookmark"></i>
                         <p>
                             Brand
@@ -91,13 +91,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.cms-page')}}" class="nav-link {{request()->is('admin/cms-page*')?'active':''}}">
+                            <a href="{{route('admin.cms-page.index')}}" class="nav-link {{request()->is('admin/cms-page*')?'active':''}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Cms Page</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.cms-block')}}" class="nav-link {{request()->is('admin/cms-block*')?'active':''}}">
+                            <a href="{{route('admin.cms-block.index')}}" class="nav-link {{request()->is('admin/cms-block*')?'active':''}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Cms Block</p>
                             </a>
@@ -114,7 +114,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.customer')}}" class="nav-link {{request()->is('admin/customer')?'active':''}}">
+                            <a href="{{route('admin.customer.index')}}" class="nav-link {{request()->is('admin/customer')?'active':''}}">
                                 <i class="far fa-user nav-icon"></i>
                                 <p>Customer List</p>
                             </a>
@@ -132,12 +132,20 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.customer.group')}}" class="nav-link {{request()->is('admin/customer/group')?'active':''}}">
+                            <a href="{{route('admin.group.index')}}" class="nav-link {{request()->is('admin/customer/group')?'active':''}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Customer Group</p>
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.blog.index')}}" class="nav-link {{request()->is('admin/brand*')?'active':''}}">
+                        <i class="nav-icon fas fa-book-reader"></i>
+                        <p>
+                            Blog
+                        </p>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.configuration')}}" class="nav-link">
