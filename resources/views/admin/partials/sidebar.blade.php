@@ -120,12 +120,6 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Vendor List</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{route('admin.customer.create')}}" class="nav-link {{request()->is('admin/customer/create')?'active':''}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Customer</p>
@@ -146,6 +140,43 @@
                             Blog
                         </p>
                     </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.vendor.index')}}" class="nav-link {{request()->is('adminportal/vendor*')?'active':''}}">
+                        <i class="nav-icon fas fa-user-check"></i>
+                        <p>
+                            Vendor
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="javascript:" class="nav-link">
+                        <i class="nav-icon fas fa-user-shield"></i>
+                        <p>
+                            User Management
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('admin.customer.index')}}" class="nav-link {{request()->is('admin/customer')?'active':''}}">
+                                <i class="far fa-user nav-icon"></i>
+                                <p>User</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.customer.create')}}" class="nav-link {{request()->is('admin/customer/create')?'active':''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Role</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.group.index')}}" class="nav-link {{request()->is('admin/customer/group')?'active':''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Permission</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.configuration')}}" class="nav-link">
