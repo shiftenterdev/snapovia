@@ -10,6 +10,12 @@ butikShop is a ecommerce framework built with laravel and idea with Magento. Thi
 - Discount/Coupon Module
 - and more.
 
+## Contributors
+
+<a href="https://github.com/shiftenterdev/butikshop/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=shiftenterdev/butikshop" />
+</a>
+
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Iftakharul Alam via [info@shiftenter.dev](mailto:info@shiftenter.dev). All security vulnerabilities will be promptly addressed.
