@@ -109,13 +109,12 @@
                 <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                     <div class="copyright__inner">
                         <div class="copyright">
-                            <p>© 2020 <a href="https://freethemescloud.com/">Free themes Cloud</a>
-                                All Right Reserved.</p>
+                            <p>© 2020 All Right Reserved.</p>
                         </div>
                         <ul class="footer__menu">
                             <li><a href="{{route('welcome')}}">Home</a></li>
                             <li><a href="shop.html">Product</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="contact">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>

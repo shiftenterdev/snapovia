@@ -30,7 +30,6 @@
     <!-- Start Header Style -->
     @include('front.partials.header')
     <!-- End Header Style -->
-
     @yield('content')
     <!-- Start Footer Area -->
     @include('front.partials.footer')

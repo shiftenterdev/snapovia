@@ -21,7 +21,7 @@
 
     <div class="content">
         <div class="container-fluid">
-            <form action="{{route('admin.category.update',$c->id)}}" method="post" autocomplete="off"
+            <form action="{{route('admin.category.update',$category->id)}}" method="post" autocomplete="off"
                   enctype="multipart/form-data">
                 @csrf
                 <div class="row">
@@ -48,7 +48,7 @@
                                         <div class="form-group">
                                             <label for="">Name</label>
                                             <input type="text" name="name" class="form-control form-control-sm"
-                                                   placeholder="Name" required value="{{$c->name}}">
+                                                   placeholder="Name" required value="{{$category->name}}">
                                         </div>
                                     </div>
                                     <div class="col-6">
@@ -57,7 +57,7 @@
                                             <select name="parent_id" class="form-control form-control-sm" id="">
                                                 <option value="0">Select Category</option>
                                                 @foreach($categories as $C)
-                                                    <option value="{{$C->id}}" {{$c->parent_id==$C->id?'selected':""}}>{{$C->name}}</option>
+                                                    <option value="{{$C->id}}" {{$category->parent_id==$C->id?'selected':""}}>{{$C->name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -66,7 +66,7 @@
                                         <div class="form-group">
                                             <label for="">Url key</label>
                                             <input type="text" class="form-control form-control-sm" name="url_key"
-                                                   placeholder="Url key" value="{{$c->url_key}}" required>
+                                                   placeholder="Url key" value="{{$category->url_key}}" required>
                                         </div>
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@
                                         <div class="form-group">
                                             <label for="">Description</label>
                                             <textarea name="description" class="form-control form-control-sm editor"
-                                                      placeholder="Description">{{$c->description}}</textarea>
+                                                      placeholder="Description">{{$category->description}}</textarea>
                                         </div>
                                     </div>
                                 </div>

@@ -53,7 +53,7 @@
                                             <a href="{{route('admin.category.edit',$c->id)}}" class="text-muted">
                                                 <i class="fas fa-pen"></i>
                                             </a> &nbsp;
-                                            <a href="{{route('admin.category.delete',$c->id)}}" class="text-muted">
+                                            <a href="{{route('admin.category.destroy',$c->id)}}" class="text-muted">
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </td>
