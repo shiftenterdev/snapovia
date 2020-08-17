@@ -24,7 +24,7 @@ $ cd butikshop
 $ composer install
 $ cp .env.example .env
 $ php artisan key:generate
-# create database ad it .env file
+# create database add it .env file
 $ php artisan migrate:fresh --seed
 $ php artisan serve
 ```
