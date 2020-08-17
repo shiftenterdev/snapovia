@@ -15,6 +15,14 @@ class CreateCmsPagesTable extends Migration
     {
         Schema::create('cms_pages', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('content_heading');
+            $table->text('content');
+            $table->string('url_key');
+            $table->boolean('status')->default(1);
+            $table->string('meta_title')->nullable();
+            $table->text('meta_keywords')->nullable();
+            $table->text('meta_description')->nullable();
             $table->timestamps();
         });
     }
