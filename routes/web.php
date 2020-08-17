@@ -100,6 +100,12 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
         Route::resource('permission', 'PermissionController',['as'=>'admin']);
 
+        Route::resource('catalog-rule', 'CatalogRuleController',['as'=>'admin']);
+
+        Route::resource('cart-rule', 'CartRuleController',['as'=>'admin']);
+
+        Route::resource('abandon-cart', 'AbandonController',['as'=>'admin']);
+
         Route::get('order', 'OrderController@index')->name('admin.order');
 
         Route::get('invoice', 'InvoiceController@index')->name('admin.invoice');

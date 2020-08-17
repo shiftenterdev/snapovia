@@ -1,5 +1,7 @@
 @extends('admin.layouts.app')
 
+@section('title','Blog | ')
+
 @section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">

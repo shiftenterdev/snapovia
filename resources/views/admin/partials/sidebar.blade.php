@@ -73,6 +73,35 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-burn"></i>
+                        <p>
+                            Marketing
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('admin.order')}}" class="nav-link {{request()->is('adminportal/order*')?'active':''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Cart Rule</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.invoice')}}" class="nav-link {{request()->is('adminportal/invoice*')?'active':''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Catalog Rule</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.refund')}}" class="nav-link {{request()->is('adminportal/refund*')?'active':''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Abandon Cart</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a href="{{route('admin.brand.index')}}" class="nav-link {{request()->is('adminportal/brand*')?'active':''}}">
                         <i class="nav-icon fas fa-bookmark"></i>
