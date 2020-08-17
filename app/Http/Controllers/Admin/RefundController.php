@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ConfigurationController extends Controller
+class RefundController extends Controller
 {
     public function index()
     {
-        return view('admin.configuration.index');
+        return view('admin.sales.order.index');
     }
 }

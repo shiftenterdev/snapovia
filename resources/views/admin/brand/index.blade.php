@@ -1,4 +1,4 @@
-@extends('admin.partials.app')
+@extends('admin.layouts.app')
 @section('title','Brand | ')
 @section('content')
     <!-- Content Header (Page header) -->
