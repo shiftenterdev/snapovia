@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CmsPageRequest;
 use App\Models\CmsPage;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class CmsPageController extends Controller
         return view('admin.cms_page.create');
     }
 
-    public function store(Request $request)
+    public function store(CmsPageRequest $request)
     {
         CmsPage::create($request->except('_token'));
         return redirect()->route('admin.cms-page')->with([
@@ -28,16 +29,16 @@ class CmsPageController extends Controller
         ]);
     }
 
-    public function edit($id)
+    public function edit(CmsPage $cmsPage)
     {
         return view('admin.cms_page.edit')->with([
-            'page' => CmsPage::find($id)
+            'page' => $cmsPage
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(CmsPageRequest $request, CmsPage $cmsPage)
     {
-        CmsPage::where('id', $id)->update($request->except('_token'));
+        $cmsPage->update($request->except('_token'));
         return redirect()->route('admin.cms-page')->with([
             'success' => "Page Updated successfully"
         ]);

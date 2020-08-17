@@ -11,7 +11,7 @@ class BlogController extends Controller
     public function index()
     {
         return view('admin.blog.index')->with([
-            'blocks'=>Blog::get()
+            'blogs'=>Blog::get()
         ]);
     }
 
@@ -31,7 +31,7 @@ class BlogController extends Controller
     public function edit($id)
     {
         return view('admin.blog.edit')->with([
-            'block' => Blog::find($id)
+            'blog' => Blog::find($id)
         ]);
     }
 

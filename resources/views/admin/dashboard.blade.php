@@ -88,7 +88,7 @@
                                 <tbody>
                                 <tr>
                                     <td>
-                                        <img src="dist/img/default-150x150.png" alt="Product 1" class="img-circle img-size-32 mr-2">
+                                        <img src="{{asset('adminhtml/dist/img/default-150x150.png')}}" alt="Product 1" class="img-circle img-size-32 mr-2">
                                         Some Product
                                     </td>
                                     <td>$13 USD</td>

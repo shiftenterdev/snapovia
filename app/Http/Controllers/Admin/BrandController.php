@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BrandRequest;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,7 @@ class BrandController extends Controller
         return view('admin.brand.create');
     }
 
-    public function store(Request $request)
+    public function store(BrandRequest $request)
     {
         try {
             Brand::create($request->except('_token'));
@@ -31,16 +32,16 @@ class BrandController extends Controller
         }
     }
 
-    public function edit($id)
+    public function edit(Brand $brand)
     {
         return view('admin.brand.edit')->with([
-            'brand' => Brand::find($id)
+            'brand' => $brand
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(BrandRequest $request, Brand $brand)
     {
-        Brand::where('id', $id)->update($request->except('_token'));
+        $brand->update($request->except('_token'));
         return redirect()->route('admin.brand')->with('success', 'Brand updated successfully');
     }
 

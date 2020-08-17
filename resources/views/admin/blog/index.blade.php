@@ -43,7 +43,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($pages as $key => $c)
+                                @foreach($blogs as $key => $c)
                                     <tr>
                                         <td>{{$c->id}}</td>
                                         <td>{{$c->title}}</td>
