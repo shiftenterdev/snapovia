@@ -15,6 +15,9 @@ class CreateProductGalleriesTable extends Migration
     {
         Schema::create('product_galleries', function (Blueprint $table) {
             $table->id();
+            $table->integer('product_id');
+            $table->string('media_type');
+            $table->string('media_path');
             $table->timestamps();
         });
     }

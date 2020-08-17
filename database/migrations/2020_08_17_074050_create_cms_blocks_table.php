@@ -15,6 +15,10 @@ class CreateCmsBlocksTable extends Migration
     {
         Schema::create('cms_blocks', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->boolean('status');
+            $table->text('content');
+            $table->text('identifier');
             $table->timestamps();
         });
     }
