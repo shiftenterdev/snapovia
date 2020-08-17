@@ -21,6 +21,7 @@ class CreateCategoriesTable extends Migration
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->string('url_key');
+            $table->string('url_path')->nullable();
             $table->boolean('status')->default(1);
             $table->boolean('include_in_menu')->default(1);
             $table->boolean('featured')->default(0);
