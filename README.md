@@ -26,6 +26,8 @@ $ cp .env.example .env
 $ php artisan key:generate
 # create database add it .env file
 $ php artisan migrate:fresh --seed
+$ npm i
+$ npm run production
 $ php artisan serve
 ```
 **Now serve http://127.0.0.1:8000**
