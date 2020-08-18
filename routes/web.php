@@ -126,4 +126,4 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 //});
 
 
-//Route::get('/{url}/{suburl?}/{producturl?}', 'Front\CatalogController@getUrlResolver');
+Route::get('/{url}/{suburl?}/{producturl?}', 'Front\CatalogController@getUrlResolver');
