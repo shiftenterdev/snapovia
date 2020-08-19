@@ -22,16 +22,26 @@ butikShop is a ecommerce framework built with laravel and idea with Magento. Thi
 ## Installation
 
 ```shell script
+# Using git clone
 $ git clone https://github.com/shiftenterdev/butikshop.git
+
+# Using composer
+$ composer create-project shiftenterdev/butikshop
+
 $ cd butikshop
 $ composer install
 $ cp .env.example .env
 $ php artisan key:generate
+
 # create database add it .env file
+
+# migrate database with some dummy data
 $ php artisan migrate:fresh --seed
-# install node modules for vue
-$ npm i
+
+# install node modules for vue(optional)[On progress...]
+$ npm i --save
 $ npm run production
+
 # finally run the buit-in server
 $ php artisan serve
 ```
