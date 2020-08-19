@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCartRulesTable extends Migration
+class CreateUrlRewritesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCartRulesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cart_price_rules', function (Blueprint $table) {
+        Schema::create('url_rewrites', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateCartRulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cart_rules');
+        Schema::dropIfExists('url_rewrites');
     }
 }
