@@ -1,9 +1,15 @@
 {
-    "name": "laravel/laravel",
+    "name": "shiftenterdev/butikshop",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "The customized ecommerce framework based on laravel",
     "keywords": [
         "framework",
+        "ecommerce",
+        "butikshop",
+        "laravel ecommerce",
+        "eshop",
+        "e-commerce",
+        "magento",
         "laravel"
     ],
     "license": "MIT",
