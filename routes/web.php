@@ -6,8 +6,14 @@ use Illuminate\Support\Facades\Route;
  * Frontend routes
  */
 
+Route::get('/{any}', function () {
+    return view('front.layouts.vue');
+})->where('any', '.*');
+
 Route::namespace('Front')->group(function(){
     Route::get('/', 'WelcomeController')->name('welcome');
+
+    Route::get('vue', 'VueController')->name('vue');
 
     Route::get('category', 'CatalogController@allProducts')->name('category');
 
