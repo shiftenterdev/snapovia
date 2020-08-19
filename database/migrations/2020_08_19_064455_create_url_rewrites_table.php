@@ -15,6 +15,9 @@ class CreateUrlRewritesTable extends Migration
     {
         Schema::create('url_rewrites', function (Blueprint $table) {
             $table->id();
+            $table->string('request_url');
+            $table->string('redirect_url');
+            $table->string('redirect_type');
             $table->timestamps();
         });
     }
