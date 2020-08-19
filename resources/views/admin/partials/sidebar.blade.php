@@ -54,19 +54,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.order')}}" class="nav-link {{request()->is('adminportal/order*')?'active':''}}">
+                            <a href="{{route('admin.order.index')}}" class="nav-link {{request()->is('adminportal/order*')?'active':''}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Order</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.invoice')}}" class="nav-link {{request()->is('adminportal/invoice*')?'active':''}}">
+                            <a href="{{route('admin.invoice.index')}}" class="nav-link {{request()->is('adminportal/invoice*')?'active':''}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Invoice</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.refund')}}" class="nav-link {{request()->is('adminportal/refund*')?'active':''}}">
+                            <a href="{{route('admin.refund.index')}}" class="nav-link {{request()->is('adminportal/refund*')?'active':''}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Refund</p>
                             </a>
@@ -83,19 +83,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.order')}}" class="nav-link {{request()->is('adminportal/order*')?'active':''}}">
+                            <a href="{{route('admin.order.index')}}" class="nav-link {{request()->is('adminportal/order*')?'active':''}}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Cart Rule</p>
+                                <p>Cart Price Rule</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.invoice')}}" class="nav-link {{request()->is('adminportal/invoice*')?'active':''}}">
+                            <a href="{{route('admin.invoice.index')}}" class="nav-link {{request()->is('adminportal/invoice*')?'active':''}}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Catalog Rule</p>
+                                <p>Catalog Price Rule</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.refund')}}" class="nav-link {{request()->is('adminportal/refund*')?'active':''}}">
+                            <a href="{{route('admin.refund.index')}}" class="nav-link {{request()->is('adminportal/refund*')?'active':''}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Abandon Cart</p>
                             </a>

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 // Vue route will resume later
 //Route::view('/{any}', 'front.layouts.vue')->where('any', '.*');
 
-Route::namespace('Front')->group(function(){
+Route::namespace('Front')->group(function () {
     Route::get('/', 'WelcomeController')->name('welcome');
 
     Route::get('category', 'CatalogController@allProducts')->name('category');
@@ -40,7 +40,7 @@ Route::namespace('Front')->group(function(){
     /**
      * Customer routes
      */
-    Route::namespace('Customer')->group(function(){
+    Route::namespace('Customer')->group(function () {
         Route::get('/customer/account/login', 'LoginController@index')->name('customer.login');
         Route::post('/customer/account/login', 'LoginController@login')->name('customer.login.post');
         Route::post('/customer/account/create', 'RegisterController@createPost')->name('customer.create.post');
@@ -74,57 +74,56 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
     Route::post('login', 'AuthController@loginPost')->name('admin.login.post');
     Route::get('logout', 'AuthController@logout')->name('admin.logout');
 
-    Route::middleware('backend.auth')->group(function (){
+    Route::middleware('backend.auth')->group(function () {
 
-        Route::redirect('/','/adminportal/dashboard' );
+        Route::redirect('/', '/adminportal/dashboard');
 
         Route::get('dashboard', 'DashboardController')->name('admin.dashboard');
 
-        Route::resource('product', 'ProductController',['as'=>'admin']);
+        Route::resource('product', 'ProductController', ['as' => 'admin']);
 
-        Route::resource('category', 'CategoryController',['as'=>'admin']);
+        Route::resource('media', 'MediaController', ['as' => 'admin']);
+
+        Route::resource('category', 'CategoryController', ['as' => 'admin']);
 
         Route::post('brand/media', 'BrandController@media')->name('admin.brand.media');
-        Route::resource('brand', 'BrandController',['as'=>'admin']);
+        Route::resource('brand', 'BrandController', ['as' => 'admin']);
 
-        Route::resource('cms-page', 'CmsPageController',['as'=>'admin']);
+        Route::resource('cms-page', 'CmsPageController', ['as' => 'admin']);
 
-        Route::resource('cms-block', 'CmsBlockController',['as'=>'admin']);
+        Route::resource('cms-block', 'CmsBlockController', ['as' => 'admin']);
 
-        Route::resource('customer', 'CustomerController',['as'=>'admin']);
+        Route::resource('customer', 'CustomerController', ['as' => 'admin']);
 
-        Route::resource('blog', 'BlogController',['as'=>'admin']);
+        Route::resource('blog', 'BlogController', ['as' => 'admin']);
 
-        Route::resource('vendor', 'VendorController',['as'=>'admin']);
+        Route::resource('vendor', 'VendorController', ['as' => 'admin']);
 
-        Route::resource('user', 'UserController',['as'=>'admin']);
+        Route::resource('user', 'UserController', ['as' => 'admin']);
 
-        Route::resource('role', 'RoleController',['as'=>'admin']);
+        Route::resource('role', 'RoleController', ['as' => 'admin']);
 
-        Route::resource('permission', 'PermissionController',['as'=>'admin']);
+        Route::resource('permission', 'PermissionController', ['as' => 'admin']);
 
-        Route::resource('catalog-rule', 'CatalogRuleController',['as'=>'admin']);
+        Route::resource('catalog-rule', 'CatalogRuleController', ['as' => 'admin']);
 
-        Route::resource('cart-rule', 'CartRuleController',['as'=>'admin']);
+        Route::resource('cart-rule', 'CartRuleController', ['as' => 'admin']);
 
-        Route::resource('abandon-cart', 'AbandonController',['as'=>'admin']);
+        Route::resource('abandon-cart', 'AbandonController', ['as' => 'admin']);
 
-        Route::resource('url-rewrite', 'UrlRewriteController',['as'=>'admin']);
+        Route::resource('url-rewrite', 'UrlRewriteController', ['as' => 'admin']);
 
-        Route::get('order', 'OrderController@index')->name('admin.order');
+        Route::resource('order', 'OrderController', ['as' => 'admin']);
 
-        Route::get('invoice', 'InvoiceController@index')->name('admin.invoice');
+        Route::resource('invoice', 'InvoiceController', ['as' => 'admin']);
 
-        Route::get('refund', 'RefundController@index')->name('admin.refund');
+        Route::resource('refund', 'RefundController', ['as' => 'admin']);
 
-        Route::resource('customer/group', 'CustomerGroupController',['as'=>'admin']);
+        Route::resource('customer/group', 'CustomerGroupController', ['as' => 'admin']);
 
-        Route::resource('configuration', 'ConfigurationController',['as'=>'admin']);
+        Route::resource('configuration', 'ConfigurationController', ['as' => 'admin']);
     });
 
 });
-//Route::get('counter',function (){
-//    return response()->json(['total_hit'=>session('gq_count')],200);
-//});
 
 Route::get('/{url}/{suburl?}/{producturl?}', 'Front\CatalogController@getUrlResolver');
