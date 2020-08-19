@@ -56,10 +56,10 @@
                                                 @endforeach
                                             </td>
                                             <td>
-                                                <a href="{{route('admin.user.edit',$role->id)}}" class="text-muted">
+                                                <a href="{{route('admin.role.edit',$role->id)}}" class="text-muted">
                                                     <i class="fas fa-pen"></i>
                                                 </a> &nbsp;
-                                                <a href="{{route('admin.user.destroy',$role->id)}}" class="text-muted">
+                                                <a href="{{route('admin.role.destroy',$role->id)}}" class="text-muted">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
                                             </td>

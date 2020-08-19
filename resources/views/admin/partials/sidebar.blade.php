@@ -100,6 +100,12 @@
                                 <p>Abandon Cart</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.url-rewrite.index')}}" class="nav-link {{request()->is('adminportal/user-rewrite*')?'active':''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Url Rewrite</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">

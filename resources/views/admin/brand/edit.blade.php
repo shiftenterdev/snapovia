@@ -42,13 +42,7 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <div class="form-group" id="holder">
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="button" id="lfm" data-name="logo" data-input="thumbnail" data-preview="holder"
-                                                    class="btn btn-sm btn-outline-info">Upload Image
-                                            </button>
-                                        </div>
+
                                     </div>
 
                                     <div class="col-12">
@@ -76,9 +70,5 @@
 @endsection
 
 @section('script')
-    <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 
-    <script>
-        $('#lfm').filemanager('image');
-    </script>
 @endsection
