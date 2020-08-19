@@ -23,11 +23,6 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Permissions</h3>
-                                <div class="card-tools">
-                                    <a href="{{route('admin.permission.create')}}" class="btn btn-outline-danger btn-sm">
-                                        <i class="fas fa-plus"></i> New Permission
-                                    </a>
-                                </div>
                             </div>
                             <div class="card-body table-responsive p-0">
                                 <table class="table table-striped table-valign-middle">
@@ -35,7 +30,6 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -43,14 +37,6 @@
                                         <tr>
                                             <td>{{$loop->iteration}}</td>
                                             <td>{{$permission->name}}</td>
-                                            <td>
-                                                <a href="{{route('admin.permission.edit',$permission->id)}}" class="text-muted">
-                                                    <i class="fas fa-pen"></i>
-                                                </a> &nbsp;
-                                                <a href="{{route('admin.permission.destroy',$permission->id)}}" class="text-muted">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
