@@ -16,13 +16,14 @@ class CreateCatalogRulesTable extends Migration
         Schema::create('catalog_price_rules', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->boolean('status');
             $table->string('customer_group_id')->nullable();
             $table->datetime('from_date');
             $table->datetime('to_date');
             $table->integer('discount_amount');
             $table->string('discount_type');
+            $table->string('conditions');
             $table->boolean('apply_subsequent_rule')->default(0);
             $table->integer('priority')->nullable();
             $table->timestamps();

@@ -14,8 +14,8 @@ class CreateVendorOrdersTable extends Migration
     public function up()
     {
         Schema::create('vendor_orders', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->integer('vendor_id')->unsigned();
+            $table->integer('order_id')->unsigned();
         });
     }
 
