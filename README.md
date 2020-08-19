@@ -16,6 +16,9 @@ butikShop is a ecommerce framework built with laravel and idea with Magento. Thi
   <img src="https://contributors-img.web.app/image?repo=shiftenterdev/butikshop" />
 </a>
 
+## Specification
+
+
 ## Installation
 
 ```shell script
@@ -26,8 +29,10 @@ $ cp .env.example .env
 $ php artisan key:generate
 # create database add it .env file
 $ php artisan migrate:fresh --seed
+# install node modules for vue
 $ npm i
 $ npm run production
+# finally run the buit-in server
 $ php artisan serve
 ```
 **Now serve http://127.0.0.1:8000**

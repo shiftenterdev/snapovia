@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('Front')->group(function(){
     Route::get('/', 'WelcomeController')->name('welcome');
 
+    Route::get('vue', 'VueController')->name('vue');
+
     Route::get('category', 'CatalogController@allProducts')->name('category');
 
     Route::get('search', 'SearchController@index')->name('search');
