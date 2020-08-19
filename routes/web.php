@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Route;
  * Frontend routes
  */
 
+Route::get('/{any}', function () {
+    return view('front.layouts.vue');
+})->where('any', '.*');
+
 Route::namespace('Front')->group(function(){
     Route::get('/', 'WelcomeController')->name('welcome');
 
