@@ -24,7 +24,8 @@ class RoleController extends Controller
 
     public function store(Request $request)
     {
-
+        return redirect()->route('admin.role.index')
+            ->withSuccess('Role created successfully');
     }
 
     public function edit(Role $role)
@@ -35,6 +36,7 @@ class RoleController extends Controller
 
     public function update(Request $request,Role $role)
     {
-
+        return redirect()->route('admin.role.index')
+            ->withSuccess('Role created successfully');
     }
 }

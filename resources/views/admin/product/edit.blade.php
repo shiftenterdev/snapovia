@@ -206,6 +206,7 @@
     <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
     <script src="plugins/select2/js/select2.full.min.js"></script>
     <script>
+        $('.select2').select2();
         let editor_config = {
             path_absolute: "/",
             selector: "textarea.editor",
@@ -240,11 +241,5 @@
         };
 
         tinymce.init(editor_config);
-    </script>
-    <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
-
-    <script>
-        $('#lfm').filemanager('image');
-        $('.select2').select2();
     </script>
 @endsection

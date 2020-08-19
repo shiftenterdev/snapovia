@@ -37,6 +37,16 @@ $ php artisan serve
 ```
 **Now serve http://127.0.0.1:8000**
 
+## Contributing to Laravel
+
+Contributions are encouraged and welcome. All
+commits must be signed off using the `-s` switch.
+
+```bash
+git commit -s -m "this commit will be signed off automatically!"
+```
+
+
 ## Security Vulnerabilities
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Iftakharul Alam via [info@shiftenter.dev](mailto:info@shiftenter.dev). All security vulnerabilities will be promptly addressed.
