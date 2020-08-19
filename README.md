@@ -1,4 +1,4 @@
-## About butikShop [On progress..]
+## About butikShop [Under development..]
 
 butikShop is a ecommerce framework built with laravel and idea with Magento. This combination makes a new ecommerce platfrom which is fast and more minimized than Magento. We will have the following features:
 
@@ -6,7 +6,7 @@ butikShop is a ecommerce framework built with laravel and idea with Magento. Thi
 - Catalog Module
 - Customer Module
 - Payment Module
-- Quote Module
+- Cart price rule Module
 - Discount/Coupon Module
 - and more.
 
@@ -47,7 +47,7 @@ $ php artisan serve
 ```
 **Now serve http://127.0.0.1:8000**
 
-## Contributing to Laravel
+## Want to contribute in `shiftenterdev/butikshop`
 
 Contributions are encouraged and welcome. All
 commits must be signed off using the `-s` switch.
