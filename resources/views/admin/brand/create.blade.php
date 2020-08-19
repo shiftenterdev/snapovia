@@ -42,14 +42,16 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <div class="form-group" id="holder">
-                                            <input type="hidden" id="thumbnail" class="form-control form-control-sm"
-                                                   name="logo" placeholder="Image">
-                                        </div>
                                         <div class="form-group">
-                                            <button type="button" id="lfm" data-input="thumbnail" data-preview="holder"
-                                                    class="btn btn-sm btn-outline-info">Upload Image
-                                            </button>
+                                            <label for="photo">Logo</label>
+                                            <div class="needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }}" id="photo-dropzone">
+                                            </div>
+                                            @if($errors->has('photo'))
+                                                <div class="invalid-feedback">
+                                                    {{ $errors->first('photo') }}
+                                                </div>
+                                            @endif
+                                            <span class="help-block">About image</span>
                                         </div>
                                     </div>
 
@@ -78,9 +80,58 @@
 @endsection
 
 @section('script')
-    <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
-
     <script>
-        $('#lfm').filemanager('image');
+        Dropzone.options.photoDropzone = {
+            url: '{{ route('admin.brand.media') }}',
+            maxFilesize: 2, // MB
+            acceptedFiles: '.jpeg,.jpg,.png',
+            maxFiles: 1,
+            addRemoveLinks: true,
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            params: {
+                size: 2,
+                width: 4096,
+                height: 4096
+            },
+            success: function (file, response) {
+                $('form').find('input[name="logo"]').remove()
+                $('form').append('<input type="hidden" name="logo" value="' + response.name + '">')
+            },
+            removedfile: function (file) {
+                file.previewElement.remove()
+                if (file.status !== 'error') {
+                    $('form').find('input[name="logo"]').remove()
+                    this.options.maxFiles = this.options.maxFiles + 1
+                }
+            },
+            init: function () {
+                        @if(isset($product) && $product->photo)
+                var file = {!! json_encode($product->photo) !!}
+                        this.options.addedfile.call(this, file)
+                this.options.thumbnail.call(this, file, '{{ $product->photo->getUrl('thumb') }}')
+                file.previewElement.classList.add('dz-complete')
+                $('form').append('<input type="hidden" name="photo" value="' + file.file_name + '">')
+                this.options.maxFiles = this.options.maxFiles - 1
+                @endif
+            },
+            error: function (file, response) {
+                if ($.type(response) === 'string') {
+                    let message = response //dropzone sends it's own error messages in string
+                } else {
+                    let message = response.errors.file
+                }
+                file.previewElement.classList.add('dz-error')
+                _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+                _results = []
+                for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                    node = _ref[_i]
+                    _results.push(node.textContent = message)
+                }
+
+                return _results
+            }
+        }
     </script>
 @endsection

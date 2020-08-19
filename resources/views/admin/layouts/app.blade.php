@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{asset('adminhtml/plugins/select2/css/select2.min.css')}}">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('adminhtml/dist/css/adminlte.min.css')}}">
     <link rel="stylesheet" href="{{asset('adminhtml/dist/css/custom.css')}}">
 @yield('style')
@@ -62,8 +63,9 @@
 <script src="{{asset('adminhtml/dist/js/adminlte.js')}}"></script>
 
 <!-- OPTIONAL SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
 <script src="{{asset('adminhtml/plugins/chart.js/Chart.min.js')}}"></script>
-<script src="{{asset('adminhtml/dist/js/demo.js')}}"></script>
+{{--<script src="{{asset('adminhtml/dist/js/demo.js')}}"></script>--}}
 <script src="{{asset('adminhtml/dist/js/pages/dashboard3.js')}}"></script>
 <script>
     $(() => {

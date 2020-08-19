@@ -5,15 +5,11 @@ use Illuminate\Support\Facades\Route;
 /**
  * Frontend routes
  */
-
-Route::get('/{any}', function () {
-    return view('front.layouts.vue');
-})->where('any', '.*');
+// Vue route will resume later
+//Route::view('/{any}', 'front.layouts.vue')->where('any', '.*');
 
 Route::namespace('Front')->group(function(){
     Route::get('/', 'WelcomeController')->name('welcome');
-
-    Route::get('vue', 'VueController')->name('vue');
 
     Route::get('category', 'CatalogController@allProducts')->name('category');
 
@@ -47,17 +43,17 @@ Route::namespace('Front')->group(function(){
     Route::namespace('Customer')->group(function(){
         Route::get('/customer/account/login', 'LoginController@index')->name('customer.login');
         Route::post('/customer/account/login', 'LoginController@login')->name('customer.login.post');
-        Route::post('/customer/account/create', 'AuthController@createPost')->name('customer.create.post');
-        Route::get('/customer/account/logout', 'AuthController@logout')->name('customer.logout');
-        Route::get('/customer/account/forgotpassword', 'AuthController@forgotPassword')->name('forgot.password');
-        Route::post('/customer/account/forgotpasswordpost', 'AuthController@forgotPasswordPost')->name('forgot.password.post');
-        Route::get('/customer/{customer_id}/password/resetLinkToken/{token}', 'AuthController@createPassword')->name('create.password');
-        Route::post('/customer/account/createpasswordpost', 'AuthController@createPasswordPost')->name('create.password.post');
+        Route::post('/customer/account/create', 'RegisterController@createPost')->name('customer.create.post');
+        Route::get('/customer/account/logout', 'LoginController@logout')->name('customer.logout');
+        Route::get('/customer/account/forgotpassword', 'PasswordController@forgotPassword')->name('forgot.password');
+        Route::post('/customer/account/forgotpasswordpost', 'PasswordController@forgotPasswordPost')->name('forgot.password.post');
+        Route::get('/customer/{customer_id}/password/resetLinkToken/{token}', 'PasswordController@createPassword')->name('create.password');
+        Route::post('/customer/account/createpasswordpost', 'PasswordController@createPasswordPost')->name('create.password.post');
 
         Route::middleware('customer')->group(function () {
-            Route::get('/customer/dashboard', 'DashboardController@index')->name('customer.dashboard');
+            Route::get('/customer/dashboard', 'HomeController@index')->name('customer.dashboard');
             Route::get('/customer/wishlist', 'WishlistController@index')->name('customer.wishlist');
-            Route::get('/customer/info', 'DashboardController@info')->name('customer.info');
+            Route::get('/customer/info', 'HomeController@info')->name('customer.info');
             Route::get('/customer/order', 'OrderController@index')->name('customer.order');
             Route::get('/customer/review', 'ReviewController@index')->name('customer.review');
         });
@@ -88,6 +84,7 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
         Route::resource('category', 'CategoryController',['as'=>'admin']);
 
+        Route::post('brand/media', 'BrandController@media')->name('admin.brand.media');
         Route::resource('brand', 'BrandController',['as'=>'admin']);
 
         Route::resource('cms-page', 'CmsPageController',['as'=>'admin']);
@@ -112,6 +109,8 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
         Route::resource('abandon-cart', 'AbandonController',['as'=>'admin']);
 
+        Route::resource('url-rewrite', 'UrlRewriteController',['as'=>'admin']);
+
         Route::get('order', 'OrderController@index')->name('admin.order');
 
         Route::get('invoice', 'InvoiceController@index')->name('admin.invoice');
@@ -127,9 +126,5 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 //Route::get('counter',function (){
 //    return response()->json(['total_hit'=>session('gq_count')],200);
 //});
-//Route::group(['prefix' => 'filemanager', 'middleware' => ['web', 'admin']], function () {
-//    \UniSharp\LaravelFilemanager\Lfm::routes();
-//});
-
 
 Route::get('/{url}/{suburl?}/{producturl?}', 'Front\CatalogController@getUrlResolver');
