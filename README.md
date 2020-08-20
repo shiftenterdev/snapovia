@@ -1,13 +1,16 @@
 ## About butikShop [Under development..]
 
-butikShop is a ecommerce framework built with laravel and idea with Magento. This combination makes a new ecommerce platfrom which is fast and more minimized than Magento. We will have the following features:
+ButikShop(single store based) is an ecommerce framework built with laravel and idea from Magento. This combination makes a new ecommerce platfrom which will be faster and optimized in process and user experience. 
+We will have the following features:
 
 - Laravel framework
-- Catalog Module
-- Customer Module
-- Payment Module
-- Cart price rule Module
-- Discount/Coupon Module
+- Catalog module
+- Customer module
+- Payment module
+- Cart price rule module
+- Catalog price rule module
+- Discount/Coupon module
+- Vendor module
 - and more.
 
 ## Contributors
@@ -18,6 +21,7 @@ butikShop is a ecommerce framework built with laravel and idea with Magento. Thi
 
 ## Specification
 
+...updating
 
 ## Installation
 
