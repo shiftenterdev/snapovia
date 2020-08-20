@@ -86,7 +86,7 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
         Route::resource('category', 'CategoryController', ['as' => 'admin']);
 
-        Route::post('brand/media', 'BrandController@media')->name('admin.brand.media');
+        Route::post('brand/media', 'BrandController@storeMedia')->name('admin.brand.media');
         Route::resource('brand', 'BrandController', ['as' => 'admin']);
 
         Route::resource('cms-page', 'CmsPageController', ['as' => 'admin']);
