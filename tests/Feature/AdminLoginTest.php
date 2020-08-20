@@ -15,7 +15,7 @@ class AdminLoginTest extends TestCase
      */
     public function testExample()
     {
-        $response = $this->get('/adminportal');
+        $response = $this->get('/adminportal/login');
 
         $response->assertStatus(200);
     }
