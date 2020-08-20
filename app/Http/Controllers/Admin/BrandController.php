@@ -49,7 +49,7 @@ class BrandController extends Controller
 
     public function update(BrandRequest $request, Brand $brand)
     {
-        $brand->update($request->except('_token'));
+        $brand->update($request->except('_token','logo'));
         if ($request->input('logo', false)) {
             $brand->addMedia(storage_path('tmp/uploads/' . $request->input('logo')))
                 ->toMediaCollection('brand');

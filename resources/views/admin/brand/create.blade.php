@@ -1,19 +1,6 @@
 @extends('admin.layouts.app')
 @section('title','Create Brand | ')
 @section('content')
-    <style>
-        .dropzone {
-            min-height: 150px;
-            border: 1px solid #ddd;
-            background: whitesmoke;
-            padding: 20px 20px;
-            border-radius: 4px;
-        }
-        .dropzone .dz-message{
-            margin: 3em;
-            color: #777;
-        }
-    </style>
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">

@@ -28,3 +28,15 @@
     height: 100px;
     border-radius: 4px;
 }
+
+.dropzone {
+     min-height: 150px;
+     border: 1px solid #ddd;
+     background: whitesmoke;
+     padding: 20px 20px;
+     border-radius: 4px;
+ }
+.dropzone .dz-message{
+    margin: 3em;
+    color: #777;
+}
