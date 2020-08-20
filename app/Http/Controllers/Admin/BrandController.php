@@ -28,12 +28,13 @@ class BrandController extends Controller
     public function store(BrandRequest $request)
     {
         try {
-            $brand = Brand::create($request->except('_token'));
+            $brand = Brand::create($request->except(['_token','logo']));
             if ($request->input('logo', false)) {
                 $brand->addMedia(storage_path('tmp/uploads/' . $request->input('logo')))
                     ->toMediaCollection('brand');
             }
-            return redirect()->route('admin.brand')->with('success', 'Brand created successfully');
+            return redirect()->route('admin.brand.index')
+                ->with('success', 'Brand created successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
@@ -49,7 +50,12 @@ class BrandController extends Controller
     public function update(BrandRequest $request, Brand $brand)
     {
         $brand->update($request->except('_token'));
-        return redirect()->route('admin.brand')->with('success', 'Brand updated successfully');
+        if ($request->input('logo', false)) {
+            $brand->addMedia(storage_path('tmp/uploads/' . $request->input('logo')))
+                ->toMediaCollection('brand');
+        }
+        return redirect()->route('admin.brand.index')
+            ->with('success', 'Brand updated successfully');
     }
 
     public function destroy($id)
