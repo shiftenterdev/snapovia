@@ -48,10 +48,10 @@
                                             <td>{{$user->email}}</td>
                                             <td>{{$user->roles[0]->name}}</td>
                                             <td>
-                                                <a href="{{route('admin.user.edit',$user->id)}}" class="text-muted">
+                                                <a href="{{route('admin.user.edit',$user->uuid)}}" class="text-muted">
                                                     <i class="fas fa-pen"></i>
                                                 </a> &nbsp;
-                                                <a href="{{route('admin.user.destroy',$user->id)}}" class="text-muted">
+                                                <a href="{{route('admin.user.destroy',$user->uuid)}}" class="text-muted">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
                                             </td>

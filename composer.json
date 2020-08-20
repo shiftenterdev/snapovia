@@ -21,7 +21,8 @@
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
         "spatie/laravel-medialibrary": "^7.19",
-        "spatie/laravel-permission": "^3.15"
+        "spatie/laravel-permission": "^3.15",
+        "webpatser/laravel-uuid": "^3.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.4",

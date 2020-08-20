@@ -1,6 +1,19 @@
 @extends('admin.layouts.app')
 @section('title','Create Brand | ')
 @section('content')
+    <style>
+        .dropzone {
+            min-height: 150px;
+            border: 1px solid #ddd;
+            background: whitesmoke;
+            padding: 20px 20px;
+            border-radius: 4px;
+        }
+        .dropzone .dz-message{
+            margin: 3em;
+            color: #777;
+        }
+    </style>
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -51,7 +64,6 @@
                                                     {{ $errors->first('photo') }}
                                                 </div>
                                             @endif
-                                            <span class="help-block">About image</span>
                                         </div>
                                     </div>
 
@@ -81,6 +93,7 @@
 
 @section('script')
     <script>
+        let form = $('form');
         Dropzone.options.photoDropzone = {
             url: '{{ route('admin.brand.media') }}',
             maxFilesize: 2, // MB
@@ -96,25 +109,18 @@
                 height: 4096
             },
             success: function (file, response) {
-                $('form').find('input[name="logo"]').remove()
-                $('form').append('<input type="hidden" name="logo" value="' + response.name + '">')
+                form.find('input[name="logo"]').remove()
+                form.append('<input type="hidden" name="logo" value="' + response.name + '">')
             },
             removedfile: function (file) {
                 file.previewElement.remove()
                 if (file.status !== 'error') {
-                    $('form').find('input[name="logo"]').remove()
+                    form.find('input[name="logo"]').remove()
                     this.options.maxFiles = this.options.maxFiles + 1
                 }
             },
             init: function () {
-                        @if(isset($product) && $product->photo)
-                var file = {!! json_encode($product->photo) !!}
-                        this.options.addedfile.call(this, file)
-                this.options.thumbnail.call(this, file, '{{ $product->photo->getUrl('thumb') }}')
-                file.previewElement.classList.add('dz-complete')
-                $('form').append('<input type="hidden" name="photo" value="' + file.file_name + '">')
-                this.options.maxFiles = this.options.maxFiles - 1
-                @endif
+
             },
             error: function (file, response) {
                 if ($.type(response) === 'string') {

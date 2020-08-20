@@ -83,19 +83,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.order.index')}}" class="nav-link {{request()->is('adminportal/order*')?'active':''}}">
+                            <a href="{{route('admin.cart-rule.index')}}" class="nav-link {{request()->is('adminportal/cart-rule*')?'active':''}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Cart Price Rule</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.invoice.index')}}" class="nav-link {{request()->is('adminportal/invoice*')?'active':''}}">
+                            <a href="{{route('admin.catalog-rule.index')}}" class="nav-link {{request()->is('adminportal/catalog-rule*')?'active':''}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Catalog Price Rule</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.refund.index')}}" class="nav-link {{request()->is('adminportal/refund*')?'active':''}}">
+                            <a href="{{route('admin.abandon-cart.index')}}" class="nav-link {{request()->is('adminportal/abandon-cart*')?'active':''}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Abandon Cart</p>
                             </a>
