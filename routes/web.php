@@ -13,8 +13,7 @@ Route::namespace('Front')->group(function () {
 
     Route::get('category', 'CatalogController@allProducts')->name('category');
 
-    Route::get('search', 'SearchController@index')->name('search');
-    Route::post('search', 'SearchController@search')->name('search.post');
+    Route::resource('search', 'SearchController')->only(['index','show']);
 
     Route::post('product/variants', 'CatalogController@getVariant')->name('product.variant');
 
@@ -24,7 +23,7 @@ Route::namespace('Front')->group(function () {
     Route::get('checkout', 'CartController@checkout')->name('checkout');
     Route::post('cart/remove-item', 'CartController@removeItem')->name('cart.remove.item');
     Route::post('cart/update-item', 'CartController@updateItem')->name('cart.update.item');
-    Route::get('cart/checkout/success', 'CartController@success')->name('cart.checkout.success');
+    Route::get('checkout/success', 'CheckoutController@success')->name('checkout.success');
 
     Route::get('contact', 'CmsController@contact')->name('contact');
     Route::get('faq', 'CmsController@faq')->name('faq');
@@ -34,7 +33,7 @@ Route::namespace('Front')->group(function () {
     Route::get('terms', 'CmsController@terms')->name('terms');
     Route::get('privacy-policy', 'CmsController@privacy')->name('privacy');
 
-    Route::get('blog', 'BlogController@index')->name('blog');
+    Route::resource('blog', 'BlogController')->only(['index','show']);
 
 
     /**
@@ -43,8 +42,10 @@ Route::namespace('Front')->group(function () {
     Route::namespace('Customer')->group(function () {
         Route::get('/customer/account/login', 'LoginController@index')->name('customer.login');
         Route::post('/customer/account/login', 'LoginController@login')->name('customer.login.post');
+
         Route::post('/customer/account/create', 'RegisterController@createPost')->name('customer.create.post');
         Route::get('/customer/account/logout', 'LoginController@logout')->name('customer.logout');
+
         Route::get('/customer/account/forgotpassword', 'PasswordController@forgotPassword')->name('forgot.password');
         Route::post('/customer/account/forgotpasswordpost', 'PasswordController@forgotPasswordPost')->name('forgot.password.post');
         Route::get('/customer/{customer_id}/password/resetLinkToken/{token}', 'PasswordController@createPassword')->name('create.password');

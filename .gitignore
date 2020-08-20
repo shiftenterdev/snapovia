@@ -13,3 +13,4 @@ yarn-error.log
 /public/css/
 /public/js/
 storage/tmp/
+.idea/
