@@ -1,19 +1,6 @@
 @extends('admin.layouts.app')
 @section('title','Create Brand | ')
 @section('content')
-    <style>
-        .dropzone {
-            min-height: 150px;
-            border: 1px solid #ddd;
-            background: whitesmoke;
-            padding: 20px 20px;
-            border-radius: 4px;
-        }
-        .dropzone .dz-message{
-            margin: 3em;
-            color: #777;
-        }
-    </style>
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -34,7 +21,7 @@
 
     <div class="content">
         <div class="container-fluid">
-            <form action="{{route('admin.brand.create')}}" method="post" autocomplete="off"
+            <form action="{{route('admin.brand.store')}}" method="post" autocomplete="off"
                   enctype="multipart/form-data">
                 @csrf
                 <div class="row">
@@ -57,11 +44,11 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="photo">Logo</label>
-                                            <div class="needsclick dropzone {{ $errors->has('photo') ? 'is-invalid' : '' }}" id="photo-dropzone">
+                                            <div class="needsclick dropzone {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="photo-dropzone">
                                             </div>
-                                            @if($errors->has('photo'))
+                                            @if($errors->has('logo'))
                                                 <div class="invalid-feedback">
-                                                    {{ $errors->first('photo') }}
+                                                    {{ $errors->first('logo') }}
                                                 </div>
                                             @endif
                                         </div>

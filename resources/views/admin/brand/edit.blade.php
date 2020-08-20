@@ -21,9 +21,10 @@
 
     <div class="content">
         <div class="container-fluid">
-            <form action="{{route('admin.brand.update',$brand->id)}}" method="post" autocomplete="off"
+            <form action="{{route('admin.brand.update',$brand)}}" method="post" autocomplete="off"
                   enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
@@ -42,7 +43,16 @@
                                     </div>
 
                                     <div class="col-12">
-
+                                        <div class="form-group">
+                                            <label for="photo">Logo</label>
+                                            <div class="needsclick dropzone {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="photo-dropzone">
+                                            </div>
+                                            @if($errors->has('logo'))
+                                                <div class="invalid-feedback">
+                                                    {{ $errors->first('logo') }}
+                                                </div>
+                                            @endif
+                                        </div>
                                     </div>
 
                                     <div class="col-12">
@@ -70,5 +80,59 @@
 @endsection
 
 @section('script')
+    <script>
+        let form = $('form');
+        Dropzone.options.photoDropzone = {
+            url: '{{ route('admin.brand.media') }}',
+            maxFilesize: 2, // MB
+            acceptedFiles: '.jpeg,.jpg,.png',
+            maxFiles: 1,
+            addRemoveLinks: true,
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            params: {
+                size: 2,
+                width: 4096,
+                height: 4096
+            },
+            success: function (file, response) {
+                form.find('input[name="logo"]').remove()
+                form.append('<input type="hidden" name="logo" value="' + response.name + '">')
+            },
+            removedfile: function (file) {
+                file.previewElement.remove()
+                if (file.status !== 'error') {
+                    form.find('input[name="logo"]').remove()
+                    this.options.maxFiles = this.options.maxFiles + 1
+                }
+            },
+            init: function () {
+                @if(isset($brand) && $brand->logo)
+                    let file = {!! json_encode($brand->logo) !!}
+                    this.options.addedfile.call(this, file)
+                    this.options.thumbnail.call(this, file, '{{ $brand->logo->getUrl('thumb') }}')
+                    file.previewElement.classList.add('dz-complete')
+                    //form.append('<input type="hidden" name="logo" value="' + file.file_name + '">')
+                    this.options.maxFiles = this.options.maxFiles - 1
+                @endif
+            },
+            error: function (file, response) {
+                if ($.type(response) === 'string') {
+                    let message = response //dropzone sends it's own error messages in string
+                } else {
+                    let message = response.errors.file
+                }
+                file.previewElement.classList.add('dz-error')
+                _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+                _results = []
+                for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+                    node = _ref[_i]
+                    _results.push(node.textContent = message)
+                }
 
+                return _results
+            }
+        }
+    </script>
 @endsection
