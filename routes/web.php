@@ -43,6 +43,7 @@ Route::namespace('Front')->group(function () {
     Route::namespace('Customer')->group(function () {
         Route::get('/customer/account/login', 'LoginController@index')->name('customer.login');
         Route::post('/customer/account/login', 'LoginController@login')->name('customer.login.post');
+        Route::get('/customer/account/create', 'RegisterController@index')->name('customer.create.post');
         Route::post('/customer/account/create', 'RegisterController@createPost')->name('customer.create.post');
         Route::get('/customer/account/logout', 'LoginController@logout')->name('customer.logout');
         Route::get('/customer/account/forgotpassword', 'PasswordController@forgotPassword')->name('forgot.password');
