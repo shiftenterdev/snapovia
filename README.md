@@ -1,5 +1,7 @@
 ## About butikShop [Under development..]
 
+[![Build Status](https://travis-ci.org/shiftenterdev/butikshop.svg?branch=master)](https://travis-ci.org/shiftenterdev/butikshop)
+
 ButikShop(single store based) is an ecommerce framework built with laravel and idea from Magento. This combination makes a new ecommerce platfrom which will be faster and optimized in process and user experience. 
 We will have the following features:
 
