@@ -53,11 +53,22 @@ $ php artisan serve
 
 ## Want to contribute in `shiftenterdev/butikshop`
 
-Contributions are encouraged and welcome. All
-commits must be signed off using the `-s` switch.
+Contributions are encouraged and welcome. Here are the steps of contribution:
 
-```bash
+1. Fork the repository
+2. Clone the repository
+3. Create a branch
+4. Checkout the branch
+```sh
+git checkout -b <add-your-name>
+```
+5. Do the changes with a descriptive commit message
+```sh
 git commit -s -m "this commit will be signed off automatically!"
+```
+6. Finally push the commit
+```sh
+git push origin -u <add-your-name>
 ```
 
 
