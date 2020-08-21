@@ -1,83 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Butikshop | Admin Login</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{asset('adminhtml/plugins/fontawesome-free/css/all.min.css')}}">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- icheck bootstrap -->
-    <link rel="stylesheet" href="{{asset('adminhtml/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('adminhtml/dist/css/adminlte.min.css')}}">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Windmill Dashboard</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{asset('adminhtml/assets/css/tailwind.output.css')}}" />
+    <script
+        src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
+        defer
+    ></script>
+    <script src="{{asset('adminhtml/assets/js/init-alpine.js')}}"></script>
 </head>
-<body class="hold-transition login-page">
-<div class="login-box">
-    <div class="login-logo">
-        <a href="{{route('admin.login')}}"><b>Admin</b>{{env('APP_NAME')}}</a>
-    </div>
-    <!-- /.login-logo -->
-    <div class="card">
-        <div class="card-body login-card-body">
-            <p class="login-box-msg">{{__("Welcome Butikshop Admin")}}</p>
+<body>
+<div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
+    <div
+        class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800"
+    >
+        <div class="flex flex-col overflow-y-auto md:flex-row">
+            <div class="h-32 md:h-auto md:w-1/2">
+                <img
+                    aria-hidden="true"
+                    class="object-cover w-full h-full dark:hidden"
+                    src="{{asset('adminhtml/assets/img/login-office.jpeg')}}"
+                    alt="Office"
+                />
+                <img
+                    aria-hidden="true"
+                    class="hidden object-cover w-full h-full dark:block"
+                    src="../assets/img/login-office-dark.jpeg"
+                    alt="Office"
+                />
+            </div>
+            <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
+                <div class="w-full">
+                    <h1 class="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
+                        {{env('APP_NAME')}} Admin Login
+                    </h1>
+                    <form action="{{route('admin.login.post')}}" method="post" autocomplete="off">
+                        @csrf
+                        <label class="block text-sm">
+                            <span class="text-gray-700 dark:text-gray-400">Username</span>
+                            <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                   placeholder="Jane Doe" type="text" name="username" required/>
+                            @error('username')
+                            <span class="text-xs text-red-600 dark:text-red-400">
+                              {{$message}}
+                            </span>
+                            @enderror
+                        </label>
+                        <label class="block mt-4 text-sm">
+                            <span class="text-gray-700 dark:text-gray-400">Password</span>
+                            <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                   placeholder="***************"
+                                   type="password" name="password" required/>
+                            @error('password')
+                            <span class="text-xs text-red-600 dark:text-red-400">
+                              {{$message}}
+                            </span>
+                            @enderror
+                        </label>
 
-            <form action="{{route('admin.login.post')}}" method="post" autocomplete="off">
-                @csrf
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="username" placeholder="Username" required>
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-user-alt"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" name="password" placeholder="Password" required>
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-8">
-                        <div class="icheck-primary">
-                            <input type="checkbox" id="remember">
-                            <label for="remember">
-                                Remember Me
-                            </label>
-                        </div>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Login</button>
-                    </div>
-                    <!-- /.col -->
-                </div>
-            </form>
+                        <!-- You should use a button here, as the anchor is only used for the example  -->
+                        <button type="submit" class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                            Log in
+                        </button>
+                    </form>
 
-            <p class="mb-1">
-                <a href="{{route('admin.forgot.password')}}">I forgot my password</a>
-            </p>
+                    <hr class="my-8" />
+
+
+
+                    <p class="mt-4">
+                        <a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
+                            href="{{route('admin.forgot.password')}}">
+                            Forgot your password?
+                        </a>
+                    </p>
+                </div>
+            </div>
         </div>
-        <!-- /.login-card-body -->
     </div>
 </div>
-<!-- /.login-box -->
-
-<!-- jQuery -->
-<script src="{{asset('adminhtml/plugins/jquery/jquery.min.js')}}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{asset('adminhtml/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset('adminhtml/dist/js/adminlte.min.js')}}"></script>
-
 </body>
 </html>
