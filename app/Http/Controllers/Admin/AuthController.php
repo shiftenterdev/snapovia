@@ -15,7 +15,7 @@ class AuthController extends Controller
     public function loginPost(Request $request)
     {
         $request->validate([
-            'username' => 'required',
+            'username' => 'alpha_num|required',
             'password' => 'required'
         ]);
         $credentials = [
@@ -23,7 +23,6 @@ class AuthController extends Controller
             'password' => $request->password
         ];
         if (auth()->attempt($credentials)) {
-//            dd(auth()->user()->role->id);
             return redirect()->route('admin.dashboard');
         }
         return redirect()->back();
