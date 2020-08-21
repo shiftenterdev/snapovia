@@ -1,7 +1,7 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary">
     <!-- Brand Logo -->
     <a href="{{route('admin.dashboard')}}" class="brand-link">
-        <img src="{{asset('adminhtml/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+        <img src="{{asset('adminhtml/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle"
              style="opacity: .8">
         <span class="brand-text font-weight-light">{{env('APP_NAME')}} Admin</span>
     </a>
@@ -32,13 +32,11 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{route('admin.product.index')}}" class="nav-link {{request()->is('adminportal/product*')?'active':''}}">
-                                <i class="far fa-circle nav-icon"></i>
                                 <p>Product</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.category.index')}}" class="nav-link {{request()->is('adminportal/category*')?'active':''}}">
-                                <i class="far fa-circle nav-icon"></i>
                                 <p>Category</p>
                             </a>
                         </li>
@@ -55,19 +53,19 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{route('admin.order.index')}}" class="nav-link {{request()->is('adminportal/order*')?'active':''}}">
-                                <i class="far fa-circle nav-icon"></i>
+
                                 <p>Order</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.invoice.index')}}" class="nav-link {{request()->is('adminportal/invoice*')?'active':''}}">
-                                <i class="far fa-circle nav-icon"></i>
+
                                 <p>Invoice</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.refund.index')}}" class="nav-link {{request()->is('adminportal/refund*')?'active':''}}">
-                                <i class="far fa-circle nav-icon"></i>
+
                                 <p>Refund</p>
                             </a>
                         </li>
@@ -84,25 +82,25 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{route('admin.cart-rule.index')}}" class="nav-link {{request()->is('adminportal/cart-rule*')?'active':''}}">
-                                <i class="far fa-circle nav-icon"></i>
+
                                 <p>Cart Price Rule</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.catalog-rule.index')}}" class="nav-link {{request()->is('adminportal/catalog-rule*')?'active':''}}">
-                                <i class="far fa-circle nav-icon"></i>
+
                                 <p>Catalog Price Rule</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.abandon-cart.index')}}" class="nav-link {{request()->is('adminportal/abandon-cart*')?'active':''}}">
-                                <i class="far fa-circle nav-icon"></i>
+
                                 <p>Abandon Cart</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.url-rewrite.index')}}" class="nav-link {{request()->is('adminportal/user-rewrite*')?'active':''}}">
-                                <i class="far fa-circle nav-icon"></i>
+
                                 <p>Url Rewrite</p>
                             </a>
                         </li>
@@ -127,13 +125,13 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{route('admin.cms-page.index')}}" class="nav-link {{request()->is('adminportal/cms-page*')?'active':''}}">
-                                <i class="far fa-circle nav-icon"></i>
+
                                 <p>Cms Page</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.cms-block.index')}}" class="nav-link {{request()->is('adminportal/cms-block*')?'active':''}}">
-                                <i class="far fa-circle nav-icon"></i>
+
                                 <p>Cms Block</p>
                             </a>
                         </li>
@@ -156,13 +154,13 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.customer.create')}}" class="nav-link {{request()->is('adminportal/customer/create')?'active':''}}">
-                                <i class="far fa-circle nav-icon"></i>
+
                                 <p>Add Customer</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.group.index')}}" class="nav-link {{request()->is('admin/customer/group')?'active':''}}">
-                                <i class="far fa-circle nav-icon"></i>
+
                                 <p>Customer Group</p>
                             </a>
                         </li>
@@ -195,19 +193,16 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{route('admin.user.index')}}" class="nav-link {{request()->is('adminportal/user*')?'active':''}}">
-                                <i class="far fa-user nav-icon"></i>
                                 <p>User</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.role.index')}}" class="nav-link {{request()->is('adminportal/role*')?'active':''}}">
-                                <i class="far fa-circle nav-icon"></i>
                                 <p>Role</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.permission.index')}}" class="nav-link {{request()->is('adminportal/permission*')?'active':''}}">
-                                <i class="far fa-circle nav-icon"></i>
                                 <p>Permission</p>
                             </a>
                         </li>
