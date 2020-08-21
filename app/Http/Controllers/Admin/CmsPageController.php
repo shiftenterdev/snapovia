@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CmsPageRequest;
 use App\Models\CmsPage;
-use Illuminate\Http\Request;
 
 class CmsPageController extends Controller
 {

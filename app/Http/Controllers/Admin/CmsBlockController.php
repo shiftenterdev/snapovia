@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CmsBlockRequest;
 use App\Models\CmsBlock;
-use Illuminate\Http\Request;
 
 class CmsBlockController extends Controller
 {

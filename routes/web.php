@@ -106,9 +106,9 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
         Route::resource('permission', 'PermissionController', ['as' => 'admin']);
 
-        Route::resource('catalog-rule', 'CatalogRuleController', ['as' => 'admin']);
+        Route::resource('catalog-rule', 'CatalogPriceRuleController', ['as' => 'admin']);
 
-        Route::resource('cart-rule', 'CartRuleController', ['as' => 'admin']);
+        Route::resource('cart-rule', 'CartPriceRuleController', ['as' => 'admin']);
 
         Route::resource('abandon-cart', 'AbandonController', ['as' => 'admin']);
 
@@ -119,6 +119,10 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
         Route::resource('invoice', 'InvoiceController', ['as' => 'admin']);
 
         Route::resource('refund', 'RefundController', ['as' => 'admin']);
+        
+        Route::resource('export-import/product-export', 'ExportImport\ProductExportController', ['as' => 'admin']);
+
+        Route::resource('export-import/product-import', 'ExportImport\ProductImportController', ['as' => 'admin']);
 
         Route::resource('customer/group', 'CustomerGroupController', ['as' => 'admin']);
 
