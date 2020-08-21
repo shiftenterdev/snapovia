@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - {{env('APP_NAME')}}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="{{asset('adminhtml/assets/css/tailwind.output.css')}}" />
 </head>
 <body>
@@ -13,8 +12,7 @@
     <div class="flex-1 h-full max-w-4xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl dark:bg-gray-800">
         <div class="flex flex-col overflow-y-auto md:flex-row">
             <div class="h-32 md:h-auto md:w-1/2">
-                <img
-                    aria-hidden="true"
+                <img aria-hidden="true"
                     class="object-cover w-full h-full dark:hidden"
                     src="{{asset('adminhtml/assets/img/login-office.jpeg')}}"
                     alt="Admin Login"/>
@@ -60,8 +58,7 @@
                     <hr class="my-8" />
 
                     <p class="mt-4">
-                        <a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline"
-                            href="{{route('admin.forgot.password')}}">
+                        <a class="text-sm font-medium text-purple-600 dark:text-purple-400 hover:underline" href="{{route('admin.forgot.password')}}">
                             Forgot your password?
                         </a>
                     </p>
