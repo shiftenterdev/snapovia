@@ -148,19 +148,16 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{route('admin.customer.index')}}" class="nav-link {{request()->is('adminportal/customer*')?'active':''}}">
-                                <i class="far fa-user nav-icon"></i>
                                 <p>Customer List</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.customer.create')}}" class="nav-link {{request()->is('adminportal/customer/create')?'active':''}}">
-
                                 <p>Add Customer</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.group.index')}}" class="nav-link {{request()->is('admin/customer/group')?'active':''}}">
-
                                 <p>Customer Group</p>
                             </a>
                         </li>
