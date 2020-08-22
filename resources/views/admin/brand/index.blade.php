@@ -31,7 +31,7 @@
                                 <tbody>
                                 @foreach($brands as $key => $c)
                                     <tr>
-                                        <td>{{$key+1}}</td>
+                                        <td>{{$c->id}}</td>
                                         <td>{{$c->name}}</td>
                                         <td>
                                             @if($c->logo)
@@ -51,6 +51,10 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <div class="card-footer clearfix">
+                                {{$brands->links()}}
+                            </div>
+
                         </div>
                     </div>
                 </div>

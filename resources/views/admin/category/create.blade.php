@@ -36,7 +36,7 @@
                                                    placeholder="Name" required>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="">Parent Category</label>
