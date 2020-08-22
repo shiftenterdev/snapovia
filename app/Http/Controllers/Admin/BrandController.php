@@ -27,9 +27,9 @@ class BrandController extends Controller
     public function store(BrandRequest $request)
     {
         try {
-            $brand = Brand::create($request->except(['_token','logo']));
+            $brand = Brand::create($request->except(['_token']));
             if ($request->input('logo', false)) {
-                $brand->addMedia(storage_path('tmp/uploads/' . $request->input('logo')))
+                $brand->addMedia($request->file('logo'))
                     ->toMediaCollection('brand');
             }
             return redirect()->route('admin.brand.index')
@@ -49,8 +49,8 @@ class BrandController extends Controller
     public function update(BrandRequest $request, Brand $brand)
     {
         $brand->update($request->except('_token','logo'));
-        if ($request->input('logo', false)) {
-            $brand->addMedia(storage_path('tmp/uploads/' . $request->input('logo')))
+        if ($request->file('logo', false)) {
+            $brand->addMedia($request->file('logo'))
                 ->toMediaCollection('brand');
         }
         return redirect()->route('admin.brand.index')
