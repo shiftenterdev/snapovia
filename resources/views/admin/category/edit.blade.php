@@ -156,5 +156,13 @@
 @endsection
 
 @section('script')
-
+    <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: "textarea.editor",
+            menubar: false,
+            branding: false,
+            statusbar: false,
+        });
+    </script>
 @endsection

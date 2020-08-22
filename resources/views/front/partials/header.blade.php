@@ -6,7 +6,7 @@
                 <div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
                     <div class="logo">
                         <a href="{{route('welcome')}}">
-                            <img src="{{asset('frontend/images/logo/logo.png')}}" alt="logo">
+                            BUTIKshop
                         </a>
                     </div>
                 </div>

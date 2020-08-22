@@ -25,7 +25,7 @@
                   enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">New Brand</h3>
@@ -79,6 +79,16 @@
 @endsection
 
 @section('script')
+    <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: "textarea.editor",
+            menubar: false,
+            branding: false,
+            statusbar: false,
+            toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist",
+        });
+    </script>
     <script>
         let form = $('form');
         Dropzone.options.photoDropzone = {

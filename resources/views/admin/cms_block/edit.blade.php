@@ -91,6 +91,9 @@
     <script>
         let editor_config = {
             path_absolute: "/",
+            branding: false,
+            statusbar: false,
+            menubar: false,
             selector: "textarea.editor",
             plugins: [
                 "autolink lists link image hr anchor",
@@ -98,7 +101,7 @@
                 "insertdatetime table directionality",
                 "emoticons paste textcolor textpattern"
             ],
-            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link image",
             relative_urls: false,
             file_browser_callback: function (field_name, url, type, win) {
                 let x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;

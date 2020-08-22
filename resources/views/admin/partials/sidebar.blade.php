@@ -147,7 +147,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.customer.index')}}" class="nav-link {{request()->is('adminportal/customer*')?'active':''}}">
+                            <a href="{{route('admin.customer.index')}}" class="nav-link {{request()->is('adminportal/customer')?'active':''}}">
                                 <p>Customer List</p>
                             </a>
                         </li>
@@ -157,7 +157,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.group.index')}}" class="nav-link {{request()->is('admin/customer/group')?'active':''}}">
+                            <a href="{{route('admin.group.index')}}" class="nav-link {{request()->is('adminportal/customer/group')?'active':''}}">
                                 <p>Customer Group</p>
                             </a>
                         </li>

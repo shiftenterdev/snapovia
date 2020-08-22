@@ -80,6 +80,16 @@
 @endsection
 
 @section('script')
+    <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: "textarea.editor",
+            menubar: false,
+            branding: false,
+            statusbar: false,
+            toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist",
+        });
+    </script>
     <script>
         let form = $('form');
         Dropzone.options.photoDropzone = {
