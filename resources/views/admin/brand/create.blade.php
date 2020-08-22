@@ -33,13 +33,7 @@
                             <div class="card-body">
                                 <div class="row">
 
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="">Name</label>
-                                            <input type="text" name="name" class="form-control form-control-sm"
-                                                   placeholder="Name" required>
-                                        </div>
-                                    </div>
+                                    <x-admin.form.input name="name" label="Name" required="required"/>
 
                                     <div class="col-12">
                                         <div class="form-group">
@@ -51,13 +45,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="">Description</label>
-                                            <textarea name="description" class="form-control form-control-sm editor"
-                                                      placeholder="Description"></textarea>
-                                        </div>
-                                    </div>
+                                    <x-admin.form.textarea name="description" label="Description"/>
                                 </div>
                                 <hr>
                                 <div class="form-group">
