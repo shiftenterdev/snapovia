@@ -44,13 +44,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="photo">Logo</label>
-                                            <div class="needsclick dropzone {{ $errors->has('logo') ? 'is-invalid' : '' }}" id="photo-dropzone">
-                                            </div>
-                                            @if($errors->has('logo'))
-                                                <div class="invalid-feedback">
-                                                    {{ $errors->first('logo') }}
-                                                </div>
-                                            @endif
+                                            <input type="file" name="logo" class="form-control">
                                         </div>
                                     </div>
 
@@ -88,53 +82,5 @@
             statusbar: false,
             toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist",
         });
-    </script>
-    <script>
-        let form = $('form');
-        Dropzone.options.photoDropzone = {
-            url: '{{ route('admin.brand.media') }}',
-            maxFilesize: 2, // MB
-            acceptedFiles: '.jpeg,.jpg,.png',
-            maxFiles: 1,
-            addRemoveLinks: true,
-            headers: {
-                'X-CSRF-TOKEN': "{{ csrf_token() }}"
-            },
-            params: {
-                size: 2,
-                width: 4096,
-                height: 4096
-            },
-            success: function (file, response) {
-                form.find('input[name="logo"]').remove()
-                form.append('<input type="hidden" name="logo" value="' + response.name + '">')
-            },
-            removedfile: function (file) {
-                file.previewElement.remove()
-                if (file.status !== 'error') {
-                    form.find('input[name="logo"]').remove()
-                    this.options.maxFiles = this.options.maxFiles + 1
-                }
-            },
-            init: function () {
-
-            },
-            error: function (file, response) {
-                if ($.type(response) === 'string') {
-                    let message = response //dropzone sends it's own error messages in string
-                } else {
-                    let message = response.errors.file
-                }
-                file.previewElement.classList.add('dz-error')
-                _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
-                _results = []
-                for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-                    node = _ref[_i]
-                    _results.push(node.textContent = message)
-                }
-
-                return _results
-            }
-        }
     </script>
 @endsection
