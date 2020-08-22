@@ -26,7 +26,7 @@
                 @csrf
                 @method('PUT')
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-8">
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Update Brand</h3>
@@ -34,31 +34,26 @@
                             <div class="card-body">
                                 <div class="row">
 
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="">Name</label>
-                                            <input type="text" name="name" class="form-control form-control-sm"
-                                                   placeholder="Name" value="{{$brand->name}}" required>
-                                        </div>
-                                    </div>
+                                    <x-admin.form.input name="name" label="Name" required="required" value="{{$brand->name}}"/>
 
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="photo">Logo</label>
-                                            <input type="file" name="logo" class="form-control">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="customFile" name="logo">
+                                                <label class="custom-file-label" for="customFile"></label>
+                                            </div>
                                             @if($brand->logo)
-                                                <img src="{{ $brand->logo->thumbnail }}" class="img-thumbnail" alt="Brand Image">
+                                                <hr/>
+                                                <a href="{{ $brand->logo->url }}" target="_blank">
+                                                    <img src="{{ $brand->logo->thumbnail }}" class="img-thumbnail" alt="Brand Image">
+                                                </a>
                                             @endif
                                         </div>
                                     </div>
 
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="">Description</label>
-                                            <textarea name="description" class="form-control form-control-sm editor"
-                                                      placeholder="Description">{{$brand->description}}</textarea>
-                                        </div>
-                                    </div>
+                                    <x-admin.form.textarea name="description" label="Description" value="{{$brand->description}}"/>
+
                                 </div>
                                 <hr>
                                 <div class="form-group">
@@ -77,6 +72,7 @@
 @endsection
 
 @section('script')
+    <script src="{{asset('adminhtml/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
     <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
     <script>
         tinymce.init({
@@ -86,5 +82,6 @@
             statusbar: false,
             toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist",
         });
+        $(document).ready(function () { bsCustomFileInput.init(); });
     </script>
 @endsection
