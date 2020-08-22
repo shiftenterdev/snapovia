@@ -17,7 +17,7 @@ class BlogController extends Controller
 
     public function create()
     {
-        return view('admin.cms_block.create');
+        return view('admin.blog.create');
     }
 
     public function store(Request $request)
@@ -28,16 +28,14 @@ class BlogController extends Controller
         ]);
     }
 
-    public function edit($id)
+    public function edit(Blog $blog)
     {
-        return view('admin.blog.edit')->with([
-            'blog' => Blog::find($id)
-        ]);
+        return view('admin.blog.edit',compact('blog'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Blog $blog)
     {
-        Blog::where('id', $id)->update($request->except('_token'));
+        $blog->update($request->except('_token'));
         return redirect()->route('admin.blog.index')->with([
             'success' => "Blog Updated successfully"
         ]);

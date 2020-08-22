@@ -131,4 +131,8 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
 });
 
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
+
 //Route::get('/{url}/{suburl?}/{producturl?}', 'Front\CatalogController@getUrlResolver');

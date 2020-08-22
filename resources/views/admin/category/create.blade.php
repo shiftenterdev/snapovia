@@ -83,7 +83,8 @@
                                         <div class="form-group" id="holder">
                                         </div>
                                         <div class="form-group">
-                                            <button type="button" id="lfm" data-name="image" data-input="thumbnail" data-preview="holder"
+                                            <button type="button" id="lfm" data-name="image" data-input="thumbnail"
+                                                    data-preview="holder"
                                                     class="btn btn-sm btn-outline-info">Upload Image
                                             </button>
                                         </div>
@@ -155,6 +156,21 @@
 
 @endsection
 
-@section('script')
+@section('style')
+    <link rel="stylesheet" href="{{asset('adminhtml/plugins/select2/css/select2.min.css')}}">
+@endsection
 
+@section('script')
+    <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="{{asset('adminhtml/plugins/select2/js/select2.full.min.js')}}"></script>
+    <script>
+        $('.select2').select2();
+
+        tinymce.init({
+            selector: "textarea.editor",
+            menubar: false,
+            branding: false,
+            statusbar: false,
+        });
+    </script>
 @endsection

@@ -274,3 +274,9 @@
     </div>
     <!-- /.content -->
 @endsection
+
+@section('script')
+    <script src="{{asset('adminhtml/plugins/chart.js/Chart.min.js')}}"></script>
+    {{--<script src="{{asset('adminhtml/dist/js/demo.js')}}"></script>--}}
+    <script src="{{asset('adminhtml/dist/js/pages/dashboard3.js')}}"></script>
+@endsection

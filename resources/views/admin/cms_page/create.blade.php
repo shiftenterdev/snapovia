@@ -131,6 +131,9 @@
         let editor_config = {
             path_absolute: "/",
             selector: "textarea.editor",
+            branding: false,
+            statusbar: false,
+            menubar: false,
             plugins: [
                 "autolink lists link image hr anchor",
                 "wordcount visualblocks visualchars code",

@@ -6,17 +6,17 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <title>@yield('title') Admin Panel</title>
-
+    <link rel="shortcut icon" type="image/png" href="{{asset('adminhtml/favicon.png')}}">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{asset('adminhtml/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- IonIcons -->
-    <link rel="stylesheet" href="{{asset('adminhtml/plugins/select2/css/select2.min.css')}}">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
+    @yield('style')
     <link rel="stylesheet" href="{{asset('adminhtml/dist/css/adminlte.min.css')}}">
     <link rel="stylesheet" href="{{asset('adminhtml/dist/css/custom.css')}}">
-@yield('style')
+
 <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -64,9 +64,7 @@
 
 <!-- OPTIONAL SCRIPTS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
-<script src="{{asset('adminhtml/plugins/chart.js/Chart.min.js')}}"></script>
-{{--<script src="{{asset('adminhtml/dist/js/demo.js')}}"></script>--}}
-<script src="{{asset('adminhtml/dist/js/pages/dashboard3.js')}}"></script>
+
 <script>
     $(() => {
         $('a.nav-link.active').parents('.has-treeview').addClass('menu-open');
