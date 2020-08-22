@@ -53,6 +53,11 @@ $ php artisan serve
 ```
 **Now serve http://127.0.0.1:8000**
 
+> Admin url: http://127.0.0.1:8000/adminportal/login \
+> Login: admin \
+> Password: password
+
+
 ## Want to contribute in `shiftenterdev/butikshop`
 
 Contributions are encouraged and welcome. Here are the steps of contribution:
