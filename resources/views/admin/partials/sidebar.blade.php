@@ -205,6 +205,27 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item has-treeview">
+                    <a href="javascript:" class="nav-link">
+                        <i class="nav-icon fas fa-download"></i>
+                        <p>
+                            Export Import
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('admin.product-export.index')}}" class="nav-link {{request()->is('adminportal/user*')?'active':''}}">
+                                <p>Export</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.product-import.index')}}" class="nav-link {{request()->is('adminportal/role*')?'active':''}}">
+                                <p>Import</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a href="{{route('admin.configuration.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>
