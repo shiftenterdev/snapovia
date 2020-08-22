@@ -1,5 +1,6 @@
 <?php
 
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 
 class CategorySeeder extends Seeder
@@ -11,49 +12,45 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $categories = [
-            [
-                'id'        => 1,
-                'name'      => 'Men',
-                'position'  => 1,
-                'status'    => 1,
-                'url_key'   => 'men',
-                'parent_id' => 0
-            ],
-            [
-                'id'        => 2,
-                'name'      => 'Women',
-                'position'  => 2,
-                'status'    => 1,
-                'url_key'   => 'women',
-                'parent_id' => 0
-            ],
-            [
-                'id'        => 3,
-                'name'      => 'Dress',
-                'position'  => 3,
-                'status'    => 1,
-                'url_key'   => 'dress',
-                'parent_id' => 2
-            ],
-            [
-                'id'        => 4,
-                'name'      => 'Kids',
-                'position'  => 4,
-                'status'    => 1,
-                'url_key'   => 'kids',
-                'parent_id' => 2
-            ],
-            [
-                'id'        => 5,
-                'name'      => 'Shoes',
-                'position'  => 4,
-                'status'    => 1,
-                'url_key'   => 'shoes',
-                'parent_id' => 4
-            ]
-        ];
+        $faker = Faker::create();
 
-        \App\Models\Category::insert($categories);
+        for ($i = 1; $i <= 5; $i++) {
+            $category = \App\Models\Category::create([
+                'name'             => ucfirst($faker->word),
+                'description'      => $faker->paragraph,
+                'url_key'          => $faker->word,
+                'meta_title'       => ucfirst($faker->word),
+                'meta_description' => $faker->paragraph,
+                'featured'         => rand(0, 1),
+                'position'         => $i,
+                'status'           => 1,
+            ]);
+
+            for ($j = 1; $j <= 5; $j++) {
+                $childCategory = $category->childCategories()->create([
+                    'name'             => $faker->sentence(2),
+                    'description'      => $faker->paragraph,
+                    'url_key'          => $faker->word,
+                    'meta_title'       => ucfirst($faker->word),
+                    'meta_description' => $faker->paragraph,
+                    'position'         => $i . $j,
+                    'featured'         => rand(0, 1),
+                    'status'           => 1,
+                ]);
+
+                for ($k = 1; $k <= 5; $k++) {
+                    $childCategory->childCategories()->create([
+                        'name'             => $faker->sentence(3),
+                        'description'      => $faker->paragraph,
+                        'url_key'          => $faker->word,
+                        'meta_title'       => ucfirst($faker->word),
+                        'meta_description' => $faker->paragraph,
+                        'position'         => $i . $j . $k,
+                        'featured'         => rand(0, 1),
+                        'status'           => 1,
+                    ]);
+                }
+            }
+        }
     }
 }

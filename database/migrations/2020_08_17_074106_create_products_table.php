@@ -26,8 +26,8 @@ class CreateProductsTable extends Migration
             $table->boolean('stock_status')->default(1);
             $table->decimal('weight')->default(1);
             $table->integer('visibility')->default(3);
-            $table->decimal('price');
-            $table->decimal('special_price')->default(0.00);
+            $table->integer('price');
+            $table->integer('special_price')->default(0.00);
             $table->dateTime('special_price_from')->nullable();
             $table->dateTime('special_price_to')->nullable();
             $table->text('short_description')->nullable();
