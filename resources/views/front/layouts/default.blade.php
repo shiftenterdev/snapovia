@@ -3,14 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Butikshop</title>
+    <title>@yield('title')Butikshop</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('frontend/images/favicon.ico')}}">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
 
     <!-- All css files are included here. -->
     @include('front.partials.style')

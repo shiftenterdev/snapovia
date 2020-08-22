@@ -13,7 +13,7 @@ class CustomerGroupSeeder extends Seeder
     {
         $groups = [
             [
-                'title' => 'default'
+                'title' => 'Default'
             ],
             [
                 'title' => 'Company',

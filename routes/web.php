@@ -94,6 +94,8 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
         Route::resource('cms-block', 'CmsBlockController', ['as' => 'admin']);
 
+        Route::resource('customer/group', 'CustomerGroupController', ['as' => 'admin']);
+
         Route::resource('customer', 'CustomerController', ['as' => 'admin']);
 
         Route::resource('blog', 'BlogController', ['as' => 'admin']);
@@ -119,12 +121,10 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
         Route::resource('invoice', 'InvoiceController', ['as' => 'admin']);
 
         Route::resource('refund', 'RefundController', ['as' => 'admin']);
-        
+
         Route::resource('export-import/product-export', 'ExportImport\ProductExportController', ['as' => 'admin']);
 
         Route::resource('export-import/product-import', 'ExportImport\ProductImportController', ['as' => 'admin']);
-
-        Route::resource('customer/group', 'CustomerGroupController', ['as' => 'admin']);
 
         Route::resource('configuration', 'ConfigurationController', ['as' => 'admin']);
     });

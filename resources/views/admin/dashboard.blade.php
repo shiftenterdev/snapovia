@@ -108,7 +108,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="dist/img/default-150x150.png" alt="Product 1"
+                                        <img src="/adminhtml/dist/img/default-150x150.png" alt="Product 1"
                                              class="img-circle img-size-32 mr-2">
                                         Another Product
                                     </td>
@@ -128,7 +128,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="dist/img/default-150x150.png" alt="Product 1"
+                                        <img src="/adminhtml/dist/img/default-150x150.png" alt="Product 1"
                                              class="img-circle img-size-32 mr-2">
                                         Amazing Product
                                     </td>
@@ -148,7 +148,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <img src="dist/img/default-150x150.png" alt="Product 1"
+                                        <img src="/adminhtml/dist/img/default-150x150.png" alt="Product 1"
                                              class="img-circle img-size-32 mr-2">
                                         Perfect Item
                                         <span class="badge bg-danger">NEW</span>

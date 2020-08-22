@@ -2,12 +2,12 @@
   Template Name: Tmart-Minimalist eCommerce HTML5 Template.
   Template URI: #
   Description: Tmart is a unique website template designed in HTML with a simple & beautiful look. There is an excellent solution for creating clean, wonderful and trending material design corporate, corporate any other purposes websites.
-  Author: Theme365 
+  Author: Theme365
   Version: 1.0
 -----------------------------------------------------------------------------------*/
 
 
- 
+
 /*======================================
 
 [  Table of contents  ]
@@ -358,19 +358,19 @@ body {
 /*-----------------------------
   09. Text Color
 --------------------------------*/
-.text--theme { 
+.text--theme {
   color: #ff4136;
  }
-.text--blue { 
+.text--blue {
   color: #ff4136;
  }
-.text--white { 
+.text--white {
   color: #fff ;
 }
-.text--black { 
-  color: #363636; 
+.text--black {
+  color: #363636;
 }
-.text--white { 
+.text--white {
   color: #fff;
  }
 
@@ -389,7 +389,7 @@ body {
 }
 
 /*----------------------------
-  11. Background overlay 
+  11. Background overlay
 ---------------------------------*/
 [data__overlay] {
     position: relative;
@@ -446,7 +446,7 @@ body {
 
 
 /*---------------------------------
-  12. Background Black Overlay 
+  12. Background Black Overlay
 ---------------------------------*/
 
 [data--black__overlay] {
@@ -512,7 +512,7 @@ input[type=password]{
 }
 select {
     width: 100%;
-    
+
 }
 input:focus {
     background: transparent;
@@ -605,7 +605,7 @@ textarea:focus {
 .pt--100 { padding-top: 100px }
 .pt--110 { padding-top: 110px }
 .pt--120 { padding-top: 120px }
-.pt--130 { padding-top: 130px }-
+.pt--130 { padding-top: 130px }
 .pt--140 { padding-top: 140px }
 .pt--150 { padding-top: 150px }
 
@@ -632,7 +632,7 @@ textarea:focus {
 
 
 /*------------------------------
-  19. Page section padding 
+  19. Page section padding
 -------------------------------*/
 .ptb--0 { padding: 0 }
 .ptb--10 { padding: 10px 0 }
@@ -652,7 +652,7 @@ textarea:focus {
 .ptb--150 { padding: 150px 0 }
 
 /*---------------------------
-  20. Page section margin 
+  20. Page section margin
 -----------------------------*/
 .mtb--0 { margin: 0 }
 .mtb--10 { margin: 10px 0 }
@@ -749,9 +749,9 @@ input::-moz-placeholder {
 
 
 
-input [type="text"]:focus, 
+input [type="text"]:focus,
 input [type="text"]:focus::-moz-placeholder,
-input [type="email"]:focus, 
+input [type="email"]:focus,
 input [type="email"]:focus::-moz-placeholder{
   color: #333333;
 }
