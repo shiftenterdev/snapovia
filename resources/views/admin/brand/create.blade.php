@@ -1,23 +1,8 @@
 @extends('admin.layouts.app')
 @section('title','Create Brand | ')
 @section('content')
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Brand</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Brands</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+
+    <x-admin.c-header title="Brand"/>
 
     <div class="content">
         <div class="container-fluid">
@@ -48,11 +33,7 @@
                                     <x-admin.form.textarea name="description" label="Description"/>
                                 </div>
                                 <hr>
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-default" onclick="history.back()">Cancel
-                                    </button>
-                                    <button type="submit" class="btn btn-info">Save</button>
-                                </div>
+                                <x-admin.form.button/>
                             </div>
                         </div>
                     </div>

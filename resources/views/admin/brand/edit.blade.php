@@ -1,23 +1,8 @@
 @extends('admin.layouts.app')
 @section('title','Update Brand | ')
 @section('content')
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Brand</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Brands</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+
+    <x-admin.c-header title="Brand"/>
 
     <div class="content">
         <div class="container-fluid">
@@ -34,7 +19,7 @@
                             <div class="card-body">
                                 <div class="row">
 
-                                    <x-admin.form.input name="name" label="Name" required="required" value="{{$brand->name}}"/>
+                                    <x-admin.form.input name="name" label="Name" required="required" :value="$brand->name"/>
 
                                     <div class="col-12">
                                         <div class="form-group">
@@ -52,15 +37,11 @@
                                         </div>
                                     </div>
 
-                                    <x-admin.form.textarea name="description" label="Description" value="{{$brand->description}}"/>
+                                    <x-admin.form.textarea name="description" label="Description" :value="$brand->description"/>
 
                                 </div>
                                 <hr>
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-default" onclick="history.back()">Cancel
-                                    </button>
-                                    <button type="submit" class="btn btn-info">Update</button>
-                                </div>
+                                <x-admin.form.button name="Update"/>
                             </div>
                         </div>
                     </div>
@@ -75,13 +56,16 @@
     <script src="{{asset('adminhtml/plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
     <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
     <script>
-        tinymce.init({
-            selector: "textarea.editor",
-            menubar: false,
-            branding: false,
-            statusbar: false,
-            toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist",
+
+        $(document).ready(function () {
+            bsCustomFileInput.init();
+            tinymce.init({
+                selector: "textarea.editor",
+                menubar: false,
+                branding: false,
+                statusbar: false,
+                toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist",
+            });
         });
-        $(document).ready(function () { bsCustomFileInput.init(); });
     </script>
 @endsection
