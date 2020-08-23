@@ -19,11 +19,14 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->enum('product_type',['simple','configurable','group','virtual']);
             $table->boolean('status')->default(1);
-            $table->string('url_key');
+            $table->string('url_key')->unique();
             $table->boolean('is_new')->default(0);
             $table->boolean('featured')->default(0);
-            $table->decimal('qty');
+            $table->decimal('qty')->default(30);
+            $table->string('color')->nullable();
+            $table->string('size')->nullable();
             $table->boolean('stock_status')->default(1);
+            $table->boolean('enable_stock')->default(1);
             $table->decimal('weight')->default(1);
             $table->integer('visibility')->default(3);
             $table->integer('price');
