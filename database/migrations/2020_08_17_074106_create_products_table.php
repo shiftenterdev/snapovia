@@ -38,7 +38,9 @@ class CreateProductsTable extends Migration
             $table->string('meta_title')->nullable();
             $table->text('meta_keywords')->nullable();
             $table->text('meta_description')->nullable();
+            $table->unsignedInteger('parent_id')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

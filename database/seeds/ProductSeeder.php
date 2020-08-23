@@ -11,9 +11,9 @@ class ProductSeeder extends Seeder
      *
      * @return void
      */
-    public $color = ['Blue', 'Green', 'Red', 'White', 'Purple', 'Violet', 'Pink', 'Gray', 'Navy Blue'];
-    public $size  = ['22', '23', '25', 'M', 'L', 'XL', 'XXL', 'S'];
-    public $productType = ['simple','configurable'];
+    public $color       = ['Blue', 'Green', 'Red', 'White', 'Purple', 'Violet', 'Pink', 'Gray', 'Navy Blue'];
+    public $size        = ['22', '23', '25', 'M', 'L', 'XL', 'XXL', 'S'];
+    public $productType = ['simple', 'configurable'];
 
     public function run()
     {
@@ -95,15 +95,15 @@ class ProductSeeder extends Seeder
          * Product
          */
         for ($i = 1; $i <= 500; $i++) {
-            $productType = $this->productType[rand(0,1)];
+            $productType = $this->productType[rand(0, 1)];
             $product = \App\Models\Product::create([
                 'sku'               => 1000 + $i,
                 'name'              => ucfirst($faker->word),
-                'url_key'           => 'p'.Str::slug($faker->word.$i),
+                'url_key'           => 'p' . Str::slug($faker->word . $i),
                 'product_type'      => $productType,
                 'qty'               => rand(5, 100),
-                'color'             => $productType=='simple'?$this->color[rand(0, count($this->color) - 1)]:null,
-                'size'              => $productType=='simple'?$this->size[rand(0, count($this->size) - 1)]:null,
+                'color'             => $productType == 'simple' ? $this->color[rand(0, count($this->color) - 1)] : null,
+                'size'              => $productType == 'simple' ? $this->size[rand(0, count($this->size) - 1)] : null,
                 'is_new'            => rand(0, 1),
                 'featured'          => rand(0, 1),
                 'price'             => rand(1000, 99900),
@@ -116,10 +116,43 @@ class ProductSeeder extends Seeder
             \App\Models\UrlResolver::create([
                 'entity_id'   => $product->id,
                 'entity_type' => 'product',
-                'url_key'    => $product->url_key
+                'url_key'     => $product->url_key
             ]);
+            $cat_id = $category_ids[rand(0, count($category_ids) - 1)];
+            $product->categories()->sync($cat_id);
 
-            $product->categories()->sync($category_ids[rand(0,count($category_ids)-1)]);
+            /**
+             * Associcated products
+             */
+            if ($productType == 'configurable') {
+                for ($j = 1; $j <= 5; $j++) {
+                    $associatedProduct = $product->associcatedProducts()->create([
+                        'sku'               => 1000 + $i,
+                        'name'              => ucfirst($faker->word),
+                        'url_key'           => 'p' . Str::slug($faker->word . $i.$j),
+                        'product_type'      => 'simple',
+                        'qty'               => rand(5, 100),
+                        'color'             => $this->color[rand(0, count($this->color) - 1)],
+                        'size'              => $this->size[rand(0, count($this->size) - 1)],
+                        'is_new'            => rand(0, 1),
+                        'featured'          => rand(0, 1),
+                        'visibility'        => 1,
+                        'price'             => rand(1000, 99900),
+                        'short_description' => $faker->paragraph,
+                        'description'       => $faker->paragraph,
+                        'meta_title'        => $faker->word,
+                        'meta_description'  => $faker->paragraph,
+                    ]);
+
+                    \App\Models\UrlResolver::create([
+                        'entity_id'   => $associatedProduct->id,
+                        'entity_type' => 'product',
+                        'url_key'     => $associatedProduct->url_key
+                    ]);
+
+                    $associatedProduct->categories()->sync($cat_id);
+                }
+            }
         }
     }
 }

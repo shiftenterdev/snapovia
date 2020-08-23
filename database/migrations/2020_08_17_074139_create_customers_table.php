@@ -23,6 +23,7 @@ class CreateCustomersTable extends Migration
             $table->string('country');
             $table->boolean('status')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

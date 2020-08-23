@@ -13,8 +13,18 @@ class Product extends Model
         return $this->belongsToMany(Category::class);
     }
 
-    public function associcateProducts()
+    public function associcatedProducts()
     {
-        return $this->hasManyThrough(Product::class,'product_links','product_id','child_id','id','id');
+        return $this->hasMany(Product::class, 'parent_id');
+    }
+
+    public function relatedProducts()
+    {
+//        return $this->hasMany(Product::class, 'parent_id');
+    }
+
+    public function parentProduct()
+    {
+        return $this->belongsTo(Product::class, 'parent_id');
     }
 }
