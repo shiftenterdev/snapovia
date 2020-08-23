@@ -19,12 +19,12 @@ class CreateCustomerAddressesTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('address_line_1');
-            $table->string('address_line_2');
+            $table->string('address_line_2')->nullable();
             $table->string('city');
-            $table->string('state');
+            $table->string('state')->nullable();
             $table->string('country');
             $table->string('postcode');
-            $table->string('telephone');
+            $table->string('telephone')->nullable();
             $table->string('fax')->nullable();
             $table->boolean('default_shipping')->default(0);
             $table->boolean('default_billing')->default(0);

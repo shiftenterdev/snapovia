@@ -18,6 +18,7 @@ class ProductSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
+        $faker->addProvider(new \Bezhanov\Faker\Provider\Commerce($faker));
         $category_ids = [];
 
         /**
@@ -25,7 +26,7 @@ class ProductSeeder extends Seeder
          */
         for ($i = 1; $i <= 5; $i++) {
             $category = \App\Models\Category::create([
-                'name'             => ucfirst($faker->word),
+                'name'             => ucfirst($faker->department(1, true)),
                 'description'      => $faker->paragraph,
                 'url_key'          => Str::slug(($faker->word) . $i),
                 'url_path'         => Str::slug(($faker->word) . $i),
@@ -46,7 +47,7 @@ class ProductSeeder extends Seeder
 
             for ($j = 1; $j <= 5; $j++) {
                 $childCategory = $category->childCategories()->create([
-                    'name'             => ucfirst($faker->word),
+                    'name'             => ucfirst($faker->department(1, true)),
                     'description'      => $faker->paragraph,
                     'url_key'          => Str::slug($faker->word . $i . $j),
                     'url_path'         => $category->url_path . '/' . Str::slug($faker->word . $i . $j),
@@ -94,19 +95,22 @@ class ProductSeeder extends Seeder
         /**
          * Product
          */
-        for ($i = 1; $i <= 500; $i++) {
+        for ($i = 1; $i <= 1000; $i++) {
             $productType = $this->productType[rand(0, 1)];
+            $price = rand(1000, 99900);
             $product = \App\Models\Product::create([
                 'sku'               => 1000 + $i,
-                'name'              => ucfirst($faker->word),
-                'url_key'           => 'p' . Str::slug($faker->word . $i),
+                'name'              => ucfirst($faker->productName),
+                'url_key'           => $faker->uuid,
                 'product_type'      => $productType,
                 'qty'               => rand(5, 100),
                 'color'             => $productType == 'simple' ? $this->color[rand(0, count($this->color) - 1)] : null,
                 'size'              => $productType == 'simple' ? $this->size[rand(0, count($this->size) - 1)] : null,
                 'is_new'            => rand(0, 1),
                 'featured'          => rand(0, 1),
-                'price'             => rand(1000, 99900),
+                'price'             => $price,
+                'visibility'        => rand(2, 4),
+                'special_price'     => $productType == 'simple' ? $price * (rand(99, 50) / 100) : 0,
                 'short_description' => $faker->paragraph,
                 'description'       => $faker->paragraph,
                 'meta_title'        => $faker->word,
@@ -128,8 +132,8 @@ class ProductSeeder extends Seeder
                 for ($j = 1; $j <= 5; $j++) {
                     $associatedProduct = $product->associcatedProducts()->create([
                         'sku'               => 1000 + $i,
-                        'name'              => ucfirst($faker->word),
-                        'url_key'           => 'p' . Str::slug($faker->word . $i.$j),
+                        'name'              => ucfirst($faker->productName),
+                        'url_key'           => $faker->uuid,
                         'product_type'      => 'simple',
                         'qty'               => rand(5, 100),
                         'color'             => $this->color[rand(0, count($this->color) - 1)],

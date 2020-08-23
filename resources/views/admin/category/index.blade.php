@@ -23,17 +23,17 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header border-0 bg-gray-light">
                             <h3 class="card-title">Categories</h3>
                             <div class="card-tools">
-                                <a href="{{route('admin.category.create')}}" class="btn btn-outline-danger btn-sm">
+                                <a href="{{route('admin.category.create')}}" class="btn btn-dark btn-sm">
                                     <i class="fas fa-plus"></i> New Category
                                 </a>
                             </div>
                         </div>
                         <div class="card-body table-responsive p-0">
                             <table class="table table-striped table-valign-middle">
-                                <thead>
+                                <thead class="bg-dark">
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
@@ -43,17 +43,17 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($categories as $key => $c)
+                                @foreach($categories as $key => $category)
                                     <tr>
-                                        <td>{{$key+1}}</td>
-                                        <td>{{$c->name}}</td>
-                                        <td>{{$c->parentCategory->name ?? ""}}</td>
-                                        <td>{{$c->url_key}}</td>
+                                        <td>{{$category->id}}</td>
+                                        <td>{{$category->name}}</td>
+                                        <td>{{$category->parentCategory->name ?? ""}}</td>
+                                        <td>{{$category->url_key}}</td>
                                         <td>
-                                            <a href="{{route('admin.category.edit',$c->id)}}" class="text-muted">
+                                            <a href="{{route('admin.category.edit',$category->id)}}" class="text-muted">
                                                 <i class="fas fa-pen"></i>
                                             </a> &nbsp;
-                                            <a href="{{route('admin.category.destroy',$c->id)}}" class="text-muted">
+                                            <a href="{{route('admin.category.destroy',$category->id)}}" class="text-muted">
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </td>
@@ -61,6 +61,12 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <div class="card-footer clearfix flex">
+                                <div>Showing {{($categories->currentpage()-1)*$categories->perpage()+1}} to {{$categories->currentpage()*$categories->perpage()}}
+                                    of  {{$categories->total()}} entries
+                                </div>
+                                {{$categories->links()}}
+                            </div>
                         </div>
                     </div>
                 </div>

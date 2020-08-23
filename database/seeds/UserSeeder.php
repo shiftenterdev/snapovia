@@ -1,5 +1,6 @@
 <?php
 
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -14,6 +15,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker::create();
         // Reset cached roles and permissions
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
@@ -52,12 +54,12 @@ class UserSeeder extends Seeder
         $role2->givePermissionTo('configuration');
 
         $role3 = Role::create(['name' => 'super-admin']);
+        $role4 = Role::create(['name' => 'ccustomer']);
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
         // create demo users
         $user = Factory(App\User::class)->create([
             'name'     => 'Example User',
-            'username' => 'admin1',
             'password' => bcrypt('password'),
             'email'    => 'test@example.com',
         ]);
@@ -65,7 +67,6 @@ class UserSeeder extends Seeder
 
         $user = Factory(App\User::class)->create([
             'name'     => 'Example Admin User',
-            'username' => 'admin2',
             'password' => bcrypt('password'),
             'email'    => 'admin@example.com',
         ]);
@@ -73,10 +74,48 @@ class UserSeeder extends Seeder
 
         $user = Factory(App\User::class)->create([
             'name'     => 'Super-Admin',
-            'username' => 'admin',
             'password' => bcrypt('password'),
             'email'    => 'super@admin.com',
         ]);
         $user->assignRole($role3);
+
+        for ($i = 1; $i <= 50; $i++) {
+            $user = Factory(App\User::class)->create([
+                'name'     => $faker->name,
+                'password' => bcrypt('password'),
+                'email'    => $faker->email,
+            ]);
+            $user->assignRole($role4);
+
+            $customer = \App\Models\Customer::create([
+                'user_id'           => $user->id,
+                'first_name'        => $faker->firstName,
+                'last_name'         => $faker->lastName,
+                'gender'            => 'male',
+                'customer_group_id' => 1,
+                'country'           => $faker->country
+            ]);
+
+            $on = 1;
+            for ($j = 1; $j <= 2; $j++) {
+
+                \App\Models\CustomerAddress::create([
+                    'customer_id'      => $customer->id,
+                    'first_name'       => $faker->firstName,
+                    'last_name'        => $faker->lastName,
+                    'address_line_1'   => $faker->streetAddress,
+                    'telephone'        => $faker->phoneNumber,
+                    'city'             => $faker->city,
+                    'default_shipping' => $on ? 1 : 0,
+                    'default_billing'  => $on ? 1 : 0,
+                    'postcode'         => $faker->postcode,
+                    'country'          => $faker->country,
+                ]);
+
+                $on = 0;
+            }
+        }
+
+
     }
 }
