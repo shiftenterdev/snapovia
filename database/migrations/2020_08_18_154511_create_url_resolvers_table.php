@@ -17,7 +17,8 @@ class CreateUrlResolversTable extends Migration
             $table->id();
             $table->string('entity_id');
             $table->enum('entity_type',['product','category','cmspage']);
-            $table->string('url_path');
+            $table->string('url_key')->unique();
+            $table->string('url_path')->nullable();
             $table->timestamps();
         });
     }

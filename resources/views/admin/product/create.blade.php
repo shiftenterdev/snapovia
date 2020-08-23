@@ -27,8 +27,13 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header bg-gray-light">
                                 <h3 class="card-title">New Product</h3>
+                                <div class="card-tools">
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                        Save Product
+                                    </button>
+                                </div>
                             </div>
                             <div class="card-body table-responsive">
                                 <div class="row">
@@ -86,7 +91,8 @@
                                                    placeholder="Special Price To" required>
                                         </div>
                                     </div>
-                                    <div class="col-6">
+
+                                    <div class="col-7">
                                         <div class="form-group">
                                             <label for="">Stock Status</label>
                                             <div class="custom-control custom-switch">
@@ -97,13 +103,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-6">
+
+                                    <div class="col-7">
                                         <div class="form-group">
                                             <label for="">Quantity</label>
                                             <input type="number" name="qty" class="form-control form-control-sm"
                                                    placeholder="Quantity" required>
                                         </div>
                                     </div>
+
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="">Category</label>
@@ -193,6 +201,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card-footer clearfix">
+                                <x-admin.form.button></x-admin.form.button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -200,6 +211,10 @@
         </div>
     </div>
 
+@endsection
+
+@section('style')
+    <link rel="stylesheet" href="{{asset('adminhtml/plugins/select2/css/select2.min.css')}}">
 @endsection
 
 @section('script')
@@ -210,14 +225,12 @@
 
         let editor_config = {
             path_absolute: "/",
+            branding: false,
+            statusbar: false,
+            menubar: false,
             selector: "textarea.editor",
-            plugins: [
-                "autolink lists link image hr anchor",
-                "wordcount visualblocks visualchars code",
-                "insertdatetime table directionality",
-                "emoticons paste textcolor textpattern"
-            ],
-            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+            plugins: ["image link"],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link image",
             relative_urls: false,
             file_browser_callback: function (field_name, url, type, win) {
                 let x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;

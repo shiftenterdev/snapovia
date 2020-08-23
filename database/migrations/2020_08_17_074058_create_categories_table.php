@@ -20,7 +20,7 @@ class CreateCategoriesTable extends Migration
             $table->integer('position')->nullable();
             $table->text('description')->nullable();
             $table->string('image')->nullable();
-            $table->string('url_key');
+            $table->string('url_key')->unique();
             $table->string('url_path')->nullable();
             $table->boolean('status')->default(1);
             $table->boolean('include_in_menu')->default(1);
@@ -29,6 +29,7 @@ class CreateCategoriesTable extends Migration
             $table->text('meta_keywords')->nullable();
             $table->text('meta_description')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

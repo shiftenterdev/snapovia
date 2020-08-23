@@ -14,8 +14,8 @@ class ProductLinksTable extends Migration
     public function up()
     {
         Schema::create('product_links', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedInteger('product_id');
+            $table->unsignedInteger('child_id');
         });
     }
 

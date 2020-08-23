@@ -21,8 +21,10 @@ class CreateCustomersTable extends Migration
             $table->string('last_name');
             $table->enum('gender',['male','female']);
             $table->string('country');
+            $table->string('vat_id')->nullable();
             $table->boolean('status')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

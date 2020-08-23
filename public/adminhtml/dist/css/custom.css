@@ -83,3 +83,23 @@
 .main-footer {
     background-color: #f4f6f9;
 }
+
+.card-footer nav{
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+}
+
+ul.pagination{
+    margin-bottom: 0;
+}
+
+.btn{
+    border:none;
+}
+
+.card-footer.clearfix.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
