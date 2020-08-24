@@ -81,10 +81,12 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
         Route::get('dashboard', 'DashboardController')->name('admin.dashboard');
 
+        Route::get('data', 'ProductController@data')->name('admin.product.data');
         Route::resource('product', 'ProductController', ['as' => 'admin']);
 
         Route::resource('media', 'MediaController', ['as' => 'admin']);
 
+        Route::get('data', 'CategoryController@data')->name('admin.category.data');
         Route::resource('category', 'CategoryController', ['as' => 'admin']);
 
         Route::post('brand/media', 'BrandController@storeMedia')->name('admin.brand.media');

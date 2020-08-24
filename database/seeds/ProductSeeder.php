@@ -69,7 +69,7 @@ class ProductSeeder extends Seeder
 
                 for ($k = 1; $k <= 5; $k++) {
                     $grandChildCategory = $childCategory->childCategories()->create([
-                        'name'             => ucfirst($faker->word),
+                        'name'             => ucfirst($faker->department(1, true)),
                         'description'      => $faker->paragraph,
                         'url_key'          => Str::slug($faker->word . $i . $j . $k),
                         'url_path'         => $category->url_path . '/' . $childCategory->url_path . '/' . Str::slug($faker->word . $i . $j . $k),
@@ -95,11 +95,11 @@ class ProductSeeder extends Seeder
         /**
          * Product
          */
-        for ($i = 1; $i <= 1000; $i++) {
+        for ($i = 1; $i <= 3000; $i++) {
             $productType = $this->productType[rand(0, 1)];
             $price = rand(1000, 99900);
             $product = \App\Models\Product::create([
-                'sku'               => 1000 + $i,
+                'sku'               => 10000 + $i,
                 'name'              => ucfirst($faker->productName),
                 'url_key'           => $faker->uuid,
                 'product_type'      => $productType,

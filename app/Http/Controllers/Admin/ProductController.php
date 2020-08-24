@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -31,6 +32,11 @@ class ProductController extends Controller
         ]);
     }
 
+    public function data(Request $request)
+    {
+
+    }
+
     public function create()
     {
         $categories = Category::get();
@@ -47,5 +53,18 @@ class ProductController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
         }
+    }
+
+    public function edit(Product $product)
+    {
+        $categories = Category::get();
+        return view('admin.product.edit',compact('product','categories'));
+    }
+
+    public function update(ProductRequest $request,Product $product)
+    {
+        $product->update($request);
+        return redirect()->route('admin.product.index')
+            ->with('message','Product updated successfully');
     }
 }
