@@ -57,8 +57,8 @@
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header border-0 bg-gray-light">
-                            <h3 class="card-title">Products</h3>
+                        <div class="card-header border-0 bg-gradient-info">
+                            <h3 class="card-title"><strong>Products</strong></h3>
                             <div class="card-tools">
                                 <a href="{{route('admin.product.create')}}" class="btn btn-dark btn-sm">
                                     <i class="fas fa-plus"></i> New Product
@@ -86,7 +86,9 @@
                                 <tr>
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->sku}}</td>
-                                    <td></td>
+                                    <td>
+                                        <img src="{{$product->defaultImage}}" alt="" class="img-bordered-sm">
+                                    </td>
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->product_type}}</td>
                                     <td>{!! status($product->status) !!}</td>

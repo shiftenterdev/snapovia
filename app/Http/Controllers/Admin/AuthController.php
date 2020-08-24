@@ -15,11 +15,11 @@ class AuthController extends Controller
     public function loginPost(Request $request)
     {
         $request->validate([
-            'username' => 'alpha_num|required',
+            'email'    => 'email|required',
             'password' => 'required'
         ]);
         $credentials = [
-            'username' => $request->username,
+            'email'    => $request->email,
             'password' => $request->password
         ];
         if (auth()->attempt($credentials)) {

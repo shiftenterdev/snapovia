@@ -21,14 +21,15 @@
 
     <div class="content">
         <div class="container-fluid">
-            <form action="{{route('admin.product.create')}}" method="post" autocomplete="off"
+            <form action="{{route('admin.product.update',$product)}}" method="post" autocomplete="off"
                   enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">New Product</h3>
+                            <div class="card-header border-0 bg-gradient-info">
+                                <h3 class="card-title"><strong>Update Product</strong></h3>
                             </div>
                             <div class="card-body table-responsive">
                                 <div class="row">
@@ -48,28 +49,28 @@
                                         <div class="form-group">
                                             <label for="">Name</label>
                                             <input type="text" name="name" class="form-control form-control-sm"
-                                                   placeholder="Name" required>
+                                                   placeholder="Name" value="{{$product->name}}" required>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="">Sku</label>
                                             <input type="text" name="sku" class="form-control form-control-sm"
-                                                   placeholder="Sku" required>
+                                                   placeholder="Sku" value="{{$product->sku}}" required>
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="">Price</label>
                                             <input type="text" name="price" class="form-control form-control-sm"
-                                                   placeholder="Price" required>
+                                                   placeholder="Price" value="{{$product->price}}" required>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label for="">Special Price</label>
                                             <input type="text" name="special_price" class="form-control form-control-sm"
-                                                   placeholder="Special Price" required>
+                                                   placeholder="Special Price" value="{{$product->special_price}}" required>
                                         </div>
                                     </div>
                                     <div class="col-4">
@@ -101,7 +102,7 @@
                                         <div class="form-group">
                                             <label for="">Quantity</label>
                                             <input type="number" name="qty" class="form-control form-control-sm"
-                                                   placeholder="Quantity" required>
+                                                   placeholder="Quantity" value="{{$product->qty}}" required>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -119,7 +120,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header border-0">
+                            <div class="card-header border-0 bg-gradient-info">
                                 <h3 class="card-title">Image</h3>
                             </div>
                             <div class="card-body table-responsive">
@@ -140,7 +141,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header border-0">
+                            <div class="card-header border-0 bg-gradient-info">
                                 <h3 class="card-title">Description</h3>
                             </div>
                             <div class="card-body table-responsive">
@@ -150,21 +151,21 @@
                                             <label for="">Short Description</label>
                                             <textarea name="short_description"
                                                       class="form-control form-control-sm editor"
-                                                      placeholder="Short Description"></textarea>
+                                                      placeholder="Short Description">{{$product->short_description}}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="">Description</label>
                                             <textarea name="description" class="form-control form-control-sm editor"
-                                                      placeholder="Description"></textarea>
+                                                      placeholder="Description">{{$product->description}}</textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header border-0">
+                            <div class="card-header border-0 bg-gradient-info">
                                 <h3 class="card-title">Meta</h3>
                             </div>
                             <div class="card-body table-responsive">

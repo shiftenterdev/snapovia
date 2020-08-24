@@ -29,10 +29,10 @@
                     <form action="{{route('admin.login.post')}}" method="post" autocomplete="off">
                         @csrf
                         <label class="block text-sm">
-                            <span class="text-gray-700 dark:text-gray-400">Username</span>
+                            <span class="text-gray-700 dark:text-gray-400">Email</span>
                             <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                   placeholder="Jane Doe" type="text" name="username" required/>
-                            @error('username')
+                                   placeholder="User Email" type="email" name="email" required/>
+                            @error('email')
                             <span class="text-xs text-red-600 dark:text-red-400">
                               {{$message}}
                             </span>
