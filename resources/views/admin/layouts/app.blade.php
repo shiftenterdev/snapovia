@@ -38,6 +38,17 @@
 <script>
     $(() => {
         $('a.nav-link.active').parents('.has-treeview').addClass('menu-open');
+
+        $('.data-filter').css('display','none');
+
+        $('.show-filter').on('click',function(){
+            let x = document.querySelector(".data-filter");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        });
     });
 </script>
 @yield('script')

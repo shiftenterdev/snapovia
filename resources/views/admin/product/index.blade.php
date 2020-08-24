@@ -2,13 +2,31 @@
 @section('title','Product | ')
 @section('content')
 
-    <x-admin.c-header title="Products"/>
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">Products</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <div class="float-sm-right">
+                        <a href="{{route('admin.product.create')}}" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> New Product
+                        </a>
+                    </div>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
 
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="card">
+                    <div class="card data-filter">
+                        <div class="card-header border-0 bg-gradient-info">
+                            <h3 class="card-title"><strong>Filter</strong></h3>
+                        </div>
                         <div class="card-body">
                             <form action="{{route('admin.product.index')}}" method="GET">
                                 <div class="row">
@@ -57,12 +75,12 @@
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header border-0 bg-gradient-info">
-                            <h3 class="card-title"><strong>Products</strong></h3>
-                            <div class="card-tools">
-                                <a href="{{route('admin.product.create')}}" class="btn btn-dark btn-sm">
-                                    <i class="fas fa-plus"></i> New Product
-                                </a>
+                        <div class="card-header border-0 bg-gradient-info d-flex p-0">
+                            <h3 class="card-title p-3"><strong>Products</strong></h3>
+                            <div class="p-2 ml-auto">
+                                <button type="button" class="btn btn-default show-filter">
+                                    <i class="fas fa-filter"></i> Filter
+                                </button>
                             </div>
                         </div>
                         <table class="table table-striped table-valign-middle">
@@ -87,7 +105,7 @@
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->sku}}</td>
                                     <td>
-                                        <img src="{{$product->defaultImage}}" alt="" class="img-bordered-sm">
+                                        <img src="{{$product->defaultImage}}" alt="" class="img-thumbnail">
                                     </td>
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->product_type}}</td>

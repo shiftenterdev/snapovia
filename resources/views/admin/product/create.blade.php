@@ -27,14 +27,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-header bg-gray-light">
-                                <h3 class="card-title">New Product</h3>
-                                <div class="card-tools">
-                                    <button type="submit" class="btn btn-primary btn-sm">
-                                        Save Product
-                                    </button>
-                                </div>
-                            </div>
+                            <x-admin.card.title title="New Product"/>
                             <div class="card-body table-responsive">
                                 <div class="row">
 
@@ -127,9 +120,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header border-0">
-                                <h3 class="card-title">Image</h3>
-                            </div>
+                            <x-admin.card.title title="Media"/>
                             <div class="card-body table-responsive">
                                 <div class="row">
 
@@ -148,9 +139,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header border-0">
-                                <h3 class="card-title">Description</h3>
-                            </div>
+                            <x-admin.card.title title="Description"/>
                             <div class="card-body table-responsive">
                                 <div class="row">
                                     <div class="col-12">
@@ -172,9 +161,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header border-0">
-                                <h3 class="card-title">Meta</h3>
-                            </div>
+                            <x-admin.card.title title="Meta Information"/>
                             <div class="card-body table-responsive">
                                 <div class="row">
 

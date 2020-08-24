@@ -28,9 +28,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-header border-0 bg-gradient-info">
-                                <h3 class="card-title"><strong>Update Product</strong></h3>
-                            </div>
+                            <x-admin.card.title title="Update Product"/>
                             <div class="card-body table-responsive">
                                 <div class="row">
 
@@ -120,9 +118,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header border-0 bg-gradient-info">
-                                <h3 class="card-title">Image</h3>
-                            </div>
+                            <x-admin.card.title title="Media"/>
                             <div class="card-body table-responsive">
                                 <div class="row">
 
@@ -141,9 +137,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header border-0 bg-gradient-info">
-                                <h3 class="card-title">Description</h3>
-                            </div>
+                            <x-admin.card.title title="description"/>
                             <div class="card-body table-responsive">
                                 <div class="row">
                                     <div class="col-12">
@@ -165,9 +159,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header border-0 bg-gradient-info">
-                                <h3 class="card-title">Meta</h3>
-                            </div>
+                            <x-admin.card.title title="Meta Information"/>
                             <div class="card-body table-responsive">
                                 <div class="row">
 
@@ -194,6 +186,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card-footer clearfix">
+                                <x-admin.form.button></x-admin.form.button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -203,21 +198,23 @@
 
 @endsection
 
+@section('style')
+    <link rel="stylesheet" href="{{asset('adminhtml/plugins/select2/css/select2.min.css')}}">
+@endsection
+
 @section('script')
     <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
-    <script src="plugins/select2/js/select2.full.min.js"></script>
+    <script src="{{asset('adminhtml/plugins/select2/js/select2.full.min.js')}}"></script>
     <script>
         $('.select2').select2();
         let editor_config = {
             path_absolute: "/",
+            branding: false,
+            statusbar: false,
+            menubar: false,
             selector: "textarea.editor",
-            plugins: [
-                "autolink lists link image hr anchor",
-                "wordcount visualblocks visualchars code",
-                "insertdatetime table directionality",
-                "emoticons paste textcolor textpattern"
-            ],
-            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+            plugins: ["image link"],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link image",
             relative_urls: false,
             file_browser_callback: function (field_name, url, type, win) {
                 let x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
