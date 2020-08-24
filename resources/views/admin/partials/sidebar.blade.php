@@ -3,7 +3,7 @@
     <a href="{{route('admin.dashboard')}}" class="brand-link">
         <img src="{{asset('adminhtml/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle"
              style="opacity: .8">
-        <span class="brand-text font-weight-light">{{env('APP_NAME')}} Admin</span>
+        <span class="brand-text">{{env('APP_NAME')}} Admin</span>
     </a>
 
     <!-- Sidebar -->

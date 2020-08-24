@@ -45,8 +45,12 @@ $ php artisan key:generate
 
 # create database add it .env file
 
-# migrate database with some dummy data
+# migrate database with sample-data
 $ php artisan migrate:fresh --seed
+# currently seed takes some time(5min approx) because seed generate approx 10K products.
+
+# migrate without sample-data
+$ php artisan migrate:fresh
 
 # install node modules for vue(optional)[On progress...]
 $ npm i --save
@@ -58,7 +62,7 @@ $ php artisan serve
 **Now serve http://127.0.0.1:8000**
 
 > Admin url: http://127.0.0.1:8000/adminportal/login \
-> Login: admin \
+> Login: super@admin.com \
 > Password: password
 
 

@@ -95,7 +95,11 @@ ul.pagination{
 }
 
 .btn{
-    border:none;
+    /*border:none;*/
+}
+
+.data-filter{
+    display: none;
 }
 
 .card-footer.clearfix.flex {
