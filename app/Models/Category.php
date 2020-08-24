@@ -8,6 +8,8 @@ class Category extends Model
 {
     protected $guarded;
 
+    protected $appends = ['product_count'];
+
     public function parentCategory()
     {
         return $this->belongsTo(Category::class, 'parent_id');
@@ -23,5 +25,10 @@ class Category extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class);
+    }
+
+    public function getProductCountAttribute()
+    {
+        return 5;
     }
 }

@@ -28,6 +28,7 @@ class CreateCategoriesTable extends Migration
             $table->string('meta_title')->nullable();
             $table->text('meta_keywords')->nullable();
             $table->text('meta_description')->nullable();
+//            $table->integer('product_count')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
