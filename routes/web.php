@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::namespace('Front')->group(function () {
+
     Route::get('/', 'WelcomeController')->name('welcome');
 
     // Vue route will resume later(experimental)
@@ -23,9 +24,10 @@ Route::namespace('Front')->group(function () {
     Route::post('checkout/cart', 'CartController@addToCart')->name('add.to.cart');
     Route::get('checkout/mini-cart', 'CartController@miniCartInfo')->name('mini.cart.info');
     Route::get('checkout', 'CartController@checkout')->name('checkout');
+    Route::get('checkout/success', 'CheckoutController@success')->name('checkout.success');
+
     Route::post('cart/remove-item', 'CartController@removeItem')->name('cart.remove.item');
     Route::post('cart/update-item', 'CartController@updateItem')->name('cart.update.item');
-    Route::get('checkout/success', 'CheckoutController@success')->name('checkout.success');
 
     Route::get('contact', 'CmsController@contact')->name('contact');
     Route::get('faq', 'CmsController@faq')->name('faq');
@@ -139,4 +141,4 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-//Route::get('/{url}/{suburl?}/{producturl?}', 'Front\CatalogController@getUrlResolver');
+Route::get('/{url}/{suburl?}/{producturl?}', 'Front\UrlResolverController')->name('resolve');
