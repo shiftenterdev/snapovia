@@ -5,11 +5,13 @@ use Illuminate\Support\Facades\Route;
 /**
  * Frontend routes
  */
-// Vue route will resume later
-//Route::view('/{any}', 'front.layouts.vue')->where('any', '.*');
+
 
 Route::namespace('Front')->group(function () {
     Route::get('/', 'WelcomeController')->name('welcome');
+
+    // Vue route will resume later(experimental)
+    Route::view('/vue/{any}', 'front.layouts.vue')->where('any', '.*');
 
     Route::get('category', 'CatalogController@allProducts')->name('category');
 
