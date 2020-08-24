@@ -15,7 +15,6 @@ class Product extends Model implements HasMedia
 
     protected $appends = [
         'base_image',
-        'additional_images',
         'default_image'
     ];
 
@@ -51,9 +50,6 @@ class Product extends Model implements HasMedia
         if ($file) {
             $file->url = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');
-        } else {
-            $file->thumbnail = 'https://via.placeholder.com/150';
-            $file->url = 'https://via.placeholder.com/150';
         }
 
         return $file;
