@@ -47,7 +47,6 @@ $ php artisan key:generate
 
 # migrate database with sample-data
 $ php artisan migrate:fresh --seed
-# currently seed takes some time(5min approx) because seed generate approx 10K products.
 
 # migrate without sample-data
 $ php artisan migrate:fresh
