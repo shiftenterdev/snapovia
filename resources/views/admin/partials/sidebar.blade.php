@@ -64,6 +64,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{route('admin.shipment.index')}}" class="nav-link {{request()->is('adminportal/shipment*')?'active':''}}">
+
+                                <p>Shipment</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{route('admin.refund.index')}}" class="nav-link {{request()->is('adminportal/refund*')?'active':''}}">
 
                                 <p>Refund</p>

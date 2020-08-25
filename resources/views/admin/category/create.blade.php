@@ -12,8 +12,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">New Category</h3>
+                            <div class="card-header p-0 d-flex bg-gradient-gray">
+                                <h3 class="card-title p-3"><strong>New Category</strong></h3>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -59,8 +59,8 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Image</h3>
+                            <div class="card-header p-0 d-flex bg-gradient-gray">
+                                <h3 class="card-title p-3"><strong>Image</strong></h3>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -79,8 +79,8 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Description</h3>
+                            <div class="card-header p-0 d-flex bg-gradient-gray">
+                                <h3 class="card-title p-3"><strong>Description</strong></h3>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -95,8 +95,8 @@
                             </div>
                         </div>
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Meta</h3>
+                            <div class="card-header p-0 d-flex bg-gradient-gray">
+                                <h3 class="card-title p-3"><strong>Meta</strong></h3>
                             </div>
                             <div class="card-body">
                                 <div class="row">

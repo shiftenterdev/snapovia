@@ -5,15 +5,13 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
+
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Products</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <div class="float-sm-right">
-                        <a href="{{route('admin.product.create')}}" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> New Product
-                        </a>
-                    </div>
+
+                    <a href="{{route('admin.product.create')}}" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add New Product
+                    </a>
+
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -33,13 +31,15 @@
                                     <div class="col-3">
                                         <div class="form-group">
                                             <label for="">Sku</label>
-                                            <input type="text" value="{{request('sku')}}" name="sku" class="form-control form-control-sm">
+                                            <input type="text" value="{{request('sku')}}" name="sku"
+                                                   class="form-control form-control-sm">
                                         </div>
                                     </div>
                                     <div class="col-3">
                                         <div class="form-group">
                                             <label for="">Name</label>
-                                            <input type="text" value="{{request('name')}}" name="name" class="form-control form-control-sm">
+                                            <input type="text" value="{{request('name')}}" name="name"
+                                                   class="form-control form-control-sm">
                                         </div>
                                     </div>
                                     <div class="col-3">
@@ -47,10 +47,16 @@
                                             <label for="">Visibility</label>
                                             <select name="visibility" class="form-control form-control-sm" id="">
                                                 <option value="">Select</option>
-                                                <option value="1" {{request('visibility')==1?'selected':''}}>Not Visible</option>
-                                                <option value="2" {{request('visibility')==2?'selected':''}}>Catalog</option>
-                                                <option value="3" {{request('visibility')==3?'selected':''}}>Search</option>
-                                                <option value="4" {{request('visibility')==4?'selected':''}}>Catalog, Search</option>
+                                                <option value="1" {{request('visibility')==1?'selected':''}}>Not
+                                                    Visible
+                                                </option>
+                                                <option value="2" {{request('visibility')==2?'selected':''}}>Catalog
+                                                </option>
+                                                <option value="3" {{request('visibility')==3?'selected':''}}>Search
+                                                </option>
+                                                <option value="4" {{request('visibility')==4?'selected':''}}>Catalog,
+                                                    Search
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -60,7 +66,8 @@
                                             <select name="status" class="form-control form-control-sm" id="">
                                                 <option value="">Select</option>
                                                 <option value="1" {{request('status')==1?'selected':''}}>Active</option>
-                                                <option value="0" {{request('status')=='0'?'selected':''}}>Inactive</option>
+                                                <option value="0" {{request('status')=='0'?'selected':''}}>Inactive
+                                                </option>
                                             </select>
                                         </div>
                                     </div>
@@ -83,6 +90,7 @@
                                 </button>
                             </div>
                         </div>
+                        <div class="card-body table-responsive p-0">
                         <table class="table table-striped table-valign-middle">
                             <thead class="bg-dark">
                             <tr>
@@ -105,7 +113,16 @@
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->sku}}</td>
                                     <td>
-                                        <img src="{{$product->defaultImage}}" alt="" class="img-thumbnail" width="80px">
+                                        @if($product->base_image)
+                                            <a href="{{$product->base_image->url}}" target="_blank">
+                                                <img src="{{$product->base_image->thumbnail}}" alt=""
+                                                     class="img-thumbnail"
+                                                     width="80px">
+                                            </a>
+                                        @else
+                                            <img src="{{$product->sample_image}}" alt="" class="img-thumbnail"
+                                                 width="80px">
+                                        @endif
                                     </td>
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->product_type}}</td>
@@ -126,9 +143,11 @@
                             @endforeach
                             </tbody>
                         </table>
+                        </div>
                         <div class="card-footer clearfix flex">
-                            <div>Showing {{($products->currentpage()-1)*$products->perpage()+1}} to {{$products->currentpage()*$products->perpage()}}
-                                of  {{$products->total()}} entries
+                            <div>Showing {{($products->currentpage()-1)*$products->perpage()+1}}
+                                to {{$products->currentpage()*$products->perpage()}}
+                                of {{$products->total()}} entries
                             </div>
                             {{$products->appends(request()->query())->links()}}
                         </div>
