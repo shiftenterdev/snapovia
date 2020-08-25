@@ -105,6 +105,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{route('admin.email-template.index')}}" class="nav-link {{request()->is('adminportal/email-template*')?'active':''}}">
+
+                                <p>Email Template</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{route('admin.url-rewrite.index')}}" class="nav-link {{request()->is('adminportal/user-rewrite*')?'active':''}}">
 
                                 <p>Url Rewrite</p>
