@@ -28,6 +28,19 @@ class Product extends Model implements HasMedia
         return $this->hasMany(Product::class, 'parent_id');
     }
 
+    public function scopeSearch($query, $search)
+    {
+        return $query->when($search['sku'] != '', function ($q) use ($search) {
+            return $q->where('sku', $search['sku']);
+        })->when($search['name'] != '', function ($q) use ($search) {
+            return $q->where('name', 'LIKE', '%' . $search['name'] . '%');
+        })->when($search['status'] != '', function ($q) use ($search) {
+            return $q->where('status', $search['status']);
+        })->when($search['visibility'] != '', function ($q) use ($search) {
+            return $q->where('visibility', $search['visibility']);
+        });
+    }
+
     public function relatedProducts()
     {
 //        return $this->hasMany(Product::class, 'parent_id');
