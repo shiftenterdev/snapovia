@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <a href="{{route('admin.brand.create')}}" class="btn btn-primary">
+                    <a href="{{route('admin.brand.create')}}" class="btn btn-dark">
                         <i class="fas fa-plus"></i> New Brand
                     </a>
                 </div><!-- /.col -->

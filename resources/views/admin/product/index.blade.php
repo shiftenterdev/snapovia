@@ -8,7 +8,7 @@
 
                 <div class="col-sm-6">
 
-                    <a href="{{route('admin.product.create')}}" class="btn btn-primary">
+                    <a href="{{route('admin.product.create')}}" class="btn btn-dark">
                         <i class="fas fa-plus"></i> Add New Product
                     </a>
 

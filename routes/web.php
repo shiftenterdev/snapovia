@@ -114,13 +114,15 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
         Route::resource('permission', 'PermissionController', ['as' => 'admin']);
 
-        Route::resource('catalog-rule', 'CatalogPriceRuleController', ['as' => 'admin']);
+        Route::resource('catalog-rule', 'Marketing\CatalogPriceRuleController', ['as' => 'admin']);
 
-        Route::resource('cart-rule', 'CartPriceRuleController', ['as' => 'admin']);
+        Route::resource('cart-rule', 'Marketing\CartPriceRuleController', ['as' => 'admin']);
 
-        Route::resource('abandon-cart', 'AbandonController', ['as' => 'admin']);
+        Route::resource('abandon-cart', 'Marketing\AbandonCartController', ['as' => 'admin']);
 
-        Route::resource('url-rewrite', 'UrlRewriteController', ['as' => 'admin']);
+        Route::resource('email-template', 'Marketing\EmailTemplateController', ['as' => 'admin']);
+
+        Route::resource('url-rewrite', 'Marketing\UrlRewriteController', ['as' => 'admin']);
 
         Route::resource('order', 'OrderController', ['as' => 'admin']);
 
