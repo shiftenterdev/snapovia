@@ -126,6 +126,8 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
         Route::resource('invoice', 'InvoiceController', ['as' => 'admin']);
 
+        Route::resource('shipment', 'ShipmentController', ['as' => 'admin']);
+
         Route::resource('refund', 'RefundController', ['as' => 'admin']);
 
         Route::resource('export-import/product-export', 'ExportImport\ProductExportController', ['as' => 'admin']);
