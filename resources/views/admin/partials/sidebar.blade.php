@@ -239,7 +239,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('admin.configuration.index')}}" class="nav-link">
+                    <a href="{{route('admin.configuration.index')}}" class="nav-link {{request()->is('adminportal/configuration*')?'active':''}}">
                         <i class="nav-icon fas fa-cogs"></i>
                         <p>
                             Configuration

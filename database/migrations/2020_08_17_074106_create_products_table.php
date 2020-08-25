@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
             $table->boolean('featured')->default(0);
             $table->decimal('qty')->default(30);
             $table->string('color')->nullable();
+            $table->string('menufacture')->nullable();
             $table->string('size')->nullable();
             $table->boolean('stock_status')->default(1);
             $table->boolean('enable_stock')->default(1);
