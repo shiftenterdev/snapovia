@@ -58,6 +58,6 @@ class Product extends Model implements HasMedia
 
     public function getDefaultImageAttribute()
     {
-        return 'https://via.placeholder.com/80';
+        return '/sample-data/products/'.rand(0,534).'.jpg';
     }
 }

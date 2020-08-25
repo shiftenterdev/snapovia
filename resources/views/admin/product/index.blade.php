@@ -105,7 +105,7 @@
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->sku}}</td>
                                     <td>
-                                        <img src="{{$product->defaultImage}}" alt="" class="img-thumbnail">
+                                        <img src="{{$product->defaultImage}}" alt="" class="img-thumbnail" width="80px">
                                     </td>
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->product_type}}</td>
