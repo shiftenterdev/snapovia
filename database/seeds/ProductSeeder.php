@@ -95,7 +95,7 @@ class ProductSeeder extends Seeder
         /**
          * Product
          */
-        for ($i = 1; $i <= 3000; $i++) {
+        for ($i = 1; $i <= env('SAMPLE_PRODUCT_COUNT',500); $i++) {
             $productType = $this->productType[rand(0, 1)];
             $price = rand(1000, 99900);
             $product = \App\Models\Product::create([

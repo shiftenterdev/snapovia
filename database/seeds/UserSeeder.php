@@ -79,7 +79,7 @@ class UserSeeder extends Seeder
         ]);
         $user->assignRole($role3);
 
-        for ($i = 1; $i <= 50; $i++) {
+        for ($i = 1; $i <= env('SAMPLE_CUSTOMER_COUNT',20); $i++) {
             $user = Factory(App\User::class)->create([
                 'name'     => $faker->name,
                 'password' => bcrypt('password'),
