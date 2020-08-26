@@ -114,9 +114,9 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
         Route::resource('permission', 'PermissionController', ['as' => 'admin']);
 
-        Route::resource('catalog-rule', 'Marketing\CatalogPriceRuleController', ['as' => 'admin']);
+        Route::resource('catalog-price-rule', 'Marketing\CatalogPriceRuleController', ['as' => 'admin']);
 
-        Route::resource('cart-rule', 'Marketing\CartPriceRuleController', ['as' => 'admin']);
+        Route::resource('cart-price-rule', 'Marketing\CartPriceRuleController', ['as' => 'admin']);
 
         Route::resource('abandon-cart', 'Marketing\AbandonCartController', ['as' => 'admin']);
 

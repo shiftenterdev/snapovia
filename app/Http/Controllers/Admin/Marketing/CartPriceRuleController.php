@@ -3,20 +3,18 @@
 namespace App\Http\Controllers\Admin\Marketing;
 
 use App\Http\Controllers\Controller;
-use App\Models\CartRule;
+use App\Models\CartPriceRule;
 use Illuminate\Http\Request;
 
 class CartPriceRuleController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        $cartPrices = CartRule::get();
-        return view('admin.marketing.cart-rule.index',compact('cartPrices'));
+        $cartPrices = CartPriceRule::get();
+        return view('admin.marketing.cart-price-rule.index',compact('cartPrices'));
     }
 
     /**

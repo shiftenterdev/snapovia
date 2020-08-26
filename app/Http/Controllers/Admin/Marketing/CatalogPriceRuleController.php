@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Marketing;
 
 use App\Http\Controllers\Controller;
+use App\Models\CatalogPriceRule;
 use Illuminate\Http\Request;
 
 class CatalogPriceRuleController extends Controller
@@ -14,7 +15,8 @@ class CatalogPriceRuleController extends Controller
      */
     public function index()
     {
-        //
+        $catalogPricePules = CatalogPriceRule::get();
+        return view('admin.marketing.cart-price-rule.index',compact('catalogPricePules'));
     }
 
     /**

@@ -10,12 +10,6 @@
                         <i class="fas fa-plus"></i> New Customer
                     </a>
                 </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Customer</li>
-                    </ol>
-                </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
 

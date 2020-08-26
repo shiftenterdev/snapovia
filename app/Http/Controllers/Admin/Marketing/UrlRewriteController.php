@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Marketing;
 
 use App\Http\Controllers\Controller;
+use App\Models\UrlRewrite;
 use Illuminate\Http\Request;
 
 class UrlRewriteController extends Controller
@@ -14,7 +15,8 @@ class UrlRewriteController extends Controller
      */
     public function index()
     {
-        //
+        $urlRewrites = UrlRewrite::get();
+        return view('admin.marketing.url-rewrite.index',compact('urlRewrites'));
     }
 
     /**
