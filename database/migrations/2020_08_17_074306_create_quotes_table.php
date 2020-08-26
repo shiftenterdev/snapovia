@@ -17,14 +17,13 @@ class CreateQuotesTable extends Migration
             $table->id();
             $table->uuid('quote_id');
             $table->integer('customer_id')->default(0);
-            $table->integer('grand_total');
-            $table->integer('grand_total_incl_tax');
+            $table->integer('grand_total')->default(0);
+            $table->integer('grand_total_incl_tax')->default(0);
             $table->integer('tax')->default(0);
-            $table->integer('shipping_amount');
-            $table->integer('shipping_amount_incl_tax');
-            $table->integer('transaction_amount');
-            $table->string('payment_method');
-            $table->string('shipping_method');
+            $table->integer('shipping_amount')->default(0);
+            $table->integer('shipping_amount_incl_tax')->default(0);
+            $table->string('payment_method')->nullable();
+            $table->string('shipping_method')->nullable();
             $table->timestamps();
         });
     }
