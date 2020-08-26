@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\VendorController;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -83,7 +86,7 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
         Route::redirect('/', '/adminportal/dashboard');
 
-        Route::get('dashboard', 'DashboardController')->name('admin.dashboard');
+        Route::get('dashboard', App\Http\Controllers\Admin\DashboardController::class)->name('admin.dashboard');
 
         Route::get('data', 'ProductController@data')->name('admin.product.data');
         Route::resource('product', 'ProductController', ['as' => 'admin']);
@@ -91,26 +94,26 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
         Route::resource('media', 'MediaController', ['as' => 'admin']);
 
         Route::get('data', 'CategoryController@data')->name('admin.category.data');
-        Route::resource('category', 'CategoryController', ['as' => 'admin']);
+        Route::resource('category', App\Http\Controllers\Admin\CategoryController::class, ['as' => 'admin']);
 
         Route::post('brand/media', 'BrandController@storeMedia')->name('admin.brand.media');
-        Route::resource('brand', 'BrandController', ['as' => 'admin']);
+        Route::resource('brand', App\Http\Controllers\Admin\BrandController::class, ['as' => 'admin']);
 
-        Route::resource('cms-page', 'CmsPageController', ['as' => 'admin']);
+        Route::resource('cms-page', App\Http\Controllers\Admin\CmsPageController::class, ['as' => 'admin']);
 
-        Route::resource('cms-block', 'CmsBlockController', ['as' => 'admin']);
+        Route::resource('cms-block', App\Http\Controllers\Admin\CmsBlockController::class, ['as' => 'admin']);
 
-        Route::resource('customer/group', 'CustomerGroupController', ['as' => 'admin']);
+        Route::resource('customer/group', App\Http\Controllers\Admin\CustomerGroupController::class, ['as' => 'admin']);
 
-        Route::resource('customer', 'CustomerController', ['as' => 'admin']);
+        Route::resource('customer', CustomerController::class, ['as' => 'admin']);
 
-        Route::resource('blog', 'BlogController', ['as' => 'admin']);
+        Route::resource('blog', BlogController::class, ['as' => 'admin']);
 
-        Route::resource('vendor', 'VendorController', ['as' => 'admin']);
+        Route::resource('vendor', VendorController::class, ['as' => 'admin']);
 
-        Route::resource('user', 'UserController', ['as' => 'admin']);
+        Route::resource('user', App\Http\Controllers\Admin\UserController::class, ['as' => 'admin']);
 
-        Route::resource('role', 'RoleController', ['as' => 'admin']);
+        Route::resource('role', App\Http\Controllers\Admin\RoleController::class, ['as' => 'admin']);
 
         Route::resource('permission', 'PermissionController', ['as' => 'admin']);
 
@@ -132,11 +135,11 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
         Route::resource('refund', 'RefundController', ['as' => 'admin']);
 
-        Route::resource('export-import/product-export', 'ExportImport\ProductExportController', ['as' => 'admin']);
+        Route::resource('export-import/product-export', App\Http\Controllers\Admin\ExportImport\ProductExportController::class, ['as' => 'admin']);
 
-        Route::resource('export-import/product-import', 'ExportImport\ProductImportController', ['as' => 'admin']);
+        Route::resource('export-import/product-import', App\Http\Controllers\Admin\ExportImport\ProductImportController::class, ['as' => 'admin']);
 
-        Route::resource('configuration', 'ConfigurationController', ['as' => 'admin']);
+        Route::resource('configuration', App\Http\Controllers\Admin\ConfigurationController::class, ['as' => 'admin']);
     });
 
 });
