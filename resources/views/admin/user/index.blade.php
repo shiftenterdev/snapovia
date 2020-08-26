@@ -6,13 +6,9 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">User</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Customer</li>
-                    </ol>
+                    <a href="{{route('admin.user.create')}}" class="btn btn-dark">
+                        <i class="fas fa-plus"></i> New User
+                    </a>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -21,13 +17,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Customers</h3>
-                                <div class="card-tools">
-                                    <a href="{{route('admin.customer.create')}}" class="btn btn-outline-danger btn-sm">
-                                        <i class="fas fa-plus"></i> New Customer
-                                    </a>
-                                </div>
+                            <div class="card-header p-0 d-flex bg-gradient-info">
+                                <h3 class="card-title p-3"><strong>Users</strong></h3>
                             </div>
                             <div class="card-body table-responsive p-0">
                                 <table class="table table-striped table-valign-middle">
@@ -59,6 +50,12 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="card-footer clearfix flex">
+                                <div>Showing {{($users->currentpage()-1)*$users->perpage()+1}} to {{$users->currentpage()*$users->perpage()}}
+                                    of  {{$users->total()}} entries
+                                </div>
+                                {{$users->appends(request()->query())->links()}}
                             </div>
                         </div>
                     </div>

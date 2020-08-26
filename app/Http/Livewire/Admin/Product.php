@@ -3,25 +3,47 @@
 namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Product extends Component
 {
+    use WithPagination;
 
-    public $search = ['sku'=>'','name'=>'','status'=>'','visibility'=>''];
+    public $search = [
+        'sku'          => '',
+        'name'         => '',
+        'status'       => '',
+        'price'        => '',
+        'visibility'   => '',
+        'id'           => '',
+        'product_type' => ''
+    ];
 
-    protected $updatesQueryString = ['search'];
+    //protected $updatesQueryString = ['search'];
+
+    protected $updatesQueryString = [
+        "search" => ['except' => ''],
+    ];
 
     public function mount()
     {
-        $this->search = request()->query('search', $this->search);
+        $this->search = request()->query('search', $this->search) + $this->search;
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 
     public function render()
     {
-        $products = \App\Models\Product::search($this->search)
-            ->select(['name', 'visibility', 'product_type', 'id', 'special_price', 'price', 'sku', 'status', 'qty'])
-            ->paginate(20);
+        $products = \App\Models\Product::grid($this->search);
 
-        return view('livewire.admin.product',compact('products'));
+        return view('livewire.admin.product', compact('products'));
+    }
+
+    public function resetSearch()
+    {
+        $this->reset();
     }
 }

@@ -6,13 +6,8 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Blog</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Blog</li>
-                    </ol>
+                    <button type="submit" class="btn btn-dark"><i class="fas fa-save"></i> Save</button>
+                    <button type="button" class="btn btn-default" onclick="history.back()">Go Back</button>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -27,8 +22,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">New Blog</h3>
+                            <div class="card-header p-0 d-flex bg-gradient-info">
+                                <h3 class="card-title p-3"><strong>New Blog</strong></h3>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -66,15 +61,6 @@
                                                       placeholder="Description"></textarea>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-default" onclick="history.back()">Cancel
-                                    </button>
-                                    <button type="submit" class="btn btn-outline-primary">Save</button>
                                 </div>
                             </div>
                         </div>
