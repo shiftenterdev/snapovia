@@ -22,7 +22,7 @@ class Product extends Component
     //protected $updatesQueryString = ['search'];
 
     protected $updatesQueryString = [
-        "search" => ['except' => ''],
+        'search.sku' => ['except' => ''],
     ];
 
     public function mount()
