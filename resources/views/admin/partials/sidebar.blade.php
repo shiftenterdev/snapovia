@@ -233,12 +233,12 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.product-export.index')}}" class="nav-link {{request()->is('adminportal/user*')?'active':''}}">
+                            <a href="{{route('admin.export.index')}}" class="nav-link {{request()->is('adminportal/export*')?'active':''}}">
                                 <p>Export</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.product-import.index')}}" class="nav-link {{request()->is('adminportal/role*')?'active':''}}">
+                            <a href="{{route('admin.import.index')}}" class="nav-link {{request()->is('adminportal/import*')?'active':''}}">
                                 <p>Import</p>
                             </a>
                         </li>
