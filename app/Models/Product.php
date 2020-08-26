@@ -60,6 +60,11 @@ class Product extends Model implements HasMedia
 //        return $this->hasMany(Product::class, 'parent_id');
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
     public function parentProduct()
     {
         return $this->belongsTo(Product::class, 'parent_id');

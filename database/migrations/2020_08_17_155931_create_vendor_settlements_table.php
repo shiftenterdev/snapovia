@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVendorSettelmentsTable extends Migration
+class CreateVendorSettlementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateVendorSettelmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('vendor_settelments', function (Blueprint $table) {
+        Schema::create('vendor_settlements', function (Blueprint $table) {
             $table->integer('vendor_id')->unsigned();
             $table->integer('order_id')->unsigned();
         });

@@ -15,16 +15,15 @@ class CreateQuotesTable extends Migration
     {
         Schema::create('quotes', function (Blueprint $table) {
             $table->id();
-            $table->string('quote_id');
-            $table->integer('customer_id');
-            $table->decimal('grand_total');
-            $table->decimal('grand_total_incl_tax');
-            $table->decimal('tax');
-            $table->decimal('shipping_amount');
-            $table->decimal('shipping_amount_incl_tax');
-            $table->decimal('transaction_amount');
-            $table->string('payment_method');
-            $table->string('shipping_method');
+            $table->uuid('quote_id');
+            $table->integer('customer_id')->default(0);
+            $table->integer('grand_total')->default(0);
+            $table->integer('grand_total_incl_tax')->default(0);
+            $table->integer('tax')->default(0);
+            $table->integer('shipping_amount')->default(0);
+            $table->integer('shipping_amount_incl_tax')->default(0);
+            $table->string('payment_method')->nullable();
+            $table->string('shipping_method')->nullable();
             $table->timestamps();
         });
     }
