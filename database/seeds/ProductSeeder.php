@@ -95,11 +95,12 @@ class ProductSeeder extends Seeder
         /**
          * Product
          */
+        $sku = 10000;
         for ($i = 1; $i <= env('SAMPLE_PRODUCT_COUNT',500); $i++) {
             $productType = $this->productType[rand(0, 1)];
             $price = rand(1000, 99900);
             $product = \App\Models\Product::create([
-                'sku'               => 10000 + $i,
+                'sku'               => ++$sku,
                 'name'              => ucfirst($faker->productName),
                 'url_key'           => $faker->uuid,
                 'product_type'      => $productType,
@@ -131,7 +132,7 @@ class ProductSeeder extends Seeder
             if ($productType == 'configurable') {
                 for ($j = 1; $j <= 5; $j++) {
                     $associatedProduct = $product->associcatedProducts()->create([
-                        'sku'               => 1000 + $i,
+                        'sku'               => ++$sku,
                         'name'              => ucfirst($faker->productName),
                         'url_key'           => $faker->uuid,
                         'product_type'      => 'simple',

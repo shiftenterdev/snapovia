@@ -8,12 +8,6 @@
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">Permission</h1>
                 </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Permission</li>
-                    </ol>
-                </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
         <div class="content">
@@ -21,8 +15,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Permissions</h3>
+                            <div class="card-header p-0 d-flex bg-gradient-info">
+                                <h3 class="card-title p-3"><strong>Permissions</strong></h3>
                             </div>
                             <div class="card-body table-responsive p-0">
                                 <table class="table table-striped table-valign-middle">
