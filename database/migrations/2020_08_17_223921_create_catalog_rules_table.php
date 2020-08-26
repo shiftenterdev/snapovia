@@ -19,8 +19,8 @@ class CreateCatalogRulesTable extends Migration
             $table->string('description')->nullable();
             $table->boolean('status');
             $table->string('customer_group_id')->nullable();
-            $table->datetime('from_date');
-            $table->datetime('to_date');
+            $table->datetime('from_date')->nullable();
+            $table->datetime('to_date')->nullable();
             $table->integer('discount_amount');
             $table->string('discount_type');
             $table->string('conditions');

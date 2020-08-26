@@ -87,13 +87,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.cart-rule.index')}}" class="nav-link {{request()->is('adminportal/cart-rule*')?'active':''}}">
+                            <a href="{{route('admin.cart-price-rule.index')}}" class="nav-link {{request()->is('adminportal/cart-price-rule*')?'active':''}}">
 
                                 <p>Cart Price Rule</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.catalog-rule.index')}}" class="nav-link {{request()->is('adminportal/catalog-rule*')?'active':''}}">
+                            <a href="{{route('admin.catalog-price-rule.index')}}" class="nav-link {{request()->is('adminportal/catalog-price-rule*')?'active':''}}">
 
                                 <p>Catalog Price Rule</p>
                             </a>
@@ -111,7 +111,13 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.url-rewrite.index')}}" class="nav-link {{request()->is('adminportal/user-rewrite*')?'active':''}}">
+                            <a href="{{route('admin.email-template.index')}}" class="nav-link {{request()->is('adminportal/newsletter*')?'active':''}}">
+
+                                <p>Newsletter</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.url-rewrite.index')}}" class="nav-link {{request()->is('adminportal/url-rewrite*')?'active':''}}">
 
                                 <p>Url Rewrite</p>
                             </a>

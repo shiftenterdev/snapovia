@@ -20,8 +20,8 @@ class CreateCartRulesTable extends Migration
             $table->boolean('status');
             $table->string('customer_group_id')->nullable();
             $table->string('cuopon_code');
-            $table->datetime('from_date');
-            $table->datetime('to_date');
+            $table->datetime('from_date')->nullable();
+            $table->datetime('to_date')->nullable();
             $table->integer('discount_amount');
             $table->string('discount_type');
             $table->string('conditions');

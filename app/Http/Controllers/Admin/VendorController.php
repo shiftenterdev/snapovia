@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 
 class VendorController extends Controller
 {
     public function index()
     {
-        return view('admin.vendor.index');
+        $vendors = Vendor::get();
+        return view('admin.vendor.index',compact('vendors'));
     }
 
     public function create()

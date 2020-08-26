@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Marketing;
 
 use App\Http\Controllers\Controller;
+use App\Models\EmailTemplate;
 use Illuminate\Http\Request;
 
 class EmailTemplateController extends Controller
@@ -14,7 +15,8 @@ class EmailTemplateController extends Controller
      */
     public function index()
     {
-        //
+        $templates = EmailTemplate::get();
+        return view('admin.marketing.email-template.index',compact('templates'));
     }
 
     /**
