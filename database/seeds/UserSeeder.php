@@ -20,41 +20,41 @@ class UserSeeder extends Seeder
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
         // create permissions
-        Permission::create(['name' => 'product']);
-        Permission::create(['name' => 'category']);
-        Permission::create(['name' => 'cms-page']);
-        Permission::create(['name' => 'cms-block']);
-        Permission::create(['name' => 'role permission']);
-        Permission::create(['name' => 'user']);
-        Permission::create(['name' => 'order']);
-        Permission::create(['name' => 'invoice']);
-        Permission::create(['name' => 'refund']);
-        Permission::create(['name' => 'blog']);
-        Permission::create(['name' => 'vendor']);
-        Permission::create(['name' => 'brand']);
-        Permission::create(['name' => 'abandon-cart']);
-        Permission::create(['name' => 'url-rewrite']);
-        Permission::create(['name' => 'configuration']);
-        Permission::create(['name' => 'customer']);
-        Permission::create(['name' => 'catalog-price-rule']);
-        Permission::create(['name' => 'cart-price-rule']);
+        Permission::create(['name' => 'Product']);
+        Permission::create(['name' => 'Category']);
+        Permission::create(['name' => 'Cms-page']);
+        Permission::create(['name' => 'Cms-block']);
+        Permission::create(['name' => 'Role Permission']);
+        Permission::create(['name' => 'User']);
+        Permission::create(['name' => 'Order']);
+        Permission::create(['name' => 'Invoice']);
+        Permission::create(['name' => 'Refund']);
+        Permission::create(['name' => 'Blog']);
+        Permission::create(['name' => 'Vendor']);
+        Permission::create(['name' => 'Brand']);
+        Permission::create(['name' => 'Abandon-cart']);
+        Permission::create(['name' => 'Url-rewrite']);
+        Permission::create(['name' => 'Configuration']);
+        Permission::create(['name' => 'Customer']);
+        Permission::create(['name' => 'Catalog-price-rule']);
+        Permission::create(['name' => 'Cart-price-rule']);
 
         // create roles and assign existing permissions
         $role1 = Role::create(['name' => 'user']);
-        $role1->givePermissionTo('product');
-        $role1->givePermissionTo('category');
-        $role1->givePermissionTo('cms-page');
+        $role1->givePermissionTo('Product');
+        $role1->givePermissionTo('Category');
+        $role1->givePermissionTo('Cms-page');
 
         $role2 = Role::create(['name' => 'admin']);
-        $role2->givePermissionTo('cms-block');
-        $role2->givePermissionTo('product');
-        $role2->givePermissionTo('role permission');
-        $role2->givePermissionTo('customer');
-        $role2->givePermissionTo('user');
-        $role2->givePermissionTo('configuration');
+        $role2->givePermissionTo('Cms-block');
+        $role2->givePermissionTo('Product');
+        $role2->givePermissionTo('Role permission');
+        $role2->givePermissionTo('Customer');
+        $role2->givePermissionTo('User');
+        $role2->givePermissionTo('Configuration');
 
         $role3 = Role::create(['name' => 'super-admin']);
-        $role4 = Role::create(['name' => 'ccustomer']);
+        $role4 = Role::create(['name' => 'customer']);
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
         // create demo users

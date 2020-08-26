@@ -132,9 +132,9 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
         Route::resource('refund', 'RefundController', ['as' => 'admin']);
 
-        Route::resource('export-import/product-export', 'ExportImport\ProductExportController', ['as' => 'admin']);
+        Route::resource('export/export', 'ExportImport\ExportController', ['as' => 'admin']);
 
-        Route::resource('export-import/product-import', 'ExportImport\ProductImportController', ['as' => 'admin']);
+        Route::resource('import/import', 'ExportImport\ImportController', ['as' => 'admin']);
 
         Route::resource('configuration', 'ConfigurationController', ['as' => 'admin']);
     });
