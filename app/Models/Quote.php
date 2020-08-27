@@ -16,9 +16,31 @@ class Quote extends Model
     public static function boot()
     {
         parent::boot();
-        self::creating(function ($model){
-            $model->quote_id = (string) Uuid::generate();
+        self::creating(function ($model) {
+            $model->quote_id = (string)Uuid::generate();
         });
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'quote_id';
+    }
+
+    public function scopeAddToCart(Quote $quote, $sku, $qty)
+    {
+        $product = $this->product($sku);
+        $this->items()->create([
+            'product_id' => $product->id,
+            'name'       => $product->name,
+            'price'      => amount($product->price),
+            'qty'        => $qty,
+            'subtotal'   => (int)$qty * amount($product->price)
+        ]);
+    }
+
+    protected function product($sku)
+    {
+        return Product::whereSku($sku)->firstOrFail();
     }
 
     public function items()

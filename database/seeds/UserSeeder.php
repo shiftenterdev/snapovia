@@ -100,8 +100,7 @@ class UserSeeder extends Seeder
             $on = 1;
             for ($j = 1; $j <= 2; $j++) {
 
-                \App\Models\CustomerAddress::create([
-                    'customer_id'      => $customer->id,
+                $customer->address()->create([
                     'first_name'       => $faker->firstName,
                     'last_name'        => $faker->lastName,
                     'address_line_1'   => $faker->streetAddress,
