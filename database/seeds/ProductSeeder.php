@@ -11,8 +11,22 @@ class ProductSeeder extends Seeder
      *
      * @return void
      */
-    public $color       = ['Blue', 'Green', 'Red', 'White', 'Purple', 'Violet', 'Pink', 'Gray', 'Navy Blue'];
-    public $size        = ['22', '23', '25', 'M', 'L', 'XL', 'XXL', 'S'];
+    public $attributes = [
+        'Color'       => ['Blue', 'Green', 'Red', 'White', 'Purple', 'Violet', 'Pink', 'Gray', 'Navy Blue'],
+        'Size'        => ['22', '23', '25', 'M', 'L', 'XL', 'XXL', 'S'],
+        'Manufacture' => ['BD', 'US', 'IN', 'SE', 'UK'],
+        'Length'      => 'text',
+        'Weight'      => 'text',
+    ];
+
+    public $categories = [
+        'Men'         => ['Top' => ['Shirt', 'T-shirt'], 'Bottom' => ['Pants'], 'Trends' => ['Tie', 'Cap']],
+        'Women'       => ['Top' => ['Saree', 'Tops', 'Tee'], 'Bottom' => ['Pant', 'Palajo','Lehenga','Skirt']],
+        'Kids'        => ['Boys' => ['Shirt', 'Pants'], 'Girls' => ['Skirt', 'Dress']],
+        'Electronics' => ['Home' => ['Fan', 'TV', 'Radio'], 'Office' => ['Laptop', 'Air Condition', 'Air Cooler']],
+        'Phone'       => ['Smartphone' => ['Apple', 'Samsung', 'LG'], 'Feature Phone' => ['Nokia', 'Erricson']],
+    ];
+
     public $productType = ['simple', 'configurable'];
 
     public function run()
@@ -21,37 +35,60 @@ class ProductSeeder extends Seeder
         $faker->addProvider(new \Bezhanov\Faker\Provider\Commerce($faker));
         $category_ids = [];
 
+        foreach ($this->attributes as $name => $attribute_options) {
+            $fieldType = 'select';
+            if (!is_array($attribute_options)) {
+                $fieldType = $attribute_options;
+            }
+            $attribute = \App\Models\Attribute::create([
+                'name'                 => $name,
+                'label'                => $name,
+                'slug'                 => Str::slug($name),
+                'entity_type'          => 'product',
+                'attribute_field_type' => $fieldType,
+            ]);
+            if (is_array($attribute_options)) {
+                foreach ($attribute_options as $value) {
+                    $attribute->options()->create([
+                        'option_value' => $value,
+                    ]);
+                }
+            }
+        }
+
         /**
          * Category
          */
-        for ($i = 1; $i <= 5; $i++) {
+        $i = 0;
+        foreach ($this->categories as $level1 => $level2) {
+
             $category = \App\Models\Category::create([
-                'name'             => ucfirst($faker->department(1, true)),
+                'name'             => ucfirst($level1),
                 'description'      => $faker->paragraph,
-                'url_key'          => Str::slug(($faker->word) . $i),
-                'url_path'         => Str::slug(($faker->word) . $i),
+                'url_key'          => Str::slug($level1 . ++$i),
+                'url_path'         => Str::slug($level1),
                 'meta_title'       => ucfirst($faker->word),
                 'meta_description' => $faker->paragraph,
                 'featured'         => rand(0, 1),
-                'position'         => $i,
+                'position'         => $i++,
                 'status'           => 1,
             ]);
             \App\Models\UrlResolver::create([
                 'entity_id'   => $category->id,
                 'entity_type' => 'category',
                 'url_key'     => $category->url_key,
-                'url_path'    => $category->url_path
+                'url_path'    => $category->url_path,
             ]);
 
             $category_ids[] = $category->id;
 
-            for ($j = 1; $j <= 5; $j++) {
+            foreach ($level2 as $level3 => $level4) {
                 $childCategory = $category->childCategories()->create([
-                    'name'             => ucfirst($faker->department(1, true)),
+                    'name'             => ucfirst($level3),
                     'description'      => $faker->paragraph,
-                    'url_key'          => Str::slug($faker->word . $i . $j),
-                    'url_path'         => $category->url_path . '/' . Str::slug($faker->word . $i . $j),
-                    'meta_title'       => ucfirst($faker->word),
+                    'url_key'          => Str::slug($level3 . ++$i),
+                    'url_path'         => $category->url_path . '/' . Str::slug($level3 . $i),
+                    'meta_title'       => ucfirst($level3),
                     'meta_description' => $faker->paragraph,
                     'position'         => $i,
                     'featured'         => rand(0, 1),
@@ -62,18 +99,18 @@ class ProductSeeder extends Seeder
                     'entity_id'   => $childCategory->id,
                     'entity_type' => 'category',
                     'url_key'     => $childCategory->url_key,
-                    'url_path'    => $childCategory->url_path
+                    'url_path'    => $childCategory->url_path,
                 ]);
 
                 $category_ids[] = $childCategory->id;
 
-                for ($k = 1; $k <= 5; $k++) {
+                foreach ($level4 as $level5) {
                     $grandChildCategory = $childCategory->childCategories()->create([
-                        'name'             => ucfirst($faker->department(1, true)),
+                        'name'             => ucfirst($level5),
                         'description'      => $faker->paragraph,
-                        'url_key'          => Str::slug($faker->word . $i . $j . $k),
-                        'url_path'         => $category->url_path . '/' . $childCategory->url_path . '/' . Str::slug($faker->word . $i . $j . $k),
-                        'meta_title'       => ucfirst($faker->word),
+                        'url_key'          => Str::slug($faker->word . ++$i),
+                        'url_path'         => $category->url_path . '/' . $childCategory->url_path . '/' . Str::slug($level5 . $i),
+                        'meta_title'       => ucfirst($level5),
                         'meta_description' => $faker->paragraph,
                         'position'         => $i,
                         'featured'         => rand(0, 1),
@@ -83,7 +120,7 @@ class ProductSeeder extends Seeder
                         'entity_id'   => $grandChildCategory->id,
                         'entity_type' => 'category',
                         'url_key'     => $grandChildCategory->url_key,
-                        'url_path'    => $grandChildCategory->url_path
+                        'url_path'    => $grandChildCategory->url_path,
                     ]);
 
                     $category_ids[] = $grandChildCategory->id;
@@ -96,7 +133,7 @@ class ProductSeeder extends Seeder
          * Product
          */
         $sku = 10000;
-        for ($i = 1; $i <= env('SAMPLE_PRODUCT_COUNT',500); $i++) {
+        for ($i = 1; $i <= env('SAMPLE_PRODUCT_COUNT', 500); $i++) {
             $productType = $this->productType[rand(0, 1)];
             $price = rand(1000, 99900);
             $product = \App\Models\Product::create([
@@ -105,8 +142,8 @@ class ProductSeeder extends Seeder
                 'url_key'           => $faker->uuid,
                 'product_type'      => $productType,
                 'qty'               => rand(5, 100),
-                'color'             => $productType == 'simple' ? $this->color[rand(0, count($this->color) - 1)] : null,
-                'size'              => $productType == 'simple' ? $this->size[rand(0, count($this->size) - 1)] : null,
+                //                'color'             => $productType == 'simple' ? $this->color[rand(0, count($this->color) - 1)] : null,
+                //                'size'              => $productType == 'simple' ? $this->size[rand(0, count($this->size) - 1)] : null,
                 'is_new'            => rand(0, 1),
                 'featured'          => rand(0, 1),
                 'price'             => $price,
@@ -121,13 +158,13 @@ class ProductSeeder extends Seeder
             \App\Models\UrlResolver::create([
                 'entity_id'   => $product->id,
                 'entity_type' => 'product',
-                'url_key'     => $product->url_key
+                'url_key'     => $product->url_key,
             ]);
             $cat_id = $category_ids[rand(0, count($category_ids) - 1)];
             $product->categories()->sync($cat_id);
 
             /**
-             * Associcated products
+             * Associated products
              */
             if ($productType == 'configurable') {
                 for ($j = 1; $j <= 5; $j++) {
@@ -137,8 +174,8 @@ class ProductSeeder extends Seeder
                         'url_key'           => $faker->uuid,
                         'product_type'      => 'simple',
                         'qty'               => rand(5, 100),
-                        'color'             => $this->color[rand(0, count($this->color) - 1)],
-                        'size'              => $this->size[rand(0, count($this->size) - 1)],
+                        //                        'color'             => $this->color[rand(0, count($this->color) - 1)],
+                        //                        'size'              => $this->size[rand(0, count($this->size) - 1)],
                         'is_new'            => rand(0, 1),
                         'featured'          => rand(0, 1),
                         'visibility'        => 1,
@@ -149,10 +186,14 @@ class ProductSeeder extends Seeder
                         'meta_description'  => $faker->paragraph,
                     ]);
 
+//                    $associatedProduct->attributes()->create([
+//
+//                    ]);
+
                     \App\Models\UrlResolver::create([
                         'entity_id'   => $associatedProduct->id,
                         'entity_type' => 'product',
-                        'url_key'     => $associatedProduct->url_key
+                        'url_key'     => $associatedProduct->url_key,
                     ]);
 
                     $associatedProduct->categories()->sync($cat_id);

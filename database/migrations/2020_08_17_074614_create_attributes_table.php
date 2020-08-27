@@ -18,9 +18,10 @@ class CreateAttributesTable extends Migration
             $table->string('name');
             $table->string('label')->nullable();
             $table->string('slug');
-            $table->enum('attribute_type',['product','category','customer','customer_address','order','quote','invoice']);
+            $table->enum('entity_type',['product','category','customer','customer_address','order','quote','invoice']);
             $table->string('attribute_field_type')->default('text');
             $table->string('default_value')->nullable();
+            $table->boolean('is_required')->default(0);
             $table->timestamps();
         });
     }
