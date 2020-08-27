@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEntityAttributeValuesTable extends Migration
+class CreateAttributeOptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateEntityAttributeValuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('entity_attribute_values', function (Blueprint $table) {
-            $table->unsignedInteger('entity_id');
-            $table->unsignedInteger('attribute_id');
-            $table->unsignedInteger('value_id');
+        Schema::create('attribute_options', function (Blueprint $table) {
+            $table->id();
+            $table->integer('attribute_id');
+            $table->string('option_value');
         });
     }
 

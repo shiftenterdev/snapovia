@@ -97,4 +97,9 @@ class Product extends Model implements HasMedia
     {
         return '/sample-data/products/' . rand(0, 534) . '.jpg';
     }
+
+    public function attributes()
+    {
+        return $this->hasManyThrough(Attribute::class,EntityAttribute::class,'entity_id','id','id','attribute_id');
+    }
 }
