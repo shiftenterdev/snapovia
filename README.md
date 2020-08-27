@@ -27,7 +27,8 @@ We will have the following features:
 
 ## Specification
 
-...updating
+|Framework|Laravel|
+|---|---|
 
 ## Installation
 
@@ -61,8 +62,8 @@ $ php artisan serve
 **Now serve http://127.0.0.1:8000**
 
 > Admin url: http://127.0.0.1:8000/adminportal/login \
-> Login: super@admin.com \
-> Password: password
+> Login: `super@admin.com` \
+> Password: `password`
 
 
 ## Want to contribute in `shiftenterdev/butikshop`
@@ -73,6 +74,7 @@ Contributions are encouraged and welcome. Here are the steps of contribution:
 2. Clone the repository
 3. Create a branch
 4. Checkout the branch
+
 ```sh
 git checkout -b <add-your-name>
 ```

@@ -55,6 +55,11 @@ class Product extends Model implements HasMedia
             ->paginate($this->paginateCount);
     }
 
+    public function scopeSearch()
+    {
+
+    }
+
     public function relatedProducts()
     {
 //        return $this->hasMany(Product::class, 'parent_id');
