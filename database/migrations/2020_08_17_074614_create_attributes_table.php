@@ -13,13 +13,13 @@ class CreateAttributesTable extends Migration
      */
     public function up()
     {
-        Schema::create('entity_attributes', function (Blueprint $table) {
+        Schema::create('attributes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('label')->nullable();
             $table->string('slug');
-            $table->string('attribute_type');
-            $table->string('attribute_field_type');
+            $table->enum('attribute_type',['product','category','customer','customer_address','order','quote','invoice']);
+            $table->string('attribute_field_type')->default('text');
             $table->string('default_value')->nullable();
             $table->timestamps();
         });

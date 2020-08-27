@@ -44,6 +44,7 @@ Route::namespace('Front')->group(function () {
      * Customer routes
      */
     Route::namespace('Customer')->group(function () {
+
         Route::get('/customer/account/login', 'LoginController@index')->name('customer.login');
         Route::post('/customer/account/login', 'LoginController@login')->name('customer.login.post');
         Route::get('/customer/account/create', 'RegisterController@index')->name('customer.create.post');
@@ -62,6 +63,7 @@ Route::namespace('Front')->group(function () {
             Route::get('/customer/order', 'OrderController@index')->name('customer.order');
             Route::get('/customer/review', 'ReviewController@index')->name('customer.review');
         });
+
     });
 
 });
@@ -70,8 +72,6 @@ Route::namespace('Front')->group(function () {
 /**
  * Backend Routes
  */
-
-
 Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
     Route::get('forgot-password', 'AuthController@forgotPassword')->name('admin.forgot.password');
@@ -137,6 +137,7 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
         Route::resource('import/import', 'ExportImport\ImportController', ['as' => 'admin']);
 
         Route::resource('configuration', 'ConfigurationController', ['as' => 'admin']);
+
     });
 
 });
