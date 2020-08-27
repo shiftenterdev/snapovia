@@ -20,11 +20,13 @@ class ProductSeeder extends Seeder
     ];
 
     public $categories = [
-        'Men'         => ['Top' => ['Shirt', 'T-shirt'], 'Bottom' => ['Pants'], 'Trends' => ['Tie', 'Cap']],
-        'Women'       => ['Top' => ['Saree', 'Tops', 'Tee'], 'Bottom' => ['Pant', 'Palajo','Lehenga','Skirt']],
-        'Kids'        => ['Boys' => ['Shirt', 'Pants'], 'Girls' => ['Skirt', 'Dress']],
-        'Electronics' => ['Home' => ['Fan', 'TV', 'Radio'], 'Office' => ['Laptop', 'Air Condition', 'Air Cooler']],
-        'Phone'       => ['Smartphone' => ['Apple', 'Samsung', 'LG'], 'Feature Phone' => ['Nokia', 'Erricson']],
+        'Man\'s Fashion'       => ['Top' => ['Shirt', 'T-shirt'], 'Bottom' => ['Pants'], 'Trends' => ['Tie', 'Cap']],
+        'Women\'s Clothing'    => ['Top' => ['Saree', 'Tops', 'Tee'], 'Bottom' => ['Pant', 'Palajo', 'Lehenga', 'Skirt']],
+        'Computer & Office'    => ['Boys' => ['Shirt', 'Pants'], 'Girls' => ['Skirt', 'Dress']],
+        'Jewelry & Watches'    => ['Home' => ['Fan', 'TV', 'Radio'], 'Office' => ['Laptop', 'Air Condition', 'Air Cooler']],
+        'Bags & Shoes'         => ['Smartphone' => ['Apple', 'Samsung', 'LG'], 'Feature Phone' => ['Nokia', 'Erricson']],
+        'Automobiles'          => ['Smartphone' => ['Apple', 'Samsung', 'LG'], 'Feature Phone' => ['Nokia', 'Erricson']],
+        'Consumer Electronics' => ['Smartphone' => ['Apple', 'Samsung', 'LG'], 'Feature Phone' => ['Nokia', 'Erricson']],
     ];
 
     public $productType = ['simple', 'configurable'];
