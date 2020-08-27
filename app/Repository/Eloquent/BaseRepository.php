@@ -50,4 +50,32 @@ class BaseRepository implements EloquentRepositoryInterface
     {
         return $this->model->paginate($count);
     }
+
+    /**
+     * @param Model $model
+     * @return Model|null
+     */
+    public function edit(Model $model): ?Model
+    {
+        return $this->model;
+    }
+
+    /**
+     * @param array $attributes
+     * @return bool
+     */
+    public function update(array $attributes): bool
+    {
+        return $this->model->update($attributes);
+    }
+
+    /**
+     * @param Model $model
+     * @return bool|null
+     * @throws \Exception
+     */
+    public function destroy(Model $model): ?bool
+    {
+        return $this->model->delete();
+    }
 }

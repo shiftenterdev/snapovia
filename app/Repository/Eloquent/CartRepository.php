@@ -2,19 +2,33 @@
 
 namespace App\Repository\Eloquent;
 
+use App\Models\Quote;
 use App\Repository\CartRepositoryInterface;
-use Illuminate\Database\Eloquent\Model;
 
 class CartRepository extends BaseRepository implements CartRepositoryInterface
 {
-
-    public function add(): Model
+    /**
+     * CartRepository constructor.
+     *
+     * @param Quote $model
+     */
+    public function __construct(Quote $model)
     {
-        // TODO: Implement add() method.
+        parent::__construct($model);
     }
 
-    public function remove(): Model
+    public function add(array $attributes): Quote
+    {
+        return $this->model->items()->create($attributes);
+    }
+
+    public function remove($item_id): Quote
     {
         // TODO: Implement remove() method.
+    }
+
+    public function updateQty(array $attributes): Quote
+    {
+        return $this->model->items()->update($attributes);
     }
 }
