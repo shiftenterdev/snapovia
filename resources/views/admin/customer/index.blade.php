@@ -31,6 +31,7 @@
                                     <th>Lastname</th>
                                     <th>Gender</th>
                                     <th>Email</th>
+                                    <th>Email Verified</th>
                                     <th>Country</th>
                                     <th>Action</th>
                                 </tr>
@@ -42,7 +43,8 @@
                                         <td>{{$c->first_name}}</td>
                                         <td>{{$c->last_name}}</td>
                                         <td>{{$c->gender}}</td>
-                                        <td>{{$c->user->email}}</td>
+                                        <td>{{$c->email}}</td>
+                                        <td>{{$c->email_verified_at}}</td>
                                         <td>{{$c->country}}</td>
                                         <td>
                                             <a href="{{route('admin.customer.edit',$c->id)}}" class="text-muted">

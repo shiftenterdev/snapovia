@@ -7,5 +7,13 @@ use Illuminate\Http\Request;
 
 class RefundController extends Controller
 {
-    //
+    public function order()
+    {
+
+    }
+
+    public function invoice()
+    {
+
+    }
 }

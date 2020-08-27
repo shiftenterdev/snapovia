@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    public function user()
+    public function address()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(CustomerAddress::class);
     }
 }

@@ -2,7 +2,7 @@
 
 function status($status)
 {
-    if($status==1){
+    if ($status == 1) {
         return '<span class="badge badge-success">Active</span>';
     }
     return '<span class="badge badge-danger">Inactive</span>';
@@ -10,7 +10,7 @@ function status($status)
 
 function visibility($visibility)
 {
-    switch ($visibility){
+    switch ($visibility) {
         case 1:
             return '<span class="badge badge-danger">Not visible</span>';
             break;
@@ -23,4 +23,11 @@ function visibility($visibility)
         default:
             return '<span class="badge badge-success">Catalog, Search</span>';
     }
+}
+
+function amount($amount)
+{
+    if (is_int($amount))
+        return number_format($amount / 100, 2);
+    return $amount;
 }
