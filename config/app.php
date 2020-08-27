@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\CartFacadeServiceProvider::class,
         App\Providers\CustomerFacadeServiceProvider::class,
+        App\Providers\VendorFacadeServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
 
     ],
@@ -231,6 +232,8 @@ return [
         'View'         => Illuminate\Support\Facades\View::class,
         'Image'        => Intervention\Image\Facades\Image::class,
         'Cart'         => App\Facades\Cart::class,
+        'Vendor'       => App\Providers\VendorFacadeServiceProvider::class,
+        'Customer'     => App\Providers\CustomerFacadeServiceProvider::class,
     ],
 
 ];

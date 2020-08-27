@@ -6,7 +6,7 @@ namespace App\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Customer extends Facade
+class Vendor extends Facade
 {
     public static function getFacadeAccessor()
     {

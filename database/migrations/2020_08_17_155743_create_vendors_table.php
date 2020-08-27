@@ -15,17 +15,20 @@ class CreateVendorsTable extends Migration
     {
         Schema::create('vendors', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('org_name');
-            $table->string('vendor_banner');
-            $table->string('vendor_logo');
+            $table->string('org_name')->nullable();
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('email_verified_at')->nullable();
+            $table->string('vendor_banner')->nullable();
+            $table->string('vendor_logo')->nullable();
             $table->text('address');
-            $table->boolean('status');
-            $table->decimal('commission_rate');
-            $table->text('bank_details');
+            $table->boolean('status')->default(1);
+            $table->decimal('commission_rate')->default(5.00);
+            $table->text('bank_details')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
