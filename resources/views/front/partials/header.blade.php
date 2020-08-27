@@ -19,13 +19,13 @@
                             <li class="drop"><a href="">Men</a></li>
                             <li class="drop"><a href="">Women</a></li>
                             <li class="drop"><a href="">Kids</a></li>
-                            <li><a href="contact.html">contact</a></li>
+                            <li><a href="{{route('contact')}}">contact</a></li>
                         </ul>
                     </nav>
                     <div class="mobile-menu clearfix visible-xs visible-sm">
                         <nav id="mobile_dropdown">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="{{route('welcome')}}">Home</a></li>
                                 <li><a href="#">portfolio</a>
                                     <ul>
                                         <li><a href="portfolio-card-box-2.html">portfolio</a></li>
@@ -63,7 +63,6 @@
                         <li class="search search__open hidden-xs"><span class="ti-search"></span></li>
                         <li><a href="{{route('customer.login')}}"><span class="ti-user"></span></a></li>
                         <li class="cart__menu"><span class="ti-shopping-cart"></span></li>
-                        <li class="toggle__menu hidden-xs hidden-sm"><span class="ti-menu"></span></li>
                     </ul>
                 </div>
             </div>
