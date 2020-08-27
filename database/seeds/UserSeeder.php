@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
         Permission::create(['name' => 'Category']);
         Permission::create(['name' => 'Cms-page']);
         Permission::create(['name' => 'Cms-block']);
-        Permission::create(['name' => 'Role Permission']);
+        Permission::create(['name' => 'Role-Permission']);
         Permission::create(['name' => 'User']);
         Permission::create(['name' => 'Order']);
         Permission::create(['name' => 'Invoice']);
@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
         $role2 = Role::create(['name' => 'admin']);
         $role2->givePermissionTo('Cms-block');
         $role2->givePermissionTo('Product');
-        $role2->givePermissionTo('Role permission');
+        $role2->givePermissionTo('Role-Permission');
         $role2->givePermissionTo('Customer');
         $role2->givePermissionTo('User');
         $role2->givePermissionTo('Configuration');
@@ -80,15 +80,16 @@ class UserSeeder extends Seeder
         $user->assignRole($role3);
 
         for ($i = 1; $i <= env('SAMPLE_CUSTOMER_COUNT',20); $i++) {
-            $user = Factory(App\User::class)->create([
-                'name'     => $faker->name,
-                'password' => bcrypt('password'),
-                'email'    => $faker->email,
-            ]);
-            $user->assignRole($role4);
+//            $user = Factory(App\User::class)->create([
+//                'name'     => $faker->name,
+//                'password' => bcrypt('password'),
+//                'email'    => $faker->email,
+//            ]);
+//            $user->assignRole($role4);
 
             $customer = \App\Models\Customer::create([
-                'user_id'           => $user->id,
+                'password' => bcrypt('password'),
+                'email'    => $faker->email,
                 'first_name'        => $faker->firstName,
                 'last_name'         => $faker->lastName,
                 'gender'            => 'male',

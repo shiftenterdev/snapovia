@@ -16,13 +16,17 @@ class CreateCustomersTable extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->integer('customer_group_id')->unsigned();
-            $table->foreignId('user_id')->constrained();
+//            $table->foreignId('user_id')->constrained();
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('email');
+            $table->string('password');
+            $table->dateTime('email_varified_at')->nullable();
             $table->enum('gender',['male','female']);
             $table->string('country');
             $table->string('vat_id')->nullable();
             $table->boolean('status')->default(1);
+            $table->string('reset_token')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
