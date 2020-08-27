@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConfigurationsTable extends Migration
+class CreateEntityAttributesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateConfigurationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('configurations', function (Blueprint $table) {
-            $table->id();
-            $table->string('scope')->default('general');
-            $table->string('label');
-            $table->string('value');
-            $table->timestamps();
+        Schema::create('entity_attributes', function (Blueprint $table) {
+            $table->unsignedInteger('entity_id');
+            $table->unsignedInteger('attribute_id');
         });
     }
 
@@ -29,6 +26,6 @@ class CreateConfigurationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('configurations');
+        Schema::dropIfExists('attributes');
     }
 }
