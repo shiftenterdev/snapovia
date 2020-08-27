@@ -56,9 +56,9 @@ class Vendor
      * Get vendor object
      * @return \App\Models\Vendor
      */
-    public function user():\App\Models\Vendor
+    public function user():?\App\Models\Vendor
     {
-        return session(self::VENDOR_SESSION_KEY);
+        return session(self::VENDOR_SESSION_KEY)??null;
     }
 
     /**
@@ -67,6 +67,6 @@ class Vendor
      */
     public function update(\App\Models\Vendor $vendor):void
     {
-        session([self::VENDOR_SESSION_KEY,$vendor]);
+        session([self::VENDOR_SESSION_KEY=>$vendor]);
     }
 }

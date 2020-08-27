@@ -1,5 +1,6 @@
 <?php
 
+use App\Facades\Customer;
 use Illuminate\Support\Facades\Route;
 
 /**
