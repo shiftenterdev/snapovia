@@ -60,6 +60,7 @@ class ProductSeeder extends Seeder
          * Category
          */
         $i = 0;
+
         foreach ($this->categories as $level1 => $level2) {
 
             $category = \App\Models\Category::create([
