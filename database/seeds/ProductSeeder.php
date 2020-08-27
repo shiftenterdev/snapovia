@@ -15,11 +15,13 @@ class ProductSeeder extends Seeder
         'Color'       => ['Blue', 'Green', 'Red', 'White', 'Purple', 'Violet', 'Pink', 'Gray', 'Navy Blue'],
         'Size'        => ['22', '23', '25', 'M', 'L', 'XL', 'XXL', 'S'],
         'Manufacture' => ['BD', 'US', 'IN', 'SE', 'UK'],
+        'Length'      => 'text',
+        'Weight'      => 'text',
     ];
 
     public $categories = [
         'Men'         => ['Top' => ['Shirt', 'T-shirt'], 'Bottom' => ['Pants'], 'Trends' => ['Tie', 'Cap']],
-        'Women'       => ['Top' => ['Saree', 'Tops', 'Tee'], 'Bottom' => ['Pant', 'Palajo']],
+        'Women'       => ['Top' => ['Saree', 'Tops', 'Tee'], 'Bottom' => ['Pant', 'Palajo','Lehenga','Skirt']],
         'Kids'        => ['Boys' => ['Shirt', 'Pants'], 'Girls' => ['Skirt', 'Dress']],
         'Electronics' => ['Home' => ['Fan', 'TV', 'Radio'], 'Office' => ['Laptop', 'Air Condition', 'Air Cooler']],
         'Phone'       => ['Smartphone' => ['Apple', 'Samsung', 'LG'], 'Feature Phone' => ['Nokia', 'Erricson']],
@@ -34,18 +36,23 @@ class ProductSeeder extends Seeder
         $category_ids = [];
 
         foreach ($this->attributes as $name => $attribute_options) {
+            $fieldType = 'select';
+            if (!is_array($attribute_options)) {
+                $fieldType = $attribute_options;
+            }
             $attribute = \App\Models\Attribute::create([
                 'name'                 => $name,
                 'label'                => $name,
                 'slug'                 => Str::slug($name),
                 'entity_type'          => 'product',
-                'attribute_field_type' => 'select',
+                'attribute_field_type' => $fieldType,
             ]);
-
-            foreach ($attribute_options as $value) {
-                $attribute->options()->create([
-                    'option_value' => $value,
-                ]);
+            if (is_array($attribute_options)) {
+                foreach ($attribute_options as $value) {
+                    $attribute->options()->create([
+                        'option_value' => $value,
+                    ]);
+                }
             }
         }
 

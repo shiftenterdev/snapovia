@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use App\Models\Attribute;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -41,8 +42,10 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::get();
+        $attributes = Attribute::product();
         return view('admin.product.create')->with([
-            'categories' => $categories
+            'categories' => $categories,
+            'attributes' => $attributes,
         ]);
     }
 
@@ -59,13 +62,13 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::get();
-        return view('admin.product.edit',compact('product','categories'));
+        return view('admin.product.edit', compact('product', 'categories'));
     }
 
-    public function update(ProductRequest $request,Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
         $product->update($request);
         return redirect()->route('admin.product.index')
-            ->with('message','Product updated successfully');
+            ->with('message', 'Product updated successfully');
     }
 }
