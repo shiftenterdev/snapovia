@@ -114,7 +114,7 @@
                         <ul class="footer__menu">
                             <li><a href="{{route('welcome')}}">Home</a></li>
                             <li><a href="shop.html">Product</a></li>
-                            <li><a href="contact">Contact Us</a></li>
+                            <li><a href="{{route('contact')}}">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>

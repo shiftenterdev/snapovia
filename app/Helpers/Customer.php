@@ -56,9 +56,9 @@ class Customer
      * Get customer object
      * @return \App\Models\Customer
      */
-    public function user():\App\Models\Customer
+    public function user():?\App\Models\Customer
     {
-        return session(self::CUSTOMER_SESSION_KEY);
+        return session(self::CUSTOMER_SESSION_KEY)??null;
     }
 
     /**
@@ -67,6 +67,6 @@ class Customer
      */
     public function update(\App\Models\Customer $customer):void
     {
-        session([self::CUSTOMER_SESSION_KEY,$customer]);
+        session([self::CUSTOMER_SESSION_KEY=>$customer]);
     }
 }
