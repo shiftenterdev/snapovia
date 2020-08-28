@@ -5,16 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CustomerRequest;
 use App\Models\Customer;
+use App\QueryFilters\Status;
 use App\User;
+use Illuminate\Pipeline\Pipeline;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
     public function index()
     {
-        $customers = Customer::paginate(20);
         return view('admin.customer.index')->with([
-            'customers' => $customers
+            'customers' => Customer::grid()
         ]);
     }
 
