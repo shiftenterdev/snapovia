@@ -46,16 +46,16 @@ Route::namespace('Front')->group(function () {
      */
     Route::namespace('Customer')->group(function () {
 
-        Route::get('/customer/account/login', 'LoginController@index')->name('customer.login');
-        Route::post('/customer/account/login', 'LoginController@login')->name('customer.login.post');
-        Route::get('/customer/account/create', 'RegisterController@index')->name('customer.create.post');
-        Route::post('/customer/account/create', 'RegisterController@createPost')->name('customer.create.post');
-        Route::get('/customer/account/logout', 'LoginController@logout')->name('customer.logout');
+        Route::get('/customer/login', 'LoginController@index')->name('customer.login');
+        Route::post('/customer/login', 'LoginController@login')->name('customer.login.post');
+        Route::get('/customer/create', 'RegisterController@index')->name('customer.create');
+        Route::post('/customer/create', 'RegisterController@createPost')->name('customer.create.post');
+        Route::get('/customer/logout', 'LoginController@logout')->name('customer.logout');
 
-        Route::get('/customer/account/forgotpassword', 'PasswordController@forgotPassword')->name('forgot.password');
-        Route::post('/customer/account/forgotpasswordpost', 'PasswordController@forgotPasswordPost')->name('forgot.password.post');
+        Route::get('/customer/forgotpassword', 'PasswordController@forgotPassword')->name('forgot.password');
+        Route::post('/customer/forgotpasswordpost', 'PasswordController@forgotPasswordPost')->name('forgot.password.post');
         Route::get('/customer/{customer_id}/password/resetLinkToken/{token}', 'PasswordController@createPassword')->name('create.password');
-        Route::post('/customer/account/createpasswordpost', 'PasswordController@createPasswordPost')->name('create.password.post');
+        Route::post('/customer/createpasswordpost', 'PasswordController@createPasswordPost')->name('create.password.post');
 
         Route::middleware('customer')->group(function () {
             Route::get('/customer/dashboard', 'HomeController@index')->name('customer.dashboard');
