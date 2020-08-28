@@ -28,14 +28,16 @@
                                         <div class="form-group">
                                             <label for="">Firstname</label>
                                             <input type="text" name="first_name"
-                                                   class="form-control form-control-sm" value="{{request('first_name')}}">
+                                                   class="form-control form-control-sm"
+                                                   value="{{request('first_name')}}">
                                         </div>
                                     </div>
                                     <div class="col-3">
                                         <div class="form-group">
                                             <label for="">Lastname</label>
                                             <input type="text" name="last_name"
-                                                   class="form-control form-control-sm" value="{{request('last_name')}}">
+                                                   class="form-control form-control-sm"
+                                                   value="{{request('last_name')}}">
                                         </div>
                                     </div>
                                     <div class="col-3">
@@ -93,7 +95,7 @@
                                         <td>
                                             <a href="{{route('admin.customer.edit',$c->id)}}" class="text-muted">
                                                 <i class="fas fa-pen"></i>
-                                            </a> &nbsp;
+                                            </a>
                                             <a href="{{route('admin.customer.destroy',$c->id)}}" class="text-muted">
                                                 <i class="fas fa-trash"></i>
                                             </a>

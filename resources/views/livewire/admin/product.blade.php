@@ -2,17 +2,13 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-
                 <div class="col-sm-6">
-
                     <a href="{{route('admin.product.create')}}" class="btn btn-dark">
                         <i class="fas fa-plus"></i> Add New Product
                     </a>
-
 {{--                    <button type="button" class="btn btn-warning show-filter">--}}
 {{--                        <i class="fas fa-filter"></i> Filter--}}
 {{--                    </button>--}}
-
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
