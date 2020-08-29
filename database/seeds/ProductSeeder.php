@@ -25,8 +25,8 @@ class ProductSeeder extends Seeder
         'Computer & Office'    => ['Boys' => ['Shirt', 'Pants'], 'Girls' => ['Skirt', 'Dress']],
         'Jewelry & Watches'    => ['Home' => ['Fan', 'TV', 'Radio'], 'Office' => ['Laptop', 'Air Condition', 'Air Cooler']],
         'Bags & Shoes'         => ['Smartphone' => ['Apple', 'Samsung', 'LG'], 'Feature Phone' => ['Nokia', 'Erricson']],
-        'Automobiles'          => ['Smartphone' => ['Apple', 'Samsung', 'LG'], 'Feature Phone' => ['Nokia', 'Erricson']],
-        'Consumer Electronics' => ['Smartphone' => ['Apple', 'Samsung', 'LG'], 'Feature Phone' => ['Nokia', 'Erricson']],
+        'Automobiles'          => ['Car' => ['Apple', 'Samsung', 'LG'], 'Motorcycle' => ['Nokia', 'Erricson']],
+        'Consumer Electronics' => ['Refregerator' => ['Apple', 'Samsung', 'LG'], 'Washing Machine' => ['Nokia', 'Erricson']],
     ];
 
     public $productType = ['simple', 'configurable'];

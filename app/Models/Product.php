@@ -60,9 +60,12 @@ class Product extends Model implements HasMedia
             ->paginate($this->paginateCount);
     }
 
-    public function scopeSearch()
+    public function scopeSearch($query,$search)
     {
-
+        return $query->when($search,function ($q)use ($search){
+           return $q->where('name','LIKE','%'.$search.'%')
+           ->orWhere('sku','LIKE',$search.'%');
+        })->take(10);
     }
 
     public function relatedProducts()
@@ -111,5 +114,10 @@ class Product extends Model implements HasMedia
     public function attributes()
     {
         return $this->hasManyThrough(Attribute::class,EntityAttribute::class,'entity_id','id','id','attribute_id');
+    }
+
+    public function attributeValue()
+    {
+        return $this->hasMany(EntityAttribute::class);
     }
 }
