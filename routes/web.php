@@ -109,6 +109,12 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
         Route::resource('vendor', 'VendorController', ['as' => 'admin']);
 
+        Route::resource('vendor-product', 'VendorProductController', ['as' => 'admin']);
+
+        Route::resource('vendor-order', 'VendorOrderController', ['as' => 'admin']);
+
+        Route::resource('vendor-settlement', 'VendorSettlementController', ['as' => 'admin']);
+
         Route::resource('user', 'UserController', ['as' => 'admin']);
 
         Route::resource('role', 'RoleController', ['as' => 'admin']);

@@ -189,13 +189,36 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{route('admin.vendor.index')}}" class="nav-link {{request()->is('adminportal/vendor*')?'active':''}}">
+                <li class="nav-item has-treeview">
+                    <a href="javascript:" class="nav-link">
                         <i class="nav-icon fas fa-user-check"></i>
                         <p>
                             Vendor
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('admin.vendor.index')}}" class="nav-link {{request()->is('adminportal/vendor*')?'active':''}}">
+                                <p>Vendor List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.vendor-product.index')}}" class="nav-link {{request()->is('adminportal/vendor-product*')?'active':''}}">
+                                <p>Vendor Product</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.vendor-order.index')}}" class="nav-link {{request()->is('adminportal/vendor-order*')?'active':''}}">
+                                <p>Vendor Order</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.vendor-settlement.index')}}" class="nav-link {{request()->is('adminportal/vendor-settlement*')?'active':''}}">
+                                <p>Vendor Settlement</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="javascript:" class="nav-link">

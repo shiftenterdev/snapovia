@@ -30,6 +30,11 @@ class Product extends Model implements HasMedia
         return $this->hasMany(Product::class, 'parent_id');
     }
 
+    public function tax()
+    {
+        return $this->belongsTo(TaxClass::class);
+    }
+
     public function scopeGrid($query, $search)
     {
         return $query->when($search['id'] != '', function ($q) use ($search) {

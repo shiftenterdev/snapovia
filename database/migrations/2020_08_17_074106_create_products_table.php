@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('url_key')->unique();
             $table->boolean('is_new')->default(0);
             $table->boolean('featured')->default(0);
+            $table->string('tax_class_id',64)->default('None');
             $table->decimal('qty')->default(30);
             $table->string('color')->nullable();
             $table->string('menufacture')->nullable();

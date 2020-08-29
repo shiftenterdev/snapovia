@@ -19,10 +19,12 @@ class CreateQuoteItemsTable extends Migration
             $table->integer('product_id');
             $table->string('sku');
             $table->string('name');
-            $table->string('product_type');
-            $table->string('unit_price');
-            $table->string('quantity');
-            $table->string('sub_total');
+            $table->enum('product_type', ['simple', 'configurable', 'grouped', 'virtual']);
+            $table->string('product_attribute')->nullable();
+            $table->integer('unit_price');
+            $table->integer('qty');
+            $table->integer('discount_price')->default(0);
+            $table->integer('row_total');
             $table->timestamps();
         });
     }

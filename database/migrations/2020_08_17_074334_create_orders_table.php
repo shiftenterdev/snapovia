@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer('order_id');
             $table->integer('invoice_id');
             $table->string('quote_id');
+            $table->string('customer_ip',32);
             $table->integer('order_status');
             $table->integer('payment_status');
             $table->integer('delivery_status')->nullable();

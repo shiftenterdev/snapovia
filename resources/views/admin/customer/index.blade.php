@@ -63,10 +63,6 @@
                     <div class="card">
                         <div class="card-header border-0 bg-gradient-info d-flex p-0">
                             <h3 class="card-title p-3"><strong>Customers</strong></h3>
-                            <small class="p-3">Showing {{($customers->currentpage()-1)*$customers->perpage()+1}}
-                                to {{$customers->currentpage()*$customers->perpage()}}
-                                of {{$customers->total()}} entries
-                            </small>
                         </div>
                         <div class="card-body table-responsive p-0">
                             <table class="table table-striped table-valign-middle">
@@ -106,7 +102,7 @@
                             </table>
                         </div>
                         <div class="card-footer clearfix flex">
-                            {{$customers->appends(request()->query())->links()}}
+                            <x-admin.pagination :collection="$customers"/>
                         </div>
                     </div>
                 </div>

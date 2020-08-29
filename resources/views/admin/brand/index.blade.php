@@ -56,8 +56,8 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="card-footer clearfix">
-                                {{$brands->appends(request()->query())->links()}}
+                            <div class="card-footer flex clearfix">
+                                <x-admin.pagination :collection="$brands"/>
                             </div>
 
                         </div>

@@ -9,23 +9,20 @@ class Vendor extends Model
 {
     protected $guarded = [];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    public $hidden = ['create_at','updated_at'];
 
     public function orders()
     {
-        return $this->hasMany(VendorOrder::class);
+        return $this->hasManyThrough(Product::class,VendorOrder::class,'vendor_id','id','id','order_id');
     }
 
     public function products()
     {
-        return $this->hasMany(VendorProduct::class);
+        return $this->hasManyThrough(Product::class,VendorProduct::class,'vendor_id','id','id','product_id');
     }
 
     public function settlements()
     {
-        return $this->hasMany(VendorSettlement::class);
+        return $this->hasManyThrough(Product::class,VendorSettlement::class,'vendor_id','id','id','settlement_id');
     }
 }

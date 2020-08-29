@@ -19,6 +19,49 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
+
+                        <div class="card-body">
+                            <form method="get" autocomplete="off">
+                                <div class="row">
+
+                                    <div class="col-3">
+                                        <div class="form-group">
+                                            <label for="">ID</label>
+                                            <input type="text" name="entity_id"
+                                                   class="form-control form-control-sm"
+                                                   value="{{request('entity_id')}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-group">
+                                            <label for="">Name</label>
+                                            <input type="text" name="name"
+                                                   class="form-control form-control-sm"
+                                                   value="{{request('name')}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-group">
+                                            <label for="">Urlkey</label>
+                                            <input type="text" name="url_key"
+                                                   class="form-control form-control-sm"
+                                                   value="{{request('url_key')}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <button type="reset" class="btn btn-warning btn-sm">Reset</button>
+                                            <button type="submit" class="btn btn-info btn-sm"><i
+                                                        class="fas fa-filter"></i> Filter
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card">
                         <div class="card-header border-0 bg-gradient-info d-flex p-0">
                             <h3 class="card-title p-3"><strong>Categories</strong></h3>
                         </div>
@@ -53,10 +96,7 @@
                                 </tbody>
                             </table>
                             <div class="card-footer clearfix flex">
-                                <div>Showing {{($categories->currentpage()-1)*$categories->perpage()+1}} to {{$categories->currentpage()*$categories->perpage()}}
-                                    of  {{$categories->total()}} entries
-                                </div>
-                                {{$categories->appends(request()->query())->links()}}
+                                <x-admin.pagination :collection="$categories"/>
                             </div>
                         </div>
                     </div>
