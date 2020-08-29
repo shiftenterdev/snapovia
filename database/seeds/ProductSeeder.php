@@ -37,6 +37,9 @@ class ProductSeeder extends Seeder
         $faker->addProvider(new \Bezhanov\Faker\Provider\Commerce($faker));
         $category_ids = [];
 
+        /**
+         * Attribute
+         */
         foreach ($this->attributes as $name => $attribute_options) {
             $fieldType = 'select';
             if (!is_array($attribute_options)) {
@@ -192,6 +195,16 @@ class ProductSeeder extends Seeder
 //                    $associatedProduct->attributes()->create([
 //
 //                    ]);
+                    $color = \App\Models\Attribute::productAttribute('color')->firstOrFail();
+
+                    if ($color) {
+                        $associatedProduct->attributes()->sync($color->id);
+                    }
+
+                    $size = \App\Models\Attribute::productAttribute('size')->firstOrFail();
+                    if ($size) {
+                        $associatedProduct->attributes()->sync($size->id);
+                    }
 
                     \App\Models\UrlResolver::create([
                         'entity_id'   => $associatedProduct->id,

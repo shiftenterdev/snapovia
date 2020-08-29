@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class EntityAttribute extends Model
+class EntityAttribute extends Pivot
 {
     protected $guarded = [];
 
