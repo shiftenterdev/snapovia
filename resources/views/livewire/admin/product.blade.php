@@ -107,8 +107,8 @@
                             <table class="table table-striped table-valign-middle">
                                 <thead class="bg-dark">
                                 <tr>
-                                    <th>ID</th>
-                                    <th>Sku</th>
+                                    <th><i class="fas fa-caret-up"></i> ID</th>
+                                    <th><i class="fas fa-caret-up"></i> Sku</th>
                                     <th>Thumbnail</th>
                                     <th>Name</th>
                                     <th>Type</th>

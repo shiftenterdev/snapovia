@@ -19,11 +19,11 @@ class Product extends Component
         'product_type' => ''
     ];
 
-    //protected $updatesQueryString = ['search'];
+    protected $updatesQueryString = ['search'];
 
-    protected $updatesQueryString = [
-        'search' => ['sku'=>['except' => '']],
-    ];
+//    protected $updatesQueryString = [
+//        'search[name]' => ['except' => ''],
+//    ];
 
     public function mount()
     {
