@@ -26,10 +26,11 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th>Customer</th>
-                                        <th>Customer IP</th>
-                                        <th>Subtotal</th>
+                                        <th>Email</th>
+                                        <th>Status</th>
                                         <th>Total</th>
+                                        <th>Due</th>
+                                        <th>Sattlement</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
