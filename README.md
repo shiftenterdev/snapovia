@@ -1,12 +1,14 @@
-## About butikShop [Under development..]
+<p align="center"><img src="https://github.com/shiftenterdev/butikshop/blob/master/public/favicon.png?raw=true" width="200"></p>
 
-[![Build Status](https://travis-ci.org/shiftenterdev/butikshop.svg?branch=master)](https://travis-ci.org/shiftenterdev/butikshop)
-[![Issues](https://img.shields.io/github/issues/shiftenterdev/butikshop)](https://img.shields.io/github/issues/shiftenterdev/butikshop)
-[![Development](https://img.shields.io/badge/Development-onprogress-orange)](https://img.shields.io/badge/Development-onprogress-orange)
-[![GitHub license](https://img.shields.io/github/license/shiftenterdev/butikshop)](https://github.com/shiftenterdev/butikshop/blob/master/LICENSE)
-[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2Fshiftenterdev)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fshiftenterdev%2Fbutikshop)
+<p align="center">
+<a href="https://travis-ci.org/shiftenterdev/butikshop"><img src="https://travis-ci.org/shiftenterdev/butikshop.svg?branch=master" alt=""></a>
+<a href="https://img.shields.io/github/issues/shiftenterdev/butikshop"><img src="https://img.shields.io/github/issues/shiftenterdev/butikshop" alt=""></a>
+<a href="https://img.shields.io/badge/Development-onprogress-orange"><img src="https://img.shields.io/badge/Development-onprogress-orange" alt=""></a>
+</p>
 
-ButikShop(single store based) is an ecommerce framework built with laravel and idea from Magento. This combination makes a new ecommerce platfrom which will be faster and optimized in process and user experience. 
+## About Snapovia [Under development..]
+
+Sanpovia(single store based) is an ecommerce framework built with laravel and idea from Magento. This combination makes a new ecommerce platfrom which will be faster and optimized in process and user experience. 
 We will have the following features:
 
 - Laravel framework
@@ -63,6 +65,10 @@ $ php artisan serve
 
 > Admin url: http://127.0.0.1:8000/adminportal/login \
 > Login: `super@admin.com` \
+> Password: `password`
+
+> Admin url: http://127.0.0.1:8000/customer/login \
+> Login: `customer@mail.com` \
 > Password: `password`
 
 

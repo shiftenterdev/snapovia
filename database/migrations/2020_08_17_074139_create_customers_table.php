@@ -23,6 +23,7 @@ class CreateCustomersTable extends Migration
             $table->string('password');
             $table->dateTime('email_verified_at')->nullable();
             $table->enum('gender',['male','female']);
+            $table->date('dob')->nullable();
             $table->string('country')->default('US');
             $table->string('vat_id')->nullable();
             $table->boolean('status')->default(1);

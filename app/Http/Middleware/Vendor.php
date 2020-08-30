@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class Customer
+class Vendor
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class Customer
      */
     public function handle($request, Closure $next)
     {
-        if(\App\Facades\Customer::check()) {
+        if(\App\Facades\Vendor::check()) {
             return $next($request);
         }
         return redirect()->route('customer.login');
