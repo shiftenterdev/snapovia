@@ -64,6 +64,7 @@ Route::namespace('Front')->group(function () {
         Route::middleware('customer')->group(function () {
             Route::get('/customer/dashboard', 'HomeController@index')->name('customer.dashboard');
             Route::get('/customer/wishlist', 'WishlistController@index')->name('customer.wishlist');
+            Route::get('/customer/wishlist/{product_sku}', 'WishlistController@store')->name('add.to.wishlist');
             Route::get('/customer/info', 'HomeController@info')->name('customer.info');
             Route::get('/customer/order', 'OrderController@index')->name('customer.order');
             Route::get('/customer/review', 'ReviewController@index')->name('customer.review');
