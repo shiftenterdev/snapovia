@@ -62,11 +62,13 @@ Route::namespace('Front')->group(function () {
         Route::post('/customer/createpasswordpost', 'PasswordController@createPasswordPost')->name('create.password.post');
 
         Route::middleware('customer')->group(function () {
-            Route::get('/customer/dashboard', 'HomeController@index')->name('customer.dashboard');
             Route::get('/customer/wishlist', 'WishlistController@index')->name('customer.wishlist');
             Route::get('/customer/wishlist/{product_sku}', 'WishlistController@store')->name('add.to.wishlist');
-            Route::get('/customer/info', 'HomeController@info')->name('customer.info');
+            Route::get('/customer/wishlist/{product_sku}/remove', 'WishlistController@remove')->name('remove.from.wishlist');
+            Route::get('/customer/info', 'HomeController@index')->name('customer.info');
             Route::get('/customer/order', 'OrderController@index')->name('customer.order');
+            Route::resource('/customer/address', 'AddressController',['as' => 'customer']);
+            Route::resource('/customer/payment-methods', 'PaymentMethodsController',['as' => 'customer']);
             Route::get('/customer/review', 'ReviewController@index')->name('customer.review');
         });
 

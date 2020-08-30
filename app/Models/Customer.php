@@ -27,6 +27,11 @@ class Customer extends Model
             ->paginate($this->paginateCount);
     }
 
+    public function getCustomerIdAttribute()
+    {
+        return $this->id;
+    }
+
     public function address()
     {
         return $this->hasMany(CustomerAddress::class);

@@ -20,4 +20,11 @@ class WishlistController extends Controller
         Customer::user()->wishlist()->attach($product->id);
         return redirect()->route('customer.wishlist');
     }
+
+    public function remove($product_sku)
+    {
+        $product = Product::whereSku($product_sku)->firstOrFail();
+        Customer::user()->wishlist()->detach($product->id);
+        return redirect()->route('customer.wishlist');
+    }
 }

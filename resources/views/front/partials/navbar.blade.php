@@ -362,7 +362,7 @@
                 </li>
                 @if(Customer::check())
                     <li class="nav-item ml-lg-n4">
-                        <a class="nav-link" href="{{route('customer.dashboard')}}">
+                        <a class="nav-link" href="{{route('customer.info')}}">
                             <i class="fe fe-user"></i>
                         </a>
                     </li>
