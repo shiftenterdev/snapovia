@@ -18,7 +18,7 @@ Route::namespace('Front')->group(function () {
     // Vue route will resume later(experimental)
     Route::view('/vue/{any}', 'front.layouts.vue')->where('any', '.*');
 
-    Route::get('category', 'CatalogController@allProducts')->name('category');
+    Route::get('category', 'CatalogController@category')->name('category');
 
     Route::resource('search', 'SearchController')->only(['index','show']);
 
