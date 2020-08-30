@@ -8,6 +8,8 @@ class Search extends Component
 {
     public $search = '';
 
+    protected $updatesQueryString = ['search'];
+
     public function render()
     {
         $response = \App\Models\Product::search($this->search);

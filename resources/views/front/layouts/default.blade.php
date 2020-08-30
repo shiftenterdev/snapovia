@@ -10,7 +10,7 @@
 
     <!-- meta tag     -->
     <!-- Primary Meta Tags -->
-    <title>@yield('title') Snapovia</title>
+    <title>@yield('title')Snapovia</title>
     <meta name="title" content="Snapovia wear future trends">
     <meta name="description"
           content="Exciting fashion items at your fingertips. Just grab your one quickly and conveniently.">
