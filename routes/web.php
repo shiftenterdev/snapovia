@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Route;
 /**
  * Frontend routes
  */
-
+Route::get('/locale/{p}',function($lang){
+    session(['locale'=>$lang]);
+    return redirect()->back();
+})->name('lang');
 
 Route::namespace('Front')->group(function () {
 
@@ -37,6 +40,7 @@ Route::namespace('Front')->group(function () {
     Route::get('career', 'CmsController@career')->name('career');
     Route::get('terms', 'CmsController@terms')->name('terms');
     Route::get('privacy-policy', 'CmsController@privacy')->name('privacy');
+    Route::get('discount', 'CatalogController@discount')->name('discount');
 
     Route::resource('blog', 'BlogController')->only(['index','show']);
 

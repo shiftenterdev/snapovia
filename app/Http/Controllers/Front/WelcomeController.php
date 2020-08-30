@@ -9,6 +9,9 @@ class WelcomeController extends Controller
 {
     public function __invoke()
     {
-        return view('front.welcome');
+        $women = [];
+        $men = [];
+        $gadget = [];
+        return view('front.welcome',compact('women','men','gadget'));
     }
 }

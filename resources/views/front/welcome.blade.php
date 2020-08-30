@@ -1,2146 +1,1132 @@
 @extends('front.layouts.default')
 
 @section('content')
-    <div class="body__overlay"></div>
-    <!-- Start Offset Wrapper -->
-    <div class="offset__wrapper">
-        <!-- Start Search Popap -->
-        <div class="search__area">
-            <div class="container" >
-                <div class="row" >
-                    <div class="col-md-12" >
-                        <div class="search__inner">
-                            <form action="#" method="get">
-                                <input placeholder="Search here... " type="text">
-                                <button type="submit"></button>
-                            </form>
-                            <div class="search__close__btn">
-                                <span class="search__close__btn_icon"><i class="zmdi zmdi-close"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Search Popap -->
-        <!-- Start Cart Panel -->
-        <div class="shopping__cart">
-            <div class="shopping__cart__inner">
-                <div class="offsetmenu__close__btn">
-                    <a href="#"><i class="zmdi zmdi-close"></i></a>
-                </div>
-                <div class="shp__cart__wrap">
-                    <div class="shp__single__product">
-                        <div class="shp__pro__thumb">
-                            <a href="#">
-                                <img src="{{asset('frontend/images/product/sm-img/1.jpg')}}" alt="product images">
-                            </a>
-                        </div>
-                        <div class="shp__pro__details">
-                            <h2><a href="product-details.html">BO&Play Wireless Speaker</a></h2>
-                            <span class="quantity">QTY: 1</span>
-                            <span class="shp__price">$105.00</span>
-                        </div>
-                        <div class="remove__btn">
-                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
-                        </div>
-                    </div>
-                    <div class="shp__single__product">
-                        <div class="shp__pro__thumb">
-                            <a href="#">
-                                <img src="{{asset('frontend/images/product/sm-img/2.jpg')}}" alt="product images">
-                            </a>
-                        </div>
-                        <div class="shp__pro__details">
-                            <h2><a href="product-details.html">Brone Candle</a></h2>
-                            <span class="quantity">QTY: 1</span>
-                            <span class="shp__price">$25.00</span>
-                        </div>
-                        <div class="remove__btn">
-                            <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <ul class="shoping__total">
-                    <li class="subtotal">Subtotal:</li>
-                    <li class="total__price">$130.00</li>
-                </ul>
-                <ul class="shopping__btn">
-                    <li><a href="cart.html">View Cart</a></li>
-                    <li class="shp__checkout"><a href="checkout.html">Checkout</a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- End Cart Panel -->
-    </div>
-    <!-- End Offset Wrapper -->
-    <!-- Start Feature Product -->
-    <section class="categories-slider-area bg__white">
+    <!-- PROMO -->
+    <div class="py-3 bg-dark bg-pattern mb-4">
         <div class="container">
             <div class="row">
-                <!-- Start Left Feature -->
-                <div class="col-md-9 col-lg-9 col-sm-8 col-xs-12 float-left-style">
-                    <!-- Start Slider Area -->
-                    <div class="slider__container slider--one">
-                        <div class="slider__activation__wrap owl-carousel owl-theme">
-                            <!-- Start Single Slide -->
-                            <div class="slide slider__full--screen slider-height-inherit slider-text-right" style="background: rgba(0, 0, 0, 0) url('http://lorempixel.com/1920/800/fashion') no-repeat scroll center center / cover ;">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-10 col-lg-8 col-md-offset-2 col-lg-offset-4 col-sm-12 col-xs-12">
-                                            <div class="slider__inner">
-                                                <h1>New Product <span class="text--theme">Collection</span></h1>
-                                                <div class="slider__btn">
-                                                    <a class="htc__btn" href="cart.html">shop now</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Slide -->
-                            <!-- Start Single Slide -->
-                            <div class="slide slider__full--screen slider-height-inherit  slider-text-left" style="background: rgba(0, 0, 0, 0) url('http://lorempixel.com/1920/800/fashion') no-repeat scroll center center / cover ;">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-8 col-lg-8 col-sm-12 col-xs-12">
-                                            <div class="slider__inner">
-                                                <h1>New Product <span class="text--theme">Collection</span></h1>
-                                                <div class="slider__btn">
-                                                    <a class="htc__btn" href="cart.html">shop now</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Slide -->
-                        </div>
+                <div class="col-12">
+
+                    <!-- Text -->
+                    <div class="text-center text-white">
+              <span class="heading-xxs letter-spacing-xl">
+                ⚡️ {{__('Happy Holiday Deals on Everything')}} ⚡️
+              </span>
                     </div>
-                    <!-- Start Slider Area -->
+
                 </div>
-                <div class="col-md-3 col-lg-3 col-sm-4 col-xs-12 float-right-style">
-                    <div class="categories-menu mrg-xs">
-                        <div class="category-heading">
-                            <h3> Browse Categories</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <section>
+        <div class="row no-gutters d-block d-lg-flex flickity flickity-lg-none" data-flickity='{"watchCSS": true}'>
+
+            <!-- Item -->
+            <div class="col-12 col-md-6 col-lg-4 d-flex flex-column bg-cover"
+                 style="background-image: url({{asset('frontend/assets/img/covers/cover-1.jpg')}});">
+                <div class="card bg-dark-5 bg-hover text-white text-center" style="min-height: 470px;">
+                    <div class="card-body mt-auto mb-n11 py-8">
+
+                        <!-- Heading -->
+                        <h1 class="mb-0 font-weight-bolder">
+                            {{__('Women')}}
+                        </h1>
+
+                    </div>
+                    <div class="card-body mt-auto py-8">
+
+                        <!-- Button -->
+                        <a class="btn btn-white stretched-link" href="shop.html">
+                            Shop Women <i class="fe fe-arrow-right ml-2"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card -->
+            <div class="col-12 col-md-6 col-lg-4 d-flex flex-column bg-cover"
+                 style="background-image: url({{asset('frontend/assets/img/covers/cover-2.jpg')}});">
+                <div class="card bg-dark-5 bg-hover text-white text-center" style="min-height: 470px;">
+                    <div class="card-body mt-auto mb-n11 py-8">
+
+                        <!-- Heading -->
+                        <h1 class="mb-0 font-weight-bolder">
+                            {{__('Men')}}
+                        </h1>
+
+                    </div>
+                    <div class="card-body mt-auto py-8">
+
+                        <!-- Button -->
+                        <a class="btn btn-white stretched-link" href="shop.html">
+                            Shop Men <i class="fe fe-arrow-right ml-2"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card -->
+            <div class="col-12 col-md-6 col-lg-4 d-flex flex-column bg-cover"
+                 style="background-image: url({{asset('frontend/assets/img/covers/cover-3.jpg')}});">
+                <div class="card bg-dark-5 bg-hover text-white text-center" style="min-height: 470px;">
+                    <div class="card-body mt-auto mb-n11 py-8">
+
+                        <!-- Heading -->
+                        <h1 class="mb-0 font-weight-bolder">
+                            {{__('Kids')}}
+                        </h1>
+
+                    </div>
+                    <div class="card-body mt-auto py-8">
+
+                        <!-- Button -->
+                        <a class="btn btn-white stretched-link" href="shop.html">
+                            Shop Kids <i class="fe fe-arrow-right ml-2"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="pt-7">
+        <div class="container">
+            <div class="row pb-7 border-bottom">
+                <div class="col-12 col-md-6 col-lg-3">
+
+                    <!-- Item -->
+                    <div class="d-flex mb-6 mb-lg-0">
+
+                        <!-- Icon -->
+                        <i class="fe fe-truck font-size-lg text-primary"></i>
+
+                        <!-- Body -->
+                        <div class="ml-6">
+
+                            <!-- Heading -->
+                            <h6 class="heading-xxs mb-1">
+                                {{__('Free shipping')}}
+                            </h6>
+
+                            <!-- Text -->
+                            <p class="mb-0 font-size-sm text-muted">
+                                {{__('From all orders over $100')}}
+                            </p>
+
                         </div>
-                        <div class="category-menu-list">
-                            <ul>
-                                <li><a href="#"><img alt="" src="{{asset('frontend/images/icons/thum2.png')}}"> Women’s Clothing <i class="zmdi zmdi-chevron-right"></i></a>
-                                    <div class="category-menu-dropdown">
-                                        <div class="category-part-1 category-common mb--30">
-                                            <h4 class="categories-subtitle"> Jewelry & Watches</h4>
-                                            <ul>
-                                                <li><a href="#"> Men’s Clothing</a></li>
-                                                <li><a href="#"> Computer & Office</a></li>
-                                                <li><a href="#"> Jewelry & Watches</a></li>
-                                                <li><a href="#"> Bags & Shoes</a></li>
-                                                <li><a href="#"> Phones & Accessories</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="category-part-2 category-common mb--30">
-                                            <h4 class="categories-subtitle"> Jewelry & Watches</h4>
-                                            <ul>
-                                                <li><a href="#"> Men’s Clothing</a></li>
-                                                <li><a href="#"> Computer & Office</a></li>
-                                                <li><a href="#"> Jewelry & Watches</a></li>
-                                                <li><a href="#"> Bags & Shoes</a></li>
-                                                <li><a href="#"> Phones & Accessories</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="category-part-3 category-common">
-                                            <h4 class="categories-subtitle"> Jewelry & Watches</h4>
-                                            <ul>
-                                                <li><a href="#"> Men’s Clothing</a></li>
-                                                <li><a href="#"> Computer & Office</a></li>
-                                                <li><a href="#"> Jewelry & Watches</a></li>
-                                                <li><a href="#"> Bags & Shoes</a></li>
-                                                <li><a href="#"> Phones & Accessories</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="category-part-4 category-common">
-                                            <h4 class="categories-subtitle"> Jewelry & Watches</h4>
-                                            <ul>
-                                                <li><a href="#"> Men’s Clothing</a></li>
-                                                <li><a href="#"> Computer & Office</a></li>
-                                                <li><a href="#"> Jewelry & Watches</a></li>
-                                                <li><a href="#"> Bags & Shoes</a></li>
-                                                <li><a href="#"> Phones & Accessories</a></li>
-                                            </ul>
-                                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+
+                    <!-- Item -->
+                    <div class="d-flex mb-6 mb-lg-0">
+
+                        <!-- Icon -->
+                        <i class="fe fe-repeat font-size-lg text-primary"></i>
+
+                        <!-- Body -->
+                        <div class="ml-6">
+
+                            <!-- Heading -->
+                            <h6 class="mb-1 heading-xxs">
+                                {{__('Free returns')}}
+                            </h6>
+
+                            <!-- Text -->
+                            <p class="mb-0 font-size-sm text-muted">
+                                {{__('Return money within 30 days')}}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+
+                    <!-- Item -->
+                    <div class="d-flex mb-6 mb-md-0">
+
+                        <!-- Icon -->
+                        <i class="fe fe-lock font-size-lg text-primary"></i>
+
+                        <!-- Body -->
+                        <div class="ml-6">
+
+                            <!-- Heading -->
+                            <h6 class="mb-1 heading-xxs">
+                                {{__('Secure shopping')}}
+                            </h6>
+
+                            <!-- Text -->
+                            <p class="mb-0 font-size-sm text-muted">
+                                {{__('You\'re in safe hands')}}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-12 col-md-6 col-lg-3">
+
+                    <!-- Item -->
+                    <div class="d-flex">
+
+                        <!-- Icon -->
+                        <i class="fe fe-tag font-size-lg text-primary"></i>
+
+                        <!-- Body -->
+                        <div class="ml-6">
+
+                            <!-- Heading -->
+                            <h6 class="mb-1 heading-xxs">
+                                {{__('Over 10,000 Styles')}}
+                            </h6>
+
+                            <!-- Text -->
+                            <p class="mb-0 font-size-sm text-muted">
+                                {{__('We have everything you need')}}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BEST PICKS -->
+    <section class="pt-12">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8 col-xl-6 text-center">
+
+                    <!-- Preheading -->
+                    <h6 class="heading-xxs mb-3 text-gray-400">
+                        {{__('New Collection')}}
+                    </h6>
+
+                    <!-- Heading -->
+                    <h2 class="mb-4">{{__('Best Picks 2020')}}</h2>
+
+                    <!-- Subheading -->
+                    <p class="mb-10 text-gray-500">
+                        Appear, dry there darkness they're seas, dry waters thing fly midst. Beast, above fly brought
+                        Very
+                        green.
+                    </p>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-5 col-lg-4 d-flex flex-column">
+
+                    <!-- Card -->
+                    <div class="card mb-7 text-white"
+                         style="min-height: 400px; background-image: url(frontend/assets/img/products/product-1.jpg)">
+
+                        <!-- Background -->
+                        <div class="card-bg">
+                            <div class="card-bg-img bg-cover"
+                                 style="background-image: url(frontend/assets/img/products/product-1.jpg);"></div>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="card-body my-auto text-center">
+
+                            <!-- Heading -->
+                            <h4 class="mb-0">{{__('Bags Collection')}}</h4>
+
+                            <!-- Link -->
+                            <a class="btn btn-link stretched-link text-reset" href="shop.html">
+                                {{__('Shop Now')}} <i class="fe fe-arrow-right ml-2"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-12 col-md-7 col-lg-8 d-flex flex-column">
+
+                    <!-- Card -->
+                    <div class="card mb-7 text-body" style="min-height: 400px;">
+
+                        <!-- Background -->
+                        <div class="card-bg">
+                            <div class="card-bg-img bg-cover"
+                                 style="background-image: url(frontend/assets/img/products/product-2.jpg);"></div>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="card-body my-auto px-md-10 text-center text-md-left">
+
+                            <!-- Circle -->
+                            <div class="card-circle card-circle-lg card-circle-right">
+                                <strong>save</strong>
+                                <span class="font-size-h4 font-weight-bold">30%</span>
+                            </div>
+
+                            <!-- Heading -->
+                            <h4 class="mb-0">Printed men’s Shirts</h4>
+
+                            <!-- Link -->
+                            <a class="btn btn-link stretched-link px-0 text-reset" href="shop.html">
+                                {{__('Shop Now')}} <i class="fe fe-arrow-right ml-2"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-12 col-md-7 col-lg-8 d-flex flex-column">
+
+                    <!-- Card -->
+                    <div class="card mb-7 mb-md-0 text-body" style="min-height: 400px;">
+
+                        <!-- Background -->
+                        <div class="card-bg">
+                            <div class="card-bg-img bg-cover"
+                                 style="background-image: url(frontend/assets/img/products/product-3.jpg);"></div>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="card-body my-auto px-md-10 text-center text-md-left">
+
+                            <!-- Heading -->
+                            <h4 class="mb-0">Basic women’s Dresses</h4>
+
+                            <!-- Link -->
+                            <a class="btn btn-link stretched-link px-0 text-reset" href="shop.html">
+                                {{__('Shop Now')}} <i class="fe fe-arrow-right ml-2"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-12 col-md-5 col-lg-4 d-flex flex-column">
+
+                    <!-- Card -->
+                    <div class="card text-white" style="min-height: 400px;">
+
+                        <!-- Background -->
+                        <div class="card-bg">
+                            <div class="card-bg-img bg-cover"
+                                 style="background-image: url(frontend/assets/img/products/product-4.jpg);"></div>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="card-body my-auto text-center">
+
+                            <!-- Heading -->
+                            <h4 class="mb-0">Sweatshirts</h4>
+
+                            <!-- Link -->
+                            <a class="btn btn-link stretched-link text-reset" href="shop.html">
+                                {{__('Shop Now')}} <i class="fe fe-arrow-right ml-2"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOP SELLERS -->
+    <section class="py-12">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8 col-xl-6">
+
+                    <!-- Heading -->
+                    <h2 class="mb-4 text-center">{{__('Top month Sellers')}}</h2>
+
+                    <!-- Nav -->
+                    <div class="nav justify-content-center mb-10">
+                        <a class="nav-link active" href="#womenTab" data-toggle="tab">{{__('Women')}}</a>
+                        <a class="nav-link" href="#menTab" data-toggle="tab">{{__('Men')}}</a>
+                        <a class="nav-link" href="#gadgetTab" data-toggle="tab">{{__('Kids')}}</a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="womenTab">
+                    <div class="row">
+                        @foreach($women as $product)
+                            <div class="col-6 col-md-4 col-lg-3">
+
+                                <!-- Card -->
+                                <div class="card mb-7">
+
+                                    <!-- Badge -->
+                                    <div class="badge badge-white card-badge card-badge-left text-uppercase">
+                                        {{--                                    {{__('New')}}--}}
                                     </div>
-                                </li>
-                                <li><a href="#"><img alt="" src="{{asset('frontend/images/icons/thum3.png')}}"> Man Fashion <i class="zmdi zmdi-chevron-right"></i></a>
-                                    <div class="category-menu-dropdown">
-                                        <div class="category-part-1 category-common2 mb--30">
-                                            <h4 class="categories-subtitle"> Jewelry & Watches</h4>
-                                            <ul>
-                                                <li><a href="#"> Men’s Clothing</a></li>
-                                                <li><a href="#"> Computer & Office</a></li>
-                                                <li><a href="#"> Jewelry & Watches</a></li>
-                                                <li><a href="#"> Bags & Shoes</a></li>
-                                                <li><a href="#"> Phones & Accessories</a></li>
-                                            </ul>
+
+                                    <!-- Image -->
+                                    <div class="card-img">
+
+                                        <!-- Image -->
+                                        <a class="" href="/{{$product->url_key}}">
+                                            <img class="card-img-top card-img-front lazy-image-loading"
+                                                 src="/front/assets/img/placeholder.jpg"
+                                                 data-src="{{$product->thumbnail->url}}" alt="...">
+
+                                        </a>
+
+                                        <!-- Actions -->
+                                        {{--<div class="card-actions">
+                          <span class="card-action">
+                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
+                                    data-target="#modalProduct">
+                              <i class="fe fe-eye"></i>
+                            </button>
+                          </span>
+                                            <span class="card-action">
+                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                              <i class="fe fe-shopping-cart"></i>
+                            </button>
+                          </span>
+                                            <span class="card-action">
+                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                              <i class="fe fe-heart"></i>
+                            </button>
+                          </span>
+                                        </div>--}}
+
+                                    </div>
+
+                                    <!-- Body -->
+                                    <div class="card-body px-0">
+
+                                        <!-- Category -->
+                                        <div class="font-size-xs">
+                                            <a class="text-muted" href="shop.html">Shoes</a>
                                         </div>
-                                        <div class="category-part-2 category-common2 mb--30">
-                                            <h4 class="categories-subtitle"> Jewelry & Watches</h4>
-                                            <ul>
-                                                <li><a href="#"> Men’s Clothing</a></li>
-                                                <li><a href="#"> Computer & Office</a></li>
-                                                <li><a href="#"> Jewelry & Watches</a></li>
-                                                <li><a href="#"> Bags & Shoes</a></li>
-                                                <li><a href="#"> Phones & Accessories</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="category-part-3 category-common2 mb--30">
-                                            <h4 class="categories-subtitle">dress</h4>
-                                            <ul>
-                                                <li><a href="#"> Men’s Clothing</a></li>
-                                                <li><a href="#"> Computer & Office</a></li>
-                                                <li><a href="#"> Jewelry & Watches</a></li>
-                                                <li><a href="#"> Bags & Shoes</a></li>
-                                                <li><a href="#"> Phones & Accessories</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="mega-banner-img">
-                                            <a href="single-product.html">
-                                                <img src="{{asset('frontend/images/feature-img/5.jpg')}}" alt="">
+
+                                        <!-- Title -->
+                                        <div class="font-weight-bold">
+                                            <a class="text-body" href="{{$product->url_key}}">
+                                                {{$product->name}}
                                             </a>
                                         </div>
+
+                                        <!-- Price -->
+                                        <div class="font-weight-bold text-muted">
+                                            ${{$product->price_range->minimum_price->final_price->value}}
+                                        </div>
+
                                     </div>
-                                </li>
-                                <li><a href="#"><img alt="" src="{{asset('frontend/images/icons/thum4.png')}}"> Computer & Office <i class="zmdi zmdi-chevron-right"></i></a>
-                                    <div class="category-menu-dropdown">
-                                        <div class="category-menu-dropdown-top">
-                                            <div class="category-part-1 category-common2 mb--30">
-                                                <h4 class="categories-subtitle"> Jewelry & Watches</h4>
-                                                <ul>
-                                                    <li><a href="#"> Men’s Clothing</a></li>
-                                                    <li><a href="#"> Computer & Office</a></li>
-                                                    <li><a href="#"> Jewelry & Watches</a></li>
-                                                    <li><a href="#"> Bags & Shoes</a></li>
-                                                    <li><a href="#"> Phones & Accessories</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="category-part-2 category-common2 mb--30">
-                                                <h4 class="categories-subtitle"> Jewelry & Watches</h4>
-                                                <ul>
-                                                    <li><a href="#"> Men’s Clothing</a></li>
-                                                    <li><a href="#"> Computer & Office</a></li>
-                                                    <li><a href="#"> Jewelry & Watches</a></li>
-                                                    <li><a href="#"> Bags & Shoes</a></li>
-                                                    <li><a href="#"> Phones & Accessories</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="category-part-3 category-common2 mb--30">
-                                                <h4 class="categories-subtitle">Jewelry & Watches</h4>
-                                                <ul>
-                                                    <li><a href="#"> Men’s Clothing</a></li>
-                                                    <li><a href="#"> Computer & Office</a></li>
-                                                    <li><a href="#"> Jewelry & Watches</a></li>
-                                                    <li><a href="#"> Bags & Shoes</a></li>
-                                                    <li><a href="#"> Phones & Accessories</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="category-menu-dropdown-bottom">
-                                            <div class="single-category-brand">
-                                                <a href="#"><img src="{{asset('frontend/images/brand/6.png')}}" alt=""></a>
-                                            </div>
-                                            <div class="single-category-brand">
-                                                <a href="#"><img src="/frontend/images/brand/7.png" alt=""></a>
-                                            </div>
-                                            <div class="single-category-brand">
-                                                <a href="#"><img src="/frontend/images/brand/8.png" alt=""></a>
-                                            </div>
-                                            <div class="single-category-brand">
-                                                <a href="#"><img src="/frontend/images/brand/9.png" alt=""></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li><a href="#"><img alt="" src="{{asset('frontend/images/icons/thum5.png')}}"> Jewelry & Watches <i class="zmdi zmdi-chevron-right"></i></a>
-                                    <div class="category-menu-dropdown">
-                                        <div class="category-menu-dropdown-left">
-                                            <div class="category-part-1 category-common mb--30">
-                                                <h4 class="categories-subtitle"> Jewelry & Watches</h4>
-                                                <ul>
-                                                    <li><a href="#"> Men’s Clothing</a></li>
-                                                    <li><a href="#"> Computer & Office</a></li>
-                                                    <li><a href="#"> Jewelry & Watches</a></li>
-                                                    <li><a href="#"> Bags & Shoes</a></li>
-                                                    <li><a href="#"> Phones & Accessories</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="category-part-2 category-common mb--30">
-                                                <h4 class="categories-subtitle"> Jewelry & Watches</h4>
-                                                <ul>
-                                                    <li><a href="#"> Men’s Clothing</a></li>
-                                                    <li><a href="#"> Computer & Office</a></li>
-                                                    <li><a href="#"> Jewelry & Watches</a></li>
-                                                    <li><a href="#"> Bags & Shoes</a></li>
-                                                    <li><a href="#"> Phones & Accessories</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="category-part-3 category-common">
-                                                <h4 class="categories-subtitle"> Jewelry & Watches</h4>
-                                                <ul>
-                                                    <li><a href="#"> Men’s Clothing</a></li>
-                                                    <li><a href="#"> Computer & Office</a></li>
-                                                    <li><a href="#"> Jewelry & Watches</a></li>
-                                                    <li><a href="#"> Bags & Shoes</a></li>
-                                                    <li><a href="#"> Phones & Accessories</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="category-part-4 category-common">
-                                                <h4 class="categories-subtitle"> Jewelry & Watches</h4>
-                                                <ul>
-                                                    <li><a href="#"> Men’s Clothing</a></li>
-                                                    <li><a href="#"> Computer & Office</a></li>
-                                                    <li><a href="#"> Jewelry & Watches</a></li>
-                                                    <li><a href="#"> Bags & Shoes</a></li>
-                                                    <li><a href="#"> Phones & Accessories</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="category-menu-dropdown-right">
-                                            <div class="menu-right-img">
-                                                <a href="#"><img src="/frontend/images/feature-img/2.png" alt=""></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li><a href="#"><img alt="" src="/frontend/images/icons/thum6.png"> Men’s Clothing <i class="zmdi zmdi-chevron-right"></i></a>
-                                    <div class="category-menu-dropdown">
-                                        <div class="category-menu-dropdown-left">
-                                            <div class="category-part-1 category-common">
-                                                <h4 class="categories-subtitle"> Jewelry & Watches</h4>
-                                                <ul>
-                                                    <li><a href="#"> Men’s Clothing</a></li>
-                                                    <li><a href="#"> Computer & Office</a></li>
-                                                    <li><a href="#"> Jewelry & Watches</a></li>
-                                                    <li><a href="#"> Bags & Shoes</a></li>
-                                                    <li><a href="#"> Phones </a></li>
-                                                    <li><a href="#"> Computer & Office</a></li>
-                                                    <li><a href="#"> Phones & Accessories</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="category-part-2 category-common">
-                                                <h4 class="categories-subtitle"> Jewelry & Watches</h4>
-                                                <ul>
-                                                    <li><a href="#"> Men’s Clothing</a></li>
-                                                    <li><a href="#"> Computer & Office</a></li>
-                                                    <li><a href="#"> Jewelry & Watches</a></li>
-                                                    <li><a href="#"> Bags & Shoes</a></li>
-                                                    <li><a href="#"> Phones </a></li>
-                                                    <li><a href="#"> Computer & Office</a></li>
-                                                    <li><a href="#"> Phones & Accessories</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="category-menu-dropdown-right">
-                                            <div class="menu-right-img">
-                                                <a href="#"><img src="/frontend/images/feature-img/1.png" alt=""></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li><a href="#"><img alt="" src="/frontend/images/icons/thum7.png"> Bags & Shoes</a></li>
-                                <li><a href="#"><img alt="" src="/frontend/images/icons/thum8.png"> Toys & Kids & Baby</a></li>
-                                <li><a href="#"><img alt="" src="/frontend/images/icons/thum9.png">  Automobiles </a></li>
-                                <li><a href="#"><img alt="" src="/frontend/images/icons/thum10.png"> Jewelry & Watches</a></li>
-                                <li><a href="#"><img alt="" src="/frontend/images/icons/thum2.png"> Consumer Electronics</a></li>
-                                <li><a href="#"><img alt="" src="/frontend/images/icons/thum3.png"> all Accessories</a></li>
-                            </ul>
-                        </div>
+
+                                </div>
+
+                            </div>
+                        @endforeach
+
                     </div>
                 </div>
-                <!-- End Left Feature -->
-            </div>
-        </div>
-    </section>
-    <!-- End Feature Product -->
-    <div class="only-banner ptb--100 bg__white">
-        <div class="container">
-            <div class="only-banner-img">
-                <a href="shop-sidebar.html"><img src="http://lorempixel.com/1171/300" alt="new product"></a>
-            </div>
-        </div>
-    </div>
-    <!-- Start Our Product Area -->
-    <section class="htc__product__area bg__white">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="product-categories-all">
-                        <div class="product-categories-title">
-                            <h3>Jewelry & watches</h3>
-                        </div>
-                        <div class="product-categories-menu">
-                            <ul>
-                                <li><a href="#">awesome Rings</a></li>
-                                <li><a href="#">Hot Earrings</a></li>
-                                <li><a href="#">Jewelry Sets</a></li>
-                                <li><a href="#">Beads Jewelry</a></li>
-                                <li><a href="#">Men's Watches</a></li>
-                                <li><a href="#">Women’s Watches</a></li>
-                                <li><a href="#">Popular Bracelets</a></li>
-                                <li><a href="#"> Pendant Necklaces</a></li>
-                                <li><a href="#">Children's Watches</a></li>
-                            </ul>
-                        </div>
+                <div class="tab-pane fade show" id="menTab">
+                    <div class="row">
+                        @foreach($men as $product)
+                            <div class="col-6 col-md-4 col-lg-3">
+
+                                <!-- Card -->
+                                <div class="card mb-7">
+
+                                    <!-- Badge -->
+                                    <div class="badge badge-white card-badge card-badge-left text-uppercase">
+                                        {{--                                    {{__('New')}}--}}
+                                    </div>
+
+                                    <!-- Image -->
+                                    <div class="card-img">
+
+                                        <!-- Image -->
+                                        <a class="" href="/{{$product->url_key}}">
+                                            <img class="card-img-top card-img-front lazy-image-loading"
+                                                 src="/front/assets/img/placeholder.jpg"
+                                                 data-src="{{$product->thumbnail->url}}" alt="...">
+
+                                        </a>
+
+                                        <!-- Actions -->
+                                        {{--<div class="card-actions">
+                          <span class="card-action">
+                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
+                                    data-target="#modalProduct">
+                              <i class="fe fe-eye"></i>
+                            </button>
+                          </span>
+                                            <span class="card-action">
+                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                              <i class="fe fe-shopping-cart"></i>
+                            </button>
+                          </span>
+                                            <span class="card-action">
+                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                              <i class="fe fe-heart"></i>
+                            </button>
+                          </span>
+                                        </div>--}}
+
+                                    </div>
+
+                                    <!-- Body -->
+                                    <div class="card-body px-0">
+
+                                        <!-- Category -->
+                                        <div class="font-size-xs">
+                                            <a class="text-muted" href="shop.html">Shoes</a>
+                                        </div>
+
+                                        <!-- Title -->
+                                        <div class="font-weight-bold">
+                                            <a class="text-body" href="{{$product->url_key}}">
+                                                {{$product->name}}
+                                            </a>
+                                        </div>
+
+                                        <!-- Price -->
+                                        <div class="font-weight-bold text-muted">
+                                            ${{$product->price_range->minimum_price->final_price->value}}
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        @endforeach
+
                     </div>
                 </div>
-                <div class="col-md-9">
-                    <div class="product-style-tab">
-                        <div class="product-tab-list">
-                            <!-- Nav tabs -->
-                            <ul class="tab-style" role="tablist">
-                                <li class="active">
-                                    <a href="#home1" data-toggle="tab">
-                                        <div class="tab-menu-text">
-                                            <h4>latest </h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#home2" data-toggle="tab">
-                                        <div class="tab-menu-text">
-                                            <h4>best sale </h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#home3" data-toggle="tab">
-                                        <div class="tab-menu-text">
-                                            <h4>top rated</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#home4" data-toggle="tab">
-                                        <div class="tab-menu-text">
-                                            <h4>on sale</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-content another-product-style jump">
-                            <div class="tab-pane active" id="home1">
-                                <div class="row">
-                                    <div class="product-slider-active owl-carousel">
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="http://lorempixel.com/270/270" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="http://lorempixel.com/270/270" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="http://lorempixel.com/270/270" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="http://lorempixel.com/270/270" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="http://lorempixel.com/270/270" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
+                <div class="tab-pane fade show" id="gadgetTab">
+                    <div class="row">
+                        @foreach($gadget as $product)
+                            <div class="col-6 col-md-4 col-lg-3">
+
+                                <!-- Card -->
+                                <div class="card mb-7">
+
+                                    <!-- Badge -->
+                                    <div class="badge badge-white card-badge card-badge-left text-uppercase">
+                                        {{--                                    {{__('New')}}--}}
                                     </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="home2">
-                                <div class="row">
-                                    <div class="product-slider-active owl-carousel">
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/4.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/5.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/6.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/7.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/8.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
+
+                                    <!-- Image -->
+                                    <div class="card-img">
+
+                                        <!-- Image -->
+                                        <a class="" href="/{{$product->url_key}}">
+                                            <img class="card-img-top card-img-front lazy-image-loading"
+                                                 src="/front/assets/img/placeholder.jpg"
+                                                 data-src="{{$product->thumbnail->url}}" alt="...">
+
+                                        </a>
+
+                                        <!-- Actions -->
+                                        {{--<div class="card-actions">
+                          <span class="card-action">
+                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
+                                    data-target="#modalProduct">
+                              <i class="fe fe-eye"></i>
+                            </button>
+                          </span>
+                                            <span class="card-action">
+                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                              <i class="fe fe-shopping-cart"></i>
+                            </button>
+                          </span>
+                                            <span class="card-action">
+                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                              <i class="fe fe-heart"></i>
+                            </button>
+                          </span>
+                                        </div>--}}
+
                                     </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="home3">
-                                <div class="row">
-                                    <div class="product-slider-active owl-carousel">
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/2.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+
+                                    <!-- Body -->
+                                    <div class="card-body px-0">
+
+                                        <!-- Category -->
+                                        <div class="font-size-xs">
+                                            <a class="text-muted" href="shop.html">Shoes</a>
                                         </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/1.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+
+                                        <!-- Title -->
+                                        <div class="font-weight-bold">
+                                            <a class="text-body" href="{{$product->url_key}}">
+                                                {{$product->name}}
+                                            </a>
                                         </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/5.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+
+                                        <!-- Price -->
+                                        <div class="font-weight-bold text-muted">
+                                            ${{$product->price_range->minimum_price->final_price->value}}
                                         </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/4.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/3.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                     </div>
+
                                 </div>
+
                             </div>
-                            <div class="tab-pane" id="home4">
-                                <div class="row">
-                                    <div class="product-slider-active owl-carousel">
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/9.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/5.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/3.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/4.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/2.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Our Product Area -->
-    <div class="only-banner ptb--100 bg__white">
-        <div class="container">
-            <div class="only-banner-img">
-                <a href="shop-sidebar.html"><img src="/frontend/images/new-product/6.jpg" alt="new product"></a>
-            </div>
-        </div>
-    </div>
-    <!-- Start Our Product Area -->
-    <section class="htc__product__area pb--100 bg__white">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="product-categories-all">
-                        <div class="product-categories-title">
-                            <h3>BAGS & SHOES</h3>
-                        </div>
-                        <div class="product-categories-menu">
-                            <ul>
-                                <li><a href="#">awesome Rings</a></li>
-                                <li><a href="#">Hot Earrings</a></li>
-                                <li><a href="#">Jewelry Sets</a></li>
-                                <li><a href="#">Beads Jewelry</a></li>
-                                <li><a href="#">Men's Watches</a></li>
-                                <li><a href="#">Women’s Watches</a></li>
-                                <li><a href="#">Popular Bracelets</a></li>
-                                <li><a href="#"> Pendant Necklaces</a></li>
-                                <li><a href="#">Children's Watches</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <div class="product-style-tab">
-                        <div class="product-tab-list">
-                            <!-- Nav tabs -->
-                            <ul class="tab-style" role="tablist">
-                                <li class="active">
-                                    <a href="#home5" data-toggle="tab">
-                                        <div class="tab-menu-text">
-                                            <h4>latest </h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#home6" data-toggle="tab">
-                                        <div class="tab-menu-text">
-                                            <h4>best sale </h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#home7" data-toggle="tab">
-                                        <div class="tab-menu-text">
-                                            <h4>top rated</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#home8" data-toggle="tab">
-                                        <div class="tab-menu-text">
-                                            <h4>on sale</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-content another-product-style jump">
-                            <div class="tab-pane active" id="home5">
-                                <div class="row">
-                                    <div class="product-slider-active owl-carousel">
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/1.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/2.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/3.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/4.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/5.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="home6">
-                                <div class="row">
-                                    <div class="product-slider-active owl-carousel">
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/4.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/5.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/6.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/7.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/8.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/9.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="home7">
-                                <div class="row">
-                                    <div class="product-slider-active owl-carousel">
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/2.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/1.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/5.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/4.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/3.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/7.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="home8">
-                                <div class="row">
-                                    <div class="product-slider-active owl-carousel">
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/9.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/5.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/3.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/4.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/2.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/7.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Our Product Area -->
-    <div class="only-banner bg__white">
-        <div class="container">
-            <div class="only-banner-img">
-                <a href="shop-sidebar.html"><img src="/frontend/images/new-product/7.jpg" alt="new product"></a>
-            </div>
-        </div>
-    </div>
-    <!-- Start Our Product Area -->
-    <section class="htc__product__area ptb--100 bg__white">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="product-categories-all">
-                        <div class="product-categories-title">
-                            <h3>kids & MOTHER</h3>
-                        </div>
-                        <div class="product-categories-menu">
-                            <ul>
-                                <li><a href="#">awesome Rings</a></li>
-                                <li><a href="#">Hot Earrings</a></li>
-                                <li><a href="#">Jewelry Sets</a></li>
-                                <li><a href="#">Beads Jewelry</a></li>
-                                <li><a href="#">Men's Watches</a></li>
-                                <li><a href="#">Women’s Watches</a></li>
-                                <li><a href="#">Popular Bracelets</a></li>
-                                <li><a href="#"> Pendant Necklaces</a></li>
-                                <li><a href="#">Children's Watches</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-9">
-                    <div class="product-style-tab">
-                        <div class="product-tab-list">
-                            <!-- Nav tabs -->
-                            <ul class="tab-style product-tab-list-btn" role="tablist">
-                                <li class="active">
-                                    <a href="#home9" data-toggle="tab">
-                                        <div class="tab-menu-text">
-                                            <h4>latest </h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#home10" data-toggle="tab">
-                                        <div class="tab-menu-text">
-                                            <h4>best sale </h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#home11" data-toggle="tab">
-                                        <div class="tab-menu-text">
-                                            <h4>top rated</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#home12" data-toggle="tab">
-                                        <div class="tab-menu-text">
-                                            <h4>on sale</h4>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="all-product-btn">
-                                <a href="shop-sidebar.html">all</a>
-                            </div>
-                        </div>
-                        <div class="tab-content another-product-style">
-                            <div class="tab-pane active" id="home9">
-                                <div class="row">
-                                    <div class="product-slider-active2">
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/3.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/4.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/5.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="home10">
-                                <div class="row">
-                                    <div class="product-slider-active2">
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/4.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/5.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/6.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="home11">
-                                <div class="row">
-                                    <div class="product-slider-active2">
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/2.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/1.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/5.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="home12">
-                                <div class="row">
-                                    <div class="product-slider-active2">
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/9.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/8.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 single__pro col-lg-4 cat--1 col-sm-4 col-xs-12">
-                                            <div class="product">
-                                                <div class="product__inner">
-                                                    <div class="pro__thumb">
-                                                        <a href="#">
-                                                            <img src="/frontend/images/product/7.png" alt="product images">
-                                                        </a>
-                                                    </div>
-                                                    <div class="product__hover__info">
-                                                        <ul class="product__action">
-                                                            <li><a data-toggle="modal" data-target="#productModal" title="Quick View" class="quick-view modal-view detail-link" href="#"><span class="ti-plus"></span></a></li>
-                                                            <li><a title="Add TO Cart" href="cart.html"><span class="ti-shopping-cart"></span></a></li>
-                                                            <li><a title="Wishlist" href="wishlist.html"><span class="ti-heart"></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div class="product__details">
-                                                    <h2><a href="product-details.html">Simple Black Clock</a></h2>
-                                                    <ul class="product__price">
-                                                        <li class="old__price">$16.00</li>
-                                                        <li class="new__price">$10.00</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Our Product Area -->
-    <!-- Start Blog Area -->
-    <section class="htc__blog__area bg__white pb--130">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="section__title section__title--2 text-center">
-                        <h2 class="title__line">Latest News</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod temp incididunt ut labore et dolore magna aliqua. </p>
+                        @endforeach
+
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="blog__wrap clearfix mt--60 xmt-30">
-                    <!-- Start Single Blog -->
-                    <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
-                        <div class="blog foo">
-                            <div class="blog__inner">
-                                <div class="blog__thumb">
-                                    <a href="blog-details.html">
-                                        <img src="http://lorempixel.com/370/347" alt="blog images">
-                                    </a>
-                                    <div class="blog__post__time">
-                                        <div class="post__time--inner">
-                                            <span class="date">14</span>
-                                            <span class="month">sep</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blog__hover__info">
-                                    <div class="blog__hover__action">
-                                        <p class="blog__des"><a href="blog-details.html">Lorem ipsum dolor sit consectetu.</a></p>
-                                        <ul class="bl__meta">
-                                            <li>By :<a href="#">Admin</a></li>
-                                            <li>Product</li>
-                                        </ul>
-                                        <div class="blog__btn">
-                                            <a class="read__more__btn" href="blog-details.html">read more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-12">
+
+                    <!-- Link  -->
+                    <div class="mt-7 text-center">
+                        <a class="link-underline" href="#!">{{__('Discover more')}}</a>
                     </div>
-                    <!-- End Single Blog -->
-                    <!-- Start Single Blog -->
-                    <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12">
-                        <div class="blog foo">
-                            <div class="blog__inner">
-                                <div class="blog__thumb">
-                                    <a href="blog-details.html">
-                                        <img src="http://lorempixel.com/370/347" alt="blog images">
-                                    </a>
-                                    <div class="blog__post__time">
-                                        <div class="post__time--inner">
-                                            <span class="date">14</span>
-                                            <span class="month">sep</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blog__hover__info">
-                                    <div class="blog__hover__action">
-                                        <p class="blog__des"><a href="blog-details.html">Lorem ipsum dolor sit consectetu.</a></p>
-                                        <ul class="bl__meta">
-                                            <li>By :<a href="#">Admin</a></li>
-                                            <li>Product</li>
-                                        </ul>
-                                        <div class="blog__btn">
-                                            <a class="read__more__btn" href="blog-details.html">read more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Blog -->
-                    <!-- Start Single Blog -->
-                    <div class="col-md-4 col-lg-4 hidden-sm col-xs-12">
-                        <div class="blog foo">
-                            <div class="blog__inner">
-                                <div class="blog__thumb">
-                                    <a href="blog-details.html">
-                                        <img src="http://lorempixel.com/370/347" alt="blog images">
-                                    </a>
-                                    <div class="blog__post__time">
-                                        <div class="post__time--inner">
-                                            <span class="date">14</span>
-                                            <span class="month">sep</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blog__hover__info">
-                                    <div class="blog__hover__action">
-                                        <p class="blog__des"><a href="blog-details.html">Lorem ipsum dolor sit consectetu.</a></p>
-                                        <ul class="bl__meta">
-                                            <li>By :<a href="#">Admin</a></li>
-                                            <li>Product</li>
-                                        </ul>
-                                        <div class="blog__btn">
-                                            <a class="read__more__btn" href="blog-details.html">read more</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Single Blog -->
+
                 </div>
             </div>
         </div>
     </section>
-    <!-- End Blog Area -->
+
+    <!-- COUNTDOWN -->
+    <section class="py-13 bg-cover" style="background-image: url(frontend/assets/img/covers/cover-4.jpg)">
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-12 col-md-8 col-lg-6">
+
+                    <!-- Heading -->
+                    <h3 class="mb-7">
+                        {{__('Get -50% from')}} <br/>{{__('Summer Collection')}}
+                    </h3>
+
+                    <!-- Counter -->
+                    <div class="d-flex mb-9" data-countdown data-date="Jan 5, 2021 15:37:25">
+                        <div class="text-center">
+                            <div class="font-size-h1 font-weight-bolder text-primary" data-days>00</div>
+                            <div class="heading-xxs text-muted">{{__('Days')}}</div>
+                        </div>
+                        <div class="px-1 px-md-4">
+                            <div class="font-size-h2 font-weight-bolder text-primary">:</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-size-h1 font-weight-bolder text-primary" data-hours>00</div>
+                            <div class="heading-xxs text-muted">{{__('Hours')}}</div>
+                        </div>
+                        <div class="px-1 px-md-4">
+                            <div class="font-size-h2 font-weight-bolder text-primary">:</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-size-h1 font-weight-bolder text-primary" data-minutes>00</div>
+                            <div class="heading-xxs text-muted">{{__('Minutes')}}</div>
+                        </div>
+                        <div class="px-1 px-md-4">
+                            <div class="font-size-h2 font-weight-bolder text-primary">:</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-size-h1 font-weight-bolder text-primary" data-seconds>00</div>
+                            <div class="heading-xxs text-muted">{{__('Seconds')}}</div>
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <a class="btn btn-dark" href="shop.html">
+                        {{__('Shop Now')}} <i class="fe fe-arrow-right ml-2"></i>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="py-12">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8 col-xl-6 text-center">
+
+                    <!-- Preheading -->
+                    <h6 class="heading-xxs mb-3 text-gray-400">
+                        {{__('What buyers say')}}
+                    </h6>
+
+                    <!-- Heading -->
+                    <h2 class="mb-10">{{__('Latest buyers Reviews')}}</h2>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+
+                    <!-- Slider -->
+                    <div data-flickity='{"pageDots": true}'>
+                        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+
+                            <!-- Card -->
+                            <div class="card-lg card border">
+                                <div class="card-body">
+
+                                    <!-- Header -->
+                                    <div class="row align-items-center mb-6">
+                                        <div class="col-4">
+
+                                            <!-- Image -->
+                                            <img src="frontend/assets/img/products/product-13.jpg" alt="..."
+                                                 class="img-fluid">
+
+                                        </div>
+                                        <div class="col-8 ml-n2">
+
+                                            <!-- Preheading -->
+                                            <a class="font-size-xs text-muted" href="shop.html">
+                                                Shoes
+                                            </a>
+
+                                            <!-- Heading -->
+                                            <a class="d-block font-weight-bold text-body" href="product.html">
+                                                Low top Sneakers
+                                            </a>
+
+                                            <!-- Rating -->
+                                            <div class="rating font-size-xxs text-warning" data-value="3">
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- Blockquote -->
+                                    <blockquote class="mb-0">
+                                        <p class="text-muted">
+                                            From creepeth said moved given divide make multiply of him shall itself also
+                                            above second doesn't unto created saying land herb sea midst night wherein.
+                                        </p>
+                                        <footer class="font-size-xs text-muted">
+                                            Logan Edwards,
+                                            <time datetime="2019-06-01">01 Jun 2019</time>
+                                        </footer>
+                                    </blockquote>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+
+                            <!-- Card -->
+                            <div class="card-lg card border">
+                                <div class="card-body">
+
+                                    <!-- Header -->
+                                    <div class="row align-items-center mb-6">
+                                        <div class="col-4">
+
+                                            <!-- Image -->
+                                            <img src="frontend/assets/img/products/product-14.jpg" alt="..."
+                                                 class="img-fluid">
+
+                                        </div>
+                                        <div class="col-8 ml-n2">
+
+                                            <!-- Preheading -->
+                                            <a class="font-size-xs text-muted" href="shop.html">
+                                                Dresses
+                                            </a>
+
+                                            <!-- Heading -->
+                                            <a class="d-block font-weight-bold text-body" href="product.html">
+                                                Cotton print Dress
+                                            </a>
+
+                                            <!-- Rating -->
+                                            <div class="rating font-size-xxs text-warning" data-value="5">
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- Blockquote -->
+                                    <blockquote class="mb-0">
+                                        <p class="text-muted">
+                                            God every fill great replenish darkness unto. Very open. Likeness their that
+                                            light. Given under image to. Subdue of shall cattle day fish form saw spirit
+                                            and
+                                            given stars, us you whales may, land, saw fill unto.
+                                        </p>
+                                        <footer class="font-size-xs text-muted">
+                                            Jane Jefferson,
+                                            <time datetime="2019-05-29">29 May 2019</time>
+                                        </footer>
+                                    </blockquote>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+
+                            <!-- Card -->
+                            <div class="card-lg card border">
+                                <div class="card-body">
+
+                                    <!-- Header -->
+                                    <div class="row align-items-center mb-6">
+                                        <div class="col-4">
+
+                                            <!-- Image -->
+                                            <img src="frontend/assets/img/products/product-15.jpg" alt="..."
+                                                 class="img-fluid">
+
+                                        </div>
+                                        <div class="col-8 ml-n2">
+
+                                            <!-- Preheading -->
+                                            <a class="font-size-xs text-muted" href="shop.html">
+                                                T-shirts
+                                            </a>
+
+                                            <!-- Heading -->
+                                            <a class="d-block font-weight-bold text-body" href="product.html">
+                                                Oversized print T-shirt
+                                            </a>
+
+                                            <!-- Rating -->
+                                            <div class="rating font-size-xxs text-warning" data-value="4">
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- Blockquote -->
+                                    <blockquote class="mb-0">
+                                        <p class="text-muted">
+                                            Fill his waters wherein signs likeness waters. Second light gathered appear
+                                            sixth fourth, seasons behold creeping female.
+                                        </p>
+                                        <footer class="font-size-xs text-muted">
+                                            Darrell Baker,
+                                            <time datetime="2019-05-18">18 May 2019</time>
+                                        </footer>
+                                    </blockquote>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+
+                            <!-- Card -->
+                            <div class="card-lg card border">
+                                <div class="card-body">
+
+                                    <!-- Header -->
+                                    <div class="row align-items-center mb-6">
+                                        <div class="col-4">
+
+                                            <!-- Image -->
+                                            <img src="frontend/assets/img/products/product-10.jpg" alt="..."
+                                                 class="img-fluid">
+
+                                        </div>
+                                        <div class="col-8 ml-n2">
+
+                                            <!-- Preheading -->
+                                            <a class="font-size-xs text-muted" href="shop.html">
+                                                Bags & Accessories
+                                            </a>
+
+                                            <!-- Heading -->
+                                            <a class="d-block font-weight-bold text-body" href="product.html">
+                                                Suede cross body Bag
+                                            </a>
+
+                                            <!-- Rating -->
+                                            <div class="rating font-size-xxs text-warning" data-value="4">
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                                <div class="rating-item">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- Blockquote -->
+                                    <blockquote class="mb-0">
+                                        <p class="text-muted">
+                                            God every fill great replenish darkness unto. Very open. Likeness their that
+                                            light. Given under image to. Subdue of shall cattle day fish form saw spirit
+                                            and
+                                            given stars.
+                                        </p>
+                                        <footer class="font-size-xs text-muted">
+                                            Pavel Doe,
+                                            <time datetime="2019-05-29">29 May 2019</time>
+                                        </footer>
+                                    </blockquote>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRANDS -->
+    <section class="py-12 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+
+                    <!-- Heading -->
+                    <h2 class="mb-3">@myozeshop</h2>
+
+                    <!-- Subheading -->
+                    <p class="mb-10 font-size-lg text-gray-500">
+                        {{__("Appear, dry there darkness they're seas, dry waters.")}}
+                    </p>
+
+                </div>
+            </div>
+            <div class="row mx-n1 mb-10">
+                <div class="col-6 col-sm-4 col-md px-1">
+
+                    <!-- Card -->
+                    <div class="card mb-2">
+
+                        <!-- Image -->
+                        <img src="frontend/assets/img/products/product-16.jpg" alt="..." class="card-img">
+
+                        <!-- Overlay -->
+                        <a class="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
+                           href="https://instagram.com/myozeshop" target="_blank">
+                            <p class="my-0 font-size-xxs text-center text-white">
+                                <i class="fe fe-heart mr-2"></i> 248 <i class="fe fe-message-square mr-2 ml-3"></i> 7
+                            </p>
+                        </a>
+
+                    </div>
+
+                </div>
+                <div class="col-6 col-sm-4 col-md px-1">
+
+                    <!-- Card -->
+                    <div class="card mb-2">
+
+                        <!-- Image -->
+                        <img src="frontend/assets/img/products/product-17.jpg" alt="..." class="card-img">
+
+                        <!-- Overlay -->
+                        <a class="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
+                           href="https://instagram.com/myozeshop" target="_blank">
+                            <p class="my-0 font-size-xxs text-center text-white">
+                                <i class="fe fe-heart mr-2"></i> 248 <i class="fe fe-message-square mr-2 ml-3"></i> 7
+                            </p>
+                        </a>
+
+                    </div>
+
+                </div>
+                <div class="col-6 col-sm-4 col-md px-1">
+
+                    <!-- Card -->
+                    <div class="card mb-2">
+
+                        <!-- Image -->
+                        <img src="frontend/assets/img/products/product-18.jpg" alt="..." class="card-img">
+
+                        <!-- Overlay -->
+                        <a class="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
+                           href="https://instagram.com/myozeshop" target="_blank">
+                            <p class="my-0 font-size-xxs text-center text-white">
+                                <i class="fe fe-heart mr-2"></i> 248 <i class="fe fe-message-square mr-2 ml-3"></i> 7
+                            </p>
+                        </a>
+
+                    </div>
+
+                </div>
+                <div class="col-6 col-sm-4 col-md px-1">
+
+                    <!-- Card -->
+                    <div class="card mb-2">
+
+                        <!-- Image -->
+                        <img src="frontend/assets/img/products/product-19.jpg" alt="..." class="card-img">
+
+                        <!-- Overlay -->
+                        <a class="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
+                           href="https://instagram.com/myozeshop" target="_blank">
+                            <p class="my-0 font-size-xxs text-center text-white">
+                                <i class="fe fe-heart mr-2"></i> 248 <i class="fe fe-message-square mr-2 ml-3"></i> 7
+                            </p>
+                        </a>
+
+                    </div>
+
+                </div>
+                <div class="col-6 col-sm-4 col-md px-1">
+
+                    <!-- Card -->
+                    <div class="card">
+
+                        <!-- Image -->
+                        <img src="frontend/assets/img/products/product-20.jpg" alt="..." class="card-img">
+
+                        <!-- Overlay -->
+                        <a class="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
+                           href="https://instagram.com/myozeshop" target="_blank">
+                            <p class="my-0 font-size-xxs text-center text-white">
+                                <i class="fe fe-heart mr-2"></i> 248 <i class="fe fe-message-square mr-2 ml-3"></i> 7
+                            </p>
+                        </a>
+
+                    </div>
+
+                </div>
+                <div class="col-6 col-sm-4 col-md px-1">
+
+                    <!-- Card -->
+                    <div class="card">
+
+                        <!-- Image -->
+                        <img src="frontend/assets/img/products/product-21.jpg" alt="..." class="card-img">
+
+                        <!-- Overlay -->
+                        <a class="card-img-overlay card-img-overlay-hover align-items-center bg-dark-40"
+                           href="https://instagram.com/myozeshop" target="_blank">
+                            <p class="my-0 font-size-xxs text-center text-white">
+                                <i class="fe fe-heart mr-2"></i> 248 <i class="fe fe-message-square mr-2 ml-3"></i> 7
+                            </p>
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 col-sm-3 col-md text-center">
+
+                    <!-- Brand -->
+                    <img src="frontend/assets/img/brands/gray-350/mango.svg" alt="..." class="img-fluid mb-7 mb-md-0">
+
+                </div>
+                <div class="col-4 col-sm-3 col-md text-center">
+
+                    <!-- Brand -->
+                    <img src="frontend/assets/img/brands/gray-350/zara.svg" alt="..." class="img-fluid mb-7 mb-md-0">
+
+                </div>
+                <div class="col-4 col-sm-3 col-md text-center">
+
+                    <!-- Brand -->
+                    <img src="frontend/assets/img/brands/gray-350/reebok.svg" alt="..." class="img-fluid mb-7 mb-md-0">
+
+                </div>
+                <div class="col-4 col-sm-3 col-md text-center">
+
+                    <!-- Brand -->
+                    <img src="frontend/assets/img/brands/gray-350/asos.svg" alt="..." class="img-fluid mb-7 mb-md-0">
+
+                </div>
+                <div class="col-4 col-sm-3 col-md text-center">
+
+                    <!-- Brand -->
+                    <img src="frontend/assets/img/brands/gray-350/stradivarius.svg" alt="..."
+                         class="img-fluid mb-6 mb-sm-0">
+
+                </div>
+                <div class="col-4 col-sm-3 col-md text-center">
+
+                    <!-- Brand -->
+                    <img src="frontend/assets/img/brands/gray-350/adidas.svg" alt="..." class="img-fluid mb-6 mb-sm-0">
+
+                </div>
+                <div class="col-4 col-sm-3 col-md text-center">
+
+                    <!-- Brand -->
+                    <img src="frontend/assets/img/brands/gray-350/bershka.svg" alt="..." class="img-fluid">
+
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

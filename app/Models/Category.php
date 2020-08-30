@@ -41,6 +41,14 @@ class Category extends Model
 
     }
 
+    public function getTreeAttribute()
+    {
+        foreach ($this->childCategories() as $child)
+        {
+            return '';
+        }
+    }
+
     public function products()
     {
         return $this->belongsToMany(Product::class);

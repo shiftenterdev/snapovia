@@ -233,7 +233,7 @@ return [
         'Image'        => Intervention\Image\Facades\Image::class,
         'Cart'         => App\Facades\Cart::class,
         'Vendor'       => App\Providers\VendorFacadeServiceProvider::class,
-        'Customer'     => App\Providers\CustomerFacadeServiceProvider::class,
+        'Customer'     => App\Facades\Customer::class,
     ],
 
 ];

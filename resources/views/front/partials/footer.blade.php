@@ -1,125 +1,183 @@
-<footer class="htc__foooter__area gray-bg">
-    <div class="container">
-        <div class="row">
-            <div class="footer__container clearfix">
-                <!-- Start Single Footer Widget -->
-                <div class="col-md-3 col-lg-3 col-sm-6">
-                    <div class="ft__widget">
-                        <div class="ft__logo">
-                            <a href="{{route('welcome')}}">
-                                <img src="/frontend/images/logo/logo.png" alt="footer logo">
-                            </a>
-                        </div>
-                        <div class="footer-address">
-                            <ul>
-                                <li>
-                                    <div class="address-icon">
-                                        <i class="zmdi zmdi-pin"></i>
-                                    </div>
-                                    <div class="address-text">
-                                        <p>194 Main Rd T, FS Rayed <br> VIC 3057, USA</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="address-icon">
-                                        <i class="zmdi zmdi-email"></i>
-                                    </div>
-                                    <div class="address-text">
-                                        <a href="#"> info@example.com</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="address-icon">
-                                        <i class="zmdi zmdi-phone-in-talk"></i>
-                                    </div>
-                                    <div class="address-text">
-                                        <p>+012 345 678 102 </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <ul class="social__icon">
-                            <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
-                            <li><a href="#"><i class="zmdi zmdi-instagram"></i></a></li>
-                            <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-                            <li><a href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- End Single Footer Widget -->
-                <!-- Start Single Footer Widget -->
-                <div class="col-md-3 col-lg-2 col-sm-6 smt-30 xmt-30">
-                    <div class="ft__widget">
-                        <h2 class="ft__title">Categories</h2>
-                        <ul class="footer-categories">
-                            <li><a href="shop-sidebar.html">Men</a></li>
-                            <li><a href="shop-sidebar.html">Women</a></li>
-                            <li><a href="shop-sidebar.html">Accessories</a></li>
-                            <li><a href="shop-sidebar.html">Shoes</a></li>
-                            <li><a href="shop-sidebar.html">Dress</a></li>
-                            <li><a href="shop-sidebar.html">Denim</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Start Single Footer Widget -->
-                <div class="col-md-3 col-lg-2 col-sm-6 smt-30 xmt-30">
-                    <div class="ft__widget">
-                        <h2 class="ft__title">Infomation</h2>
-                        <ul class="footer-categories">
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
-                            <li><a href="#">Returns & Exchanges</a></li>
-                            <li><a href="#">Shipping & Delivery</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Start Single Footer Widget -->
-                <div class="col-md-3 col-lg-3 col-lg-offset-1 col-sm-6 smt-30 xmt-30">
-                    <div class="ft__widget">
-                        <h2 class="ft__title">Newsletter</h2>
-                        <div class="newsletter__form">
-                            <p>Subscribe to our newsletter and get 10% off your first purchase .</p>
-                            <div class="input__box">
-                                <div id="mc_embed_signup">
-                                    <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                                        <div id="mc_embed_signup_scroll" class="htc__news__inner">
-                                            <div class="news__input">
-                                                <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Email Address" required>
-                                            </div>
-                                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                                            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
-                                            <div class="clearfix subscribe__btn"><input type="submit" value="Send" name="subscribe" id="mc-embedded-subscribe" class="bst__btn btn--white__color">
+<!-- FOOTER -->
+<footer class="bg-dark bg-cover @@classList" style="background-image: url(/frontend/assets/img/patterns/pattern-2.svg)">
+    <div class="py-12 border-bottom border-gray-700">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8 col-xl-6">
 
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                    <!-- Heading -->
+                    <h5 class="mb-7 text-center text-white">{{__('Want style Ideas and Treats?')}}</h5>
+
+                    <!-- Form -->
+                    <form class="mb-11">
+                        <div class="form-row align-items-start">
+                            <div class="col">
+                                <input type="email" class="form-control form-control-gray-700 form-control-lg"
+                                       placeholder="{{__('Enter Email')}} *" required>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-gray-500 btn-lg">{{__('Subscribe')}}</button>
                             </div>
                         </div>
-                    </div>
+                    </form>
+
                 </div>
-                <!-- End Single Footer Widget -->
             </div>
-        </div>
-        <!-- Start Copyright Area -->
-        <div class="htc__copyright__area">
             <div class="row">
-                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                    <div class="copyright__inner">
-                        <div class="copyright">
-                            <p>© 2020 All Right Reserved.</p>
-                        </div>
-                        <ul class="footer__menu">
-                            <li><a href="{{route('welcome')}}">Home</a></li>
-                            <li><a href="shop.html">Product</a></li>
-                            <li><a href="{{route('contact')}}">Contact Us</a></li>
-                        </ul>
-                    </div>
+                <div class="col-12 col-md-3">
+
+                    <!-- Heading -->
+                    <h4 class="mb-6 text-white">Snapovia.</h4>
+
+                    <!-- Social -->
+                    <ul class="list-unstyled list-inline mb-7 mb-md-0">
+                        <li class="list-inline-item">
+                            <a href="javascript:" class="text-gray-350">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="javascript:" class="text-gray-350">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="javascript:" class="text-gray-350">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="javascript:" class="text-gray-350">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="javascript:" class="text-gray-350">
+                                <i class="fab fa-medium"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="col-6 col-sm">
+
+                    <!-- Heading -->
+                    <h6 class="heading-xxs mb-4 text-white">
+                        {{__('Support')}}
+                    </h6>
+
+                    <!-- Links -->
+                    <ul class="list-unstyled mb-7 mb-sm-0">
+                        <li>
+                            <a class="text-gray-300" href="{{route('contact')}}">{{__('Contact Us')}}</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-300" href="{{route('faq')}}">{{__('FAQs')}}</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-300" data-toggle="modal" href="#modalSizeChart">{{__('Size Guide')}}</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-300" href="{{route('shipping-and-returns')}}">{{__('Shipping & Returns')}}</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="col-6 col-sm">
+
+                    <!-- Heading -->
+                    <h6 class="heading-xxs mb-4 text-white">
+                        {{__('Shop')}}
+                    </h6>
+
+                    <!-- Links -->
+                    <ul class="list-unstyled mb-7 mb-sm-0">
+                        <li>
+                            <a class="text-gray-300" href="men">{{__('Men\'s Shopping')}}</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-300" href="women">{{__('Women\'s Shopping')}}</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-300" href="kids">{{__('Kids\' Shopping')}}</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-300" href="discounts">{{__('Discounts')}}</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="col-6 col-sm">
+
+                    <!-- Heading -->
+                    <h6 class="heading-xxs mb-4 text-white">
+                        {{__('Company')}}
+                    </h6>
+
+                    <!-- Links -->
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a class="text-gray-300" href="{{route('about.us')}}">{{__('About us')}}</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-300" href="{{route('career')}}">{{__('Careers')}}</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-300" href="{{route('terms')}}">{{__('Terms & Conditions')}}</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-300" href="{{route('privacy')}}">{{__('Privacy & Cookie policy')}}</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="col-6 col-sm">
+
+                    <!-- Heading -->
+                    <h6 class="heading-xxs mb-4 text-white">
+                        {{__('Contact')}}
+                    </h6>
+
+                    <!-- Links -->
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a class="text-gray-300" href="javascript:">1-202-555-0105</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-300" href="javascript:">1-737-999-000</a>
+                        </li>
+                        <li>
+                            <a class="text-gray-300" href="javascript:">info@snapovia.com</a>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
         </div>
-        <!-- End Copyright Area -->
+    </div>
+    <div class="py-6">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+
+                    <!-- Copyright -->
+                    <p class="mb-3 mb-md-0 font-size-xxs text-muted">
+                        Snapovia © 2020 {{__('All rights reserved')}}.
+                    </p>
+
+                </div>
+                <div class="col-auto">
+
+                    <!-- Payment methods -->
+                    <img class="footer-payment" src="/frontend/assets/img/payment/mastercard.svg" alt="...">
+                    <img class="footer-payment" src="/frontend/assets/img/payment/visa.svg" alt="...">
+                    <img class="footer-payment" src="/frontend/assets/img/payment/amex.svg" alt="...">
+                    <img class="footer-payment" src="/frontend/assets/img/payment/paypal.svg" alt="...">
+                    <img class="footer-payment" src="/frontend/assets/img/payment/maestro.svg" alt="...">
+                    <img class="footer-payment" src="/frontend/assets/img/payment/klarna.svg" alt="...">
+
+                </div>
+            </div>
+        </div>
     </div>
 </footer>
