@@ -111,15 +111,13 @@ class Product extends Model implements HasMedia
         return '/sample-data/products/' . $this->id . '.jpg';
     }
 
-    public function productAttributes()
+    public function attributes()
     {
-        return $this->belongsToMany('App\Models\Attribute')
-            ->using('App\Models\EntityAttribute')
-            ->withPivot(['entity_id','attribute_id']);
+        return $this->belongsToMany(Attribute::class,'entity_attributes','entity_id','attribute_id');
     }
 
-    public function attributeValue()
+    public function attributeValues()
     {
-        return $this->hasMany(EntityAttribute::class);
+        return $this->hasMany(EntityAttribute::class,'entity_id');
     }
 }

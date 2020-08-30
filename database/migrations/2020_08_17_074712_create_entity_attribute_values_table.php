@@ -14,9 +14,8 @@ class CreateEntityAttributeValuesTable extends Migration
     public function up()
     {
         Schema::create('entity_attribute_values', function (Blueprint $table) {
-            $table->unsignedInteger('entity_id');
-            $table->unsignedInteger('attribute_id');
-            $table->unsignedInteger('value_id');
+            $table->unsignedInteger('id');
+            $table->unsignedInteger('attribute_value');
         });
     }
 

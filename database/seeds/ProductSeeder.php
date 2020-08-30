@@ -196,15 +196,9 @@ class ProductSeeder extends Seeder
 //
 //                    ]);
                     $color = \App\Models\Attribute::productAttribute('color')->firstOrFail();
-
-                    if ($color) {
-                        $associatedProduct->attributes()->sync($color->id);
-                    }
-
                     $size = \App\Models\Attribute::productAttribute('size')->firstOrFail();
-                    if ($size) {
-                        $associatedProduct->attributes()->sync($size->id);
-                    }
+
+                    $associatedProduct->attributes()->sync([$size->id, $color->id]);
 
                     \App\Models\UrlResolver::create([
                         'entity_id'   => $associatedProduct->id,
