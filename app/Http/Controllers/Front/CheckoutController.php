@@ -9,16 +9,21 @@ class CheckoutController extends Controller
 {
     public function index()
     {
-        return view('checkout.index');
+        $cartItems = [];
+        if(!count($cartItems)){
+            return redirect()->route('cart');
+        }
+        return view('front.checkout.index',compact('cartItems'));
     }
 
     public function cart()
     {
-        return view('checkout.cart');
+        $cartItems = [];
+        return view('front.checkout.cart',compact('cartItems'));
     }
 
     public function success()
     {
-        return view('checkout.success');
+        return view('front.checkout.success');
     }
 }
