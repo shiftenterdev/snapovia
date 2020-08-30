@@ -52,9 +52,9 @@
                                 <div class="card-img">
 
                                     <!-- Action -->
-                                    <button class="btn btn-xs btn-circle btn-white-primary card-action card-action-right">
+                                    <a href="{{route('remove.from.wishlist',$product->sku)}}" class="btn btn-xs btn-circle btn-white-primary card-action card-action-right">
                                         <i class="fe fe-x"></i>
-                                    </button>
+                                    </a>
 
                                     <!-- Button -->
                                     <button class="btn btn-xs btn-block btn-dark card-btn" data-toggle="modal" data-target="#modalProduct">

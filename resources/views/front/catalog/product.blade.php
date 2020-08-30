@@ -48,18 +48,8 @@
                                 <div class="mb-4" data-flickity='{"draggable": false, "fade": true}' id="productSlider">
 
                                     <!-- Item -->
-                                    <a href="frontend/assets/img/products/product-7.jpg" data-fancybox>
-                                        <img src="frontend/assets/img/products/product-7.jpg" alt="..." class="card-img-top">
-                                    </a>
-
-                                    <!-- Item -->
-                                    <a href="frontend/assets/img/products/product-122.jpg" data-fancybox>
-                                        <img src="frontend/assets/img/products/product-122.jpg" alt="..." class="card-img-top">
-                                    </a>
-
-                                    <!-- Item -->
-                                    <a href="frontend/assets/img/products/product-146.jpg" data-fancybox>
-                                        <img src="frontend/assets/img/products/product-146.jpg" alt="..." class="card-img-top">
+                                    <a href="{{$product->sample_image}}" data-fancybox>
+                                        <img src="{{$product->sample_image}}" alt="..." class="card-img-top">
                                     </a>
 
                                 </div>
@@ -72,18 +62,9 @@
                                 <!-- Item -->
                                 <div class="col-12 px-2" style="max-width: 113px;">
                                     <!-- Image -->
-                                    <div class="embed-responsive embed-responsive-1by1 bg-cover" style="background-image: url(frontend/assets/img/products/product-7.jpg);"></div>
+                                    <div class="embed-responsive embed-responsive-1by1 bg-cover" style="background-image: url({{$product->sample_image}});"></div>
                                 </div>
-                                <!-- Item -->
-                                <div class="col-12 px-2" style="max-width: 113px;">
-                                    <!-- Image -->
-                                    <div class="embed-responsive embed-responsive-1by1 bg-cover" style="background-image: url(frontend/assets/img/products/product-122.jpg);"></div>
-                                </div>
-                                <!-- Item -->
-                                <div class="col-12 px-2" style="max-width: 113px;">
-                                    <!-- Image -->
-                                    <div class="embed-responsive embed-responsive-1by1 bg-cover" style="background-image: url(frontend/assets/img/products/product-146.jpg);"></div>
-                                </div>
+
                             </div>
 
                         </div>
@@ -95,7 +76,7 @@
 
                                     <!-- Preheading -->
                                     <a class="text-muted"
-                                       href="/category">Category</a>
+                                       href="/{{$product->categories[0]->url_key}}">{{$product->categories[0]->name}}</a>
 
                                 </div>
                                 <div class="col-auto">
@@ -133,11 +114,11 @@
                             <div class="mb-7">
                                 @if($product->special_price)
                                     <span class="font-size-lg font-weight-bold text-gray-350 text-decoration-line-through">
-                                    ${{$product->special_price}}
+                                    ${{amount($product->special_price)}}
                                 </span>
                                 @endif
                                 <span class="ml-1 font-size-h5 font-weight-bolder text-primary">
-                                    ${{$product->price}}
+                                    ${{amount($product->price)}}
                                 </span>
                                 <span class="font-size-sm ml-1">({{__('In Stock')}})</span>
                             </div>
@@ -209,9 +190,9 @@
                                         <div class="col-12 col-lg-auto">
 
                                             <!-- Wishlist -->
-                                            <button class="btn btn-outline-dark btn-block mb-2" data-toggle="button">
+                                            <a href="{{route('add.to.wishlist',$product->sku)}}" class="btn btn-outline-dark btn-block mb-2" data-toggle="button">
                                                 {{__('Wishlist')}} <i class="fe fe-heart ml-2"></i>
-                                            </button>
+                                            </a>
 
                                         </div>
                                     </div>
@@ -472,7 +453,7 @@
 
                                         <!-- Price -->
                                         <div class="font-weight-bold text-muted">
-                                            ${{$product->price}}
+                                            ${{amount($product->price)}}
                                         </div>
 
                                     </div>
