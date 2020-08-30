@@ -232,7 +232,7 @@ return [
         'View'         => Illuminate\Support\Facades\View::class,
         'Image'        => Intervention\Image\Facades\Image::class,
         'Cart'         => App\Facades\Cart::class,
-        'Vendor'       => App\Providers\VendorFacadeServiceProvider::class,
+        'Vendor'       => App\Facades\Vendor::class,
         'Customer'     => App\Facades\Customer::class,
     ],
 

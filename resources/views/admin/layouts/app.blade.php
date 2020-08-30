@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>@yield('title') Admin Panel</title>
-    <link rel="shortcut icon" type="image/png" href="{{asset('adminhtml/favicon.png')}}">
+    <link rel="shortcut icon" type="image/png" href="{{asset('favicon.png')}}">
     <link rel="stylesheet" href="{{asset('adminhtml/plugins/fontawesome-free/css/all.min.css')}}">
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     @yield('style')
