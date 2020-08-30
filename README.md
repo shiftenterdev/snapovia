@@ -67,6 +67,10 @@ $ php artisan serve
 > Login: `super@admin.com` \
 > Password: `password`
 
+> Admin url: http://127.0.0.1:8000/customer/login \
+> Login: `customer@mail.com` \
+> Password: `password`
+
 
 ## Want to contribute in `shiftenterdev/butikshop`
 

@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use Illuminate\Database\Seeder;
 
 
 class CustomerSeeder extends Seeder
@@ -15,12 +15,36 @@ class CustomerSeeder extends Seeder
     {
         $faker = Faker::create();
 
+        $customer = \App\Models\Customer::create([
+            'password'          => bcrypt('password'),
+            'email'             => 'customer@mail.com',
+            'first_name'        => $faker->firstName,
+            'last_name'         => $faker->lastName,
+            'gender'            => 'male',
+            'customer_group_id' => 1,
+            'country'           => $faker->country
+        ]);
 
-        for ($i = 1; $i <= env('SAMPLE_CUSTOMER_COUNT',20); $i++) {
+        $customer->address()->create([
+            'first_name'       => $faker->firstName,
+            'last_name'        => $faker->lastName,
+            'address_line_1'   => $faker->streetAddress,
+            'telephone'        => $faker->phoneNumber,
+            'city'             => $faker->city,
+            'default_shipping' => 1,
+            'default_billing'  => 1,
+            'postcode'         => $faker->postcode,
+            'country'          => $faker->country,
+        ]);
+
+        $customer->wishlist()->sync([1,2,3,4,5]);
+
+
+        for ($i = 1; $i <= env('SAMPLE_CUSTOMER_COUNT', 20); $i++) {
 
             $customer = \App\Models\Customer::create([
-                'password' => bcrypt('password'),
-                'email'    => $faker->email,
+                'password'          => bcrypt('password'),
+                'email'             => $faker->email,
                 'first_name'        => $faker->firstName,
                 'last_name'         => $faker->lastName,
                 'gender'            => 'male',
