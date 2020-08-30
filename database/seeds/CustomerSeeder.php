@@ -22,6 +22,7 @@ class CustomerSeeder extends Seeder
             'last_name'         => $faker->lastName,
             'gender'            => 'male',
             'customer_group_id' => 1,
+            'dob'               => $faker->date('Y-m-d'),
             'country'           => $faker->country
         ]);
 
@@ -37,7 +38,7 @@ class CustomerSeeder extends Seeder
             'country'          => $faker->country,
         ]);
 
-        $customer->wishlist()->sync([1,2,3,4,5]);
+        $customer->wishlist()->sync([1, 2, 3, 4, 5]);
 
 
         for ($i = 1; $i <= env('SAMPLE_CUSTOMER_COUNT', 20); $i++) {
@@ -48,6 +49,7 @@ class CustomerSeeder extends Seeder
                 'first_name'        => $faker->firstName,
                 'last_name'         => $faker->lastName,
                 'gender'            => 'male',
+                'dob'               => $faker->date('Y-m-d'),
                 'customer_group_id' => 1,
                 'country'           => $faker->country
             ]);
