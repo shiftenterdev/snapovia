@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Route;
 /**
  * Frontend routes
  */
-
+Route::get('/locale/{p}',function($lang){
+    session(['locale'=>$lang]);
+    return redirect()->back();
+})->name('lang');
 
 Route::namespace('Front')->group(function () {
 
@@ -15,7 +18,7 @@ Route::namespace('Front')->group(function () {
     // Vue route will resume later(experimental)
     Route::view('/vue/{any}', 'front.layouts.vue')->where('any', '.*');
 
-    Route::get('category', 'CatalogController@allProducts')->name('category');
+    Route::get('category', 'CatalogController@category')->name('category');
 
     Route::resource('search', 'SearchController')->only(['index','show']);
 
@@ -37,6 +40,7 @@ Route::namespace('Front')->group(function () {
     Route::get('career', 'CmsController@career')->name('career');
     Route::get('terms', 'CmsController@terms')->name('terms');
     Route::get('privacy-policy', 'CmsController@privacy')->name('privacy');
+    Route::get('discount', 'CatalogController@discount')->name('discount');
 
     Route::resource('blog', 'BlogController')->only(['index','show']);
 

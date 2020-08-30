@@ -11,18 +11,6 @@ class CustomerGroupSeeder extends Seeder
      */
     public function run()
     {
-        $groups = [
-            [
-                'title' => 'Default'
-            ],
-            [
-                'title' => 'Company',
-            ],
-            [
-                'title' => 'Private'
-            ]
-        ];
-
-        \App\Models\CustomerGroup::insert($groups);
+        
     }
 }

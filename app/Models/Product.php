@@ -38,14 +38,14 @@ class Product extends Model implements HasMedia
     public function scopeGrid($query, $search)
     {
         return $query->when($search['id'] != '', function ($q) use ($search) {
-            if(trim(strpos($search['id'],'-'))){
-                $ids = explode('-',$search['id']);
-                return $q->whereBetween('id', [$ids[0],$ids[1]]);
-            }else {
+            if (trim(strpos($search['id'], '-'))) {
+                $ids = explode('-', $search['id']);
+                return $q->whereBetween('id', [$ids[0], $ids[1]]);
+            } else {
                 return $q->where('id', $search['id']);
             }
         })->when($search['price'] != '', function ($q) use ($search) {
-            return $q->where('price', ($search['price']*100));
+            return $q->where('price', ($search['price'] * 100));
         })->when($search['sku'] != '', function ($q) use ($search) {
             return $q->where('sku', $search['sku']);
         })->when($search['product_type'] != '', function ($q) use ($search) {
@@ -60,9 +60,23 @@ class Product extends Model implements HasMedia
             ->paginate($this->paginateCount);
     }
 
-    public function scopeSearch()
+    public function scopeSearch($query, $search)
     {
+        if ($search) {
+            return $query->where('name', 'LIKE', '%' . $search . '%')
+                ->orWhere('sku', 'LIKE', $search . '%')
+                ->select(['name', 'product_type', 'special_price', 'price', 'sku', 'id', 'url_key'])
+                ->paginate(6);
+        }
+        return [];
+    }
 
+    public function scopeHome($query, $type = null)
+    {
+        return $query->select(['name', 'product_type', 'special_price', 'price', 'sku', 'id'])
+            ->inRandomOrder()
+            ->limit(8)
+            ->get();
     }
 
     public function relatedProducts()
@@ -110,6 +124,11 @@ class Product extends Model implements HasMedia
 
     public function attributes()
     {
-        return $this->hasManyThrough(Attribute::class,EntityAttribute::class,'entity_id','id','id','attribute_id');
+        return $this->belongsToMany(Attribute::class, 'entity_attributes', 'entity_id', 'attribute_id');
+    }
+
+    public function attributeValues()
+    {
+        return $this->hasMany(EntityAttribute::class, 'entity_id');
     }
 }

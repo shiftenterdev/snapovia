@@ -8,6 +8,31 @@ function status($status)
     return '<span class="badge badge-danger">Inactive</span>';
 }
 
+if (!function_exists('current_language')) {
+    function current_language()
+    {
+        switch (session('locale')) {
+            case 'en':
+                return __('English');
+                break;
+            case 'sv':
+                return __('Swedish');
+                break;
+            case 'bn':
+                return __('Bangla');
+                break;
+            case 'no':
+                return __('Norwegian');
+                break;
+            case 'da':
+                return __('Danish');
+                break;
+            default:
+                return __('English');
+        }
+    }
+}
+
 function visibility($visibility)
 {
     switch ($visibility) {
