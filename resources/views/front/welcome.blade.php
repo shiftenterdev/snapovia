@@ -1,5 +1,5 @@
 @extends('front.layouts.default')
-
+@section('title','Shopping never been that easy | ')
 @section('content')
     <!-- PROMO -->
     <div class="py-3 bg-dark bg-pattern mb-4">
@@ -387,14 +387,13 @@
 
                                         <!-- Image -->
                                         <a class="" href="/{{$product->url_key}}">
-                                            <img class="card-img-top card-img-front lazy-image-loading"
-                                                 src="/front/assets/img/placeholder.jpg"
-                                                 data-src="{{$product->thumbnail->url}}" alt="...">
+                                            <img class="card-img-top card-img-front"
+                                                 src="{{$product->sample_image}}" alt="...">
 
                                         </a>
 
                                         <!-- Actions -->
-                                        {{--<div class="card-actions">
+                                        <div class="card-actions">
                           <span class="card-action">
                             <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
                                     data-target="#modalProduct">
@@ -411,7 +410,7 @@
                               <i class="fe fe-heart"></i>
                             </button>
                           </span>
-                                        </div>--}}
+                                        </div>
 
                                     </div>
 
@@ -425,14 +424,14 @@
 
                                         <!-- Title -->
                                         <div class="font-weight-bold">
-                                            <a class="text-body" href="{{$product->url_key}}">
+                                            <a class="text-body" href="{{$product->url_path}}">
                                                 {{$product->name}}
                                             </a>
                                         </div>
 
                                         <!-- Price -->
                                         <div class="font-weight-bold text-muted">
-                                            ${{$product->price_range->minimum_price->final_price->value}}
+                                            ${{$product->price}}
                                         </div>
 
                                     </div>
@@ -462,14 +461,13 @@
 
                                         <!-- Image -->
                                         <a class="" href="/{{$product->url_key}}">
-                                            <img class="card-img-top card-img-front lazy-image-loading"
-                                                 src="/front/assets/img/placeholder.jpg"
-                                                 data-src="{{$product->thumbnail->url}}" alt="...">
+                                            <img class="card-img-top card-img-front"
+                                                 src="{{$product->sample_image}}" alt="...">
 
                                         </a>
 
                                         <!-- Actions -->
-                                        {{--<div class="card-actions">
+                                        <div class="card-actions">
                           <span class="card-action">
                             <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
                                     data-target="#modalProduct">
@@ -486,7 +484,7 @@
                               <i class="fe fe-heart"></i>
                             </button>
                           </span>
-                                        </div>--}}
+                                        </div>
 
                                     </div>
 
@@ -507,7 +505,7 @@
 
                                         <!-- Price -->
                                         <div class="font-weight-bold text-muted">
-                                            ${{$product->price_range->minimum_price->final_price->value}}
+                                            ${{$product->price}}
                                         </div>
 
                                     </div>
@@ -529,7 +527,7 @@
 
                                     <!-- Badge -->
                                     <div class="badge badge-white card-badge card-badge-left text-uppercase">
-                                        {{--                                    {{__('New')}}--}}
+                                                                            {{__('New')}}
                                     </div>
 
                                     <!-- Image -->
@@ -537,14 +535,13 @@
 
                                         <!-- Image -->
                                         <a class="" href="/{{$product->url_key}}">
-                                            <img class="card-img-top card-img-front lazy-image-loading"
-                                                 src="/front/assets/img/placeholder.jpg"
-                                                 data-src="{{$product->thumbnail->url}}" alt="...">
+                                            <img class="card-img-top card-img-front"
+                                                 src="{{$product->sample_image}}" alt="...">
 
                                         </a>
 
                                         <!-- Actions -->
-                                        {{--<div class="card-actions">
+                                        <div class="card-actions">
                           <span class="card-action">
                             <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
                                     data-target="#modalProduct">
@@ -561,7 +558,7 @@
                               <i class="fe fe-heart"></i>
                             </button>
                           </span>
-                                        </div>--}}
+                                        </div>
 
                                     </div>
 
@@ -582,7 +579,7 @@
 
                                         <!-- Price -->
                                         <div class="font-weight-bold text-muted">
-                                            ${{$product->price_range->minimum_price->final_price->value}}
+                                            ${{$product->price}}
                                         </div>
 
                                     </div>

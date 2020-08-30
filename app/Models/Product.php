@@ -62,10 +62,21 @@ class Product extends Model implements HasMedia
 
     public function scopeSearch($query, $search)
     {
-        return $query->when($search != '', function ($q) use ($search) {
-            return $q->where('name', 'LIKE', '%' . $search . '%')
-                ->orWhere('sku', 'LIKE', $search . '%')->take(10);
-        })->get();
+        if ($search) {
+            return $query->where('name', 'LIKE', '%' . $search . '%')
+                ->orWhere('sku', 'LIKE', $search . '%')
+                ->select(['name', 'product_type', 'special_price', 'price', 'sku', 'id', 'url_key'])
+                ->paginate(6);
+        }
+        return [];
+    }
+
+    public function scopeHome($query, $type = null)
+    {
+        return $query->select(['name', 'product_type', 'special_price', 'price', 'sku', 'id'])
+            ->inRandomOrder()
+            ->limit(8)
+            ->get();
     }
 
     public function relatedProducts()

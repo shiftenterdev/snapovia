@@ -11,7 +11,6 @@ class Search extends Component
     public function render()
     {
         $response = \App\Models\Product::search($this->search);
-
         return view('livewire.front.search',compact('response'));
     }
 }
