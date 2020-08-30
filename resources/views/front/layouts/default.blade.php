@@ -16,17 +16,17 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://myozeshop.com/">
+    <meta property="og:url" content="https://snapovia.com/">
     <meta property="og:title" content="Snapovia wear future trends">
     <meta property="og:description" content="Exciting fashion items at your fingertips. Just grab your one quickly and conveniently.">
-    <meta property="og:image" content="https://myozeshop.com/meta/myozeshop.jpg">
+    <meta property="og:image" content="https://snapovia.com/meta/myozeshop.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://myozeshop.com/">
+    <meta property="twitter:url" content="https://snapovia.com/">
     <meta property="twitter:title" content="Snapovia wear future trends">
     <meta property="twitter:description" content="Exciting fashion items at your fingertips. Just grab your one quickly and conveniently.">
-    <meta property="twitter:image" content="https://myozeshop.com/meta/myozeshop.jpg">
+    <meta property="twitter:image" content="https://snapovia.com/meta/myozeshop.jpg">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -39,8 +39,8 @@
     <link rel="stylesheet" href="{{asset('frontend/assets/libs/highlightjs/styles/vs2015.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/assets/libs/flickity-fade/flickity-fade.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/assets/fonts/feather/feather.css')}}">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
-
+    <link rel="stylesheet" href="//unpkg.com/swiper/css/swiper.min.css">
+    <livewire:styles/>
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('frontend/assets/css/theme.min.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/assets/css/myozeshop.css')}}">
@@ -49,39 +49,14 @@
 </head>
 <body>
 
-<!-- Load Facebook SDK for JavaScript -->
-<div id="fb-root"></div>
-<script>
-    window.fbAsyncInit = function() {
-        FB.init({
-            xfbml            : true,
-            version          : 'v7.0'
-        });
-    };
-
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-
-<!-- Your Chat Plugin code -->
-<div class="fb-customerchat"
-     attribution=setup_tool
-     page_id="105638101201414"
-     theme_color="#8e44ad">
-</div>
-
-<div class="loading">
-    <div class="lds-ellipsis">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-</div>
+{{--<div class="loading">--}}
+{{--    <div class="lds-ellipsis">--}}
+{{--        <div></div>--}}
+{{--        <div></div>--}}
+{{--        <div></div>--}}
+{{--        <div></div>--}}
+{{--    </div>--}}
+{{--</div>--}}
 
 
 <!-- MODALS -->
@@ -92,7 +67,8 @@
 
 @include('front.partials.modals.product')
 
-@include('front.partials.modals.search')
+{{--@include('front.partials.modals.search')--}}
+<livewire:front.search />
 
 @include('front.partials.modals.shopping_cart')
 
@@ -111,21 +87,22 @@
 
 <!-- JAVASCRIPT -->
 <!-- Libs JS -->
-<script src="frontend/assets/libs/jquery/dist/jquery.min.js"></script>
-<script src="frontend/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="frontend/assets/libs/flickity/dist/flickity.pkgd.min.js"></script>
-<script src="frontend/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-<script src="frontend/assets/libs/smooth-scroll/dist/smooth-scroll.min.js"></script>
-<script src="frontend/assets/libs/simplebar/dist/simplebar.min.js"></script>
-<script src="frontend/assets/libs/list.js/dist/list.min.js"></script>
-<script src="frontend/assets/libs/jarallax/dist/jarallax.min.js"></script>
-<script src="frontend/assets/libs/highlightjs/highlight.pack.min.js"></script>
-<script src="frontend/assets/libs/flickity-fade/flickity-fade.js"></script>
-<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+<script src="{{asset('frontend/assets/libs/jquery/dist/jquery.min.js')}}"></script>
+<script src="{{asset('frontend/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{asset('frontend/assets/libs/flickity/dist/flickity.pkgd.min.js')}}"></script>
+<script src="{{asset('frontend/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js')}}"></script>
+<script src="{{asset('frontend/assets/libs/smooth-scroll/dist/smooth-scroll.min.js')}}"></script>
+<script src="{{asset('frontend/assets/libs/simplebar/dist/simplebar.min.js')}}"></script>
+<script src="{{asset('frontend/assets/libs/list.js/dist/list.min.js')}}" defer></script>
+<script src="{{asset('frontend/assets/libs/jarallax/dist/jarallax.min.js')}}"></script>
+<script src="{{asset('frontend/assets/libs/highlightjs/highlight.pack.min.js')}}"></script>
+<script src="{{asset('frontend/assets/libs/flickity-fade/flickity-fade.js')}}"></script>
+<script src="//unpkg.com/swiper/js/swiper.min.js" defer></script>
 
 <!-- Theme JS -->
-<script src="frontend/assets/js/theme.min.js"></script>
-<script src="frontend/assets/js/myozeshop.js"></script>
+<script src="{{asset('frontend/assets/js/theme.min.js')}}"></script>
+<livewire:scripts/>
+<script src="{{asset('frontend/assets/js/myozeshop.js')}}"></script>
 @yield('script')
 
 

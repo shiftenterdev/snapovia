@@ -13,7 +13,7 @@
                 <div class="col-12 col-lg-5">
 
                     <!-- Image -->
-                    <img class="img-fluid" src="front/assets/img/covers/cover-25.jpg" alt="...">
+                    <img class="img-fluid" src="/frontend/assets/img/covers/cover-25.jpg" alt="...">
 
                 </div>
                 <div class="col-12 col-lg-7 d-flex flex-column px-md-8">

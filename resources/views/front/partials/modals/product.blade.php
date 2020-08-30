@@ -14,7 +14,7 @@
                     <div class="col-12 col-lg-6 col-xl-5 py-4 py-xl-0 px-xl-0">
 
                         <!-- Image -->
-                        <img class="img-fluid" src="front/assets/img/products/product-7.jpg" alt="...">
+                        <img class="img-fluid" src="/frontend/assets/img/products/product-7.jpg" alt="...">
 
                         <!-- Button -->
                         <a class="btn btn-sm btn-block btn-primary" href="./product.html">

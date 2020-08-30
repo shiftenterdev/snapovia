@@ -20,7 +20,7 @@
 
                         <!-- Image -->
                         <a href="./product.html">
-                            <img class="img-fluid mb-7 mb-md-0" src="front/assets/img/products/product-6.jpg" alt="...">
+                            <img class="img-fluid mb-7 mb-md-0" src="/frontend/assets/img/products/product-6.jpg" alt="...">
                         </a>
 
                     </div>

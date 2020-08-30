@@ -73,28 +73,7 @@ let lazyLoading = function () {
         }
     });
 };
-lazyLoading();
-
-let searchField = $('.top-search');
-
-searchField.on('input', delay(function () {
-    let keyword = $(this).val();
-    if (keyword.length >= 3) {
-        //loadingShow();
-        $('top-search-result').addClass('progress');
-        searchProduct(keyword);
-    } else {
-        $('top-search-result').html('');
-    }
-}, 500));
-
-let searchProduct = function (query) {
-    $('top-search-result').load('/search', {q: query}, function () {
-        //loadingHide();
-        lazyLoading();
-        $('top-search-result').removeClass('progress');
-    });
-};
+// lazyLoading();
 
 // Add to cart section
 let productSku = $('#productSku').val();
