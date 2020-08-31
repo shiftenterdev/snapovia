@@ -13,7 +13,7 @@
             </div>
 
             <!-- List group -->
-            <ul class="list-group list-group-lg list-group-flush">
+            <ul class="list-group list-group-lg list-group-flush" wire:loading.class="progress">
                 @php($subtotal = 0)
                 @foreach($cart->items as $product)
                     <li class="list-group-item">

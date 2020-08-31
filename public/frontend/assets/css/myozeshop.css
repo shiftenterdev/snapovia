@@ -2,7 +2,7 @@
     z-index: 100;
     min-height: 200px;
     background-size: auto;
-    background: #ffffff url(../img/loader-1.gif) no-repeat center !important;
+    background: rgba(255, 255, 255, 0.43) url(../img/loader-1.gif) no-repeat center !important;
 }
 
 .progress > * {
