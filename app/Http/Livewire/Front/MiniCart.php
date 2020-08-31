@@ -7,17 +7,22 @@ use Livewire\Component;
 
 class MiniCart extends Component
 {
+    public $cart;
 
     protected $listeners = ['updateMiniCart'];
 
+    public function mount()
+    {
+        $this->cart = Cart::get();
+    }
+
     public function render()
     {
-        $cart = Cart::get();
-        return view('livewire.front.mini-cart',compact('cart'));
+        return view('livewire.front.mini-cart');
     }
 
     public function updateMiniCart()
     {
-
+        $this->cart = Cart::get();
     }
 }
