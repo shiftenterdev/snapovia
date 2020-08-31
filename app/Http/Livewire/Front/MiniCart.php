@@ -25,4 +25,10 @@ class MiniCart extends Component
     {
         $this->cart = Cart::get();
     }
+
+    public function removeFromCart($sku)
+    {
+        Cart::removeFromCart($sku);
+        $this->updateMiniCart();
+    }
 }

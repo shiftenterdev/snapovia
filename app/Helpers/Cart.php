@@ -27,7 +27,13 @@ class Cart
 
     public function get()
     {
-        return session(self::QUOTE_SESSION_KEY)??null;
+        return session(self::QUOTE_SESSION_KEY) ?? null;
+    }
+
+    private function create()
+    {
+        $quote = Quote::create(['customer_ip' => request()->ip()]);
+        $this->set($quote);
     }
 
     /**
@@ -37,7 +43,6 @@ class Cart
     {
         session([self::QUOTE_SESSION_KEY => $cart]);
     }
-
 
     public function addToCart($sku, $qty = 1)
     {
@@ -57,25 +62,20 @@ class Cart
         $this->set($quote);
     }
 
-    private function check()
-    {
-        return session(self::QUOTE_SESSION_KEY) ?? null;
-    }
-
-    private function create()
-    {
-        $quote = Quote::create(['customer_ip' => request()->ip()]);
-        $this->set($quote);
-    }
-
     /**
      * @param $productSku
      */
     public function removeFromCart($productSku): void
     {
         $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
-            ->items()->where('sku',$productSku)->delete();
+            ->firstOrFail();
+        $quote->items()->where('sku', $productSku)->delete();
         $this->set($quote);
+    }
+
+    private function check()
+    {
+        return session(self::QUOTE_SESSION_KEY) ?? null;
     }
 
 }

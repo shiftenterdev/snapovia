@@ -47,7 +47,7 @@
                             </button>
                           </span>
                                     <span class="card-action">
-                            <button wire:click="$emit('addToCart',{{$product->sku}})" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                            <button wire:click.prevent="addToCart({{$product->sku}})" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
                               <i class="fe fe-shopping-cart"></i>
                             </button>
                           </span>

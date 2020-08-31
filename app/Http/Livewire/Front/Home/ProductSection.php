@@ -9,7 +9,7 @@ use Livewire\Component;
 class ProductSection extends Component
 {
 
-    protected $listeners = ['addToCart'];
+//    protected $listeners = ['addToCart'];
 
     public function render()
     {
