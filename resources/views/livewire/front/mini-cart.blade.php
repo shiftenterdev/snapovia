@@ -1,5 +1,5 @@
 <div>
-    @if($cart)
+    @if(isset($cart->items) && count($cart->items))
 
 
             <!-- Close -->
@@ -13,7 +13,7 @@
             </div>
 
             <!-- List group -->
-            <ul class="list-group list-group-lg list-group-flush">
+            <ul class="list-group list-group-lg list-group-flush" wire:loading.class="progress">
                 @php($subtotal = 0)
                 @foreach($cart->items as $product)
                     <li class="list-group-item">
@@ -47,7 +47,7 @@
                                     </select>
 
                                     <!-- Remove -->
-                                    <a class="font-size-xs text-gray-400 ml-auto remove_from_cart" data-item-id="{{$product->sku}}" href="javascript:">
+                                    <a class="font-size-xs text-gray-400 ml-auto" wire:click="removeFromCart({{$product->sku}})" href="javascript:">
                                         <i class="fe fe-x"></i> {{__('Remove')}}
                                     </a>
 

@@ -74,7 +74,7 @@ class Product extends Model implements HasMedia
     public function scopeHome($query, $count = 8)
     {
         return $query->select(['name', 'product_type', 'special_price', 'price', 'sku', 'id', 'url_key'])
-            ->inRandomOrder()
+            ->orderBy('id','desc')
             ->limit($count)
             ->get();
     }

@@ -14,7 +14,7 @@
 
         </div>
     </div>
-    <div class="tab-content">
+    <div class="tab-content" wire:loading.class="progress">
         <div class="tab-pane fade show active" id="womenTab">
             <div class="row">
                 @foreach($women as $product)
@@ -47,7 +47,7 @@
                             </button>
                           </span>
                                     <span class="card-action">
-                            <button wire:click="$emit('addToCart',{{$product->sku}})" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                            <button wire:click.prevent="addToCart({{$product->sku}})" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
                               <i class="fe fe-shopping-cart"></i>
                             </button>
                           </span>
@@ -243,7 +243,7 @@
 
             <!-- Link  -->
             <div class="mt-7 text-center">
-                <a class="link-underline" href="#!">{{__('Discover more')}}</a>
+                <a class="link-underline" href="{{route('category')}}">{{__('Discover more')}}</a>
             </div>
 
         </div>
