@@ -6,7 +6,7 @@
 <a href="https://img.shields.io/badge/Development-onprogress-orange"><img src="https://img.shields.io/badge/Development-onprogress-orange" alt=""></a>
 </p>
 
-## About Snapovia [Under development..]
+## Snapovia(Previously Butikshop) [Under development..]
 
 Sanpovia(single store based) is an ecommerce framework built with laravel and idea from Magento. This combination makes a new ecommerce platfrom which will be faster and optimized in process and user experience. 
 We will have the following features:
@@ -74,7 +74,7 @@ $ php artisan serve
 
 ## Want to contribute in `shiftenterdev/butikshop`
 
-Contributions are encouraged and welcome. Here are the steps of contribution:
+Contribution will be encouraged and welcomed. Here are the steps of contribution:
 
 1. Fork the repository
 2. Clone the repository
