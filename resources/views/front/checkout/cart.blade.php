@@ -32,11 +32,12 @@
                 </div>
             </div>
             <div class="row">
-                @if(count($cartItems))
+                @if(count($cart->items))
                     <div class="col-12 col-md-7">
 
                         <!-- List group -->
                         <ul class="list-group list-group-lg list-group-flush-x mb-6 cart-page-list">
+                            @php($subtotal = 0)
                             @foreach($cart->items as $product)
                                 <li class="list-group-item">
                                     <div class="row align-items-center">
@@ -44,7 +45,7 @@
 
                                             <!-- Image -->
                                             <a href="{{$product->product->url_key}}">
-                                                <img src="{{$product->product->small_image->url}}" alt="{{$product->product->name}}" class="img-fluid">
+                                                <img src="{{$product->product->sample_image}}" alt="{{$product->product->name}}" class="img-fluid">
                                             </a>
 
                                         </div>
@@ -53,7 +54,7 @@
                                             <!-- Title -->
                                             <div class="d-flex mb-2 font-weight-bold">
                                                 <a class="text-body" href="{{$product->product->url_key}}">{{$product->product->name}}</a>
-                                                <span class="ml-auto">${{$product->product->price->regularPrice->amount->value}}</span>
+                                                <span class="ml-auto">${{amount($product->product->price)}}</span>
                                             </div>
 
                                             <!-- Text -->
@@ -67,11 +68,11 @@
 
                                                 <!-- Select -->
                                                 <select class="custom-select custom-select-xxs w-auto mc-c-item-qty" data-item-id="{{$product->id}}">
-                                                    <option value="1" {{$product->quantity==1?'selected':""}}>1</option>
-                                                    <option value="2" {{$product->quantity==2?'selected':""}}>2</option>
-                                                    <option value="3" {{$product->quantity==3?'selected':""}}>3</option>
-                                                    <option value="4" {{$product->quantity==4?'selected':""}}>4</option>
-                                                    <option value="5" {{$product->quantity==5?'selected':""}}>5</option>
+                                                    <option value="1" {{$product->qty==1?'selected':""}}>1</option>
+                                                    <option value="2" {{$product->qty==2?'selected':""}}>2</option>
+                                                    <option value="3" {{$product->qty==3?'selected':""}}>3</option>
+                                                    <option value="4" {{$product->qty==4?'selected':""}}>4</option>
+                                                    <option value="5" {{$product->qty==5?'selected':""}}>5</option>
                                                 </select>
 
                                                 <!-- Remove -->
@@ -84,6 +85,7 @@
                                         </div>
                                     </div>
                                 </li>
+                                @php($subtotal += (int)($product->qty * $product->product->price))
                             @endforeach
                         </ul>
 
@@ -131,13 +133,13 @@
                             <div class="card-body">
                                 <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x">
                                     <li class="list-group-item d-flex">
-                                        <span>{{__('Subtotal')}}</span> <span class="ml-auto font-size-sm">${{$cart->prices->grand_total->value}}</span>
+                                        <span>{{__('Subtotal')}}</span> <span class="ml-auto font-size-sm">${{amount($subtotal)}}</span>
                                     </li>
                                     <li class="list-group-item d-flex">
                                         <span>{{__('Tax')}}</span> <span class="ml-auto font-size-sm">$0</span>
                                     </li>
                                     <li class="list-group-item d-flex font-size-lg font-weight-bold">
-                                        <span>{{__('Total')}}</span> <span class="ml-auto font-size-sm">${{$cart->prices->grand_total->value}}</span>
+                                        <span>{{__('Total')}}</span> <span class="ml-auto font-size-sm">${{amount($subtotal)}}</span>
                                     </li>
                                     <li class="list-group-item font-size-sm text-center text-gray-500">
                                         {{__('Shipping cost calculated at Checkout')}} *
