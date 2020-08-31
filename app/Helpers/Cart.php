@@ -3,28 +3,31 @@
 /**
  * @author Iftakharul Alam Bappa <iftakharul@strativ.se> 
  */
+
 namespace App\Helpers;
 
 
 use App\Models\Product;
+use App\Models\Quote;
 
 class Cart
 {
+
+    const QUOTE_SESSION_KEY = '_quote';
+
     /**
      * Cart constructor.
      */
     public function __construct()
     {
         if ($this->get() === null)
-            $this->set($this->empty());
+            $this->create();
     }
 
-    /**
-     * @return array|null
-     */
-    public function get(): ?array
+
+    public function get()
     {
-        return request()->session()->get('cart');
+        return session(self::QUOTE_SESSION_KEY)??null;
     }
 
     /**
@@ -32,44 +35,47 @@ class Cart
      */
     private function set($cart): void
     {
-        request()->session()->put('cart', $cart);
+        session([self::QUOTE_SESSION_KEY => $cart]);
+    }
+
+
+    public function addToCart($sku, $qty = 1)
+    {
+        $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
+            ->firstOrFail();
+        $product = Product::whereSku($sku)->firstOrFail();
+        $quote->items()->updateOrCreate(
+            [
+                'product_id'   => $product->id,
+                'name'         => $product->name,
+                'sku'          => $product->sku,
+                'product_type' => $product->product_type,
+                'row_total'    => (int)($product->price * $qty)
+            ],
+            ['qty' => $qty, 'unit_price' => $product->price, 'discount_price' => 0]
+        );
+        $this->set($quote);
+    }
+
+    private function check()
+    {
+        return session(self::QUOTE_SESSION_KEY) ?? null;
+    }
+
+    private function create()
+    {
+        $quote = Quote::create(['customer_ip' => request()->ip()]);
+        $this->set($quote);
     }
 
     /**
-     * @return array|array[]
+     * @param $productSku
      */
-    public function empty(): array
+    public function removeFromCart($productSku): void
     {
-        return [
-            'products' => [],
-        ];
+        $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
+            ->items()->where('sku',$productSku)->delete();
+        $this->set($quote);
     }
 
-    /**
-     * @param Product $product
-     */
-    public function add(Product $product): void
-    {
-        $cart = $this->get();
-        array_push($cart['products'], $product);
-        $this->set($cart);
-    }
-
-    /**
-     * @param int $productId
-     */
-    public function remove(int $productId): void
-    {
-        $cart = $this->get();
-        array_splice($cart['products'], array_search($productId, array_column($cart['products'], 'id')), 1);
-        $this->set($cart);
-    }
-
-    /**
-     * clear all
-     */
-    public function clear(): void
-    {
-        $this->set($this->empty());
-    }
 }

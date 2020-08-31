@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Facades\Cart;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -9,17 +10,17 @@ class CheckoutController extends Controller
 {
     public function index()
     {
-        $cartItems = [];
-        if(!count($cartItems)){
+        $cart = Cart::get();
+        if(!count($cart->items)){
             return redirect()->route('cart');
         }
-        return view('front.checkout.index',compact('cartItems'));
+        return view('front.checkout.index',compact('cart'));
     }
 
     public function cart()
     {
-        $cartItems = [];
-        return view('front.checkout.cart',compact('cartItems'));
+        $cart = Cart::get();
+        return view('front.checkout.cart',compact('cart'));
     }
 
     public function success()

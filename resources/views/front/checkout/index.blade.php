@@ -1,5 +1,5 @@
 @extends('front.layouts.default')
-
+@section('title','Checkout | ')
 @section('content')
     <nav class="py-5">
         <div class="container">
@@ -28,14 +28,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-
-                    <!-- Heading -->
                     <h3 class="mb-4">{{__('Checkout')}}</h3>
-
-                    <!-- Subheading -->
-                    <p class="mb-10">
-                        {{__('Already have an account')}}? <a class="font-weight-bold text-reset" href="{{route('customer.login')}}">{{__('Click here to login')}}</a>
-                    </p>
+                    @if(!Customer::check())
+                        <p class="mb-10">
+                            {{__('Already have an account')}}? <a class="font-weight-bold text-reset"
+                                                                  href="{{route('customer.login')}}">{{__('Click here to login')}}</a>
+                        </p>
+                    @endif
 
                 </div>
             </div>
@@ -55,7 +54,8 @@
                                 <!-- First Name -->
                                 <div class="form-group">
                                     <label for="checkoutBillingFirstName">{{__('First Name')}} *</label>
-                                    <input class="form-control form-control-sm" id="checkoutBillingFirstName" type="text" placeholder="First Name" required="">
+                                    <input class="form-control form-control-sm" id="checkoutBillingFirstName"
+                                           type="text" placeholder="First Name" value="{{Customer::user()->first_name ?? ''}}" required="">
                                 </div>
 
                             </div>
@@ -64,7 +64,8 @@
                                 <!-- Last Name -->
                                 <div class="form-group">
                                     <label for="checkoutBillingLastName">{{__('Last Name')}} *</label>
-                                    <input class="form-control form-control-sm" id="checkoutBillingLastName" type="text" placeholder="Last Name" required="">
+                                    <input class="form-control form-control-sm" id="checkoutBillingLastName" type="text"
+                                           placeholder="Last Name" required="" value="{{Customer::user()->last_name ?? ''}}">
                                 </div>
 
                             </div>
@@ -73,7 +74,8 @@
                                 <!-- Email -->
                                 <div class="form-group">
                                     <label for="checkoutBillingEmail">{{__('Email')}} *</label>
-                                    <input class="form-control form-control-sm" id="checkoutBillingEmail" type="email" placeholder="Email" required="">
+                                    <input class="form-control form-control-sm" id="checkoutBillingEmail" type="email"
+                                           placeholder="Email" required="" value="{{Customer::user()->email ?? ''}}">
                                 </div>
 
                             </div>
@@ -82,7 +84,8 @@
                                 <!-- Company Name -->
                                 <div class="form-group">
                                     <label for="checkoutBillingCompany">{{__('Company name')}} *</label>
-                                    <input class="form-control form-control-sm" id="checkoutBillingCompany" type="text" placeholder="Company name (optional)">
+                                    <input class="form-control form-control-sm" id="checkoutBillingCompany" type="text"
+                                           placeholder="Company name (optional)">
                                 </div>
 
                             </div>
@@ -91,7 +94,8 @@
                                 <!-- Country -->
                                 <div class="form-group">
                                     <label for="checkoutBillingCountry">{{__('Country')}} *</label>
-                                    <input class="form-control form-control-sm" id="checkoutBillingCountry" type="text" placeholder="{{__('Country')}}" required="">
+                                    <input class="form-control form-control-sm" id="checkoutBillingCountry" type="text"
+                                           placeholder="{{__('Country')}}" required="" value="{{Customer::user()->country ?? ''}}">
                                 </div>
 
                             </div>
@@ -100,7 +104,8 @@
                                 <!-- Address Line 1 -->
                                 <div class="form-group">
                                     <label for="checkoutBillingAddress">{{__('Address Line')}} 1 *</label>
-                                    <input class="form-control form-control-sm" id="checkoutBillingAddress" type="text" placeholder="Address Line 1" required="">
+                                    <input class="form-control form-control-sm" id="checkoutBillingAddress" type="text"
+                                           placeholder="Address Line 1" required="">
                                 </div>
 
                             </div>
@@ -109,7 +114,8 @@
                                 <!-- Address Line 2 -->
                                 <div class="form-group">
                                     <label for="checkoutBillingAddressTwo">{{__('Address Line')}} 2</label>
-                                    <input class="form-control form-control-sm" id="checkoutBillingAddressTwo" type="text" placeholder="Address Line 2 (optional)">
+                                    <input class="form-control form-control-sm" id="checkoutBillingAddressTwo"
+                                           type="text" placeholder="Address Line 2 (optional)">
                                 </div>
 
                             </div>
@@ -118,7 +124,8 @@
                                 <!-- Town / City -->
                                 <div class="form-group">
                                     <label for="checkoutBillingTown">{{__('City')}} *</label>
-                                    <input class="form-control form-control-sm" id="checkoutBillingTown" type="text" placeholder="Town / City" required="">
+                                    <input class="form-control form-control-sm" id="checkoutBillingTown" type="text"
+                                           placeholder="Town / City" required="">
                                 </div>
 
                             </div>
@@ -127,7 +134,8 @@
                                 <!-- ZIP / Postcode -->
                                 <div class="form-group">
                                     <label for="checkoutBillingZIP">{{__('Postcode')}} *</label>
-                                    <input class="form-control form-control-sm" id="checkoutBillingZIP" type="text" placeholder="ZIP / Postcode" required="required">
+                                    <input class="form-control form-control-sm" id="checkoutBillingZIP" type="text"
+                                           placeholder="ZIP / Postcode" required="required">
                                 </div>
 
                             </div>
@@ -136,7 +144,8 @@
                                 <!-- Mobile Phone -->
                                 <div class="form-group mb-0">
                                     <label for="checkoutBillingPhone">{{__('Mobile Phone')}} *</label>
-                                    <input class="form-control form-control-sm" id="checkoutBillingPhone" type="tel" placeholder="{{__('Mobile Phone')}}" required="required">
+                                    <input class="form-control form-control-sm" id="checkoutBillingPhone" type="tel"
+                                           placeholder="{{__('Mobile Phone')}}" required="required">
                                 </div>
 
                             </div>
@@ -152,8 +161,10 @@
                                 <tr>
                                     <td>
                                         <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" id="checkoutShippingStandard" name="shipping" type="radio">
-                                            <label class="custom-control-label text-body text-nowrap" for="checkoutShippingStandard">
+                                            <input class="custom-control-input" id="checkoutShippingStandard"
+                                                   name="shipping" type="radio">
+                                            <label class="custom-control-label text-body text-nowrap"
+                                                   for="checkoutShippingStandard">
                                                 {{__('Standard Shipping')}}
                                             </label>
                                         </div>
@@ -164,8 +175,10 @@
                                 <tr>
                                     <td>
                                         <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" id="checkoutShippingExpress" name="shipping" type="radio">
-                                            <label class="custom-control-label text-body text-nowrap" for="checkoutShippingExpress">
+                                            <input class="custom-control-input" id="checkoutShippingExpress"
+                                                   name="shipping" type="radio">
+                                            <label class="custom-control-label text-body text-nowrap"
+                                                   for="checkoutShippingExpress">
                                                 Express Shipping
                                             </label>
                                         </div>
@@ -176,8 +189,10 @@
                                 <tr>
                                     <td>
                                         <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" id="checkoutShippingShort" name="shipping" type="radio">
-                                            <label class="custom-control-label text-body text-nowrap" for="checkoutShippingShort">
+                                            <input class="custom-control-input" id="checkoutShippingShort"
+                                                   name="shipping" type="radio">
+                                            <label class="custom-control-label text-body text-nowrap"
+                                                   for="checkoutShippingShort">
                                                 1 - 2 Shipping
                                             </label>
                                         </div>
@@ -188,15 +203,18 @@
                                 <tr>
                                     <td>
                                         <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" id="checkoutShippingFree" name="shipping" type="radio">
-                                            <label class="custom-control-label text-body text-nowrap" for="checkoutShippingFree">
+                                            <input class="custom-control-input" id="checkoutShippingFree"
+                                                   name="shipping" type="radio">
+                                            <label class="custom-control-label text-body text-nowrap"
+                                                   for="checkoutShippingFree">
                                                 Free Shipping
                                             </label>
                                         </div>
                                     </td>
                                     <td>Living won't the He one every subdue
                                         meat replenish face was you morning
-                                        firmament darkness.</td>
+                                        firmament darkness.
+                                    </td>
                                     <td>$0.00</td>
                                 </tr>
                                 </tbody>
@@ -209,7 +227,8 @@
                             <!-- Checkbox -->
                             <div class="custom-control custom-checkbox">
                                 <input class="custom-control-input" id="checkoutShippingAddress" type="checkbox">
-                                <label class="custom-control-label font-size-sm" data-toggle="collapse" data-target="#checkoutShippingAddressCollapse" for="checkoutShippingAddress">
+                                <label class="custom-control-label font-size-sm" data-toggle="collapse"
+                                       data-target="#checkoutShippingAddressCollapse" for="checkoutShippingAddress">
                                     {{__('Ship to a different address')}}?
                                 </label>
                             </div>
@@ -222,7 +241,9 @@
                                         <!-- Country -->
                                         <div class="form-group">
                                             <label for="checkoutShippingAddressCountry">Country *</label>
-                                            <input class="form-control form-control-sm" id="checkoutShippingAddressCountry" type="text" placeholder="Country">
+                                            <input class="form-control form-control-sm"
+                                                   id="checkoutShippingAddressCountry" type="text"
+                                                   placeholder="Country">
                                         </div>
 
                                     </div>
@@ -231,7 +252,9 @@
                                         <!-- Address Line 1 -->
                                         <div class="form-group">
                                             <label for="checkoutShippingAddressLineOne">Address Line 1 *</label>
-                                            <input class="form-control form-control-sm" id="checkoutShippingAddressLineOne" type="text" placeholder="Address Line 1">
+                                            <input class="form-control form-control-sm"
+                                                   id="checkoutShippingAddressLineOne" type="text"
+                                                   placeholder="Address Line 1">
                                         </div>
 
                                     </div>
@@ -240,7 +263,9 @@
                                         <!-- Address Line 2 -->
                                         <div class="form-group">
                                             <label for="checkoutShippingAddressLineTwo">Address Line 2</label>
-                                            <input class="form-control form-control-sm" id="checkoutShippingAddressLineTwo" type="text" placeholder="Address Line 2 (optional)">
+                                            <input class="form-control form-control-sm"
+                                                   id="checkoutShippingAddressLineTwo" type="text"
+                                                   placeholder="Address Line 2 (optional)">
                                         </div>
 
                                     </div>
@@ -249,7 +274,8 @@
                                         <!-- Town / City -->
                                         <div class="form-group">
                                             <label for="checkoutShippingAddressTown">Town / City *</label>
-                                            <input class="form-control form-control-sm" id="checkoutShippingAddressTown" type="text" placeholder="Town / City">
+                                            <input class="form-control form-control-sm" id="checkoutShippingAddressTown"
+                                                   type="text" placeholder="Town / City">
                                         </div>
 
                                     </div>
@@ -258,7 +284,8 @@
                                         <!-- Town / City -->
                                         <div class="form-group">
                                             <label for="checkoutShippingAddressZIP">ZIP / Postcode *</label>
-                                            <input class="form-control form-control-sm" id="checkoutShippingAddressZIP" type="text" placeholder="ZIP / Postcode">
+                                            <input class="form-control form-control-sm" id="checkoutShippingAddressZIP"
+                                                   type="text" placeholder="ZIP / Postcode">
                                         </div>
 
                                     </div>
@@ -287,11 +314,15 @@
                                 <div class="custom-control custom-radio">
 
                                     <!-- Input -->
-                                    <input class="custom-control-input" id="checkoutPaymentCard" name="payment" type="radio" data-toggle="collapse" data-action="show" data-target="#checkoutPaymentCardCollapse">
+                                    <input class="custom-control-input" id="checkoutPaymentCard" name="payment"
+                                           type="radio" data-toggle="collapse" data-action="show"
+                                           data-target="#checkoutPaymentCardCollapse">
 
                                     <!-- Label -->
-                                    <label class="custom-control-label font-size-sm text-body text-nowrap" for="checkoutPaymentCard">
-                                        Credit Card <img class="ml-2" src="frontend/assets/img/brands/color/cards.svg" alt="...">
+                                    <label class="custom-control-label font-size-sm text-body text-nowrap"
+                                           for="checkoutPaymentCard">
+                                        Credit Card <img class="ml-2" src="frontend/assets/img/brands/color/cards.svg"
+                                                         alt="...">
                                     </label>
 
                                 </div>
@@ -304,13 +335,15 @@
                                     <div class="col-12">
                                         <div class="form-group mb-4">
                                             <label class="sr-only" for="checkoutPaymentCardNumber">Card Number</label>
-                                            <input class="form-control form-control-sm" id="checkoutPaymentCardNumber" type="text" placeholder="Card Number *" required="">
+                                            <input class="form-control form-control-sm" id="checkoutPaymentCardNumber"
+                                                   type="text" placeholder="Card Number *" required="">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group mb-4">
                                             <label class="sr-only" for="checkoutPaymentCardName">Name on Card</label>
-                                            <input class="form-control form-control-sm" id="checkoutPaymentCardName" type="text" placeholder="Name on Card *" required="">
+                                            <input class="form-control form-control-sm" id="checkoutPaymentCardName"
+                                                   type="text" placeholder="Name on Card *" required="">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
@@ -335,9 +368,12 @@
                                     </div>
                                     <div class="col-12 col-md-4">
                                         <div class="input-group input-group-merge">
-                                            <input class="form-control form-control-sm" id="checkoutPaymentCardCVV" type="text" placeholder="CVV *" required="">
+                                            <input class="form-control form-control-sm" id="checkoutPaymentCardCVV"
+                                                   type="text" placeholder="CVV *" required="">
                                             <div class="input-group-append">
-                          <span class="input-group-text" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="The CVV Number on your credit card or debit card is a 3 digit number on VISA, MasterCard and Discover branded credit and debit cards." data-original-title="" title="">
+                          <span class="input-group-text" data-toggle="popover" data-placement="top" data-trigger="hover"
+                                data-content="The CVV Number on your credit card or debit card is a 3 digit number on VISA, MasterCard and Discover branded credit and debit cards."
+                                data-original-title="" title="">
                             <i class="fe fe-help-circle"></i>
                           </span>
                                             </div>
@@ -352,10 +388,13 @@
                                 <div class="custom-control custom-radio">
 
                                     <!-- Input -->
-                                    <input class="custom-control-input" id="checkoutPaymentPaypal" name="payment" type="radio" data-toggle="collapse" data-action="hide" data-target="#checkoutPaymentCardCollapse">
+                                    <input class="custom-control-input" id="checkoutPaymentPaypal" name="payment"
+                                           type="radio" data-toggle="collapse" data-action="hide"
+                                           data-target="#checkoutPaymentCardCollapse">
 
                                     <!-- Label -->
-                                    <label class="custom-control-label font-size-sm text-body text-nowrap" for="checkoutPaymentPaypal">
+                                    <label class="custom-control-label font-size-sm text-body text-nowrap"
+                                           for="checkoutPaymentPaypal">
                                         <img src="frontend/assets/img/brands/color/paypal.svg" alt="...">
                                     </label>
 
@@ -368,11 +407,16 @@
                                 <div class="custom-control custom-radio">
 
                                     <!-- Input -->
-                                    <input class="custom-control-input" id="checkoutCOD" name="payment" type="radio" data-toggle="collapse" data-action="hide" data-target="#checkoutPaymentCardCollapse">
+                                    <input class="custom-control-input" id="checkoutCOD" name="payment" type="radio"
+                                           data-toggle="collapse" data-action="hide"
+                                           data-target="#checkoutPaymentCardCollapse">
 
                                     <!-- Label -->
-                                    <label class="custom-control-label font-size-sm text-body text-nowrap" for="checkoutCOD">
-                                        <img src="front/assets/img/brands/color/cod.webp" alt="{{__('Cash on delivery')}}" style="height: 25px">  {{__('Cash on delivery')}}
+                                    <label class="custom-control-label font-size-sm text-body text-nowrap"
+                                           for="checkoutCOD">
+                                        <img src="frontend/assets/img/brands/color/cod.webp"
+                                             alt="{{__('Cash on delivery')}}"
+                                             style="height: 25px"> {{__('Cash on delivery')}}
                                     </label>
 
                                 </div>
@@ -381,7 +425,8 @@
                         </div>
 
                         <!-- Notes -->
-                        <textarea class="form-control form-control-sm mb-9 mb-md-0 font-size-xs" rows="5" placeholder="{{__('Order Notes (optional)')}}"></textarea>
+                        <textarea class="form-control form-control-sm mb-9 mb-md-0 font-size-xs" rows="5"
+                                  placeholder="{{__('Order Notes (optional)')}}"></textarea>
 
                     </form>
 
@@ -389,21 +434,23 @@
                 <div class="col-12 col-md-5 col-lg-4 offset-lg-1">
 
                     <!-- Heading -->
-                    <h6 class="mb-7">{{__('Order Items')}} ({{count($cartItems)}})</h6>
+                    <h6 class="mb-7">{{__('Order Items')}} ({{count($cart->items)}})</h6>
 
                     <!-- Divider -->
                     <hr class="my-7">
 
                     <!-- List group -->
                     <ul class="list-group list-group-lg list-group-flush-y list-group-flush-x mb-7">
-                        @foreach($cartItems as $product)
+                        @php($subtotal = 0)
+                        @foreach($cart->items as $product)
                             <li class="list-group-item">
                                 <div class="row align-items-center">
                                     <div class="col-4">
 
                                         <!-- Image -->
                                         <a href="{{$product->product->url_key}}">
-                                            <img src="{{$product->product->small_image->url}}" alt="{{$product->product->name}}" class="img-fluid">
+                                            <img src="{{$product->product->sample_image}}"
+                                                 alt="{{$product->product->name}}" class="img-fluid">
                                         </a>
 
                                     </div>
@@ -411,8 +458,10 @@
 
                                         <!-- Title -->
                                         <p class="mb-4 font-size-sm font-weight-bold">
-                                            <a class="text-body" href="{{$product->product->url_key}}">{{$product->product->name}}</a> <br>
-                                            <span class="text-muted">${{$product->product->price->regularPrice->amount->value}}</span>
+                                            <a class="text-body"
+                                               href="{{$product->product->url_key}}">{{$product->product->name}}</a>
+                                            <br>
+                                            <span class="text-muted">${{amount($product->product->price)}}</span>
                                         </p>
 
                                         <!-- Text -->
@@ -424,6 +473,7 @@
                                     </div>
                                 </div>
                             </li>
+                            @php($subtotal += (int)($product->qty * $product->product->price))
                         @endforeach
 
                     </ul>
@@ -433,7 +483,8 @@
                         <div class="card-body">
                             <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x">
                                 <li class="list-group-item d-flex">
-                                    <span>{{__('Subtotal')}}</span> <span class="ml-auto font-size-sm">${{$cart->prices->grand_total->value}}</span>
+                                    <span>{{__('Subtotal')}}</span> <span
+                                            class="ml-auto font-size-sm">${{amount($subtotal)}}</span>
                                 </li>
                                 <li class="list-group-item d-flex">
                                     <span>{{__('Tax')}}</span> <span class="ml-auto font-size-sm">$0</span>
@@ -442,7 +493,8 @@
                                     <span>{{__('Shipping')}}</span> <span class="ml-auto font-size-sm">$10.00</span>
                                 </li>
                                 <li class="list-group-item d-flex font-size-lg font-weight-bold">
-                                    <span>{{__('Total')}}</span> <span class="ml-auto">${{$cart->prices->grand_total->value}}</span>
+                                    <span>{{__('Total')}}</span> <span
+                                            class="ml-auto">${{amount($subtotal + 1000)}}</span>
                                 </li>
                             </ul>
                         </div>

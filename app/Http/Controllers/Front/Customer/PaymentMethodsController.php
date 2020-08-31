@@ -11,4 +11,24 @@ class PaymentMethodsController extends Controller
     {
         return view('front.customer.payment-methods.index');
     }
+
+    public function create()
+    {
+
+    }
+
+    public function store(Request $request)
+    {
+
+    }
+
+    public function edit()
+    {
+
+    }
+
+    public function update(Request $request)
+    {
+
+    }
 }

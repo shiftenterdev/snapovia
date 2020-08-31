@@ -12,4 +12,9 @@ class QuoteItems extends Model
     {
         return $this->belongsTo(Quote::class);
     }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
