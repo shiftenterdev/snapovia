@@ -1,5 +1,5 @@
 <div>
-    @if($response)
+    @if($cart)
 
 
             <!-- Close -->
@@ -8,20 +8,21 @@
             </button>
 
             <!-- Header-->
-            <div class="modal-header line-height-fixed font-size-lg mini-cart-count" data-count="{{count($response->items)}}">
-                <strong class="mx-auto">{{__('Your Cart')}} ({{count($response)}})</strong>
+            <div class="modal-header line-height-fixed font-size-lg mini-cart-count" data-count="{{count($cart->items)}}">
+                <strong class="mx-auto">{{__('Your Cart')}} ({{count($cart->items)}})</strong>
             </div>
 
             <!-- List group -->
             <ul class="list-group list-group-lg list-group-flush">
-                @foreach($response as $product)
+                @php($subtotal = 0)
+                @foreach($cart->items as $product)
                     <li class="list-group-item">
                         <div class="row align-items-center">
                             <div class="col-4">
 
                                 <!-- Image -->
                                 <a href="{{$product->product->url_key}}">
-                                    <img class="img-fluid" src="{{$product->product->small_image->url}}" alt="...">
+                                    <img class="img-fluid" src="{{$product->product->sample_image}}" alt="{{$product->product->name}}">
                                 </a>
 
                             </div>
@@ -29,8 +30,8 @@
 
                                 <!-- Title -->
                                 <p class="font-size-sm font-weight-bold mb-6">
-                                    <a class="text-body" href="{{$product->product->url_key}}">{{$product->product->name}}</a> <br>
-                                    <span class="text-muted">${{$product->product->price->regularPrice->amount->value}}</span>
+                                    <a class="text-body" href="{{$product->product->url_key}}">{{$product->name}}</a> <br>
+                                    <span class="text-muted">${{amount($product->unit_price)}}</span>
                                 </p>
 
                                 <!--Footer -->
@@ -38,15 +39,15 @@
 
                                     <!-- Select -->
                                     <select class="custom-select custom-select-xxs w-auto mc-c-item-qty" data-item-id="{{$product->id}}">
-                                        <option value="1" {{$product->quantity==1?'selected':""}}>1</option>
-                                        <option value="2" {{$product->quantity==2?'selected':""}}>2</option>
-                                        <option value="3" {{$product->quantity==3?'selected':""}}>3</option>
-                                        <option value="4" {{$product->quantity==4?'selected':""}}>4</option>
-                                        <option value="5" {{$product->quantity==5?'selected':""}}>5</option>
+                                        <option value="1" {{$product->qty==1?'selected':""}}>1</option>
+                                        <option value="2" {{$product->qty==2?'selected':""}}>2</option>
+                                        <option value="3" {{$product->qty==3?'selected':""}}>3</option>
+                                        <option value="4" {{$product->qty==4?'selected':""}}>4</option>
+                                        <option value="5" {{$product->qty==5?'selected':""}}>5</option>
                                     </select>
 
                                     <!-- Remove -->
-                                    <a class="font-size-xs text-gray-400 ml-auto remove_from_cart" data-item-id="{{$product->id}}" href="javascript:">
+                                    <a class="font-size-xs text-gray-400 ml-auto remove_from_cart" data-item-id="{{$product->sku}}" href="javascript:">
                                         <i class="fe fe-x"></i> {{__('Remove')}}
                                     </a>
 
@@ -55,12 +56,13 @@
                             </div>
                         </div>
                     </li>
+                    @php($subtotal += (int)($product->qty * $product->product->price))
                 @endforeach
             </ul>
 
             <!-- Footer -->
             <div class="modal-footer line-height-fixed font-size-sm bg-light mt-auto">
-                <strong>Subtotal</strong> <strong class="ml-auto">${{$response->prices->grand_total->value}}</strong>
+                <strong>Subtotal</strong> <strong class="ml-auto">${{amount($subtotal)}}</strong>
             </div>
 
             <!-- Buttons -->

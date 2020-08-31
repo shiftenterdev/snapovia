@@ -1,6 +1,5 @@
 <?php
 
-use App\Facades\Customer;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -158,6 +157,10 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
+});
+
+Route::get('test',function (){
+   dd(\App\Facades\Cart::get());
 });
 
 Route::get('/{url}/{suburl?}/{producturl?}', 'Front\UrlResolverController')->name('resolve');

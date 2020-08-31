@@ -5,20 +5,25 @@ namespace App\Http\Controllers\Front\Customer;
 use App\Facades\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CustomerLoginRequest;
-use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
     public function index()
     {
+        if(Customer::check()){
+            return redirect()->route('customer.info');
+        }
         return view('front.customer.auth.login');
     }
 
     public function login(CustomerLoginRequest $request)
     {
+        if(Customer::check()){
+            return redirect()->route('customer.info');
+        }
         $request->validated();
         if(Customer::attempt($request)){
-            return redirect()->route('customer.dashboard');
+            return redirect()->route('customer.info');
         }
         return redirect()->back()->withError('Invalid Login attempt');
     }
