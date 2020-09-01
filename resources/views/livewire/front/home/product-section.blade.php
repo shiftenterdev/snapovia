@@ -1,4 +1,7 @@
 <div>
+    <div class="flash-alert" wire:loading>
+        Adding to cart ....
+    </div>
     <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-lg-8 col-xl-6">
 
@@ -39,23 +42,22 @@
                                 </a>
 
                                 <!-- Actions -->
-                                <div wire:loading>
-                                    Adding to cart...
-                                </div>
-                                <div class="card-actions" wire:loading.remove>
+                                <div class="card-actions">
                                   <span class="card-action">
                                     <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
                                             data-target="#modalProduct">
                                       <i class="fe fe-eye"></i>
                                     </button>
                                   </span>
-                                            <span class="card-action">
-                                    <button wire:click.prevent="addToCart({{$product->sku}})" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                                    <span class="card-action">
+                                    <button wire:click.prevent="addToCart({{$product->sku}})"
+                                            class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
                                       <i class="fe fe-shopping-cart"></i>
                                     </button>
                                   </span>
-                                            <span class="card-action">
-                                    <a href="{{route('add.to.wishlist',$product->sku)}}" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                                    <span class="card-action">
+                                    <a href="{{route('add.to.wishlist',$product->sku)}}"
+                                       class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
                                       <i class="fe fe-heart"></i>
                                     </a>
                                   </span>
@@ -124,12 +126,14 @@
                             </button>
                           </span>
                                     <span class="card-action">
-                            <button wire:click.prevent="addToCart({{$product->sku}})" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                            <button wire:click.prevent="addToCart({{$product->sku}})"
+                                    class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
                               <i class="fe fe-shopping-cart"></i>
                             </button>
                           </span>
                                     <span class="card-action">
-                            <a href="{{route('add.to.wishlist',$product->sku)}}" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                            <a href="{{route('add.to.wishlist',$product->sku)}}"
+                               class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
                               <i class="fe fe-heart"></i>
                             </a>
                           </span>
