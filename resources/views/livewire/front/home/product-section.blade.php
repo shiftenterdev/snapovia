@@ -1,4 +1,7 @@
 <div>
+    <div class="flash-alert" wire:loading>
+        Adding to cart ....
+    </div>
     <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-lg-8 col-xl-6">
 
@@ -14,7 +17,7 @@
 
         </div>
     </div>
-    <div class="tab-content" wire:loading.class="progress">
+    <div class="tab-content">
         <div class="tab-pane fade show active" id="womenTab">
             <div class="row">
                 @foreach($women as $product)
@@ -40,22 +43,24 @@
 
                                 <!-- Actions -->
                                 <div class="card-actions">
-                          <span class="card-action">
-                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
-                                    data-target="#modalProduct">
-                              <i class="fe fe-eye"></i>
-                            </button>
-                          </span>
+                                  <span class="card-action">
+                                    <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
+                                            data-target="#modalProduct">
+                                      <i class="fe fe-eye"></i>
+                                    </button>
+                                  </span>
                                     <span class="card-action">
-                            <button wire:click.prevent="addToCart({{$product->sku}})" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
-                              <i class="fe fe-shopping-cart"></i>
-                            </button>
-                          </span>
+                                    <button wire:click.prevent="addToCart({{$product->sku}})"
+                                            class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                                      <i class="fe fe-shopping-cart"></i>
+                                    </button>
+                                  </span>
                                     <span class="card-action">
-                            <a href="{{route('add.to.wishlist',$product->sku)}}" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
-                              <i class="fe fe-heart"></i>
-                            </a>
-                          </span>
+                                    <a href="{{route('add.to.wishlist',$product->sku)}}"
+                                       class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                                      <i class="fe fe-heart"></i>
+                                    </a>
+                                  </span>
                                 </div>
 
                             </div>
@@ -77,7 +82,7 @@
 
                                 <!-- Price -->
                                 <div class="font-weight-bold text-muted">
-                                    ${{$product->price}}
+                                    ${{amount($product->price)}}
                                 </div>
 
                             </div>
@@ -121,12 +126,14 @@
                             </button>
                           </span>
                                     <span class="card-action">
-                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                            <button wire:click.prevent="addToCart({{$product->sku}})"
+                                    class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
                               <i class="fe fe-shopping-cart"></i>
                             </button>
                           </span>
                                     <span class="card-action">
-                            <a href="{{route('add.to.wishlist',$product->sku)}}" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                            <a href="{{route('add.to.wishlist',$product->sku)}}"
+                               class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
                               <i class="fe fe-heart"></i>
                             </a>
                           </span>
@@ -151,7 +158,7 @@
 
                                 <!-- Price -->
                                 <div class="font-weight-bold text-muted">
-                                    ${{$product->price}}
+                                    ${{amount($product->price)}}
                                 </div>
 
                             </div>
@@ -225,7 +232,7 @@
 
                                 <!-- Price -->
                                 <div class="font-weight-bold text-muted">
-                                    ${{$product->price}}
+                                    ${{amount($product->price)}}
                                 </div>
 
                             </div>

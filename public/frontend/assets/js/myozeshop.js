@@ -11,6 +11,11 @@ let loadingHide = function () {
     $('.loading').hide()
 };
 
+window.addEventListener('cart-updated', event => {
+    let el = document.getElementById('mini-cart-item-count');
+    el.setAttribute('data-cart-items', event.detail.count);
+})
+
 let body = $('body');
 
 let csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -120,7 +125,7 @@ let updateMiniCart = function () {
 
 
 $(() => {
-    loadingHide();
+    // loadingHide();
     //updateMiniCart();
 });
 

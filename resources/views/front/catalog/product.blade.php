@@ -132,6 +132,10 @@
 
                                 <div class="form-group">
 
+                                    <p class="mb-5">
+                                        Vendor: <strong><span>Snapovia</span></strong>
+                                    </p>
+
                                 @foreach($product->attributes as $key => $attribute)
                                     <!-- Label -->
                                         <p class="mb-5">

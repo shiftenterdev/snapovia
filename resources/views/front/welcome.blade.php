@@ -706,7 +706,7 @@
                 <div class="col-12 text-center">
 
                     <!-- Heading -->
-                    <h2 class="mb-3">@myozeshop</h2>
+                    <h2 class="mb-3">@snapovia</h2>
 
                     <!-- Subheading -->
                     <p class="mb-10 font-size-lg text-gray-500">

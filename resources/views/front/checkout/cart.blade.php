@@ -37,7 +37,6 @@
 
                         <!-- List group -->
                         <ul class="list-group list-group-lg list-group-flush-x mb-6 cart-page-list">
-                            @php($subtotal = 0)
                             @foreach($cart->items as $product)
                                 <li class="list-group-item">
                                     <div class="row align-items-center">
@@ -67,16 +66,16 @@
                                             <div class="d-flex align-items-center">
 
                                                 <!-- Select -->
-                                                <select class="custom-select custom-select-xxs w-auto mc-c-item-qty" data-item-id="{{$product->id}}">
-                                                    <option value="1" {{$product->qty==1?'selected':""}}>1</option>
-                                                    <option value="2" {{$product->qty==2?'selected':""}}>2</option>
-                                                    <option value="3" {{$product->qty==3?'selected':""}}>3</option>
-                                                    <option value="4" {{$product->qty==4?'selected':""}}>4</option>
-                                                    <option value="5" {{$product->qty==5?'selected':""}}>5</option>
+                                                <select class="custom-select custom-select-xxs w-auto">
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
                                                 </select>
 
                                                 <!-- Remove -->
-                                                <a class="font-size-xs text-gray-400 ml-auto remove_from_cart" href="javascript:" data-item-id="{{$product->id}}">
+                                                <a class="font-size-xs text-gray-400 ml-auto" href="javascript:">
                                                     <i class="fe fe-x"></i> {{__('Remove')}}
                                                 </a>
 
@@ -85,7 +84,6 @@
                                         </div>
                                     </div>
                                 </li>
-                                @php($subtotal += (int)($product->qty * $product->product->price))
                             @endforeach
                         </ul>
 
@@ -133,13 +131,13 @@
                             <div class="card-body">
                                 <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x">
                                     <li class="list-group-item d-flex">
-                                        <span>{{__('Subtotal')}}</span> <span class="ml-auto font-size-sm">${{amount($subtotal)}}</span>
+                                        <span>{{__('Subtotal')}}</span> <span class="ml-auto font-size-sm">${{amount($cart->grand_total)}}</span>
                                     </li>
                                     <li class="list-group-item d-flex">
                                         <span>{{__('Tax')}}</span> <span class="ml-auto font-size-sm">$0</span>
                                     </li>
                                     <li class="list-group-item d-flex font-size-lg font-weight-bold">
-                                        <span>{{__('Total')}}</span> <span class="ml-auto font-size-sm">${{amount($subtotal)}}</span>
+                                        <span>{{__('Total')}}</span> <span class="ml-auto font-size-sm">${{amount($cart->grand_total_incl_tax)}}</span>
                                     </li>
                                     <li class="list-group-item font-size-sm text-center text-gray-500">
                                         {{__('Shipping cost calculated at Checkout')}} *

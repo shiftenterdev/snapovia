@@ -381,7 +381,7 @@
                 </li>
                 <li class="nav-item ml-lg-n4">
                     <a class="nav-link" data-toggle="modal" href="#modalShoppingCart">
-                <span id="mini-cart-item-count" data-cart-items="0">
+                <span id="mini-cart-item-count" data-cart-items="{{Cart::count()}}">
                   <i class="fe fe-shopping-cart"></i>
                 </span>
                     </a>
