@@ -24,6 +24,7 @@ class MiniCart extends Component
     public function updateMiniCart()
     {
         $this->cart = Cart::get();
+        $this->dispatchBrowserEvent('cart-updated', ['count' => Cart::count()]);
     }
 
     public function removeFromCart($sku)

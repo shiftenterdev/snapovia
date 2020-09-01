@@ -68,6 +68,11 @@ class Cart
         return $quote;
     }
 
+    public function count()
+    {
+        return $this->get()?count($this->get()->items):0;
+    }
+
     public function addToCart($sku, $qty = 1)
     {
         $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
