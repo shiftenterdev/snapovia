@@ -70,7 +70,8 @@
 
                                 <!-- Category -->
                                 <div class="font-size-xs">
-                                    <a class="text-muted" href="shop.html">Shoes</a>
+                                    <a class="text-muted"
+                                       href="/{{$product->categories[0]->url_key}}">{{$product->categories[0]->name}}</a>
                                 </div>
 
                                 <!-- Title -->

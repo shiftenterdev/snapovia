@@ -88,6 +88,14 @@ class Product extends Model implements HasMedia
             ->get();
     }
 
+    public function scopeFront($query,$page_count=18)
+    {
+        return $query->whereStatus(1)
+            ->whereIn('visibility',self::CATALOG)
+            ->select(['name', 'id', 'price', 'sku', 'url_key'])
+            ->paginate($page_count);
+    }
+
     public function relatedProducts()
     {
 //        return $this->hasMany(Product::class, 'parent_id');
