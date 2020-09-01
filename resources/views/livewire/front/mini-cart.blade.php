@@ -37,7 +37,7 @@
                                 <div class="d-flex align-items-center">
 
                                     <!-- Select -->
-                                    <select class="custom-select custom-select-xxs w-auto">
+                                    <select class="custom-select custom-select-xxs w-auto" wire:model="quantity">
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>

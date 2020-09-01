@@ -8,6 +8,7 @@ use Livewire\Component;
 class MiniCart extends Component
 {
     public $cart;
+    public $quantity;
 
     protected $listeners = ['updateMiniCart'];
 
