@@ -9,17 +9,24 @@ class Filter extends Component
 {
     public $categories;
 
-    public function mount()
+    public $cat_id;
+
+    protected $updatesQueryString = ['cat_id'];
+
+    public function render()
     {
         $this->categories = Category::where('parent_id',null)
             ->whereStatus(1)
             ->select(['id','name','url_key'])
-            ->withCount('products')
             ->get();
+
+        return view('livewire.front.category.filter')->with([
+            'categories'=>$this->categories
+        ]);
     }
 
-    public function render()
+    public function filterByCategory($cat_id)
     {
-        return view('livewire.front.category.filter');
+        $this->emit('updateProductList',$cat_id);
     }
 }

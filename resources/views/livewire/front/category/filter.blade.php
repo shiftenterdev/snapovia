@@ -19,24 +19,26 @@
                                     All Products
                                 </a>
                             </li>
-                            @foreach($categories as $category)
+                            @foreach($categories as $parentIndex => $category)
                                 <li class="list-styled-item">
                                     <a class="list-styled-link" data-toggle="collapse"
                                        href="#{{$category->url_key}}Collapse">
-                                        {{$category->name}} ({{$category->products_count}})
+                                        {{$category->name}} ({{$category->products->count()}})
                                     </a>
                                     @if(count($category->childCategories))
                                         <div class="collapse" id="{{$category->url_key}}Collapse"
                                              data-parent="#productsNav">
                                             <div class="py-4 pl-5">
-                                                @foreach($category->childCategories as $subCategory)
-                                                    <div class="custom-control custom-checkbox mb-3">
-                                                        <input class="custom-control-input get-sub-category"
+                                                @foreach($category->childCategories as $childIndex => $subCategory)
+                                                    <div class="custom-control custom-checkbox mb-3" wire:key="{{$childIndex.$parentIndex}}-option">
+                                                        <input class="custom-control-input"
                                                                id="{{$subCategory->url_key}}"
+                                                               value="{{$subCategory->id}}"
+                                                               wire:model="cat_id.{{$subCategory->id}}"
+                                                               wire:click="filterByCategory({{$subCategory->id}})"
                                                                type="checkbox">
-                                                        <label class="custom-control-label"
-                                                               for="{{$subCategory->url_key}}">
-                                                            {{$subCategory->name}} ({{$category->products_count}})
+                                                        <label class="custom-control-label" for="{{$subCategory->url_key}}">
+                                                            {{$subCategory->name}} ({{$subCategory->products->count()}})
                                                         </label>
                                                     </div>
                                                 @endforeach
