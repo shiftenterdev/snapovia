@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front\Customer;
 
+use App\Facades\Cart;
 use App\Facades\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CustomerLoginRequest;
@@ -31,6 +32,7 @@ class LoginController extends Controller
     public function logout()
     {
         Customer::logout();
+        Cart::remove();
         return redirect()->route('welcome');
     }
 }

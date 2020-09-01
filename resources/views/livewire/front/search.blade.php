@@ -59,7 +59,7 @@
                             <p class="mb-0 font-weight-bold">
                                 <a class="stretched-link text-body" href="{{$product->url_key}}">{{$product->name}}</a>
                                 <br>
-                                <span class="text-muted">${{$product->price}}</span>
+                                <span class="text-muted">${{amount($product->price)}}</span>
                             </p>
 
                         </div>

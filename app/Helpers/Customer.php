@@ -5,6 +5,7 @@
  */
 namespace App\Helpers;
 
+use App\Models\Quote;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Product;
 
@@ -26,6 +27,7 @@ class Customer
             if($customer){
                 if (Hash::check($credentials['password'], $customer->password)) {
                     $this->update($customer);
+                    $this->mergeCart($customer->id);
                     return true;
                 }
                 return false;
@@ -73,5 +75,17 @@ class Customer
     public function update(\App\Models\Customer $customer):void
     {
         session([self::CUSTOMER_SESSION_KEY=>$customer]);
+    }
+
+    private function mergeCart($customer_id)
+    {
+        if(\App\Facades\Cart::get()){
+            $existing_quote = Quote::with('customer_id',$customer_id)->firstOrFail();
+            if($existing_quote){
+
+            }else {
+                \App\Facades\Cart::addCustomerToQuote($customer_id);
+            }
+        }
     }
 }

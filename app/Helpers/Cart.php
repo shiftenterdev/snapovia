@@ -32,8 +32,18 @@ class Cart
 
     private function create()
     {
-        $quote = Quote::create(['customer_ip' => request()->ip()]);
+        $customer_id = 0;
+        if(\App\Facades\Customer::check()){
+            $customer_id = \App\Facades\Customer::user()->customer_id;
+        }
+        $quote = Quote::create(['customer_ip' => request()->ip(),'customer_id'=>$customer_id]);
         $this->set($quote);
+    }
+
+    public function addCustomerToQuote($customer_id)
+    {
+        $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
+            ->update(['customer_id'=>$customer_id]);
     }
 
     /**
@@ -62,6 +72,16 @@ class Cart
         $this->set($quote);
     }
 
+    public function updateQty($sku,$qty)
+    {
+        $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
+            ->firstOrFail();
+        $quote->items()->where('sku',$sku)->update([
+            'qty'=>$qty
+        ]);
+        $this->set($quote);
+    }
+
     /**
      * @param $productSku
      */
@@ -71,6 +91,11 @@ class Cart
             ->firstOrFail();
         $quote->items()->where('sku', $productSku)->delete();
         $this->set($quote);
+    }
+
+    public function remove()
+    {
+        session()->remove(self::QUOTE_SESSION_KEY);
     }
 
     private function check()
