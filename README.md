@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/shiftenterdev/butikshop/blob/master/public/favicon.png?raw=true" width="200"></p>
+<p align="center"><img src="https://github.com/shiftenterdev/butikshop/blob/master/public/Snapovia.png?raw=true" width="300"></p>
 
 <p align="center">
 <a href="https://travis-ci.org/shiftenterdev/butikshop"><img src="https://travis-ci.org/shiftenterdev/butikshop.svg?branch=master" alt=""></a>

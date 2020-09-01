@@ -19,8 +19,7 @@ class CheckoutController extends Controller
 
     public function cart()
     {
-        $cart = Cart::get();
-        return view('front.checkout.cart',compact('cart'));
+        return view('front.checkout.cart');
     }
 
     public function success()

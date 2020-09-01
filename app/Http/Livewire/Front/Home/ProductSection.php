@@ -9,8 +9,6 @@ use Livewire\Component;
 class ProductSection extends Component
 {
 
-//    protected $listeners = ['addToCart'];
-
     public function render()
     {
         $women = Product::home();
@@ -25,5 +23,6 @@ class ProductSection extends Component
         Cart::addToCart($sku);
         $this->emit('updateMiniCart');
         session()->flash('message', 'Product added to cart 😀');
+        $this->dispatchBrowserEvent('hide-message');
     }
 }

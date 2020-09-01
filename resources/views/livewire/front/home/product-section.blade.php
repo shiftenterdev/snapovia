@@ -1,7 +1,12 @@
 <div>
-    <div class="flash-alert" wire:loading>
+    <div class="flash-alert" wire:loading wire:target="addToCart">
         Adding to cart ....
     </div>
+    @if(session()->has('message'))
+    <div class="flash-alert">
+        {{session('message')}}
+    </div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-lg-8 col-xl-6">
 
