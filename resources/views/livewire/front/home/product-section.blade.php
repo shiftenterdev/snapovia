@@ -14,7 +14,7 @@
 
         </div>
     </div>
-    <div class="tab-content" wire:loading.class="progress">
+    <div class="tab-content">
         <div class="tab-pane fade show active" id="womenTab">
             <div class="row">
                 @foreach($women as $product)
@@ -39,23 +39,26 @@
                                 </a>
 
                                 <!-- Actions -->
-                                <div class="card-actions">
-                          <span class="card-action">
-                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
-                                    data-target="#modalProduct">
-                              <i class="fe fe-eye"></i>
-                            </button>
-                          </span>
-                                    <span class="card-action">
-                            <button wire:click.prevent="addToCart({{$product->sku}})" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
-                              <i class="fe fe-shopping-cart"></i>
-                            </button>
-                          </span>
-                                    <span class="card-action">
-                            <a href="{{route('add.to.wishlist',$product->sku)}}" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
-                              <i class="fe fe-heart"></i>
-                            </a>
-                          </span>
+                                <div wire:loading>
+                                    Adding to cart...
+                                </div>
+                                <div class="card-actions" wire:loading.remove>
+                                  <span class="card-action">
+                                    <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
+                                            data-target="#modalProduct">
+                                      <i class="fe fe-eye"></i>
+                                    </button>
+                                  </span>
+                                            <span class="card-action">
+                                    <button wire:click.prevent="addToCart({{$product->sku}})" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                                      <i class="fe fe-shopping-cart"></i>
+                                    </button>
+                                  </span>
+                                            <span class="card-action">
+                                    <a href="{{route('add.to.wishlist',$product->sku)}}" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                                      <i class="fe fe-heart"></i>
+                                    </a>
+                                  </span>
                                 </div>
 
                             </div>
@@ -121,7 +124,7 @@
                             </button>
                           </span>
                                     <span class="card-action">
-                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                            <button wire:click.prevent="addToCart({{$product->sku}})" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
                               <i class="fe fe-shopping-cart"></i>
                             </button>
                           </span>

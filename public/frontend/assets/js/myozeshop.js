@@ -120,7 +120,7 @@ let updateMiniCart = function () {
 
 
 $(() => {
-    loadingHide();
+    // loadingHide();
     //updateMiniCart();
 });
 
