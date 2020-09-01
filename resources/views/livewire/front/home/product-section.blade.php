@@ -77,7 +77,7 @@
 
                                 <!-- Price -->
                                 <div class="font-weight-bold text-muted">
-                                    ${{$product->price}}
+                                    ${{amount($product->price)}}
                                 </div>
 
                             </div>
@@ -151,7 +151,7 @@
 
                                 <!-- Price -->
                                 <div class="font-weight-bold text-muted">
-                                    ${{$product->price}}
+                                    ${{amount($product->price)}}
                                 </div>
 
                             </div>
@@ -225,7 +225,7 @@
 
                                 <!-- Price -->
                                 <div class="font-weight-bold text-muted">
-                                    ${{$product->price}}
+                                    ${{amount($product->price)}}
                                 </div>
 
                             </div>

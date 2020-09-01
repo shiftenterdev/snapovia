@@ -441,7 +441,6 @@
 
                     <!-- List group -->
                     <ul class="list-group list-group-lg list-group-flush-y list-group-flush-x mb-7">
-                        @php($subtotal = 0)
                         @foreach($cart->items as $product)
                             <li class="list-group-item">
                                 <div class="row align-items-center">
@@ -473,7 +472,6 @@
                                     </div>
                                 </div>
                             </li>
-                            @php($subtotal += (int)($product->qty * $product->product->price))
                         @endforeach
 
                     </ul>
@@ -484,7 +482,7 @@
                             <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x">
                                 <li class="list-group-item d-flex">
                                     <span>{{__('Subtotal')}}</span> <span
-                                            class="ml-auto font-size-sm">${{amount($subtotal)}}</span>
+                                            class="ml-auto font-size-sm">${{amount($cart->grand_total)}}</span>
                                 </li>
                                 <li class="list-group-item d-flex">
                                     <span>{{__('Tax')}}</span> <span class="ml-auto font-size-sm">$0</span>
@@ -494,7 +492,7 @@
                                 </li>
                                 <li class="list-group-item d-flex font-size-lg font-weight-bold">
                                     <span>{{__('Total')}}</span> <span
-                                            class="ml-auto">${{amount($subtotal + 1000)}}</span>
+                                            class="ml-auto">${{amount($cart->grand_total_incl_tax)}}</span>
                                 </li>
                             </ul>
                         </div>

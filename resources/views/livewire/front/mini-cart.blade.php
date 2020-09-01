@@ -14,7 +14,6 @@
 
             <!-- List group -->
             <ul class="list-group list-group-lg list-group-flush" wire:loading.class="progress">
-                @php($subtotal = 0)
                 @foreach($cart->items as $product)
                     <li class="list-group-item">
                         <div class="row align-items-center">
@@ -38,12 +37,12 @@
                                 <div class="d-flex align-items-center">
 
                                     <!-- Select -->
-                                    <select class="custom-select custom-select-xxs w-auto mc-c-item-qty" wire:model="updateQty({{$product->sku,1}})" data-item-id="{{$product->id}}">
-                                        <option value="1" {{$product->qty==1?'selected':""}}>1</option>
-                                        <option value="2" {{$product->qty==2?'selected':""}}>2</option>
-                                        <option value="3" {{$product->qty==3?'selected':""}}>3</option>
-                                        <option value="4" {{$product->qty==4?'selected':""}}>4</option>
-                                        <option value="5" {{$product->qty==5?'selected':""}}>5</option>
+                                    <select class="custom-select custom-select-xxs w-auto">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
                                     </select>
 
                                     <!-- Remove -->
@@ -56,13 +55,12 @@
                             </div>
                         </div>
                     </li>
-                    @php($subtotal += (int)($product->qty * $product->product->price))
                 @endforeach
             </ul>
 
             <!-- Footer -->
             <div class="modal-footer line-height-fixed font-size-sm bg-light mt-auto">
-                <strong>Subtotal</strong> <strong class="ml-auto">${{amount($subtotal)}}</strong>
+                <strong>{{__("Subtotal")}}</strong> <strong class="ml-auto">${{amount($cart->grand_total)}}</strong>
             </div>
 
             <!-- Buttons -->

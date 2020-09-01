@@ -51,7 +51,21 @@ class Cart
      */
     private function set($cart): void
     {
+        $cart = $this->refreshCart($cart->id);
         session([self::QUOTE_SESSION_KEY => $cart]);
+    }
+
+    private function refreshCart($quote_id)
+    {
+        $quote = Quote::findOrFail($quote_id);
+        $subtotal = 0;
+        $tax = 0;
+        foreach ($quote->items as $item){
+            $subtotal += $item->qty * $item->unit_price;
+        }
+        $grand_total_incl_tax = $subtotal + $tax;
+        $quote->update(['grand_total'=>$subtotal,'grand_total_incl_tax'=>$grand_total_incl_tax]);
+        return $quote;
     }
 
     public function addToCart($sku, $qty = 1)
