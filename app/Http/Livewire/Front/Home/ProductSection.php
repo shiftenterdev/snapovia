@@ -25,5 +25,6 @@ class ProductSection extends Component
         Cart::addToCart($sku);
         $this->emit('updateMiniCart');
         session()->flash('message', 'Product added to cart 😀');
+        $this->dispatchBrowserEvent('hideMessage');
     }
 }
