@@ -38,7 +38,7 @@
                                 <div class="d-flex align-items-center">
 
                                     <!-- Select -->
-                                    <select class="custom-select custom-select-xxs w-auto mc-c-item-qty" data-item-id="{{$product->id}}">
+                                    <select class="custom-select custom-select-xxs w-auto mc-c-item-qty" wire:model="updateQty({{$product->sku,1}})" data-item-id="{{$product->id}}">
                                         <option value="1" {{$product->qty==1?'selected':""}}>1</option>
                                         <option value="2" {{$product->qty==2?'selected':""}}>2</option>
                                         <option value="3" {{$product->qty==3?'selected':""}}>3</option>

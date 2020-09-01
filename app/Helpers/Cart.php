@@ -32,7 +32,7 @@ class Cart
 
     private function create()
     {
-        $customer_id = '';
+        $customer_id = 0;
         if(\App\Facades\Customer::check()){
             $customer_id = \App\Facades\Customer::user()->customer_id;
         }
@@ -69,6 +69,16 @@ class Cart
             ],
             ['qty' => $qty, 'unit_price' => $product->price, 'discount_price' => 0]
         );
+        $this->set($quote);
+    }
+
+    public function updateQty($sku,$qty)
+    {
+        $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
+            ->firstOrFail();
+        $quote->items()->where('sku',$sku)->update([
+            'qty'=>$qty
+        ]);
         $this->set($quote);
     }
 

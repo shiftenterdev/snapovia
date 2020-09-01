@@ -16,7 +16,7 @@ class CreateQuotesTable extends Migration
         Schema::create('quotes', function (Blueprint $table) {
             $table->id();
             $table->uuid('quote_id');
-            $table->integer('customer_id')->default(0);
+            $table->integer('customer_id')->nullable(0);
             $table->string('customer_ip',32);
             $table->integer('grand_total')->default(0);
             $table->integer('grand_total_incl_tax')->default(0);

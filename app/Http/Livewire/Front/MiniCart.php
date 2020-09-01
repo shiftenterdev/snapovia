@@ -31,4 +31,10 @@ class MiniCart extends Component
         Cart::removeFromCart($sku);
         $this->updateMiniCart();
     }
+
+    public function updateQty($sku,$qty)
+    {
+        Cart::updateQty($sku,$qty);
+        $this->updateMiniCart();
+    }
 }

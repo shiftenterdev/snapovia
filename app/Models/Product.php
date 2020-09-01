@@ -11,6 +11,9 @@ class Product extends Model implements HasMedia
 {
     use HasMediaTrait;
 
+    const CATALOG = [2,4];
+    const SEARCH = [1,4];
+
     public $guarded = [];
 
     protected $paginateCount = 20;
@@ -63,8 +66,12 @@ class Product extends Model implements HasMedia
     public function scopeSearch($query, $search)
     {
         if ($search) {
-            return $query->where('name', 'LIKE', '%' . $search . '%')
-                ->orWhere('sku', 'LIKE', $search . '%')
+            return $query->where(function ($q) use ($search) {
+                $q->where('name', 'LIKE', '%' . $search . '%')
+                    ->orWhere('sku', 'LIKE', $search . '%');
+            })
+                ->whereStatus(1)
+                ->whereIn('visibility',self::SEARCH)
                 ->select(['name', 'product_type', 'special_price', 'price', 'sku', 'id', 'url_key'])
                 ->paginate(6);
         }
@@ -73,8 +80,10 @@ class Product extends Model implements HasMedia
 
     public function scopeHome($query, $count = 8)
     {
-        return $query->select(['name', 'product_type', 'special_price', 'price', 'sku', 'id', 'url_key'])
-            ->orderBy('id','desc')
+        return $query->select(['name', 'product_type', 'special_price', 'price', 'sku', 'id', 'url_key','visibility'])
+            ->whereStatus(1)
+            ->whereIn('visibility',self::CATALOG)
+            ->orderBy('id', 'desc')
             ->limit($count)
             ->get();
     }
