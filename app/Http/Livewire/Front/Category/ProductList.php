@@ -10,10 +10,16 @@ class ProductList extends Component
 {
     use WithPagination;
 
+    public $products;
+
+    public function mount()
+    {
+        $this->products = \App\Models\Product::front();
+    }
+
     public function render()
     {
-        $products = \App\Models\Product::front();
-        return view('livewire.front.category.product-list', compact('products'));
+        return view('livewire.front.category.product-list');
     }
 
     public function addToCart($sku)
@@ -21,5 +27,10 @@ class ProductList extends Component
         Cart::addToCart($sku);
         $this->emit('updateMiniCart');
         session()->flash('message', 'Product added to cart 😀');
+    }
+
+    public function updateProductList()
+    {
+        
     }
 }

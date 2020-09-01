@@ -7,7 +7,6 @@ namespace App\Helpers;
 
 use App\Models\Quote;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Product;
 
 class Customer
 {
@@ -77,6 +76,11 @@ class Customer
         session([self::CUSTOMER_SESSION_KEY=>$customer]);
     }
 
+    /**
+     * Merge cart with existing cart
+     * @param  int $customer_id
+     * @return void
+     */
     private function mergeCart($customer_id)
     {
         if(\App\Facades\Cart::get()){
