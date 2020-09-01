@@ -1,5 +1,5 @@
 <div>
-    <div class="flash-alert" wire:loading>
+    <div class="flash-alert" wire:loading wire:target="addToCart">
         Adding to cart ....
     </div>
     <div class="row">
@@ -18,7 +18,7 @@
                     <div class="card-img">
 
                         <!-- Image -->
-                        <a href="{{$product->url_key}}">
+                        <a href="/{{$product->url_key}}">
 
                             <img class="card-img-top card-img-front"
                                  src="{{$product->sample_image}}" alt="...">
@@ -33,7 +33,7 @@
                             </button>
                           </span>
                             <span class="card-action">
-                            <button wire:click.prevent="addToCart({{$product->sku}})" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                            <button wire:click="addToCart({{$product->sku}})" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
                               <i class="fe fe-shopping-cart"></i>
                             </button>
                           </span>
@@ -51,12 +51,13 @@
 
                         <!-- Category -->
                         <div class="font-size-xs">
-                            <a class="text-muted" href="shop.html">Shoes</a>
+                            <a class="text-muted"
+                               href="/{{$product->categories[0]->url_key}}">{{$product->categories[0]->name}}</a>
                         </div>
 
                         <!-- Title -->
                         <div class="font-weight-bold">
-                            <a class="text-body" href="{{$product->url_key}}">
+                            <a class="text-body" href="/{{$product->url_key}}">
                                 {{$product->name}}
                             </a>
                         </div>
