@@ -6,7 +6,6 @@
 namespace App\Helpers;
 
 use Illuminate\Support\Facades\Hash;
-use App\Models\Product;
 
 class Vendor
 {

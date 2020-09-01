@@ -11,8 +11,8 @@ class Product extends Model implements HasMedia
 {
     use HasMediaTrait;
 
-    const CATALOG = [2,4];
-    const SEARCH = [1,4];
+    const CATALOG = [2, 4];
+    const SEARCH = [1, 4];
 
     public $guarded = [];
 
@@ -71,7 +71,7 @@ class Product extends Model implements HasMedia
                     ->orWhere('sku', 'LIKE', $search . '%');
             })
                 ->whereStatus(1)
-                ->whereIn('visibility',self::SEARCH)
+                ->whereIn('visibility', self::SEARCH)
                 ->select(['name', 'product_type', 'special_price', 'price', 'sku', 'id', 'url_key'])
                 ->paginate(6);
         }
@@ -80,20 +80,32 @@ class Product extends Model implements HasMedia
 
     public function scopeHome($query, $count = 8)
     {
-        return $query->select(['name', 'product_type', 'special_price', 'price', 'sku', 'id', 'url_key','visibility'])
+        return $query->select(['name', 'product_type', 'special_price', 'price', 'sku', 'id', 'url_key', 'visibility'])
             ->whereStatus(1)
-            ->whereIn('visibility',self::CATALOG)
+            ->whereIn('visibility', self::CATALOG)
             ->orderBy('id', 'desc')
             ->limit($count)
             ->get();
     }
 
-    public function scopeFront($query,$page_count=18)
+    public function scopeFront($query)
     {
         return $query->whereStatus(1)
-            ->whereIn('visibility',self::CATALOG)
-            ->select(['name', 'id', 'price', 'sku', 'url_key'])
-            ->paginate($page_count);
+            ->whereIn('visibility', self::CATALOG)
+            ->select(['name', 'id', 'price', 'sku', 'url_key']);
+    }
+
+    public function scopeSort($query, $sort_by)
+    {
+        return $query->when($sort_by, function ($q)use ($sort_by) {
+            $sort = explode('_',$sort_by);
+            return $q->orderBy($sort[0], $sort[1]);
+        });
+    }
+
+    public function scopeFilter($query)
+    {
+        return $query;
     }
 
     public function relatedProducts()
