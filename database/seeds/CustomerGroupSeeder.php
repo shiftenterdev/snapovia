@@ -11,6 +11,9 @@ class CustomerGroupSeeder extends Seeder
      */
     public function run()
     {
-        
+        $groups = ['Not Logged in','General','Private','Company','Offer'];
+        foreach ($groups as $group) {
+            \App\Models\CustomerGroup::create(['title' => $group]);
+        }
     }
 }

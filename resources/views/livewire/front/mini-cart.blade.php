@@ -30,7 +30,7 @@
                                 <!-- Title -->
                                 <p class="font-size-sm font-weight-bold mb-6">
                                     <a class="text-body" href="{{$product->product->url_key}}">{{$product->name}}</a> <br>
-                                    <span class="text-muted">${{amount($product->unit_price)}}</span>
+                                    <span class="text-muted">${{amount($product->price)}}</span>
                                 </p>
 
                                 <!--Footer -->

@@ -14,8 +14,14 @@ class CreateVendorOrdersTable extends Migration
     public function up()
     {
         Schema::create('vendor_orders', function (Blueprint $table) {
-            $table->integer('vendor_id')->unsigned();
-            $table->integer('order_id')->unsigned();
+            $table->unsignedBigInteger('vendor_id');
+            $table->unsignedBigInteger('order_id');
+            $table->foreign('vendor_id')
+                ->references('id')
+                ->on('vendors');
+            $table->foreign('order_id')
+                ->references('id')
+                ->on('orders');
         });
     }
 

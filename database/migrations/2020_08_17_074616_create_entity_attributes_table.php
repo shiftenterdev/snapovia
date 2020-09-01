@@ -16,7 +16,7 @@ class CreateEntityAttributesTable extends Migration
         Schema::create('entity_attributes', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('entity_id');
-            $table->unsignedInteger('attribute_id');
+            $table->foreignId('attribute_id')->constrained();
         });
     }
 

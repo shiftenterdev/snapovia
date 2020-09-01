@@ -14,8 +14,14 @@ class CreateVendorProductsTable extends Migration
     public function up()
     {
         Schema::create('vendor_products', function (Blueprint $table) {
-            $table->integer('vendor_id')->unsigned();
-            $table->integer('product_id')->unsigned();
+            $table->unsignedBigInteger('vendor_id');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('vendor_id')
+                ->references('id')
+                ->on('vendors');
+            $table->foreign('product_id')
+                ->references('id')
+                ->on('products');
         });
     }
 
