@@ -7,26 +7,29 @@ use Livewire\Component;
 
 class Filter extends Component
 {
-    public $categories;
+    public $category_id = null;
 
-    public $cat_id;
+    //protected $listeners = ['updateCategoryList'];
 
-    protected $updatesQueryString = ['cat_id'];
+    protected $updatesQueryString = ['category_id'];
+
+    public function mount()
+    {
+        $this->category_id = request('category_id',$this->category_id);
+    }
 
     public function render()
     {
-        $this->categories = Category::where('parent_id',null)
+        $categories = Category::where('parent_id', $this->category_id)
             ->whereStatus(1)
-            ->select(['id','name','url_key'])
+            ->select(['id', 'name', 'url_key'])
             ->get();
-
-        return view('livewire.front.category.filter')->with([
-            'categories'=>$this->categories
-        ]);
+//        dd($categories);
+        return view('livewire.front.category.filter',compact('categories'));
     }
 
-    public function filterByCategory($cat_id)
+    public function updatedCategoryId($value)
     {
-        $this->emit('updateProductList',$cat_id);
+        $this->emit('updateProductList', $value);
     }
 }

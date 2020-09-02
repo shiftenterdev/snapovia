@@ -2,6 +2,12 @@
     <div class="flash-alert" wire:loading wire:target="addToCart">
         Adding to cart ....
     </div>
+    @if(session()->has('message'))
+        <div class="flash-alert">
+            {{session('message')}}
+        </div>
+    @endif
+
     <!-- Header -->
     <div class="row align-items-center mb-7">
         <div class="col-12 col-md">
@@ -103,19 +109,21 @@
 
                         <!-- Actions -->
                         <div class="card-actions">
-                          <span class="card-action">
-                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
-                                    data-target="#modalProduct">
-                              <i class="fe fe-eye"></i>
-                            </button>
-                          </span>
+                            {{--<span class="card-action">
+                              <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
+                                      data-target="#modalProduct">
+                                <i class="fe fe-eye"></i>
+                              </button>
+                            </span>--}}
                             <span class="card-action">
-                            <button wire:click="addToCart({{$product->sku}})" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                            <button wire:click="addToCart({{$product->sku}})"
+                                    class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
                               <i class="fe fe-shopping-cart"></i>
                             </button>
                           </span>
                             <span class="card-action">
-                            <a href="{{route('add.to.wishlist',$product->sku)}}" class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                            <a href="{{route('add.to.wishlist',$product->sku)}}"
+                               class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
                               <i class="fe fe-heart"></i>
                             </a>
                           </span>

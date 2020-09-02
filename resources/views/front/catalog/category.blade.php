@@ -29,7 +29,7 @@
                 <div class="col-12 col-md-8 col-lg-9">
 
                     <!-- Slider -->
-                    <div class="flickity-page-dots-inner mb-9" data-flickity='{"pageDots": true}'>
+                    <div class="flickity-page-dots-inner mb-9" data-flickity='{"pageDots": true}' hidden>
 
                         <!-- Item -->
                         <div class="w-100">

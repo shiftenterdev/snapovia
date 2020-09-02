@@ -22,7 +22,7 @@ class Order extends Model
     {
         return $this->hasOne(ShippingInfo::class);
     }
-    
+
     public function paymentInfo()
     {
         return $this->hasOne(PaymentInfo::class);
