@@ -52,7 +52,6 @@ class UserSeeder extends Seeder
         $role2->givePermissionTo('Configuration');
 
         $role3 = Role::create(['name' => 'super-admin']);
-        $role4 = Role::create(['name' => 'customer']);
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
         // create demo users

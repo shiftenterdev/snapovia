@@ -38,7 +38,7 @@ class CustomerSeeder extends Seeder
             'country'          => $faker->country,
         ]);
 
-        $customer->wishlist()->sync([1, 2, 3, 4, 5]);
+//        $customer->wishlist()->sync([1, 2, 3, 4, 5]);
 
 
         for ($i = 1; $i <= env('SAMPLE_CUSTOMER_COUNT', 20); $i++) {

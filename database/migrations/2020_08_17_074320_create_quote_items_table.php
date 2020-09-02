@@ -16,12 +16,12 @@ class CreateQuoteItemsTable extends Migration
         Schema::create('quote_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('quote_id')->constrained();
-            $table->integer('product_id');
+            $table->foreignId('product_id')->constrained();
             $table->string('sku');
             $table->string('name');
             $table->enum('product_type', ['simple', 'configurable', 'grouped', 'virtual']);
             $table->string('product_attribute')->nullable();
-            $table->integer('unit_price');
+            $table->integer('price');
             $table->integer('qty');
             $table->integer('discount_price')->default(0);
             $table->integer('row_total');

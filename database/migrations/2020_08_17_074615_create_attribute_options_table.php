@@ -15,7 +15,7 @@ class CreateAttributeOptionsTable extends Migration
     {
         Schema::create('attribute_options', function (Blueprint $table) {
             $table->id();
-            $table->integer('attribute_id');
+            $table->foreignId('attribute_id')->constrained();
             $table->string('option_value');
         });
     }
