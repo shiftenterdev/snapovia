@@ -96,7 +96,7 @@ class Cart
         }
         $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
             ->firstOrFail();
-        $product = Product::whereSku($sku)->firstOrFail();
+        $product = Product::whereSku($sku)->first();
         $quote->items()->updateOrCreate(
             [
                 'product_id'   => $product->id,

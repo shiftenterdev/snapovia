@@ -15,9 +15,9 @@ class CartController extends Controller
         return view('front.cart.index');
     }
 
-    public function addToCart($sku)
+    public function addToCart(Request $request)
     {
-        Cart::addToCart($sku);
+        Cart::addToCart($request->sku);
         return redirect()->back()->with('success','Product Added to cart');
     }
 }

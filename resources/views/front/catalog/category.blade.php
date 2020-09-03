@@ -584,9 +584,10 @@
                                             </span>--}}
                                             <span class="card-action">
                                                 @if ($product->qty > 0)
-                                                    <form action="{{ route('add.to.cart', $product->sku) }}"
+                                                    <form action="{{ route('add.to.cart') }}"
                                                           method="POST">
                                                         {{ csrf_field() }}
+                                                        <input type="hidden" name="sku" value="{{$product->sku}}">
                                                         <button class="btn btn-xs btn-circle btn-white-primary"
                                                                 data-toggle="button">
                                                             <i class="fe fe-shopping-cart"></i>

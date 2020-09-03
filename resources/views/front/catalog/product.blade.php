@@ -58,18 +58,28 @@
 
                             <!-- Slider -->
                             <!-- Slider -->
-                            <div class="flickity-nav mx-n2 mb-10 mb-md-0" data-flickity='{"asNavFor": "#productSlider", "contain": true, "wrapAround": false}'>
+                            <div class="flickity-nav mx-n2 mb-10 mb-md-0"
+                                 data-flickity='{"asNavFor": "#productSlider", "contain": true, "wrapAround": false}'>
                                 <!-- Item -->
                                 <div class="col-12 px-2" style="max-width: 113px;">
                                     <!-- Image -->
-                                    <div class="embed-responsive embed-responsive-1by1 bg-cover" style="background-image: url({{$product->sample_image}});"></div>
+                                    <div class="embed-responsive embed-responsive-1by1 bg-cover"
+                                         style="background-image: url({{$product->sample_image}});"></div>
                                 </div>
 
                             </div>
 
                         </div>
                         <div class="col-12 col-md-6 pl-lg-10">
-
+                            @if(session()->has('success'))
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="flash-alert mt-2 mb-2">
+                                            <strong>Success</strong> {{session('success')}}
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                             <!-- Header -->
                             <div class="row mb-1">
                                 <div class="col">
@@ -113,9 +123,10 @@
                             <!-- Price -->
                             <div class="mb-7">
                                 @if($product->special_price)
-                                    <span class="font-size-lg font-weight-bold text-gray-350 text-decoration-line-through">
-                                    ${{amount($product->special_price)}}
-                                </span>
+                                    <span
+                                        class="font-size-lg font-weight-bold text-gray-350 text-decoration-line-through">
+                                        ${{amount($product->special_price)}}
+                                    </span>
                                 @endif
                                 <span class="ml-1 font-size-h5 font-weight-bolder text-primary">
                                     ${{amount($product->price)}}
@@ -124,11 +135,9 @@
                             </div>
 
                             <!-- Form -->
-                            <form method="post" id="addToCartForm" action="javascript:">
+                            <form method="post" id="addToCartForm" action="{{route('add.to.cart')}}">
                                 @csrf
-                                <input type="hidden" value="{{$product->sku}}" id="parentSku">
-                                <input type="hidden" value="{{$product->sku}}" id="productSku">
-                                <input type="hidden" value="{{$product->product_type}}" id="productTypeId">
+                                <input type="hidden" value="{{$product->sku}}" name="sku" id="productSku">
 
                                 <div class="form-group">
 
@@ -136,17 +145,16 @@
                                         Vendor: <strong><span>Snapovia</span></strong>
                                     </p>
 
-                                @foreach($product->attributes as $key => $attribute)
-                                    <!-- Label -->
+                                    @foreach($product->attributes as $key => $attribute)
                                         <p class="mb-5">
                                             {{ucfirst($attribute->name)}}: <strong><span
-                                                        id="{{$key}}Caption">{{$attribute->options[0]->option_value}}</span></strong>
+                                                    id="{{$key}}Caption">{{$attribute->options[0]->option_value}}</span></strong>
                                         </p>
 
-                                        <!-- Radio -->
                                         <div class="mb-2">
                                             @foreach($attribute->options as $k => $option)
-                                                <div class="custom-control custom-control-inline custom-control-size mb-2">
+                                                <div
+                                                    class="custom-control custom-control-inline custom-control-size mb-2">
                                                     <input type="radio" class="custom-control-input product-attribute"
                                                            name="{{$key}}Radio" id="{{$key}}Radio{{$k}}"
                                                            value="{{$option->id}}" data-toggle="form-caption"
@@ -156,23 +164,21 @@
                                                 </div>
                                             @endforeach
                                         </div>
-                                @endforeach
+                                    @endforeach
 
-                                <!-- Size chart -->
                                     @if(count($product->attributes))
                                         <p class="mb-8">
-                                            <img src="{{asset('frontend/assets/img/icons/icon-ruler.svg')}}" alt="{{__('Size chart')}}"
+                                            <img src="{{asset('frontend/assets/img/icons/icon-ruler.svg')}}"
+                                                 alt="{{__('Size chart')}}"
                                                  class="img-fluid"> <a
-                                                    class="text-reset text-decoration-underline ml-3"
-                                                    data-toggle="modal"
-                                                    href="#modalSizeChart">{{__('Size chart')}}</a>
+                                                class="text-reset text-decoration-underline ml-3"
+                                                data-toggle="modal"
+                                                href="#modalSizeChart">{{__('Size chart')}}</a>
                                         </p>
                                     @endif
 
                                     <div class="form-row mb-7">
                                         <div class="col-12 col-lg-auto">
-
-                                            <!-- Quantity -->
                                             <select class="custom-select mb-2" name="quantity" id="productQty" required>
                                                 <option value="1" selected>1</option>
                                                 <option value="2">2</option>
@@ -183,34 +189,27 @@
 
                                         </div>
                                         <div class="col-12 col-lg">
-
-                                            <!-- Submit -->
                                             <button type="submit"
                                                     class="btn btn-block btn-dark mb-2 product-add-to-cart">
                                                 {{__('Add to Cart')}} <i class="fe fe-shopping-cart ml-2"></i>
                                             </button>
-
                                         </div>
                                         <div class="col-12 col-lg-auto">
-
-                                            <!-- Wishlist -->
-                                            <a href="{{route('add.to.wishlist',$product->sku)}}" class="btn btn-outline-dark btn-block mb-2" data-toggle="button">
+                                            <a href="{{route('add.to.wishlist',$product->sku)}}"
+                                               class="btn btn-outline-dark btn-block mb-2" data-toggle="button">
                                                 {{__('Wishlist')}} <i class="fe fe-heart ml-2"></i>
                                             </a>
-
                                         </div>
                                     </div>
 
-                                    <!-- Text -->
                                     @if(count($product->attributes))
                                         <p>
                                             <span class="text-gray-500">{{__('Is your size/color sold out')}}?</span>
                                             <a class="text-reset text-decoration-underline" data-toggle="modal"
                                                href="#modalWaitList">{{__('Join the Wait List')}}!</a>
                                         </p>
-                                @endif
+                                    @endif
 
-                                <!-- Share -->
                                     <p class="mb-0">
                                         <span class="mr-4">{{__('Share')}}:</span>
                                         <a class="btn btn-xxs btn-circle btn-light font-size-xxxs text-gray-350"
@@ -244,7 +243,8 @@
                 <div class="col-12">
 
                     <!-- Nav -->
-                    <div class="nav nav-tabs nav-overflow justify-content-start justify-content-md-center border-bottom">
+                    <div
+                        class="nav nav-tabs nav-overflow justify-content-start justify-content-md-center border-bottom">
                         <a class="nav-link active" data-toggle="tab" href="#descriptionTab">
                             {{__('Description')}}
                         </a>
@@ -375,7 +375,7 @@
                                     <!-- Caption -->
                                     <p class="mb-0 text-gray-500">
                                         May, life blessed night so creature likeness their, for. <a
-                                                class="text-body text-decoration-underline" href="#!">Find out more</a>
+                                            class="text-body text-decoration-underline" href="#!">Find out more</a>
                                     </p>
 
                                 </div>
@@ -420,23 +420,26 @@
                                         </a>
 
                                         <!-- Actions -->
-                                                                            <div class="card-actions">
-                                                              <span class="card-action">
-                                                                <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal" data-target="#modalProduct">
-                                                                  <i class="fe fe-eye"></i>
-                                                                </button>
-                                                              </span>
-                                                                                <span class="card-action">
-                                                                <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
-                                                                  <i class="fe fe-shopping-cart"></i>
-                                                                </button>
-                                                              </span>
-                                                                                <span class="card-action">
-                                                                <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
-                                                                  <i class="fe fe-heart"></i>
-                                                                </button>
-                                                              </span>
-                                                                            </div>
+                                        <div class="card-actions">
+                                            <span class="card-action">
+                                                <button class="btn btn-xs btn-circle btn-white-primary"
+                                                        data-toggle="modal" data-target="#modalProduct">
+                                                    <i class="fe fe-eye"></i>
+                                                </button>
+                                            </span>
+                                            <span class="card-action">
+                                                <button class="btn btn-xs btn-circle btn-white-primary"
+                                                        data-toggle="button">
+                                                    <i class="fe fe-shopping-cart"></i>
+                                                </button>
+                                            </span>
+                                            <span class="card-action">
+                                                <button class="btn btn-xs btn-circle btn-white-primary"
+                                                        data-toggle="button">
+                                                    <i class="fe fe-heart"></i>
+                                                </button>
+                                            </span>
+                                        </div>
 
                                     </div>
 
@@ -646,9 +649,9 @@
 
                                         <!-- Avatar -->
                                         <div class="avatar avatar-xxl mb-6 mb-md-0">
-                        <span class="avatar-title rounded-circle">
-                          <i class="fa fa-user"></i>
-                        </span>
+                                            <span class="avatar-title rounded-circle">
+                                                <i class="fa fa-user"></i>
+                                            </span>
                                         </div>
 
                                     </div>
@@ -682,8 +685,9 @@
 
                                                 <!-- Time -->
                                                 <span class="font-size-xs text-muted">
-                            Logan Edwards, <time datetime="2019-07-25">25 Jul 2019</time>
-                          </span>
+                                                    Logan Edwards,
+                                                    <time datetime="2019-07-25">25 Jul 2019</time>
+                                                </span>
 
                                             </div>
                                         </div>
@@ -755,9 +759,9 @@
 
                                         <!-- Avatar -->
                                         <div class="avatar avatar-xxl mb-6 mb-md-0">
-                        <span class="avatar-title rounded-circle">
-                          <i class="fa fa-user"></i>
-                        </span>
+                                            <span class="avatar-title rounded-circle">
+                                                <i class="fa fa-user"></i>
+                                            </span>
                                         </div>
 
                                     </div>
@@ -791,8 +795,9 @@
 
                                                 <!-- Time -->
                                                 <span class="font-size-xs text-muted">
-                            Sophie Casey, <time datetime="2019-07-07">07 Jul 2019</time>
-                          </span>
+                                                    Sophie Casey,
+                                                    <time datetime="2019-07-07">07 Jul 2019</time>
+                                                </span>
 
                                             </div>
                                         </div>
@@ -861,9 +866,9 @@
 
                                             <!-- Avatar -->
                                             <div class="avatar avatar-xxl mb-6 mb-md-0">
-                          <span class="avatar-title rounded-circle">
-                            <i class="fa fa-user"></i>
-                          </span>
+                                                <span class="avatar-title rounded-circle">
+                                                    <i class="fa fa-user"></i>
+                                                </span>
                                             </div>
 
                                         </div>
@@ -897,8 +902,9 @@
 
                                                     <!-- Time -->
                                                     <span class="font-size-xs text-muted">
-                              William Stokes, <time datetime="2019-07-14">14 Jul 2019</time>
-                            </span>
+                                                        William Stokes,
+                                                        <time datetime="2019-07-14">14 Jul 2019</time>
+                                                    </span>
 
                                                 </div>
                                             </div>
