@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Route;
 /**
  * Vue route
  */
-Route::get('{path}', function () {
-    return view('index');
+Route::get('vue/{path}', function () {
+    return view('front.vue');
 })->where('path', '(.*)');
 
 Route::get('/locale/{p}',function($lang){
