@@ -14,9 +14,6 @@ Route::namespace('Front')->group(function () {
 
     Route::get('/', 'WelcomeController')->name('welcome');
 
-    // Vue route will resume later(experimental)
-    Route::view('/vue/{any}', 'front.layouts.vue')->where('any', '.*');
-
     Route::get('category', 'CatalogController@category')->name('category');
 
     Route::resource('search', 'SearchController')->only(['index','show']);
@@ -157,10 +154,6 @@ Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
-});
-
-Route::get('test',function (){
-   dd(\App\Facades\Cart::get());
 });
 
 Route::get('/{url}/{suburl?}/{producturl?}', 'Front\UrlResolverController')->name('resolve');

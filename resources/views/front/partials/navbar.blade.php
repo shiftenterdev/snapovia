@@ -379,11 +379,12 @@
                         <i class="fe fe-heart"></i>
                     </a>
                 </li>
+                @php($is_show = request()->is('checkout*')?'javascript:':'#modalShoppingCart')
                 <li class="nav-item ml-lg-n4">
-                    <a class="nav-link" data-toggle="modal" href="#modalShoppingCart">
-                <span id="mini-cart-item-count" data-cart-items="{{Cart::count()}}">
-                  <i class="fe fe-shopping-cart"></i>
-                </span>
+                    <a class="nav-link" data-toggle="modal" href="{{$is_show}}">
+                        <span id="mini-cart-item-count" data-cart-items="{{Cart::count()}}">
+                          <i class="fe fe-shopping-cart"></i>
+                        </span>
                     </a>
                 </li>
             </ul>

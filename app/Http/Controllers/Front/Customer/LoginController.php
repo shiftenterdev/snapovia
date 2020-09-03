@@ -24,6 +24,9 @@ class LoginController extends Controller
         }
         $request->validated();
         if(Customer::attempt($request)){
+            if($request->redirect){
+                return redirect($request->redirect);
+            }
             return redirect()->route('customer.info');
         }
         return redirect()->back()->withError('Invalid Login attempt');

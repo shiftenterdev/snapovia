@@ -81,7 +81,7 @@
 
                                 <!-- Title -->
                                 <div class="font-weight-bold">
-                                    <a class="text-body" href="{{$product->url_key}}">
+                                    <a class="text-body" href="/{{$product->url_key}}">
                                         {{$product->name}}
                                     </a>
                                 </div>

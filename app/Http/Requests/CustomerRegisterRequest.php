@@ -13,7 +13,7 @@ class CustomerRegisterRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class CustomerRegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'email'      => 'email|required',
+            'first_name' => 'required|min:3|max:20|alpha',
+            'last_name'  => 'required|min:3|max:20|alpha',
+            'password'   => 'confirmed|min:6',
+            'redirect'   => 'alpha_num',
         ];
     }
 }

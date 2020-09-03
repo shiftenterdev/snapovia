@@ -84,9 +84,9 @@ class Customer
     private function mergeCart($customer_id)
     {
         if(\App\Facades\Cart::get()){
-            $existing_quote = Quote::with('customer_id',$customer_id)->firstOrFail();
+            $existing_quote = Quote::where('customer_id',$customer_id)->firstOrFail();
             if($existing_quote){
-
+                \App\Facades\Cart::merge($existing_quote->id);
             }else {
                 \App\Facades\Cart::addCustomerToQuote($customer_id);
             }

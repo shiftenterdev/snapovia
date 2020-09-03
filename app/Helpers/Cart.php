@@ -9,6 +9,7 @@ namespace App\Helpers;
 
 use App\Models\Product;
 use App\Models\Quote;
+use App\Models\QuoteItems;
 
 class Cart
 {
@@ -46,6 +47,14 @@ class Cart
             ->update(['customer_id'=>$customer_id]);
     }
 
+    public function merge($customer_quote_id)
+    {
+        $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
+            ->firstOrFail();
+        QuoteItems::where('quote_id',$quote->id)->update(['quote_id'=>$customer_quote_id]);
+        $this->refreshCart($customer_quote_id);
+    }
+
     /**
      * @param $cart
      */
@@ -61,7 +70,7 @@ class Cart
         $subtotal = 0;
         $tax = 0;
         foreach ($quote->items as $item){
-            $subtotal += $item->qty * $item->unit_price;
+            $subtotal += $item->qty * $item->price;
         }
         $grand_total_incl_tax = $subtotal + $tax;
         $quote->update(['grand_total'=>$subtotal,'grand_total_incl_tax'=>$grand_total_incl_tax]);
