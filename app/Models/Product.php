@@ -94,11 +94,15 @@ class Product extends Model implements HasMedia
 //            ->whereIn('visibility', self::CATALOG)
             ->when($category_id,function ($query) use ($category_id){
                 $query->whereHas('categories',function ($q) use ($category_id){
-                    $q->where('categories.id',$category_id);
+                    if($category_id==1){
+                        $q->where('categories.parent_id', $category_id);
+                    }else {
+                        $q->where('categories.id', $category_id);
+                    }
                 });
             })
             ->sort($sortBy)
-            ->select(['name', 'id', 'price', 'sku', 'url_key']);
+            ->select(['name', 'id', 'price', 'sku', 'url_key','qty']);
     }
 
     public function scopeSort($query, $sort_by)

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Facades\Cart;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CartRequest;
 use App\Models\Quote;
@@ -14,13 +15,9 @@ class CartController extends Controller
         return view('front.cart.index');
     }
 
-    public function store(CartRequest $request)
+    public function addToCart($sku)
     {
-
-    }
-
-    public function update(Quote $quote)
-    {
-
+        Cart::addToCart($sku);
+        return redirect()->back()->with('success','Product Added to cart');
     }
 }

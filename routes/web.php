@@ -21,7 +21,7 @@ Route::namespace('Front')->group(function () {
     Route::post('product/variants', 'CatalogController@getVariant')->name('product.variant');
 
     Route::get('checkout/cart', 'CheckoutController@cart')->name('cart');
-    Route::post('checkout/cart', 'CartController@addToCart')->name('add.to.cart');
+    Route::post('checkout/cart/{sku}', 'CartController@addToCart')->name('add.to.cart');
     Route::get('checkout/mini-cart', 'CartController@miniCartInfo')->name('mini.cart.info');
     Route::get('checkout', 'CheckoutController@index')->name('checkout');
     Route::get('checkout/success', 'CheckoutController@success')->name('checkout.success');

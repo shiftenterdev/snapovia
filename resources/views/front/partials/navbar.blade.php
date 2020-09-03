@@ -103,13 +103,13 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="/women/tops-women">{{__('Women')}}</a>
+                    <a class="nav-link" href="/womens-clothing">{{__('Women')}}</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="/men/tops-men/hoodies-and-sweatshirts-men">{{__('Men')}}</a>
+                    <a class="nav-link" href="/mans-fashion">{{__('Men')}}</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link" href="/gear">{{__('Gear')}}</a>
+                    <a class="nav-link" href="/jewelry-watches">{{__('Jewelry & Watches')}}</a>
                 </li>
 
                 <li class="nav-item dropdown position-static">
