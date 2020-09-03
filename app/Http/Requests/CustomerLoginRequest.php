@@ -24,7 +24,9 @@ class CustomerLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'email'    => 'email|required',
+            'password' => 'min:6|required',
+            'redirect' => 'alpha_num',
         ];
     }
 }

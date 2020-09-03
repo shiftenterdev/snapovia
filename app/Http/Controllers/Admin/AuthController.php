@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminLoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,12 +14,8 @@ class AuthController extends Controller
         return view('admin.auth.login');
     }
 
-    public function loginPost(Request $request)
+    public function loginPost(AdminLoginRequest $request)
     {
-        $request->validate([
-            'email'    => 'email|required',
-            'password' => 'required'
-        ]);
         $credentials = [
             'email'    => $request->email,
             'password' => $request->password

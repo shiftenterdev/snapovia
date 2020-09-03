@@ -32,7 +32,7 @@
                     @if(!Customer::check())
                         <p class="mb-10">
                             {{__('Already have an account')}}? <a class="font-weight-bold text-reset"
-                                                                  href="{{route('customer.login')}}">{{__('Click here to login')}}</a>
+                                                                  href="{{route('customer.login')}}?redirect=checkout">{{__('Click here to login')}}</a>
                         </p>
                     @endif
 
