@@ -48,12 +48,12 @@
 
                                 <!-- Actions -->
                                 <div class="card-actions">
-                                  <span class="card-action">
+                                  {{--<span class="card-action">
                                     <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
                                             data-target="#modalProduct">
                                       <i class="fe fe-eye"></i>
                                     </button>
-                                  </span>
+                                  </span>--}}
                                     <span class="card-action">
                                     <button wire:click.prevent="addToCart({{$product->sku}})"
                                             class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">

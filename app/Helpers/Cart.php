@@ -86,7 +86,7 @@ class Cart
                 'product_type' => $product->product_type,
                 'row_total'    => (int)($product->price * $qty)
             ],
-            ['qty' => $qty, 'unit_price' => $product->price, 'discount_price' => 0]
+            ['qty' => $qty, 'price' => $product->price, 'discount_price' => 0]
         );
         $this->set($quote);
     }

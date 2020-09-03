@@ -88,10 +88,16 @@ class Product extends Model implements HasMedia
             ->get();
     }
 
-    public function scopeFront($query)
+    public function scopeFront($query,$sortBy,$category_id=null)
     {
         return $query->whereStatus(1)
-            ->whereIn('visibility', self::CATALOG)
+//            ->whereIn('visibility', self::CATALOG)
+            ->when($category_id,function ($query) use ($category_id){
+                $query->whereHas('categories',function ($q) use ($category_id){
+                    $q->where('categories.id',$category_id);
+                });
+            })
+            ->sort($sortBy)
             ->select(['name', 'id', 'price', 'sku', 'url_key']);
     }
 

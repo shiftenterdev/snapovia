@@ -14,38 +14,25 @@
                 <div class="collapse show" id="categoryCollapse">
                     <div class="form-group">
                         <ul class="list-styled mb-0" id="productsNav">
-                            <li class="list-styled-item">
-                                <a class="list-styled-link" href="">
-                                    All Products
-                                </a>
-                            </li>
-                            @foreach($categories as $parentIndex => $category)
+                            @if($category->id!=1)
                                 <li class="list-styled-item">
-                                    <a class="list-styled-link" data-toggle="collapse"
-                                       href="#{{$category->url_key}}Collapse">
-                                        {{$category->name}} ({{$category->products->count()}})
+                                    <a class="list-styled-link" href="javascript:" onclick="history.back()">
+                                        <i class="fas fa-arrow-left"></i> {{$category->name}}
                                     </a>
-                                    @if(count($category->childCategories))
-                                        <div class="collapse" id="{{$category->url_key}}Collapse"
-                                             data-parent="#productsNav">
-                                            <div class="py-4 pl-5">
-                                                @foreach($category->childCategories as $childIndex => $subCategory)
-                                                    <div class="custom-control custom-checkbox mb-3" wire:key="{{$childIndex.$parentIndex}}-option">
-                                                        <input class="custom-control-input"
-                                                               id="{{$subCategory->url_key}}"
-                                                               value="{{$subCategory->id}}"
-                                                               wire:model="cat_id.{{$subCategory->id}}"
-                                                               wire:click="filterByCategory({{$subCategory->id}})"
-                                                               type="checkbox">
-                                                        <label class="custom-control-label" for="{{$subCategory->url_key}}">
-                                                            {{$subCategory->name}} ({{$subCategory->products->count()}})
-                                                        </label>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    @endif
-
+                                </li>
+                            @else
+                                <li class="list-styled-item">
+                                    <a class="list-styled-link" href="javascript:">
+                                        All Products
+                                    </a>
+                                </li>
+                            @endif
+                            @foreach($category->childCategories as $parentIndex => $child_category)
+                                <li class="list-styled-item">
+                                    <label class="list-styled-link" href="javascript:">
+                                        <input type="checkbox" wire:model="category_id" wire:key="'category'.$child_category->id" value="{{$child_category->id}}" hidden>
+                                        {{$child_category->name}} ({{$child_category->products->count()}})
+                                    </label>
                                 </li>
                             @endforeach
                         </ul>
