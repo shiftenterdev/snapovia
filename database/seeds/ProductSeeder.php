@@ -64,7 +64,19 @@ class ProductSeeder extends Seeder
         /**
          * Category
          */
-        $i = 0;
+        $i = 1;
+
+        \App\Models\Category::create([
+            'name'             => 'Root',
+            'description'      => $faker->paragraph,
+            'url_key'          => 'root',
+            'url_path'         => '',
+            'meta_title'       => '',
+            'meta_description' => '',
+            'featured'         => 0,
+            'position'         => 0,
+            'status'           => 1,
+        ]);
 
         foreach ($this->categories as $level1 => $level2) {
 
@@ -76,6 +88,7 @@ class ProductSeeder extends Seeder
                 'meta_title'       => ucfirst($faker->word),
                 'meta_description' => $faker->paragraph,
                 'featured'         => rand(0, 1),
+                'parent_id'        => 1,
                 'position'         => $i++,
                 'status'           => 1,
             ]);

@@ -1,12 +1,8 @@
 <div>
-    <div class="custom-control custom-checkbox mb-3">
-        <input class="custom-control-input"
-               id="{{$category->url_key}}"
-               value="{{$category->id}}"
-               wire:model="cat_id"
-               type="checkbox">
-        <label class="custom-control-label" for="{{$category->url_key}}">
+    <li class="list-styled-item">
+        <label class="list-styled-link" href="javascript:">
+            <input type="checkbox" wire:model="category_id" value="{{$category->id}}" hidden>
             {{$category->name}} ({{$category->products->count()}})
         </label>
-    </div>
+    </li>
 </div>

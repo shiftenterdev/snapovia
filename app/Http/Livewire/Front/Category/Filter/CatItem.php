@@ -8,14 +8,14 @@ class CatItem extends Component
 {
     public $category;
 
-    public $cat_id;
+    public $category_id;
 
-    protected $updatesQueryString = ['cat_id'];
+    protected $updatesQueryString = ['category_id'];
 
     public function mount($category)
     {
         $this->category = $category;
-        $this->cat_id = request('cat_id',$this->cat_id);
+        $this->category_id = request('category_id',$this->category_id);
     }
 
     public function render()
@@ -23,7 +23,7 @@ class CatItem extends Component
         return view('livewire.front.category.filter.cat-item');
     }
 
-    public function updatedCatId($value)
+    public function updatedCategoryId($value)
     {
         $this->emit('updateProductList',$value);
         $this->emit('updateCategoryList',$value);

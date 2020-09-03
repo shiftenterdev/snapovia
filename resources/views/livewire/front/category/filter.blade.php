@@ -14,24 +14,24 @@
                 <div class="collapse show" id="categoryCollapse">
                     <div class="form-group">
                         <ul class="list-styled mb-0" id="productsNav">
-                            @if(count($categories) && isset(optional($categories[0])->parentCategory))
+                            @if($category->id!=1)
                                 <li class="list-styled-item">
                                     <a class="list-styled-link" href="javascript:" onclick="history.back()">
-                                        <i class="fas fa-backward"></i> {{$categories[0]->parentCategory->name}}
+                                        <i class="fas fa-arrow-left"></i> {{$category->name}}
                                     </a>
                                 </li>
                             @else
                                 <li class="list-styled-item">
-                                    <a class="list-styled-link" href="javascript:" wire:click="updateCategoryList">
+                                    <a class="list-styled-link" href="javascript:">
                                         All Products
                                     </a>
                                 </li>
                             @endif
-                            @foreach($categories as $parentIndex => $category)
+                            @foreach($category->childCategories as $parentIndex => $child_category)
                                 <li class="list-styled-item">
                                     <label class="list-styled-link" href="javascript:">
-                                        <input type="checkbox" wire:model="category_id" wire:key="'category'.$category->id" value="{{$category->id}}" hidden>
-                                        {{$category->name}} ({{$category->products->count()}})
+                                        <input type="checkbox" wire:model="category_id" wire:key="'category'.$child_category->id" value="{{$child_category->id}}" hidden>
+                                        {{$child_category->name}} ({{$child_category->products->count()}})
                                     </label>
                                 </li>
                             @endforeach

@@ -38,7 +38,7 @@ class ProductList extends Component
         session()->flash('message', 'Product added to cart 😀');
     }
 
-    public function updateProductList($category_id = null)
+    public function updateProductList($category_id = 0)
     {
         if ($category_id)
             $category = Category::find($category_id);
