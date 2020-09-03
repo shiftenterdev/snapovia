@@ -14,3 +14,5 @@ yarn-error.log
 /public/js/
 storage/tmp/
 .idea/
+phpunit.dusk.xml
+*.code-workspace

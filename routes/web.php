@@ -5,6 +5,14 @@ use Illuminate\Support\Facades\Route;
 /**
  * Frontend routes
  */
+
+/**
+ * Vue route
+ */
+Route::get('{path}', function () {
+    return view('index');
+})->where('path', '(.*)');
+
 Route::get('/locale/{p}',function($lang){
     session(['locale'=>$lang]);
     return redirect()->back();
@@ -13,9 +21,6 @@ Route::get('/locale/{p}',function($lang){
 Route::namespace('Front')->group(function () {
 
     Route::get('/', 'WelcomeController')->name('welcome');
-
-    // Vue route will resume later(experimental)
-    Route::view('/vue/{any}', 'front.layouts.vue')->where('any', '.*');
 
     Route::get('category', 'CatalogController@category')->name('category');
 
