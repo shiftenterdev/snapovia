@@ -83,7 +83,7 @@ class ProductSeeder extends Seeder
             $category = \App\Models\Category::create([
                 'name'             => ucfirst($level1),
                 'description'      => $faker->paragraph,
-                'url_key'          => Str::slug($level1 . ++$i),
+                'url_key'          => Str::slug($level1),
                 'url_path'         => Str::slug($level1),
                 'meta_title'       => ucfirst($faker->word),
                 'meta_description' => $faker->paragraph,
