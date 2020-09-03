@@ -5,8 +5,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-
-                    <!-- Breadcrumb -->
                     <ol class="breadcrumb mb-0 font-size-xs text-gray-400">
                         <li class="breadcrumb-item">
                             <a class="text-gray-400" href="{{route('welcome')}}">{{__('Home')}}</a>
@@ -42,9 +40,11 @@
                 <div class="col-12 col-md-7">
 
                     <!-- Form -->
-                    <form>
+                    <form method="post" autocomplete="off" action="{{route('checkout.submit')}}" id="orderSubmit">
 
-                        <!-- Heading -->
+                    @csrf
+
+                    <!-- Heading -->
                         <h6 class="mb-7">{{__('Billing Details')}}</h6>
 
                         <!-- Billing details -->
@@ -55,7 +55,8 @@
                                 <div class="form-group">
                                     <label for="checkoutBillingFirstName">{{__('First Name')}} *</label>
                                     <input class="form-control form-control-sm" id="checkoutBillingFirstName"
-                                           type="text" placeholder="First Name" value="{{Customer::user()->first_name ?? ''}}" required="">
+                                           type="text" placeholder="First Name"
+                                           value="{{Customer::user()->first_name ?? ''}}" required="">
                                 </div>
 
                             </div>
@@ -65,7 +66,8 @@
                                 <div class="form-group">
                                     <label for="checkoutBillingLastName">{{__('Last Name')}} *</label>
                                     <input class="form-control form-control-sm" id="checkoutBillingLastName" type="text"
-                                           placeholder="Last Name" required="" value="{{Customer::user()->last_name ?? ''}}">
+                                           placeholder="Last Name" required=""
+                                           value="{{Customer::user()->last_name ?? ''}}">
                                 </div>
 
                             </div>
@@ -95,7 +97,8 @@
                                 <div class="form-group">
                                     <label for="checkoutBillingCountry">{{__('Country')}} *</label>
                                     <input class="form-control form-control-sm" id="checkoutBillingCountry" type="text"
-                                           placeholder="{{__('Country')}}" required="" value="{{Customer::user()->country ?? ''}}">
+                                           placeholder="{{__('Country')}}" required=""
+                                           value="{{Customer::user()->country ?? ''}}">
                                 </div>
 
                             </div>
@@ -226,7 +229,9 @@
 
                             <!-- Checkbox -->
                             <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="checkoutShippingAddress" type="checkbox">
+                                <input type="hidden" value="0" name="different_shipping_address">
+                                <input class="custom-control-input" id="checkoutShippingAddress" type="checkbox"
+                                       value="1" name="different_shipping_address">
                                 <label class="custom-control-label font-size-sm" data-toggle="collapse"
                                        data-target="#checkoutShippingAddressCollapse" for="checkoutShippingAddress">
                                     {{__('Ship to a different address')}}?
@@ -236,17 +241,7 @@
                             <!-- Collapse -->
                             <div class="collapse" id="checkoutShippingAddressCollapse">
                                 <div class="row mt-6">
-                                    <div class="col-12">
 
-                                        <!-- Country -->
-                                        <div class="form-group">
-                                            <label for="checkoutShippingAddressCountry">Country *</label>
-                                            <input class="form-control form-control-sm"
-                                                   id="checkoutShippingAddressCountry" type="text"
-                                                   placeholder="Country">
-                                        </div>
-
-                                    </div>
                                     <div class="col-12">
 
                                         <!-- Address Line 1 -->
@@ -275,7 +270,7 @@
                                         <div class="form-group">
                                             <label for="checkoutShippingAddressTown">Town / City *</label>
                                             <input class="form-control form-control-sm" id="checkoutShippingAddressTown"
-                                                   type="text" placeholder="Town / City">
+                                                   type="text" placeholder="Town / City" name="city">
                                         </div>
 
                                     </div>
@@ -285,16 +280,33 @@
                                         <div class="form-group">
                                             <label for="checkoutShippingAddressZIP">ZIP / Postcode *</label>
                                             <input class="form-control form-control-sm" id="checkoutShippingAddressZIP"
-                                                   type="text" placeholder="ZIP / Postcode">
+                                                   type="text" placeholder="ZIP / Postcode" name="postcode">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-12">
+
+                                        <!-- Country -->
+                                        <div class="form-group">
+                                            <label for="checkoutShippingAddressCountry">Country *</label>
+                                            <input class="form-control form-control-sm"
+                                                   id="checkoutShippingAddressCountry" type="text"
+                                                   placeholder="Country" name="country">
                                         </div>
 
                                     </div>
                                     <div class="col-12">
 
-                                        <!-- Button -->
-                                        <button class="btn btn-sm btn-outline-dark" type="submit">
-                                            Save Address
-                                        </button>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="hidden" value="0" name="save_this_address">
+                                            <input class="custom-control-input" id="saveThisAddress" value="1"
+                                                   name="save_this_address" type="checkbox">
+                                            <label class="custom-control-label font-size-sm" data-toggle="collapse"
+                                                   for="saveThisAddress">
+                                                {{__('Save this address')}}?
+                                            </label>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -321,7 +333,7 @@
                                     <!-- Label -->
                                     <label class="custom-control-label font-size-sm text-body text-nowrap"
                                            for="checkoutPaymentCard">
-                                        Credit Card <img class="ml-2" src="frontend/assets/img/brands/color/cards.svg"
+                                        Credit Card <img class="ml-2" src="{{asset('frontend/assets/img/brands/color/cards.svg')}}"
                                                          alt="...">
                                     </label>
 
@@ -371,11 +383,12 @@
                                             <input class="form-control form-control-sm" id="checkoutPaymentCardCVV"
                                                    type="text" placeholder="CVV *" required="">
                                             <div class="input-group-append">
-                          <span class="input-group-text" data-toggle="popover" data-placement="top" data-trigger="hover"
-                                data-content="The CVV Number on your credit card or debit card is a 3 digit number on VISA, MasterCard and Discover branded credit and debit cards."
-                                data-original-title="" title="">
-                            <i class="fe fe-help-circle"></i>
-                          </span>
+                                                <span class="input-group-text" data-toggle="popover"
+                                                      data-placement="top" data-trigger="hover"
+                                                      data-content="The CVV Number on your credit card or debit card is a 3 digit number on VISA, MasterCard and Discover branded credit and debit cards."
+                                                      data-original-title="" title="">
+                                                    <i class="fe fe-help-circle"></i>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -395,7 +408,7 @@
                                     <!-- Label -->
                                     <label class="custom-control-label font-size-sm text-body text-nowrap"
                                            for="checkoutPaymentPaypal">
-                                        <img src="frontend/assets/img/brands/color/paypal.svg" alt="...">
+                                        <img src="{{asset('frontend/assets/img/brands/color/paypal.svg')}}" alt="...">
                                     </label>
 
                                 </div>
@@ -414,7 +427,7 @@
                                     <!-- Label -->
                                     <label class="custom-control-label font-size-sm text-body text-nowrap"
                                            for="checkoutCOD">
-                                        <img src="frontend/assets/img/brands/color/cod.webp"
+                                        <img src="{{asset('frontend/assets/img/brands/color/cod.webp')}}"
                                              alt="{{__('Cash on delivery')}}"
                                              style="height: 25px"> {{__('Cash on delivery')}}
                                     </label>
@@ -482,7 +495,7 @@
                             <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x">
                                 <li class="list-group-item d-flex">
                                     <span>{{__('Subtotal')}}</span> <span
-                                            class="ml-auto font-size-sm">${{amount($cart->grand_total)}}</span>
+                                        class="ml-auto font-size-sm">${{amount($cart->grand_total)}}</span>
                                 </li>
                                 <li class="list-group-item d-flex">
                                     <span>{{__('Tax')}}</span> <span class="ml-auto font-size-sm">$0</span>
@@ -492,7 +505,7 @@
                                 </li>
                                 <li class="list-group-item d-flex font-size-lg font-weight-bold">
                                     <span>{{__('Total')}}</span> <span
-                                            class="ml-auto">${{amount($cart->grand_total_incl_tax)}}</span>
+                                        class="ml-auto">${{amount($cart->grand_total_incl_tax)}}</span>
                                 </li>
                             </ul>
                         </div>
@@ -506,7 +519,7 @@
                     </p>
 
                     <!-- Button -->
-                    <button class="btn btn-block btn-dark">
+                    <button class="btn btn-block btn-dark" form="orderSubmit" type="submit">
                         {{__('Place Order')}}
                     </button>
 
