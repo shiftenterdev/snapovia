@@ -51,6 +51,34 @@
 
 <script>
     export default {
-        name:'Countdown'
+        name:'Countdown',
+        mounted() {
+            this.startCountDown();
+        },
+        methods:{
+            startCountDown(){
+                let t = document.querySelectorAll("[data-countdown]");
+
+                function o(t, e) {
+                    let a = t - (new Date).getTime(), o = Math.floor(a / 864e5);
+                    o = o < 10 ? "0" + o : o;
+                    let n = Math.floor(a % 864e5 / 36e5);
+                    n = n < 10 ? "0" + n : n;
+                    let l = Math.floor(a % 36e5 / 6e4);
+                    l = l < 10 ? "0" + l : l;
+                    let i = Math.floor(a % 6e4 / 1e3);
+                    i = i < 10 ? "0" + i : i, e.querySelector("[data-days]").innerHTML = o, e.querySelector("[data-hours]").innerHTML = n, e.querySelector("[data-minutes]").innerHTML = l, e.querySelector("[data-seconds]").innerHTML = i
+                }
+
+                t.length && [].forEach.call(t, function (t) {
+                    !function (t) {
+                        let e = t.dataset.date, a = new Date(e).getTime();
+                        o(a, t), setInterval(function () {
+                            o(a, t)
+                        }, 1e3)
+                    }(t)
+                })
+            }
+        }
     }
 </script>

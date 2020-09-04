@@ -292,7 +292,37 @@
 </template>
 
 <script>
+    import Flickity from 'flickity';
+    import 'flickity/css/flickity.css'
+
     export default {
-        name:'Review'
+        name: 'Review',
+        components: {
+            Flickity
+        },
+        mounted() {
+            this.startSlider();
+        },
+        methods: {
+            startSlider(){
+                Flickity.defaults.pageDots = !1, Flickity.defaults.prevNextButtons = !1, Flickity.defaults.imagesLoaded = !0, Flickity.defaults.initialIndex = 0, Flickity.defaults.wrapAround = !0, Flickity.defaults.cellAlign = "left", $('[data-toggle="flickity"]').on("click", function () {
+                    var t = $(this), e = t.data("slide"), a = t.data("target");
+                    $(a).flickity("select", e, !0, !0)
+                }), function () {
+                    var a, o = !1;
+                    document.body.addEventListener("touchstart", function (t) {
+                        t.target.closest(".flickity-slider") ? (o = !0, a = {
+                            x: t.touches[0].pageX,
+                            y: t.touches[0].pageY
+                        }) : o = !1
+                    }), document.body.addEventListener("touchmove", function (t) {
+                        if (o && t.cancelable) {
+                            var e = {x: t.touches[0].pageX - a.x, y: t.touches[0].pageY - a.y};
+                            7 < Math.abs(e.x) && t.preventDefault()
+                        }
+                    }, {passive: !1})
+                }
+            }
+        }
     }
 </script>

@@ -9,7 +9,7 @@
 
                     <!-- Subheading -->
                     <p class="mb-10 font-size-lg text-gray-500">
-                        {{__("Appear, dry there darkness they're seas, dry waters.")}}
+                        Appear, dry there darkness they're seas, dry waters.
                     </p>
 
                 </div>

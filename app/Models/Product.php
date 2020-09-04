@@ -20,7 +20,7 @@ class Product extends Model implements HasMedia
 
     protected $appends = [
         'base_image',
-        'default_image'
+        'sample_image'
     ];
 
     public function categories()

@@ -1,5 +1,5 @@
 function page(path) {
-    return () => import(/* webpackChunkName: '' */ `~/pages/${path}`).then(m => m.default || m)
+    return () => import(`~/pages/${path}`).then(m => m.default || m)
 }
 
 export default [
@@ -8,6 +8,7 @@ export default [
     {path: '/shipping-and-returns', name: 'shipping', component: page('cmspage/shipping.vue')},
     {path: '/faq', name: 'faq', component: page('cmspage/faq.vue')},
     {path: '/about', name: 'about', component: page('about.vue')},
+    {path: '/contact', name: 'contact', component: page('cmspage/contact.vue')},
 
     {path: '/customer/login', name: 'customer.login', component: page('customer/login.vue')},
 

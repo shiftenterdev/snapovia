@@ -4,19 +4,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-md-6">
-
-                        <!-- Card -->
                         <div class="card card-lg mb-10 mb-md-0">
                             <div class="card-body">
-
-                                <!-- Heading -->
                                 <h6 class="mb-7">Returning Customer</h6>
-                                <!-- Form -->
                                 <form method="post" action="" autocomplete="off">
                                     <div class="row">
                                         <div class="col-12">
-
-                                            <!-- Email -->
                                             <div class="form-group">
                                                 <label class="sr-only" for="loginEmail">
                                                     Email Address *
@@ -34,7 +27,8 @@
                                                     Password *
                                                 </label>
                                                 <input class="form-control form-control-sm" id="loginPassword"
-                                                       name="password" type="password" placeholder="Password *" required="">
+                                                       name="password" type="password" placeholder="Password *"
+                                                       required="">
                                             </div>
 
                                         </div>
@@ -43,7 +37,8 @@
                                             <!-- Remember -->
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox">
-                                                    <input class="custom-control-input" id="loginRemember" type="checkbox">
+                                                    <input class="custom-control-input" id="loginRemember"
+                                                           type="checkbox">
                                                     <label class="custom-control-label" for="loginRemember">
                                                         Remember me
                                                     </label>
@@ -120,7 +115,8 @@
                                                 <label class="sr-only" for="registerEmail">
                                                     Email Address *
                                                 </label>
-                                                <input class="form-control form-control-sm" name="email" id="registerEmail"
+                                                <input class="form-control form-control-sm" name="email"
+                                                       id="registerEmail"
                                                        type="email" placeholder="Email Address *" required="">
                                             </div>
 
@@ -155,7 +151,8 @@
 
                                             <!-- Link -->
                                             <div class="form-group font-size-sm text-muted">
-                                                By registering your details, you agree with our Terms &amp; Conditions, and Privacy and Cookie Policy.
+                                                By registering your details, you agree with our Terms &amp; Conditions,
+                                                and Privacy and Cookie Policy.
                                             </div>
 
                                         </div>
