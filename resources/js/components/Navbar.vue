@@ -126,7 +126,7 @@
                             </a>
                         </li>
                         <li class="nav-item ml-lg-n4">
-                            <a class="nav-link" href="customer.info">
+                            <a class="nav-link" href="/customer/login">
                                 <i class="fe fe-user"></i>
                             </a>
                         </li>

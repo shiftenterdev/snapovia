@@ -4,7 +4,12 @@ function page(path) {
 
 export default [
     {path: '/', name: 'welcome', component: page('welcome.vue')},
+
+    {path: '/shipping-and-returns', name: 'shipping', component: page('cmspage/shipping.vue')},
+    {path: '/faq', name: 'faq', component: page('cmspage/faq.vue')},
     {path: '/about', name: 'about', component: page('about.vue')},
+
+    {path: '/customer/login', name: 'customer.login', component: page('customer/login.vue')},
 
     {path: '/login', name: 'login', component: page('auth/login.vue')},
     {path: '/register', name: 'register', component: page('auth/register.vue')},

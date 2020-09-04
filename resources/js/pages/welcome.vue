@@ -1,20 +1,6 @@
 <template>
     <div>
-        <Navbar/>
-
-        <div class="py-3 bg-dark bg-pattern mb-4">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="text-center text-white">
-                            <span class="heading-xxs letter-spacing-xl">
-                                ⚡️ Happy Holiday Deals on Everything ⚡️
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <HighlightMessage/>
 
         <Banner/>
 
@@ -28,7 +14,6 @@
 
         <Brand/>
 
-        <Footer/>
     </div>
 </template>
 
@@ -42,6 +27,7 @@
     import Review from "../components/Home/Review";
     import Brand from "../components/Home/Brand";
     import Banner from "../components/Home/Banner";
+    import HighlightMessage from "../components/Home/HighlightMessage";
     import Flickity from 'flickity';
 
     export default {
@@ -49,6 +35,7 @@
 
         components: {
             Navbar,
+            HighlightMessage,
             Banner,
             Feature,
             BestPicks,
@@ -73,13 +60,5 @@
 </script>
 
 <style scoped>
-    .top-right {
-        position: absolute;
-        right: 10px;
-        top: 18px;
-    }
 
-    .title {
-        font-size: 85px;
-    }
 </style>

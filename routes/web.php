@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Route;
 /**
  * Vue route
  */
-Route::get('{path}', function () {
-    return view('front.vue');
-})->where('path', '(.*)');
+
 
 /*
 
@@ -80,7 +78,7 @@ Route::namespace('Front')->group(function () {
 
 });
 
-
+*/
 
 Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
@@ -166,4 +164,8 @@ Route::get('test',function (){
    dd(\App\Facades\Cart::get());
 });
 
-Route::get('/{url}/{suburl?}/{producturl?}', 'Front\UrlResolverController')->name('resolve');
+Route::get('{path}', function () {
+    return view('front.vue');
+})->where('path', '(.*)');
+
+//Route::get('/{url}/{suburl?}/{producturl?}', 'Front\UrlResolverController')->name('resolve');
