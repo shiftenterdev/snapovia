@@ -3,8 +3,6 @@ window.addEventListener('cart-updated', event => {
     el.setAttribute('data-cart-items', event.detail.count);
 });
 
-window.addEventListener('hide-message', event => {
-    setTimeout(()=>{
-        document.querySelector('.flash-alert').style.display = 'none';
-    },5000);
+window.addEventListener('show-minicart', event => {
+    document.getElementById('mini-cart-item-count').click();
 });

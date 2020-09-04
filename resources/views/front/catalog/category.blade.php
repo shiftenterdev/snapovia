@@ -526,11 +526,15 @@
 
                         @if(session()->has('success'))
                             <div class="col-12">
-                                <div class="flash-alert mt-2">
+                                <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
                                     <strong>Success</strong> {{session('success')}}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
                                 </div>
                             </div>
                         @endif
+
                     </div>
 
                     <!-- Tags -->

@@ -12,8 +12,8 @@
                 <strong class="mx-auto">{{__('Your Cart')}} ({{count($cart->items)}})</strong>
             </div>
 
-            <!-- List group -->
-            <ul class="list-group list-group-lg list-group-flush" wire:loading.class="progress">
+
+            <ul class="list-group list-group-lg list-group-flush">
                 @foreach($cart->items as $product)
                     <li class="list-group-item">
                         <div class="row align-items-center">
