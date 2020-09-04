@@ -18,3 +18,6 @@
 .modal-dialog-vertical .modal-content{
     height: 100%;
 }
+.input-qty{
+    width: 100px;
+}

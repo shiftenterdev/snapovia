@@ -97,16 +97,32 @@ class Cart
         $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
             ->firstOrFail();
         $product = Product::whereSku($sku)->first();
-        $quote->items()->updateOrCreate(
-            [
-                'product_id'   => $product->id,
-                'name'         => $product->name,
-                'sku'          => $product->sku,
-                'product_type' => $product->product_type,
-                'row_total'    => (int)($product->price * $qty),
-            ],
-            ['qty' => $qty, 'price' => $product->price, 'discount_price' => 0]
-        );
+
+        $item = QuoteItems::where('quote_id',$quote->id)
+            ->where('product_id', $product->id)
+            ->first();
+
+        if(empty($item)) {
+            $quote->items()->Create(
+                [
+                    'product_id'     => $product->id,
+                    'name'           => $product->name,
+                    'sku'            => $product->sku,
+                    'product_type'   => $product->product_type,
+                    'row_total'      => (int)($product->price * $qty),
+                    'qty'            => $qty,
+                    'price'          => $product->price,
+                    'discount_price' => 0
+                ]
+            );
+        }else{
+            $quote->items()->Update(
+                [
+                    'row_total'      => (int)($product->price * ($item->qty + $qty)),
+                    'qty'            => $item->qty + $qty,
+                ]
+            );
+        }
         $this->set($quote);
     }
 
