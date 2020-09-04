@@ -1,9 +1,9 @@
 <div>
-    <div class="flash-alert" wire:loading wire:target="addToCart">
+    <div class="flash-alert mb-3" wire:loading wire:target="addToCart">
         Adding to cart ....
     </div>
     @if(session()->has('message'))
-    <div class="flash-alert">
+    <div class="flash-alert mb-3">
         {{session('message')}}
     </div>
     @endif
