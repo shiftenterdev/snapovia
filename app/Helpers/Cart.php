@@ -116,7 +116,7 @@ class Cart
                 ]
             );
         }else{
-            $quote->items()->Update(
+            $quote->items()->where('product_id',$product->id)->Update(
                 [
                     'row_total'      => (int)($product->price * ($item->qty + $qty)),
                     'qty'            => $item->qty + $qty,

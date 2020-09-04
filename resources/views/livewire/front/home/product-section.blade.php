@@ -3,7 +3,7 @@
         Adding to cart ....
     </div>-->
     @if(session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
+        <div class="alert alert-success alert-dismissible abs-alert fade show" role="alert">
             <strong>Success</strong> {{session('success')}}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">×</span>
