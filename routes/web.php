@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Route;
 /**
  * Vue route
  */
-Route::get('vue/{path}', function () {
+Route::get('{path}', function () {
     return view('front.vue');
 })->where('path', '(.*)');
+
+/*
 
 Route::get('/locale/{p}',function($lang){
     session(['locale'=>$lang]);
@@ -49,9 +51,7 @@ Route::namespace('Front')->group(function () {
     Route::resource('blog', 'BlogController')->only(['index','show']);
 
 
-    /**
-     * Customer routes
-     */
+
     Route::namespace('Customer')->group(function () {
 
         Route::get('/customer/login', 'LoginController@index')->name('customer.login');
@@ -81,9 +81,7 @@ Route::namespace('Front')->group(function () {
 });
 
 
-/**
- * Backend Routes
- */
+
 Route::prefix('adminportal')->namespace('Admin')->group(function () {
 
     Route::get('forgot-password', 'AuthController@forgotPassword')->name('admin.forgot.password');

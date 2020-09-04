@@ -1,101 +1,159 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="container">
-      <router-link :to="{ name: user ? 'home' : 'welcome' }" class="navbar-brand">
-        {{ appName }}
-      </router-link>
+    <div>
+        <div class="navbar navbar-topbar navbar-expand-xl navbar-light bg-light">
+            <div class="container">
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false">
-        <span class="navbar-toggler-icon" />
-      </button>
+                <div class="mr-xl-8">
+                    <i class="fe fe-truck mr-2"></i> <span class="heading-xxxs">Free shipping countrywide</span>
+                </div>
 
-      <div id="navbarToggler" class="collapse navbar-collapse">
-        <ul class="navbar-nav">
-          <locale-dropdown />
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li> -->
-        </ul>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topbarCollapse"
+                        aria-controls="topbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-        <ul class="navbar-nav ml-auto">
-          <!-- Authenticated -->
-          <li v-if="user" class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-dark"
-               href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-            >
-              <img :src="user.photo_url" class="rounded-circle profile-photo mr-1">
-              {{ user.name }}
-            </a>
-            <div class="dropdown-menu">
-              <router-link :to="{ name: 'settings.profile' }" class="dropdown-item pl-3">
-                <fa icon="cog" fixed-width />
-                {{ $t('settings') }}
-              </router-link>
+                <div class="collapse navbar-collapse" id="topbarCollapse">
 
-              <div class="dropdown-divider" />
-              <a href="#" class="dropdown-item pl-3" @click.prevent="logout">
-                <fa icon="sign-out-alt" fixed-width />
-                {{ $t('logout') }}
-              </a>
+                    <ul class="nav nav-divided navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">English</a>
+
+                            <div class="dropdown-menu minw-0">
+                                <a class="dropdown-item" href="en">English</a>
+                                <a class="dropdown-item" href="sv">Swedish</a>
+                                <a class="dropdown-item" href="da">Danish</a>
+                                <a class="dropdown-item" href="no">Norwegian</a>
+                            </div>
+
+                        </li>
+                    </ul>
+
+                    <!-- Nav -->
+                    <ul class="nav navbar-nav mr-8">
+                        <li class="nav-item">
+                            <a class="nav-link" href="shipping-and-returns">Shipping</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="faq">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact">Contact</a>
+                        </li>
+                    </ul>
+
+                    <!-- Nav -->
+                    <ul class="nav navbar-nav flex-row">
+                        <li class="nav-item">
+                            <a class="nav-link text-gray-350" href="javascript:">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item ml-xl-n4">
+                            <a class="nav-link text-gray-350" href="javascript:">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item ml-xl-n4">
+                            <a class="nav-link text-gray-350" href="https://instagram.com/myozeshop">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item ml-xl-n4">
+                            <a class="nav-link text-gray-350" href="javascript:">
+                                <i class="fab fa-medium"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
             </div>
-          </li>
-          <!-- Guest -->
-          <template v-else>
-            <li class="nav-item">
-              <router-link :to="{ name: 'about' }" class="nav-link" active-class="active">
-                {{ $t('about') }}
-              </router-link>
-            </li>
-            <li class="nav-item">
-              <router-link :to="{ name: 'login' }" class="nav-link" active-class="active">
-                {{ $t('login') }}
-              </router-link>
-            </li>
-            <li class="nav-item">
-              <router-link :to="{ name: 'register' }" class="nav-link" active-class="active">
-                {{ $t('register') }}
-              </router-link>
-            </li>
-          </template>
-        </ul>
-      </div>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    Snapovia.
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="/">Home</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="/women/tops-women">Women</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="/men/tops-men/hoodies-and-sweatshirts-men">Men</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="/gear">Gear</a>
+                        </li>
+
+                        <li class="nav-item dropdown position-static">
+
+                            <!-- Toggle -->
+                            <a class="nav-link" href="/category">Category</a>
+
+
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <!-- Toggle -->
+                            <a class="nav-link" href="discount">Discount</a>
+
+                        </li>
+                        <li class="nav-item dropdown">
+                            <!-- Toggle -->
+                            <a class="nav-link" href="/blog">Blog</a>
+
+                        </li>
+
+                    </ul>
+
+                    <!-- Nav -->
+                    <ul class="navbar-nav flex-row">
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="modal" href="#modalSearch">
+                                <i class="fe fe-search"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item ml-lg-n4">
+                            <a class="nav-link" href="customer.info">
+                                <i class="fe fe-user"></i>
+                            </a>
+                        </li>
+
+                        <li class="nav-item ml-lg-n4">
+                            <a class="nav-link" href="customer.wishlist">
+                                <i class="fe fe-heart"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item ml-lg-n4">
+                            <a class="nav-link" data-toggle="modal" href="#modalShoppingCart">
+                                <span id="mini-cart-item-count" data-cart-items="0">
+                                    <i class="fe fe-shopping-cart"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </nav>
     </div>
-  </nav>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import LocaleDropdown from './LocaleDropdown'
-
-export default {
-  components: {
-    LocaleDropdown
-  },
-
-  data: () => ({
-    appName: window.config.appName
-  }),
-
-  computed: mapGetters({
-    user: 'auth/user'
-  }),
-
-  methods: {
-    async logout () {
-      // Log out the user.
-      await this.$store.dispatch('auth/logout')
-
-      // Redirect to login.
-      this.$router.push({ name: 'login' })
+    export default {
+        name: 'Navbar',
     }
-  }
-}
 </script>
-
-<style scoped>
-.profile-photo {
-  width: 2rem;
-  height: 2rem;
-  margin: -.375rem 0;
-}
-</style>
