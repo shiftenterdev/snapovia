@@ -3,7 +3,6 @@
 /**
  * @author Iftakharul Alam Bappa <iftakharul@strativ.se> 
  */
-
 namespace App\Helpers;
 
 
@@ -11,6 +10,11 @@ use App\Models\Product;
 use App\Models\Quote;
 use App\Models\QuoteItems;
 
+
+/**
+ * Class Cart
+ * @package App\Helpers
+ */
 class Cart
 {
 
@@ -31,7 +35,7 @@ class Cart
         return session(self::QUOTE_SESSION_KEY) ?? null;
     }
 
-    private function create()
+    private function create():void
     {
         $customer_id = 0;
         if (\App\Facades\Customer::check()) {
@@ -50,7 +54,7 @@ class Cart
         session([self::QUOTE_SESSION_KEY => $cart]);
     }
 
-    private function refreshCart($quote_id)
+    private function refreshCart($quote_id):Quote
     {
         $quote = Quote::find($quote_id);
         if (isset($quote->items)) {
@@ -84,12 +88,12 @@ class Cart
         $this->refreshCart($new_quote);
     }
 
-    public function count()
+    public function count():int
     {
         return $this->get() ? count($this->get()->items) : 0;
     }
 
-    public function addToCart($sku, $qty = 1)
+    public function addToCart($sku, $qty = 1):void
     {
         if (!$this->check()) {
             $this->create();
@@ -97,16 +101,32 @@ class Cart
         $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
             ->firstOrFail();
         $product = Product::whereSku($sku)->first();
-        $quote->items()->updateOrCreate(
-            [
-                'product_id'   => $product->id,
-                'name'         => $product->name,
-                'sku'          => $product->sku,
-                'product_type' => $product->product_type,
-                'row_total'    => (int)($product->price * $qty),
-            ],
-            ['qty' => $qty, 'price' => $product->price, 'discount_price' => 0]
-        );
+
+        $item = QuoteItems::where('quote_id', $quote->id)
+            ->where('product_id', $product->id)
+            ->first();
+
+        if (empty($item)) {
+            $quote->items()->Create(
+                [
+                    'product_id'     => $product->id,
+                    'name'           => $product->name,
+                    'sku'            => $product->sku,
+                    'product_type'   => $product->product_type,
+                    'row_total'      => (int)($product->price * $qty),
+                    'qty'            => $qty,
+                    'price'          => $product->price,
+                    'discount_price' => 0
+                ]
+            );
+        } else {
+            $quote->items()->where('product_id', $product->id)->Update(
+                [
+                    'row_total' => (int)($product->price * ($item->qty + $qty)),
+                    'qty'       => $item->qty + $qty,
+                ]
+            );
+        }
         $this->set($quote);
     }
 

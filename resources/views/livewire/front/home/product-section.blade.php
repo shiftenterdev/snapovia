@@ -1,25 +1,23 @@
 <div>
-    <div class="flash-alert" wire:loading wire:target="addToCart">
+    <!--<div class="flash-alert mb-3" wire:loading wire:target="addToCart">
         Adding to cart ....
-    </div>
-    @if(session()->has('message'))
-    <div class="flash-alert">
-        {{session('message')}}
-    </div>
+    </div>-->
+    @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible abs-alert fade show" role="alert">
+            <strong>Success</strong> {{session('success')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
     @endif
     <div class="row justify-content-center">
         <div class="col-12 col-md-10 col-lg-8 col-xl-6">
-
-            <!-- Heading -->
             <h2 class="mb-4 text-center">{{__('Top month Sellers')}}</h2>
-
-            <!-- Nav -->
             <div class="nav justify-content-center mb-10">
                 <a class="nav-link active" href="#womenTab" data-toggle="tab">{{__('Women')}}</a>
                 <a class="nav-link" href="#menTab" data-toggle="tab">{{__('Men')}}</a>
                 <a class="nav-link" href="#gadgetTab" data-toggle="tab">{{__('Kids')}}</a>
             </div>
-
         </div>
     </div>
     <div class="tab-content">
@@ -31,15 +29,12 @@
                         <!-- Card -->
                         <div class="card mb-7">
 
-                            <!-- Badge -->
-                            <div class="badge badge-white card-badge card-badge-left text-uppercase">
-                                {{--                                    {{__('New')}}--}}
+                            <div class="badge badge-info card-badge card-badge-left text-uppercase">
+                                {{__('New')}}
                             </div>
 
-                            <!-- Image -->
                             <div class="card-img">
 
-                                <!-- Image -->
                                 <a class="" href="/{{$product->url_key}}">
                                     <img class="card-img-top card-img-front"
                                          src="{{$product->sample_image}}" alt="...">
@@ -48,56 +43,46 @@
 
                                 <!-- Actions -->
                                 <div class="card-actions">
-                                  {{--<span class="card-action">
-                                    <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
-                                            data-target="#modalProduct">
-                                      <i class="fe fe-eye"></i>
-                                    </button>
-                                  </span>--}}
+                                    {{--<span class="card-action">
+                                      <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
+                                              data-target="#modalProduct">
+                                        <i class="fe fe-eye"></i>
+                                      </button>
+                                    </span>--}}
                                     <span class="card-action">
-                                    <button wire:click.prevent="addToCart({{$product->sku}})"
-                                            class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
-                                      <i class="fe fe-shopping-cart"></i>
-                                    </button>
-                                  </span>
+                                        <button wire:click.prevent="addToCart({{$product->sku}})"
+                                                class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                                            <i class="fe fe-shopping-cart"></i>
+                                        </button>
+                                    </span>
                                     <span class="card-action">
-                                    <a href="{{route('add.to.wishlist',$product->sku)}}"
-                                       class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
-                                      <i class="fe fe-heart"></i>
-                                    </a>
-                                  </span>
+                                        <a href="{{route('add.to.wishlist',$product->sku)}}"
+                                           class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                                            <i class="fe fe-heart"></i>
+                                        </a>
+                                    </span>
                                 </div>
 
                             </div>
 
                             <!-- Body -->
                             <div class="card-body px-0">
-
-                                <!-- Category -->
                                 <div class="font-size-xs">
                                     <a class="text-muted"
                                        href="/{{$product->categories[0]->url_key}}">{{$product->categories[0]->name}}</a>
                                 </div>
-
-                                <!-- Title -->
                                 <div class="font-weight-bold">
                                     <a class="text-body" href="/{{$product->url_key}}">
                                         {{$product->name}}
                                     </a>
                                 </div>
-
-                                <!-- Price -->
                                 <div class="font-weight-bold text-muted">
                                     ${{amount($product->price)}}
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
                 @endforeach
-
             </div>
         </div>
         <div class="tab-pane fade show" id="menTab">
@@ -125,24 +110,24 @@
 
                                 <!-- Actions -->
                                 <div class="card-actions">
-                          <span class="card-action">
-                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
-                                    data-target="#modalProduct">
-                              <i class="fe fe-eye"></i>
-                            </button>
-                          </span>
                                     <span class="card-action">
-                            <button wire:click.prevent="addToCart({{$product->sku}})"
-                                    class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
-                              <i class="fe fe-shopping-cart"></i>
-                            </button>
-                          </span>
+                                        <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
+                                                data-target="#modalProduct">
+                                            <i class="fe fe-eye"></i>
+                                        </button>
+                                    </span>
                                     <span class="card-action">
-                            <a href="{{route('add.to.wishlist',$product->sku)}}"
-                               class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
-                              <i class="fe fe-heart"></i>
-                            </a>
-                          </span>
+                                        <button wire:click.prevent="addToCart({{$product->sku}})"
+                                                class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                                            <i class="fe fe-shopping-cart"></i>
+                                        </button>
+                                    </span>
+                                    <span class="card-action">
+                                        <a href="{{route('add.to.wishlist',$product->sku)}}"
+                                           class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                                            <i class="fe fe-heart"></i>
+                                        </a>
+                                    </span>
                                 </div>
 
                             </div>
@@ -201,22 +186,22 @@
 
                                 <!-- Actions -->
                                 <div class="card-actions">
-                          <span class="card-action">
-                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
-                                    data-target="#modalProduct">
-                              <i class="fe fe-eye"></i>
-                            </button>
-                          </span>
                                     <span class="card-action">
-                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
-                              <i class="fe fe-shopping-cart"></i>
-                            </button>
-                          </span>
+                                        <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="modal"
+                                                data-target="#modalProduct">
+                                            <i class="fe fe-eye"></i>
+                                        </button>
+                                    </span>
                                     <span class="card-action">
-                            <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
-                              <i class="fe fe-heart"></i>
-                            </button>
-                          </span>
+                                        <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                                            <i class="fe fe-shopping-cart"></i>
+                                        </button>
+                                    </span>
+                                    <span class="card-action">
+                                        <button class="btn btn-xs btn-circle btn-white-primary" data-toggle="button">
+                                            <i class="fe fe-heart"></i>
+                                        </button>
+                                    </span>
                                 </div>
 
                             </div>

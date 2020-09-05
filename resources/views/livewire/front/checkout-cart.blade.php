@@ -48,14 +48,7 @@
                                             <!--Footer -->
                                             <div class="d-flex align-items-center">
 
-                                                <!-- Select -->
-                                                <select class="custom-select custom-select-xxs w-auto">
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
+                                                <input type="number" class="form-control input-qty" value="{{$product->qty}}">
 
                                                 <!-- Remove -->
                                                 <a class="font-size-xs text-gray-400 ml-auto" wire:click="removeFromCart({{$product->sku}})" href="javascript:">

@@ -22,30 +22,21 @@
 </head>
 <body>
 
-<div class="loading">
-    <div class="lds-ellipsis">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-</div>
-
 <!-- MODALS -->
 
-@include('front.partials.newsletter')
+{{--@include('front.partials.newsletter')--}}
 
-@include('front.partials.quick-view')
+{{--@include('front.partials.quick-view')--}}
 
 @include('front.partials.search')
 
 @include('front.partials.mini-cart')
 
-@include('front.partials.modals.sidebar')
+@include('front.partials.sidebar')
 
-@include('front.partials.modals.size_chart')
+@include('front.partials.size-chart')
 
-@include('front.partials.modals.waitlist')
+@include('front.partials.waitlist')
 
 @include('front.partials.navbar')
 

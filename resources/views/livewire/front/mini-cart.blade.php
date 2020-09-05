@@ -12,8 +12,8 @@
                 <strong class="mx-auto">{{__('Your Cart')}} ({{count($cart->items)}})</strong>
             </div>
 
-            <!-- List group -->
-            <ul class="list-group list-group-lg list-group-flush" wire:loading.class="progress">
+
+            <ul class="list-group list-group-lg list-group-flush">
                 @foreach($cart->items as $product)
                     <li class="list-group-item">
                         <div class="row align-items-center">
@@ -37,13 +37,7 @@
                                 <div class="d-flex align-items-center">
 
                                     <!-- Select -->
-                                    <select class="custom-select custom-select-xxs w-auto" wire:model="quantity">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
+                                    <input type="number" class="form-control input-qty" value="{{$product->qty}}">
 
                                     <!-- Remove -->
                                     <a class="font-size-xs text-gray-400 ml-auto" wire:click="removeFromCart({{$product->sku}})" href="javascript:">
