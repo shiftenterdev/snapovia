@@ -7,6 +7,7 @@
 namespace App\Helpers;
 
 
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Quote;
 use App\Models\QuoteItems;
@@ -174,6 +175,23 @@ class Cart
     {
         if ($this->check()) {
             $quote = $this->get();
+
+            $order = new Order();
+            $order->quote_id = $quote->quote_id;
+            $order->status = 'processing';
+            $order->save();
+            foreach ($quote->items as $item) {
+                $order->items()->create([
+                    'product_id'         => $item->product_id,
+                    'sku'                => $item->sku,
+                    'name'               => $item->name,
+                    'price'              => $item->price,
+                    'qty'                => $item->qty,
+                    'product_attributes' => $item->product_attributes,
+                    'discount_price'     => $item->discount_price,
+                    'product_type'       => $item->product_type,
+                ]);
+            }
 
         }
         return false;
