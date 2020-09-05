@@ -3,6 +3,7 @@
 /**
  * @author Iftakharul Alam Bappa <iftakharul@strativ.se> 
  */
+
 namespace App\Helpers;
 
 
@@ -35,7 +36,7 @@ class Cart
         return session(self::QUOTE_SESSION_KEY) ?? null;
     }
 
-    private function create():void
+    private function create(): void
     {
         $customer_id = 0;
         if (\App\Facades\Customer::check()) {
@@ -54,7 +55,7 @@ class Cart
         session([self::QUOTE_SESSION_KEY => $cart]);
     }
 
-    private function refreshCart($quote_id):Quote
+    private function refreshCart($quote_id): Quote
     {
         $quote = Quote::find($quote_id);
         if (isset($quote->items)) {
@@ -88,12 +89,12 @@ class Cart
         $this->refreshCart($new_quote);
     }
 
-    public function count():int
+    public function count(): int
     {
         return $this->get() ? count($this->get()->items) : 0;
     }
 
-    public function addToCart($sku, $qty = 1):void
+    public function addToCart($sku, $qty = 1): void
     {
         if (!$this->check()) {
             $this->create();
@@ -164,9 +165,18 @@ class Cart
         $this->set($quote);
     }
 
-    public function remove()
+    public function remove(): void
     {
         session()->remove(self::QUOTE_SESSION_KEY);
+    }
+
+    public function toOrder(): bool
+    {
+        if ($this->check()) {
+            $quote = $this->get();
+
+        }
+        return false;
     }
 
 }

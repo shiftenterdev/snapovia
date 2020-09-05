@@ -55,7 +55,7 @@
                                 <div class="form-group">
                                     <label for="checkoutBillingFirstName">{{__('First Name')}} *</label>
                                     <input class="form-control form-control-sm" id="checkoutBillingFirstName"
-                                           type="text" placeholder="First Name"
+                                           type="text" placeholder="First Name" name="billing[first_name]"
                                            value="{{Customer::user()->first_name ?? ''}}" required="">
                                 </div>
 
@@ -66,7 +66,7 @@
                                 <div class="form-group">
                                     <label for="checkoutBillingLastName">{{__('Last Name')}} *</label>
                                     <input class="form-control form-control-sm" id="checkoutBillingLastName" type="text"
-                                           placeholder="Last Name" required=""
+                                           placeholder="Last Name" required="" name="billing[last_name]"
                                            value="{{Customer::user()->last_name ?? ''}}">
                                 </div>
 
@@ -77,7 +77,7 @@
                                 <div class="form-group">
                                     <label for="checkoutBillingEmail">{{__('Email')}} *</label>
                                     <input class="form-control form-control-sm" id="checkoutBillingEmail" type="email"
-                                           placeholder="Email" required="" value="{{Customer::user()->email ?? ''}}">
+                                           placeholder="Email" required="" name="billing[email]" value="{{Customer::user()->email ?? ''}}">
                                 </div>
 
                             </div>
@@ -91,23 +91,13 @@
                                 </div>
 
                             </div>
-                            <div class="col-12">
 
-                                <!-- Country -->
-                                <div class="form-group">
-                                    <label for="checkoutBillingCountry">{{__('Country')}} *</label>
-                                    <input class="form-control form-control-sm" id="checkoutBillingCountry" type="text"
-                                           placeholder="{{__('Country')}}" required=""
-                                           value="{{Customer::user()->country ?? ''}}">
-                                </div>
-
-                            </div>
                             <div class="col-12">
 
                                 <!-- Address Line 1 -->
                                 <div class="form-group">
                                     <label for="checkoutBillingAddress">{{__('Address Line')}} 1 *</label>
-                                    <input class="form-control form-control-sm" id="checkoutBillingAddress" type="text"
+                                    <input class="form-control form-control-sm" name="billing[address_line_1]" id="checkoutBillingAddress" type="text"
                                            placeholder="Address Line 1" required="">
                                 </div>
 
@@ -117,7 +107,7 @@
                                 <!-- Address Line 2 -->
                                 <div class="form-group">
                                     <label for="checkoutBillingAddressTwo">{{__('Address Line')}} 2</label>
-                                    <input class="form-control form-control-sm" id="checkoutBillingAddressTwo"
+                                    <input class="form-control form-control-sm" name="billing[address_line_2]" id="checkoutBillingAddressTwo"
                                            type="text" placeholder="Address Line 2 (optional)">
                                 </div>
 
@@ -128,7 +118,7 @@
                                 <div class="form-group">
                                     <label for="checkoutBillingTown">{{__('City')}} *</label>
                                     <input class="form-control form-control-sm" id="checkoutBillingTown" type="text"
-                                           placeholder="Town / City" required="">
+                                           placeholder="Town / City" required="" name="billing[city]">
                                 </div>
 
                             </div>
@@ -138,7 +128,20 @@
                                 <div class="form-group">
                                     <label for="checkoutBillingZIP">{{__('Postcode')}} *</label>
                                     <input class="form-control form-control-sm" id="checkoutBillingZIP" type="text"
-                                           placeholder="ZIP / Postcode" required="required">
+                                           placeholder="ZIP / Postcode" required="required" value="billing[city]">
+                                </div>
+
+                            </div>
+                            <div class="col-12">
+
+                                <!-- Country -->
+                                <div class="form-group">
+                                    <label for="checkoutBillingCountry">{{__('Country')}} *</label>
+                                    <select name="billing[country]" class="form-control form-control-sm" required id="checkoutBillingCountry">
+                                        <option value="AR">Aregentina</option>
+                                        <option value="AU">Australia</option>
+                                        <option value="SV">Sweden</option>
+                                    </select>
                                 </div>
 
                             </div>
@@ -147,7 +150,7 @@
                                 <!-- Mobile Phone -->
                                 <div class="form-group mb-0">
                                     <label for="checkoutBillingPhone">{{__('Mobile Phone')}} *</label>
-                                    <input class="form-control form-control-sm" id="checkoutBillingPhone" type="tel"
+                                    <input class="form-control form-control-sm" name="billing[mobile]" id="checkoutBillingPhone" type="tel"
                                            placeholder="{{__('Mobile Phone')}}" required="required">
                                 </div>
 
@@ -164,7 +167,7 @@
                                 <tr>
                                     <td>
                                         <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" id="checkoutShippingStandard"
+                                            <input class="custom-control-input" value="Standard Shipping" id="checkoutShippingStandard"
                                                    name="shipping" type="radio">
                                             <label class="custom-control-label text-body text-nowrap"
                                                    for="checkoutShippingStandard">
@@ -178,7 +181,7 @@
                                 <tr>
                                     <td>
                                         <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" id="checkoutShippingExpress"
+                                            <input class="custom-control-input" value="Express Shipping" id="checkoutShippingExpress"
                                                    name="shipping" type="radio">
                                             <label class="custom-control-label text-body text-nowrap"
                                                    for="checkoutShippingExpress">
@@ -192,22 +195,8 @@
                                 <tr>
                                     <td>
                                         <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" id="checkoutShippingShort"
-                                                   name="shipping" type="radio">
-                                            <label class="custom-control-label text-body text-nowrap"
-                                                   for="checkoutShippingShort">
-                                                1 - 2 Shipping
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>Delivery in 1 - 2 working days</td>
-                                    <td>$18.00</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-radio">
                                             <input class="custom-control-input" id="checkoutShippingFree"
-                                                   name="shipping" type="radio">
+                                                   name="shipping" type="radio" value="Free Shipping">
                                             <label class="custom-control-label text-body text-nowrap"
                                                    for="checkoutShippingFree">
                                                 Free Shipping
@@ -249,7 +238,7 @@
                                             <label for="checkoutShippingAddressLineOne">Address Line 1 *</label>
                                             <input class="form-control form-control-sm"
                                                    id="checkoutShippingAddressLineOne" type="text"
-                                                   placeholder="Address Line 1">
+                                                   placeholder="Address Line 1" name="shipping[address_line_1]">
                                         </div>
 
                                     </div>
@@ -260,7 +249,7 @@
                                             <label for="checkoutShippingAddressLineTwo">Address Line 2</label>
                                             <input class="form-control form-control-sm"
                                                    id="checkoutShippingAddressLineTwo" type="text"
-                                                   placeholder="Address Line 2 (optional)">
+                                                   placeholder="Address Line 2 (optional)" name="shipping[address_line_2]">
                                         </div>
 
                                     </div>
@@ -270,7 +259,7 @@
                                         <div class="form-group">
                                             <label for="checkoutShippingAddressTown">Town / City *</label>
                                             <input class="form-control form-control-sm" id="checkoutShippingAddressTown"
-                                                   type="text" placeholder="Town / City" name="city">
+                                                   type="text" placeholder="Town / City" name="shipping[city]">
                                         </div>
 
                                     </div>
@@ -280,7 +269,7 @@
                                         <div class="form-group">
                                             <label for="checkoutShippingAddressZIP">ZIP / Postcode *</label>
                                             <input class="form-control form-control-sm" id="checkoutShippingAddressZIP"
-                                                   type="text" placeholder="ZIP / Postcode" name="postcode">
+                                                   type="text" placeholder="ZIP / Postcode" name="shipping[postcode]">
                                         </div>
 
                                     </div>
@@ -292,7 +281,7 @@
                                             <label for="checkoutShippingAddressCountry">Country *</label>
                                             <input class="form-control form-control-sm"
                                                    id="checkoutShippingAddressCountry" type="text"
-                                                   placeholder="Country" name="country">
+                                                   placeholder="Country" name="shipping[country]">
                                         </div>
 
                                     </div>
@@ -327,7 +316,7 @@
 
                                     <!-- Input -->
                                     <input class="custom-control-input" id="checkoutPaymentCard" name="payment"
-                                           type="radio" data-toggle="collapse" data-action="show"
+                                           type="radio" value="card" data-toggle="collapse" data-action="show"
                                            data-target="#checkoutPaymentCardCollapse">
 
                                     <!-- Label -->
@@ -348,14 +337,14 @@
                                         <div class="form-group mb-4">
                                             <label class="sr-only" for="checkoutPaymentCardNumber">Card Number</label>
                                             <input class="form-control form-control-sm" id="checkoutPaymentCardNumber"
-                                                   type="text" placeholder="Card Number *" required="">
+                                                   type="text" name="card_no" placeholder="Card Number *">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group mb-4">
                                             <label class="sr-only" for="checkoutPaymentCardName">Name on Card</label>
                                             <input class="form-control form-control-sm" id="checkoutPaymentCardName"
-                                                   type="text" placeholder="Name on Card *" required="">
+                                                   type="text" name="name_on_card" placeholder="Name on Card *">
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4">
@@ -381,7 +370,7 @@
                                     <div class="col-12 col-md-4">
                                         <div class="input-group input-group-merge">
                                             <input class="form-control form-control-sm" id="checkoutPaymentCardCVV"
-                                                   type="text" placeholder="CVV *" required="">
+                                                   type="text" name="card_ccv" placeholder="CVV *">
                                             <div class="input-group-append">
                                                 <span class="input-group-text" data-toggle="popover"
                                                       data-placement="top" data-trigger="hover"
@@ -402,7 +391,7 @@
 
                                     <!-- Input -->
                                     <input class="custom-control-input" id="checkoutPaymentPaypal" name="payment"
-                                           type="radio" data-toggle="collapse" data-action="hide"
+                                           type="radio" data-toggle="collapse" data-action="hide" value="paypal"
                                            data-target="#checkoutPaymentCardCollapse">
 
                                     <!-- Label -->
@@ -421,7 +410,7 @@
 
                                     <!-- Input -->
                                     <input class="custom-control-input" id="checkoutCOD" name="payment" type="radio"
-                                           data-toggle="collapse" data-action="hide"
+                                           data-toggle="collapse" data-action="hide" value="cod"
                                            data-target="#checkoutPaymentCardCollapse">
 
                                     <!-- Label -->
@@ -438,7 +427,7 @@
                         </div>
 
                         <!-- Notes -->
-                        <textarea class="form-control form-control-sm mb-9 mb-md-0 font-size-xs" rows="5"
+                        <textarea class="form-control form-control-sm mb-9 mb-md-0 font-size-xs" name="order_notes" rows="5"
                                   placeholder="{{__('Order Notes (optional)')}}"></textarea>
 
                     </form>
