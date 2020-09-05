@@ -1,13 +1,10 @@
 @extends('front.layouts.default')
 @section('title',$product->name.' | ')
 @section('content')
-    <!-- BREADCRUMB -->
     <nav class="py-5">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-
-                    <!-- Breadcrumb -->
                     <ol class="breadcrumb mb-0 font-size-xs text-gray-400">
                         <li class="breadcrumb-item">
                             <a class="text-gray-400" href="{{route('welcome')}}">{{__('Home')}}</a>
@@ -21,7 +18,6 @@
                             {{$product->name}}
                         </li>
                     </ol>
-
                 </div>
             </div>
         </div>
@@ -34,24 +30,14 @@
                 <div class="col-12">
                     <div class="row">
                         <div class="col-12 col-md-6">
-
-                            <!-- Card -->
                             <div class="card">
-
-                                <!-- Badge -->
                                 <div class="badge badge-primary card-badge text-uppercase">
                                     {{__('Sale')}}
                                 </div>
-
-                                <!-- Slider -->
-                                <!-- Slider -->
                                 <div class="mb-4" data-flickity='{"draggable": false, "fade": true}' id="productSlider">
-
-                                    <!-- Item -->
                                     <a href="{{$product->sample_image}}" data-fancybox>
                                         <img src="{{$product->sample_image}}" alt="..." class="card-img-top">
                                     </a>
-
                                 </div>
 
                             </div>
@@ -72,26 +58,19 @@
                         </div>
                         <div class="col-12 col-md-6 pl-lg-10">
                             @if(session()->has('success'))
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="flash-alert mt-2 mb-2">
-                                            <strong>Success</strong> {{session('success')}}
-                                        </div>
-                                    </div>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>Success</strong> {{session('success')}}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
                                 </div>
                             @endif
-                            <!-- Header -->
                             <div class="row mb-1">
                                 <div class="col">
-
-                                    <!-- Preheading -->
                                     <a class="text-muted"
                                        href="/{{$product->categories[0]->url_key}}">{{$product->categories[0]->name}}</a>
-
                                 </div>
                                 <div class="col-auto">
-
-                                    <!-- Rating -->
                                     <div class="rating font-size-xs text-dark" data-value="4">
                                         <div class="rating-item">
                                             <i class="fas fa-star"></i>
@@ -109,11 +88,9 @@
                                             <i class="fas fa-star"></i>
                                         </div>
                                     </div>
-
                                     <a class="font-size-sm text-reset ml-2" href="#reviews">
                                         {{__('Reviews')}} (6)
                                     </a>
-
                                 </div>
                             </div>
 
@@ -123,8 +100,7 @@
                             <!-- Price -->
                             <div class="mb-7">
                                 @if($product->special_price)
-                                    <span
-                                        class="font-size-lg font-weight-bold text-gray-350 text-decoration-line-through">
+                                    <span class="font-size-lg font-weight-bold text-gray-350 text-decoration-line-through">
                                         ${{amount($product->special_price)}}
                                     </span>
                                 @endif
@@ -138,9 +114,7 @@
                             <form method="post" id="addToCartForm" action="{{route('add.to.cart')}}">
                                 @csrf
                                 <input type="hidden" value="{{$product->sku}}" name="sku" id="productSku">
-
                                 <div class="form-group">
-
                                     <p class="mb-5">
                                         Vendor: <strong><span>Snapovia</span></strong>
                                     </p>
@@ -148,13 +122,13 @@
                                     @foreach($product->attributes as $key => $attribute)
                                         <p class="mb-5">
                                             {{ucfirst($attribute->name)}}: <strong><span
-                                                    id="{{$key}}Caption">{{$attribute->options[0]->option_value}}</span></strong>
+                                                        id="{{$key}}Caption">{{$attribute->options[0]->option_value}}</span></strong>
                                         </p>
 
                                         <div class="mb-2">
                                             @foreach($attribute->options as $k => $option)
                                                 <div
-                                                    class="custom-control custom-control-inline custom-control-size mb-2">
+                                                        class="custom-control custom-control-inline custom-control-size mb-2">
                                                     <input type="radio" class="custom-control-input product-attribute"
                                                            name="{{$key}}Radio" id="{{$key}}Radio{{$k}}"
                                                            value="{{$option->id}}" data-toggle="form-caption"
@@ -171,9 +145,9 @@
                                             <img src="{{asset('frontend/assets/img/icons/icon-ruler.svg')}}"
                                                  alt="{{__('Size chart')}}"
                                                  class="img-fluid"> <a
-                                                class="text-reset text-decoration-underline ml-3"
-                                                data-toggle="modal"
-                                                href="#modalSizeChart">{{__('Size chart')}}</a>
+                                                    class="text-reset text-decoration-underline ml-3"
+                                                    data-toggle="modal"
+                                                    href="#modalSizeChart">{{__('Size chart')}}</a>
                                         </p>
                                     @endif
 
@@ -244,7 +218,7 @@
 
                     <!-- Nav -->
                     <div
-                        class="nav nav-tabs nav-overflow justify-content-start justify-content-md-center border-bottom">
+                            class="nav nav-tabs nav-overflow justify-content-start justify-content-md-center border-bottom">
                         <a class="nav-link active" data-toggle="tab" href="#descriptionTab">
                             {{__('Description')}}
                         </a>
@@ -375,7 +349,7 @@
                                     <!-- Caption -->
                                     <p class="mb-0 text-gray-500">
                                         May, life blessed night so creature likeness their, for. <a
-                                            class="text-body text-decoration-underline" href="#!">Find out more</a>
+                                                class="text-body text-decoration-underline" href="#!">Find out more</a>
                                     </p>
 
                                 </div>

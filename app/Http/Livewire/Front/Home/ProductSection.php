@@ -11,9 +11,11 @@ class ProductSection extends Component
 
     public function render()
     {
-        $women = Product::home();
-        $men = Product::home();;
-        $gadget = Product::home();;
+        $women = cache()->remember('home-product',60*60,function (){
+            return Product::with('categories')->home();
+        });
+        $men = $women;
+        $gadget = $women;
         return view('livewire.front.home.product-section')
             ->with(compact('women','men','gadget'));
     }
@@ -23,6 +25,5 @@ class ProductSection extends Component
         Cart::addToCart($sku);
         $this->emit('updateMiniCart');
         session()->flash('success', 'Product added to cart 😀');
-//        $this->dispatchBrowserEvent('show-minicart');
     }
 }
