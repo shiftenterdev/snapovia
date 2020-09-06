@@ -4,7 +4,9 @@
 namespace App\Http\Controllers\Front;
 
 
-class LanguageController extends \App\Http\Controllers\Controller
+use App\Http\Controllers\Controller;
+
+class LanguageController extends Controller
 {
     public function __invoke($lang)
     {

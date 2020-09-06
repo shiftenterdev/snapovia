@@ -56,7 +56,7 @@ class Cart
         session([self::QUOTE_SESSION_KEY => $cart]);
     }
 
-    private function refreshCart($quote_id): Quote
+    private function refreshCart($quote_id): ?Quote
     {
         $quote = Quote::find($quote_id);
         if (isset($quote->items)) {

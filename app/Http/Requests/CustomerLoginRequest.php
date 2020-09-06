@@ -26,7 +26,7 @@ class CustomerLoginRequest extends FormRequest
         return [
             'email'    => 'email|required',
             'password' => 'min:6|required',
-            'redirect' => 'alpha_num',
+            'source'   => 'alpha_num',
         ];
     }
 }

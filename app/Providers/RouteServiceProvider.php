@@ -14,10 +14,8 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'App\Http\Controllers\Front';
+    protected $namespace = 'App\Http\Controllers';
     protected $admin_namespace = 'App\Http\Controllers\Admin';
-    protected $customer_namespace = 'App\Http\Controllers\Front\Customer';
-    protected $vendor_namespace = 'App\Http\Controllers\Vendor';
 
     /**
      * The path to the "home" route for your application.
@@ -47,11 +45,11 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
 
-        $this->mapCustomerRoutes();
-
-        $this->mapAdminRoutes();
-
-        $this->mapVendorRoutes();
+//        $this->mapCustomerRoutes();
+//
+//        $this->mapAdminRoutes();
+//
+//        $this->mapVendorRoutes();
 
         $this->mapWebRoutes();
     }
@@ -96,14 +94,16 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapCustomerRoutes()
     {
-        Route::namespace($this->customer_namespace)
+        Route::prefix('customer')
+            ->namespace($this->namespace)
             ->group(base_path('routes/customer.php'));
     }
 
 
     protected function mapVendorRoutes()
     {
-        Route::namespace($this->vendor_namespace)
+        Route::prefix('vendor')
+            ->namespace($this->namespace)
             ->group(base_path('routes/vendor.php'));
     }
 }

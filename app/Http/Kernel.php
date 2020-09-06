@@ -40,6 +40,14 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\Language::class,
         ],
 
+        'customer'=>[
+            'web',
+        ],
+
+        'admin'=>[
+            'web'
+        ],
+
         'api' => [
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
