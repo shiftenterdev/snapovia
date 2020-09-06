@@ -1,4 +1,5 @@
 import VueRouter from 'vue-router';
+import store from './store/index'
 import WelcomePage from './pages/WelcomePage'
 import ShippingPage from './pages/cmspage/ShippingPage'
 import FaqPage from './pages/cmspage/FaqPage'
@@ -13,63 +14,78 @@ import CheckoutSuccessPage from './pages/CheckoutSuccessPage'
 
 
 
-const routes = [
-    {
-        name: 'welcome',
-        path: '/',
-        component: WelcomePage
-    },
-    {
-        name: 'shipping',
-        path: '/shipping-and-returns',
-        component: ShippingPage
-    },
-    {
-        name: 'faq',
-        path: '/faq',
-        component: FaqPage
-    },
-    {
-        name: 'contact',
-        path: '/contact',
-        component: ContactPage
-    },
-    {
-        name: 'customer.login',
-        path: '/customer/login',
-        component: CustomerLoginPage
-    },
-    {
-        name: 'blog',
-        path: '/blog',
-        component: BlogPage
-    },
-    {
-        name: 'search',
-        path: '/search',
-        component: SearchPage
-    },
-    {
-        name: 'cart',
-        path: '/checkout/cart',
-        component: CartPage
-    },
-    {
-        name: 'checkout',
-        path: '/checkout',
-        component: CheckoutPage
-    },
-    {
-        name: 'checkout.success',
-        path: '/checkout/success',
-        component: CheckoutSuccessPage
-    }
-];
-
-export default new VueRouter({
+let routes = new VueRouter({
     mode: 'history',
-    routes: routes,
+    routes: [
+        {
+            name: 'welcome',
+            path: '/',
+            component: WelcomePage
+        },
+        {
+            name: 'shipping',
+            path: '/shipping-and-returns',
+            component: ShippingPage
+        },
+        {
+            name: 'faq',
+            path: '/faq',
+            component: FaqPage
+        },
+        {
+            name: 'contact',
+            path: '/contact',
+            component: ContactPage
+        },
+        {
+            name: 'customer.login',
+            path: '/customer/login',
+            component: CustomerLoginPage
+        },
+        {
+            name: 'blog',
+            path: '/blog',
+            component: BlogPage,
+            meta: {
+                requiresAuth: true
+            }
+        },
+        {
+            name: 'search',
+            path: '/search',
+            component: SearchPage
+        },
+        {
+            name: 'cart',
+            path: '/checkout/cart',
+            component: CartPage
+        },
+        {
+            name: 'checkout',
+            path: '/checkout',
+            component: CheckoutPage
+        },
+        {
+            name: 'checkout.success',
+            path: '/checkout/success',
+            component: CheckoutSuccessPage
+        }
+    ],
     scrollBehavior () {
         return { x: 0, y: 0 }
     }
 });
+
+routes.beforeEach((to, from, next) => {
+    if(to.matched.some(record => record.meta.requiresAuth)) {
+        if (store.getters.isLoggedIn) {
+            next()
+            return
+        }
+        next('/customer/login')
+    } else {
+        next()
+    }
+})
+
+export default routes;
