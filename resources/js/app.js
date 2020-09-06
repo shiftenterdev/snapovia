@@ -1,22 +1,23 @@
-require('./bootstrap');
+require('./bootstrap')
 
-window.Vue = require('vue');
-import store from './store';
-import $ from 'jquery';
-import VueRouter from 'vue-router';
-Vue.use(VueRouter);
+window.Vue = require('vue')
+import store from './store/index'
+import $ from 'jquery'
+import VueRouter from 'vue-router'
 
-import VueAxios from 'vue-axios';
-import axios from 'axios';
-window.axios = axios;
-window.$ = $;
+Vue.use(VueRouter)
 
-import App from './components/App.vue';
-Vue.use(VueAxios, axios);
+window.$ = $
 
-import routes from './routes';
+import App from './components/App.vue'
 
-const router = new VueRouter({ mode: 'history', routes: routes,scrollBehavior() {
-    return {x: 0, y: 0}
-  }});
-const app = new Vue(Vue.util.extend({ router,store }, App)).$mount('#app');
+import routes from './routes'
+
+const router = new VueRouter({
+    mode: 'history',
+    routes: routes,
+    scrollBehavior () {
+        return { x: 0, y: 0 }
+    }
+})
+const app = new Vue(Vue.util.extend({ router, store }, App)).$mount('#app')
