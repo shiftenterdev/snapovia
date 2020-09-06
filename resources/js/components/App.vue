@@ -21,6 +21,9 @@
             Minicart,
             Search
         },
+        computed : {
+            isLoggedIn : function(){ return this.$store.getters.isLoggedIn}
+        },
         created: function () {
             axios.interceptors.response.use(undefined, function (err) {
                 return new Promise(function (resolve, reject) {
@@ -30,6 +33,14 @@
                     throw err;
                 });
             });
+        },
+        methods:{
+            logout: function () {
+                this.$store.dispatch('logout')
+                    .then(() => {
+                        this.$router.push('/login')
+                    })
+            }
         }
     }
 </script>

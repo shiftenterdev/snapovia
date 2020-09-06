@@ -7,7 +7,7 @@
                         <div class="card card-lg mb-10 mb-md-0">
                             <div class="card-body">
                                 <h6 class="mb-7">Returning Customer</h6>
-                                <form method="post" action="" autocomplete="off">
+                                <form @submit.prevent="login" autocomplete="off">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
@@ -15,7 +15,7 @@
                                                     Email Address *
                                                 </label>
                                                 <input class="form-control form-control-sm" id="loginEmail" name="email"
-                                                       type="email" placeholder="Email Address *" required="">
+                                                       type="email" v-model="email" placeholder="Email Address *" required="">
                                             </div>
 
                                         </div>
@@ -27,7 +27,7 @@
                                                     Password *
                                                 </label>
                                                 <input class="form-control form-control-sm" id="loginPassword"
-                                                       name="password" type="password" placeholder="Password *"
+                                                       name="password" v-model="password" type="password" placeholder="Password *"
                                                        required="">
                                             </div>
 
@@ -80,7 +80,7 @@
                                 <h6 class="mb-7">New Customer</h6>
 
                                 <!-- Form -->
-                                <form method="post" action="" autocomplete="off">
+                                <form @submit.prevent="register" autocomplete="off">
                                     <div class="row">
                                         <div class="col-12">
 
@@ -90,7 +90,7 @@
                                                     First Name *
                                                 </label>
                                                 <input class="form-control form-control-sm" name="first_name"
-                                                       id="registerFirstName" type="text" placeholder="First Name *"
+                                                       id="registerFirstName" v-model="reg_email" type="text" placeholder="First Name *"
                                                        required="">
                                             </div>
 
@@ -103,7 +103,7 @@
                                                     Last Name *
                                                 </label>
                                                 <input class="form-control form-control-sm" name="last_name"
-                                                       id="registerLastName" type="text" placeholder="Last Name *"
+                                                       id="registerLastName" v-model="first_name" type="text" placeholder="Last Name *"
                                                        required="">
                                             </div>
 
@@ -117,7 +117,7 @@
                                                 </label>
                                                 <input class="form-control form-control-sm" name="email"
                                                        id="registerEmail"
-                                                       type="email" placeholder="Email Address *" required="">
+                                                       type="email" v-model="last_name" placeholder="Email Address *" required="">
                                             </div>
 
                                         </div>
@@ -130,7 +130,7 @@
                                                 </label>
                                                 <input class="form-control form-control-sm" name="password"
                                                        id="registerPassword" type="password" placeholder="Password *"
-                                                       required="">
+                                                       required="" v-model="reg_password">
                                             </div>
 
                                         </div>
@@ -143,7 +143,7 @@
                                                 </label>
                                                 <input class="form-control form-control-sm" name="password_confirmation"
                                                        id="registerPasswordConfirm" type="password"
-                                                       placeholder="Confirm Password *" required="">
+                                                       placeholder="Confirm Password *" required="" v-model="conf_reg_password">
                                             </div>
 
                                         </div>
@@ -193,6 +193,38 @@
 
 <script>
     export default {
-        name:'CustomerLoginPage'
+        name: 'CustomerLoginPage',
+        data() {
+            return {
+                email: "",
+                password: "",
+                first_name: "",
+                last_name: "",
+                reg_email: "",
+                reg_password: "",
+                conf_reg_password: ""
+            }
+        },
+        methods: {
+            login: function () {
+                let email = this.email
+                let password = this.password
+                this.$store.dispatch('login', {email, password})
+                    .then(() => this.$router.push('/'))
+                    .catch(err => console.log(err))
+            },
+            register: function () {
+                let data = {
+                    first_name: this.first_name,
+                    last_name: this.last_name,
+                    email: this.reg_email,
+                    password: this.reg_password,
+                    password_confirmation: this.conf_reg_password
+                }
+                this.$store.dispatch('register', data)
+                    .then(() => this.$router.push('/'))
+                    .catch(err => console.log(err))
+            }
+        }
     }
 </script>

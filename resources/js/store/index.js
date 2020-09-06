@@ -113,7 +113,7 @@ export default new Vuex.Store({
         login({commit}, user){
             return new Promise((resolve, reject) => {
                 commit('auth_request')
-                axios.post( 'http://localhost:3000/login', user)
+                axios.post( '/customer/login', user)
                     .then(response => {
                         const token = response.data.token
                         const user = response.data.user
@@ -132,7 +132,7 @@ export default new Vuex.Store({
         register({commit}, user){
             return new Promise((resolve, reject) => {
                 commit('auth_request')
-                axios.post('http://localhost:3000/register',user)
+                axios.post('/customer/create',user)
                     .then(response => {
                         const token = response.data.token
                         const user = response.data.user
