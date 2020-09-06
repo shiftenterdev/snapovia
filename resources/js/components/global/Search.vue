@@ -57,7 +57,7 @@
                             <p class="mb-0 font-weight-bold">
                                 <a class="stretched-link text-body" :href="product.url_key">{{product.name}}</a>
                                 <br>
-                                <span class="text-muted">${{product.price}}</span>
+                                <span class="text-muted">${{productPrice(product.price)}}</span>
                             </p>
 
                         </div>
@@ -65,7 +65,7 @@
 
 
                     <!-- Button -->
-                    <a v-if="response.length > 5" class="btn btn-link px-0 text-reset" href="">
+                    <a v-if="response.length > 5" class="btn btn-link px-0 text-reset" :href="'/search?search='+search">
                         View All <i class="fe fe-arrow-right ml-2"></i>
                     </a>
 
@@ -119,7 +119,7 @@
         methods: {
             searchProducts () {
                 if(this.search.length > 1) {
-                    axios.get('/api/search?search=' + this.search)
+                    axios.post('/api/search',{search:this.search})
                         .then(r => r.data)
                         .then(r => {
                             this.response = r.data
@@ -127,6 +127,9 @@
                         this.response = [];
                     });
                 }
+            },
+            productPrice (price) {
+                return (price / 100).toFixed(2)
             }
         }
     }

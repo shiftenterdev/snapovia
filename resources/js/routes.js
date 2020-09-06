@@ -5,6 +5,10 @@ import ContactPage from './pages/cmspage/ContactPage'
 import CustomerLoginPage from './pages/customer/auth/CustomerLoginPage'
 import BlogPage from './pages/blog/BlogPage'
 import BlogDetailsPage from './pages/blog/BlogDetailsPage'
+import SearchPage from './pages/SearchPage'
+import CartPage from './pages/CartPage'
+import CheckoutPage from './pages/CheckoutPage'
+import CheckoutSuccessPage from './pages/CheckoutSuccessPage'
 
 
 
@@ -38,6 +42,26 @@ const routes = [
         name: 'blog',
         path: '/blog',
         component: BlogPage
+    },
+    {
+        name: 'search',
+        path: '/search',
+        component: SearchPage
+    },
+    {
+        name: 'cart',
+        path: '/checkout/cart',
+        component: CartPage
+    },
+    {
+        name: 'checkout',
+        path: '/checkout',
+        component: CheckoutPage
+    },
+    {
+        name: 'checkout.success',
+        path: '/checkout/success',
+        component: CheckoutSuccessPage
     }
 ];
 

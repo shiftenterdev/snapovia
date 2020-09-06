@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('home/product-section','Front\ApiController@productSection');
+Route::post('search','Front\ApiController@quickSearch');
 Route::get('search','Front\ApiController@search');
 
 Route::apiResource('product', 'Api\ProductController');

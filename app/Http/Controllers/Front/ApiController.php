@@ -22,6 +22,11 @@ class ApiController extends Controller
         return response()->json($data, 200);
     }
 
+    public function quickSearch(Request $request){
+        $response = \App\Models\Product::search($request->search);
+        return response()->json($response, 200);
+    }
+
     public function search(Request $request){
         $response = \App\Models\Product::search($request->search);
         return response()->json($response, 200);
