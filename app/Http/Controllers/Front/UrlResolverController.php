@@ -43,7 +43,7 @@ class UrlResolverController extends Controller
         }])
             ->where('url_key', $url_key)
             ->select(['id', 'name', 'url_key'])
-            ->firstOrFail();
+            ->first();
 
         $products = \App\Models\Product::with(['categories' => function ($query) {
             $query->select(['name', 'url_key']);

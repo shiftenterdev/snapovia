@@ -33,10 +33,7 @@
                                                                   href="{{route('customer.login')}}?source=checkout">{{__('Click here to login')}}</a>
                         </p>
                     @endif
-
                 </div>
-            </div>
-            <div class="row">
                 @if(session()->has('error'))
                     <div class="col-12">
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -47,6 +44,8 @@
                         </div>
                     </div>
                 @endif
+            </div>
+            <div class="row">
                 <div class="col-12 col-md-7">
 
                     <!-- Form -->

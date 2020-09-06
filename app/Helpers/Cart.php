@@ -176,12 +176,14 @@ class Cart
             $quote = $this->get();
 
             $order = new Order();
-            $order->order_id = $quote->quote_id;
-            $order->invoice_id = $quote->quote_id;
             $order->customer_ip = request()->ip();
             $order->customer_id = \App\Facades\Customer::check()?\App\Facades\Customer::user()->id:0;
             $order->quote_id = $quote->quote_id;
             $order->status = 'processing';
+            $order->payment_status = 'processing';
+            $order->delivery_status = 'pending';
+            $order->payment_method = 'cod';
+            $order->shipping_method = 'free';
             $order->save();
             foreach ($quote->items as $item) {
                 $order->items()->create([

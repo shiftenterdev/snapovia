@@ -21,9 +21,9 @@ class CheckoutController extends Controller
     public function submit(OrderSubmitRequest $request)
     {
         try{
-            $response = Cart::toOrder();
-            if($response){
-                return view('front.checkout.success');
+            $order = Cart::toOrder();
+            if($order){
+                return view('front.checkout.success',compact('order'));
             }
             return redirect()->back()->with('error',__('Order cannot complete at this moment'));
         }catch (\Exception $exception){
