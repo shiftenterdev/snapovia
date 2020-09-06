@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{asset('frontend/assets/fonts/feather/feather.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/assets/css/theme.min.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/assets/css/custom.css')}}">
-    <link rel="stylesheet" href="{{ mix('dist/css/app.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body>
 
@@ -45,7 +45,7 @@
 <script src="{{asset('frontend/assets/libs/highlightjs/highlight.pack.min.js')}}"></script>
 {{--<script src="{{asset('frontend/assets/js/theme.min.js')}}"></script>--}}
 <script src="{{asset('frontend/assets/js/myozeshop.js')}}"></script>
-<script src="{{ mix('dist/js/app.js') }}"></script>
+<script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
 

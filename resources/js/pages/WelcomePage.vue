@@ -15,14 +15,10 @@
         <Review/>
 
         <Brand/>
-
     </div>
 </template>
 
 <script>
-    import {mapGetters} from 'vuex'
-    import Navbar from "../components/Navbar";
-    import Footer from "../components/Footer";
     import Feature from "../components/Home/Feature";
     import BestPicks from "../components/Home/BestPicks";
     import ProductSection from "../components/Home/ProductSection";
@@ -33,10 +29,8 @@
     import HighlightMessage from "../components/Home/HighlightMessage";
 
     export default {
-        layout: 'basic',
 
         components: {
-            Navbar,
             HighlightMessage,
             Banner,
             Feature,
@@ -44,21 +38,8 @@
             ProductSection,
             Countdown,
             Review,
-            Brand,
-            Footer
-        },
-
-        metaInfo() {
-            return {title: this.$t('home')}
-        },
-
-        data: () => ({
-            title: window.config.appName
-        }),
-
-        computed: mapGetters({
-            authenticated: 'auth/check'
-        })
+            Brand
+        }
     }
 </script>
 

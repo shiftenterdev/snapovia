@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Breadcrumb :title="$t('Shipping &amp; Returns')"/>
+        <Breadcrumb title="Shipping &amp; Returns"/>
         <section class="pt-7 pb-12">
             <div class="container">
                 <div class="row justify-content-center">
@@ -198,7 +198,6 @@
 <script>
     import Breadcrumb from "../../components/Breadcrumb";
     export default {
-        layout: 'basic',
         components:{
             Breadcrumb
         }

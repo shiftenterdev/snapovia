@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Breadcrumb :title="$t('FAQ')"/>
+        <Breadcrumb title="FAQ"/>
 
         <section class="pt-7 pb-12">
             <div class="container">
@@ -274,7 +274,6 @@
 <script>
     import Breadcrumb from "../../components/Breadcrumb";
     export default {
-        layout: 'basic',
         components:{
             Breadcrumb
         }

@@ -1,18 +1,22 @@
-import Vue from 'vue'
-import store from '~/store'
-import router from '~/router'
-import i18n from '~/plugins/i18n'
-import App from '~/components/App'
+require('./bootstrap');
 
-import '~/plugins'
-import '~/components'
+window.Vue = require('vue');
+import store from './store';
+import $ from 'jquery';
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
 
-Vue.config.productionTip = false
+import VueAxios from 'vue-axios';
+import axios from 'axios';
+window.axios = axios;
+window.$ = $;
 
-/* eslint-disable no-new */
-new Vue({
-  i18n,
-  store,
-  router,
-  ...App
-})
+import App from './components/App.vue';
+Vue.use(VueAxios, axios);
+
+import routes from './routes';
+
+const router = new VueRouter({ mode: 'history', routes: routes,scrollBehavior() {
+    return {x: 0, y: 0}
+  }});
+const app = new Vue(Vue.util.extend({ router,store }, App)).$mount('#app');

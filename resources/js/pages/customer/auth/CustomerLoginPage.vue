@@ -193,6 +193,6 @@
 
 <script>
     export default {
-        layout: 'basic',
+        name:'CustomerLoginPage'
     }
 </script>
