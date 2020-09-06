@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
@@ -19,5 +20,10 @@ class ApiController extends Controller
             ->limit(8)
             ->get();
         return response()->json($data, 200);
+    }
+
+    public function search(Request $request){
+        $response = \App\Models\Product::search($request->search);
+        return response()->json($response, 200);
     }
 }

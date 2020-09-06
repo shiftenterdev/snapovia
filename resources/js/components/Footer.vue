@@ -94,13 +94,13 @@
                             <!-- Links -->
                             <ul class="list-unstyled mb-7 mb-sm-0">
                                 <li>
-                                    <a class="text-gray-300" href="men">Men\'s Shopping</a>
+                                    <a class="text-gray-300" href="men">Men's Shopping</a>
                                 </li>
                                 <li>
-                                    <a class="text-gray-300" href="women">Women\'s Shopping</a>
+                                    <a class="text-gray-300" href="women">Women's Shopping</a>
                                 </li>
                                 <li>
-                                    <a class="text-gray-300" href="kids">Kids\' Shopping</a>
+                                    <a class="text-gray-300" href="kids">Kids' Shopping</a>
                                 </li>
                                 <li>
                                     <a class="text-gray-300" href="discounts">Discounts</a>
