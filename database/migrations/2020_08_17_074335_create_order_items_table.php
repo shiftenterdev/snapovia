@@ -20,7 +20,6 @@ class CreateOrderItemsTable extends Migration
             $table->string('sku');
             $table->string('name');
             $table->enum('product_type', ['simple', 'configurable', 'grouped', 'virtual']);
-            $table->string('product_type');
             $table->string('price');
             $table->string('product_attributes')->nullable();
             $table->integer('qty');
