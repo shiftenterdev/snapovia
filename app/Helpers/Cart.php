@@ -178,7 +178,6 @@ class Cart
             $order = new Order();
             $order->customer_ip = request()->ip();
             $order->customer_id = \App\Facades\Customer::check()?\App\Facades\Customer::user()->id:0;
-            $order->quote_id = $quote->quote_id;
             $order->status = 'processing';
             $order->payment_status = 'processing';
             $order->delivery_status = 'pending';
@@ -199,7 +198,7 @@ class Cart
             }
             $quote->items()->delete();
             $quote->delete();
-
+            $this->remove();
             return $order;
 
         }

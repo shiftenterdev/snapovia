@@ -23,14 +23,14 @@ class Order extends Model
         return $this->hasMany(OrderItems::class);
     }
 
-    public function billingInfo()
+    public function billing()
     {
-        return $this->hasOne(BillingInfo::class);
+        return $this->hasOne(OrderBilling::class);
     }
 
-    public function shippingInfo()
+    public function shipping()
     {
-        return $this->hasOne(ShippingInfo::class);
+        return $this->hasOne(OrderShipping::class);
     }
 
     public function paymentInfo()

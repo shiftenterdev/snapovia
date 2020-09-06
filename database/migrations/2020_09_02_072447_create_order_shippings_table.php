@@ -13,7 +13,7 @@ class CreateShippingInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('shipping_infos', function (Blueprint $table) {
+        Schema::create('order_shippings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
             $table->string('prefix',10)->nullable();

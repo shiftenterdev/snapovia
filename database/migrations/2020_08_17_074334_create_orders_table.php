@@ -31,6 +31,7 @@ class CreateOrdersTable extends Migration
             $table->integer('shipping_amount_incl_tax')->default(0);
             $table->string('payment_method')->default('cod');
             $table->string('shipping_method')->default('free');
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }
