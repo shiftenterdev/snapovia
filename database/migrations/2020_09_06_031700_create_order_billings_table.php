@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShippingInfosTable extends Migration
+class CreateOrderBillingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateShippingInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('shipping_infos', function (Blueprint $table) {
+        Schema::create('order_billings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
             $table->string('prefix',10)->nullable();
@@ -27,7 +27,6 @@ class CreateShippingInfosTable extends Migration
             $table->string('country',32)->nullable();
             $table->string('postcode',20)->nullable();
             $table->string('telephone',32);
-            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }
@@ -39,6 +38,6 @@ class CreateShippingInfosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shipping_infos');
+        Schema::dropIfExists('order_billings');
     }
 }

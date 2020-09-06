@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBillingInfosTable extends Migration
+class CreateShippingInfosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBillingInfosTable extends Migration
      */
     public function up()
     {
-        Schema::create('billing_infos', function (Blueprint $table) {
+        Schema::create('order_shippings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
             $table->string('prefix',10)->nullable();
@@ -39,6 +39,6 @@ class CreateBillingInfosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('billing_infos');
+        Schema::dropIfExists('shipping_infos');
     }
 }

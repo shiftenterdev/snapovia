@@ -158,7 +158,7 @@ class Product extends Model implements HasMedia
 
     public function getSampleImageAttribute()
     {
-        return '/sample-data/products/' . $this->id . '.jpg';
+        return '/sample-data/products/' . ($this->id % 50) . '.jpg';
     }
 
     public function attributes()

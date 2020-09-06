@@ -51,7 +51,7 @@
                                                     <a class="list-styled-link"
                                                        href="{{ route('category', ['category' => $child_category->url_key]) }}">
                                                         {{$child_category->name}}
-                                                        ({{$child_category->products->count()}})
+                                                        ({{$child_category->products_count}})
                                                     </a>
                                                 </li>
                                             @endforeach

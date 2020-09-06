@@ -21,9 +21,14 @@ class CatalogController extends Controller
             $query = $query->where('id', 1);
         }
         $category = $query->select(['id', 'name', 'url_key'])
+            ->with(['childCategories'=>function($query){
+                $query->withCount('products');
+            }])
             ->firstOrFail();
 
-        $products = \App\Models\Product::front($sort_by, $category->id)
+        $products = \App\Models\Product::with(['categories' => function ($query) {
+            $query->select(['name', 'url_key']);
+        }])->front($sort_by, $category->id)
             ->paginate(18);
 
         return view('front.catalog.category', compact('category', 'products'));

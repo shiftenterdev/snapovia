@@ -4,6 +4,7 @@
 namespace App\Facades;
 
 
+use App\Models\Order;
 use App\Models\Quote;
 use Illuminate\Support\Facades\Facade;
 
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static bool addToCart()
  * @method static int count()
  * @method static Quote get()
+ * @method static Order toOrder()
  * @method static void remove()
  */
 class Cart extends Facade

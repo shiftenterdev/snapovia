@@ -10,17 +10,17 @@
                     <div class="mb-7 font-size-h1">❤️</div>
 
                     <!-- Heading -->
-                    <h2 class="mb-5">Your Order is Completed!</h2>
+                    <h2 class="mb-5">{{__('Your Order is Completed!')}}</h2>
 
                     <!-- Text -->
                     <p class="mb-7 text-gray-500">
-                        Your order <span class="text-body text-decoration-underline">673290789</span> has been completed. Your order details
-                        are shown for your personal accont.
+                        Your order <span class="text-body text-decoration-underline">{{$order->id}}</span> has been completed.
+                        {{__('Your order details are shown for your personal account.')}}
                     </p>
 
                     <!-- Button -->
-                    <a class="btn btn-dark" href="#!">
-                        View My Orders
+                    <a class="btn btn-dark" href="{{route('customer.order')}}">
+                        {{__('View My Orders')}}
                     </a>
 
                 </div>
