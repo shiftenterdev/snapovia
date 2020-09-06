@@ -11,6 +11,5 @@
   ],
   "rules": {
     "vue/max-attributes-per-line": "off"
-//    "indent": ["error", 4]
   }
 }
