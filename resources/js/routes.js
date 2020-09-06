@@ -1,3 +1,4 @@
+import VueRouter from 'vue-router';
 import WelcomePage from './pages/WelcomePage'
 import ShippingPage from './pages/cmspage/ShippingPage'
 import FaqPage from './pages/cmspage/FaqPage'
@@ -65,4 +66,10 @@ const routes = [
     }
 ];
 
-export default routes;
+export default new VueRouter({
+    mode: 'history',
+    routes: routes,
+    scrollBehavior () {
+        return { x: 0, y: 0 }
+    }
+});
