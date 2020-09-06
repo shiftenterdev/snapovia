@@ -115,7 +115,6 @@ class Cart
                     'name'           => $product->name,
                     'sku'            => $product->sku,
                     'product_type'   => $product->product_type,
-                    'row_total'      => (int)($product->price * $qty),
                     'qty'            => $qty,
                     'price'          => $product->price,
                     'discount_price' => 0
@@ -124,7 +123,6 @@ class Cart
         } else {
             $quote->items()->where('product_id', $product->id)->Update(
                 [
-                    'row_total' => (int)($product->price * ($item->qty + $qty)),
                     'qty'       => $item->qty + $qty,
                 ]
             );
@@ -132,12 +130,13 @@ class Cart
         $this->set($quote);
     }
 
-    private function check()
+    public function check()
     {
         if (session(self::QUOTE_SESSION_KEY)) {
             $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
                 ->first();
             if (!$quote) {
+                $this->remove();
                 return false;
             }
             return true;
@@ -171,12 +170,16 @@ class Cart
         session()->remove(self::QUOTE_SESSION_KEY);
     }
 
-    public function toOrder(): bool
+    public function toOrder(): ?Order
     {
         if ($this->check()) {
             $quote = $this->get();
 
             $order = new Order();
+            $order->order_id = $quote->quote_id;
+            $order->invoice_id = $quote->quote_id;
+            $order->customer_ip = request()->ip();
+            $order->customer_id = \App\Facades\Customer::check()?\App\Facades\Customer::user()->id:0;
             $order->quote_id = $quote->quote_id;
             $order->status = 'processing';
             $order->save();
@@ -192,9 +195,13 @@ class Cart
                     'product_type'       => $item->product_type,
                 ]);
             }
+            $quote->items()->delete();
+            $quote->delete();
+
+            return $order;
 
         }
-        return false;
+        return null;
     }
 
 }

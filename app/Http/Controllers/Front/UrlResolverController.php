@@ -38,7 +38,10 @@ class UrlResolverController extends Controller
     public function category(Request $request, $url_key)
     {
         $sort_by = $request->sort_by ?? 'name_asc';
-        $category = Category::where('url_key', $url_key)
+        $category = Category::with(['childCategories'=>function($query){
+            $query->withCount('products');
+        }])
+            ->where('url_key', $url_key)
             ->select(['id', 'name', 'url_key'])
             ->firstOrFail();
 

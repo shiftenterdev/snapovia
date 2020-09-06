@@ -15,8 +15,8 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('order_id');
-            $table->integer('invoice_id');
+            $table->string('order_id');
+            $table->string('invoice_id');
             $table->string('customer_ip',32);
             $table->string('order_status')->default('processing');
             $table->string('payment_status');

@@ -12,7 +12,7 @@ class CheckoutController extends Controller
     public function index()
     {
         $cart = Cart::get();
-        if(!count($cart->items)){
+        if(!count($cart->items) || !Cart::check()){
             return redirect()->route('cart');
         }
         return view('front.checkout.index',compact('cart'));
@@ -20,9 +20,15 @@ class CheckoutController extends Controller
 
     public function submit(OrderSubmitRequest $request)
     {
-        dd($request->except('_token'));
-
-
+        try{
+            $response = Cart::toOrder();
+            if($response){
+                return view('front.checkout.success');
+            }
+            return redirect()->back()->with('error',__('Order cannot complete at this moment'));
+        }catch (\Exception $exception){
+            return redirect()->back()->with('error',$exception->getMessage());
+        }
 
     }
 

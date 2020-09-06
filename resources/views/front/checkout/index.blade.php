@@ -37,6 +37,16 @@
                 </div>
             </div>
             <div class="row">
+                @if(session()->has('error'))
+                    <div class="col-12">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Success</strong> {{session('error')}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                    </div>
+                @endif
                 <div class="col-12 col-md-7">
 
                     <!-- Form -->
@@ -128,7 +138,7 @@
                                 <div class="form-group">
                                     <label for="checkoutBillingZIP">{{__('Postcode')}} *</label>
                                     <input class="form-control form-control-sm" id="checkoutBillingZIP" type="text"
-                                           placeholder="ZIP / Postcode" required="required" value="billing[city]">
+                                           placeholder="ZIP / Postcode" required="required" name="billing[city]">
                                 </div>
 
                             </div>
@@ -138,7 +148,9 @@
                                 <div class="form-group">
                                     <label for="checkoutBillingCountry">{{__('Country')}} *</label>
                                     <select name="billing[country]" class="form-control form-control-sm" required id="checkoutBillingCountry">
-                                        <option value="AR">Aregentina</option>
+                                        <option value="AR">Argentina</option>
+                                        <option value="PR">Portugal</option>
+                                        <option value="PO">Poland</option>
                                         <option value="AU">Australia</option>
                                         <option value="SV">Sweden</option>
                                     </select>
