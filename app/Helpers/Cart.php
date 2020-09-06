@@ -27,8 +27,8 @@ class Cart
      */
     public function __construct()
     {
-        if ($this->get() === null)
-            $this->create();
+//        if ($this->get() === null)
+//            $this->create();
     }
 
 
@@ -42,8 +42,13 @@ class Cart
         $customer_id = 0;
         if (\App\Facades\Customer::check()) {
             $customer_id = \App\Facades\Customer::user()->customer_id;
+            $quote = Quote::where('customer_id', $customer_id)->first();
+            if (!$quote) {
+                $quote = Quote::create(['customer_ip' => request()->ip(), 'customer_id' => $customer_id]);
+            }
+        }else{
+            $quote = Quote::create(['customer_ip' => request()->ip(), 'customer_id' => $customer_id]);
         }
-        $quote = Quote::create(['customer_ip' => request()->ip(), 'customer_id' => $customer_id]);
         $this->set($quote);
     }
 
@@ -79,15 +84,17 @@ class Cart
 
     public function merge($customer_quote_id): void
     {
-        $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
-            ->first();
-        $items = QuoteItems::where('quote_id', $quote->id)->get();
-        foreach ($items as $item) {
-            $item->update(['quote_id' => $customer_quote_id]);
+        if (session(self::QUOTE_SESSION_KEY)) {
+            $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
+                ->first();
+            $items = QuoteItems::where('quote_id', $quote->id)->get();
+            foreach ($items as $item) {
+                $item->update(['quote_id' => $customer_quote_id]);
+            }
+            $quote->delete();
         }
-        $quote->delete();
         $new_quote = Quote::find($customer_quote_id);
-        $this->refreshCart($new_quote);
+        $this->set($new_quote);
     }
 
     public function count(): int
@@ -101,7 +108,7 @@ class Cart
             $this->create();
         }
         $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
-            ->firstOrFail();
+            ->first();
         $product = Product::whereSku($sku)->first();
 
         $item = QuoteItems::where('quote_id', $quote->id)
@@ -123,7 +130,7 @@ class Cart
         } else {
             $quote->items()->where('product_id', $product->id)->Update(
                 [
-                    'qty'       => $item->qty + $qty,
+                    'qty' => $item->qty + $qty,
                 ]
             );
         }
@@ -177,7 +184,7 @@ class Cart
 
             $order = new Order();
             $order->customer_ip = request()->ip();
-            $order->customer_id = \App\Facades\Customer::check()?\App\Facades\Customer::user()->id:0;
+            $order->customer_id = \App\Facades\Customer::check() ? \App\Facades\Customer::user()->id : 0;
             $order->status = 'processing';
             $order->payment_status = 'processing';
             $order->delivery_status = 'pending';
