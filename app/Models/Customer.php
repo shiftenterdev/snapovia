@@ -8,10 +8,28 @@ use App\QueryFilters\LastName;
 use App\QueryFilters\Status;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pipeline\Pipeline;
+use Illuminate\Support\Str;
 
 class Customer extends Model
 {
     protected $paginateCount = 15;
+
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'password'
+    ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model){
+            $model->customer_group_id = 1;
+            $model->api_token = Str::random(60);
+        });
+    }
 
     public function scopeGrid($query)
     {
