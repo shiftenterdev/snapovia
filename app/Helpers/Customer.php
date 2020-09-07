@@ -1,7 +1,8 @@
 <?php
 
 /**
- * @author Iftakharul Alam Bappa <iftakharul@strativ.se> 
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @author Iftakharul Alam Bappa <info@shiftenter.dev> 
  */
 namespace App\Helpers;
 
@@ -27,6 +28,24 @@ class Customer
                 if (Hash::check($credentials['password'], $customer->password)) {
                     $this->update($customer);
                     $this->mergeCart($customer->id);
+                    return true;
+                }
+                return false;
+            }
+            return false;
+        }
+        return false;
+    }
+
+
+    public function login($credentials):bool
+    {
+        if(isset($credentials['email']) && isset($credentials['password'])){
+            $customer = \App\Models\Customer::whereEmail($credentials['email'])
+                ->whereStatus(1)
+                ->first();
+            if($customer){
+                if (Hash::check($credentials['password'], $customer->password)) {
                     return true;
                 }
                 return false;
@@ -83,13 +102,11 @@ class Customer
      */
     private function mergeCart($customer_id)
     {
-        if(\App\Facades\Cart::get()){
-            $existing_quote = Quote::where('customer_id',$customer_id)->first();
-            if($existing_quote){
-                \App\Facades\Cart::merge($existing_quote->id);
-            }else {
-                \App\Facades\Cart::addCustomerToQuote($customer_id);
-            }
+        $existing_quote = Quote::where('customer_id',$customer_id)->first();
+        if($existing_quote){
+            \App\Facades\Cart::merge($existing_quote->id);
+        }else {
+            \App\Facades\Cart::addCustomerToQuote($customer_id);
         }
     }
 }

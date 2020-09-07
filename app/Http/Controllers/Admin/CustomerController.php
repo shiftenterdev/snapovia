@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CustomerLoginRequest;
 use App\Http\Requests\CustomerRequest;
 use App\Models\Customer;
-use App\QueryFilters\Status;
 use App\User;
-use Illuminate\Pipeline\Pipeline;
-use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
@@ -18,6 +16,8 @@ class CustomerController extends Controller
             'customers' => Customer::grid()
         ]);
     }
+
+
 
     public function create()
     {

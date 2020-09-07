@@ -15,7 +15,7 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->integer('customer_group_id')->unsigned();
+            $table->integer('customer_group_id')->unsigned()->default(1);
             $table->string('prefix')->nullable();
             $table->string('first_name');
             $table->string('middle_name')->nullable();
@@ -29,6 +29,7 @@ class CreateCustomersTable extends Migration
             $table->string('vat_id')->nullable();
             $table->boolean('status')->default(1);
             $table->string('reset_token')->nullable();
+            $table->string('api_token',60)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

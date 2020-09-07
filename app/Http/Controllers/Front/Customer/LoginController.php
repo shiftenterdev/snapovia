@@ -36,6 +36,6 @@ class LoginController extends Controller
     {
         Customer::logout();
         Cart::remove();
-        return redirect()->route('welcome');
+        return redirect()->route('customer.login');
     }
 }
