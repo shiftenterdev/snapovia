@@ -62,9 +62,7 @@
                         </div>
                     </div>
                     <div class="card">
-                        <div class="card-header border-0 bg-gradient-info d-flex p-0">
-                            <h3 class="card-title p-3"><strong>Categories</strong></h3>
-                        </div>
+                        <x-admin.card.title title="Categories"/>
                         <div class="card-body table-responsive p-0">
                             <table class="table table-striped table-valign-middle">
                                 <thead class="bg-dark">
@@ -73,6 +71,7 @@
                                     <th>Name</th>
                                     <th>Parent</th>
                                     <th>Url key</th>
+                                    <th>Url path</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -83,6 +82,7 @@
                                         <td>{{$category->name}}</td>
                                         <td>{{$category->parentCategory->name ?? ""}}</td>
                                         <td>{{$category->url_key}}</td>
+                                        <td>{{$category->url_path}}</td>
                                         <td>
                                             <a href="{{route('admin.category.edit',$category->id)}}" class="text-muted">
                                                 <i class="fas fa-pen"></i>

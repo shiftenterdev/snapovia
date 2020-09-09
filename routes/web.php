@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ConfigurationController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\CustomerGroupController;
@@ -8,8 +9,11 @@ use App\Http\Controllers\Admin\ExportImport\ExportController;
 use App\Http\Controllers\Admin\ExportImport\ImportController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Admin\Marketing\AbandonCartController;
+use App\Http\Controllers\Admin\Marketing\CartPriceRuleController;
+use App\Http\Controllers\Admin\Marketing\CatalogPriceRuleController;
 use App\Http\Controllers\Admin\Marketing\EmailTemplateController;
 use App\Http\Controllers\Admin\Marketing\UrlRewriteController;
+use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RefundController;
@@ -17,6 +21,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ShipmentController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Front\Customer\AddressController;
+use App\Http\Controllers\Front\Customer\LoginController;
 use App\Http\Controllers\Front\Customer\OrderController as CustomerOrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\VendorController;
@@ -30,7 +35,9 @@ use App\Http\Controllers\Front\CatalogController;
 use App\Http\Controllers\Front\CheckoutController;
 use App\Http\Controllers\Front\CmsController;
 use App\Http\Controllers\Front\Customer\HomeController;
+use App\Http\Controllers\Front\Customer\PasswordController;
 use App\Http\Controllers\Front\Customer\PaymentMethodsController;
+use App\Http\Controllers\Front\Customer\RegisterController;
 use App\Http\Controllers\Front\Customer\WishlistController;
 use App\Http\Controllers\Front\LanguageController;
 use App\Http\Controllers\Front\SearchController;
@@ -91,36 +98,52 @@ Route::get('faq', [CmsController::class, 'faq'])
 Route::get('shipping-and-returns', [CmsController::class, 'shippingReturns'])
     ->name('shipping-and-returns');
 
-Route::get('about-us', 'CmsController@aboutUs')->name('about.us');
-Route::get('career', 'CmsController@career')->name('career');
-Route::get('terms', 'CmsController@terms')->name('terms');
-Route::get('privacy-policy', 'CmsController@privacy')->name('privacy');
-Route::get('discount', 'CatalogController@discount')->name('discount');
+Route::get('about-us', [CmsController::class,'aboutUs'])
+    ->name('about.us');
+
+Route::get('career', [CmsController::class,'career'])
+    ->name('career');
+
+Route::get('terms', [CmsController::class,'terms'])
+    ->name('terms');
+
+Route::get('privacy-policy', [CmsController::class,'privacy'])
+    ->name('privacy');
+
+Route::get('discount', [CatalogController::class,'discount'])
+    ->name('discount');
 
 Route::resource('blog', BlogController::class)
     ->only(['index', 'show']);
 
 Route::prefix('customer')->group(function () {
 
-    Route::get('login', 'LoginController@index')
+    Route::get('login', [LoginController::class,'index'])
         ->name('customer.login');
 
-    Route::post('login', 'LoginController@login')
+    Route::post('login', [LoginController::class,'login'])
         ->name('customer.login.post');
 
-    Route::get('create', 'RegisterController@index')
+    Route::get('create', [RegisterController::class,'index'])
         ->name('customer.create');
 
-    Route::post('create', 'RegisterController@createPost')
+    Route::post('create', [RegisterController::class,'createPost'])
         ->name('customer.create.post');
 
-    Route::get('logout', 'LoginController@logout')
+    Route::get('logout', [LoginController::class,'logout'])
         ->name('customer.logout');
 
-    Route::get('forgotpassword', 'PasswordController@forgotPassword')->name('forgot.password');
-    Route::post('forgotpasswordpost', 'PasswordController@forgotPasswordPost')->name('forgot.password.post');
-    Route::get('{customer_id}/password/resetLinkToken/{token}', 'PasswordController@createPassword')->name('create.password');
-    Route::post('createpasswordpost', 'PasswordController@createPasswordPost')->name('create.password.post');
+    Route::get('forgotpassword', [PasswordController::class,'forgotPassword'])
+        ->name('forgot.password');
+
+    Route::post('forgotpasswordpost', [PasswordController::class,'forgotPasswordPost'])
+        ->name('forgot.password.post');
+
+    Route::get('{customer_id}/password/resetLinkToken/{token}', [PasswordController::class,'createPassword'])
+        ->name('create.password');
+
+    Route::post('createpasswordpost', [PasswordController::class,'createPasswordPost'])
+        ->name('create.password.post');
 
     Route::middleware('customer')->group(function () {
 
@@ -149,90 +172,92 @@ Route::prefix('customer')->group(function () {
 
 });
 
-Route::prefix('adminportal')->group(function () {
+Route::prefix('adminportal')->name('admin.')->group(function () {
 
     Route::get('forgot-password', [AuthController::class,'forgotPassword'])
-        ->name('admin.forgot.password');
+        ->name('forgot.password');
 
     Route::get('login', [AuthController::class,'login'])
-        ->name('admin.login');
+        ->name('login');
 
     Route::post('login', [AuthController::class,'loginPost'])
-        ->name('admin.login.post');
+        ->name('login.post');
 
     Route::get('logout', [AuthController::class,'logout'])
-        ->name('admin.logout');
+        ->name('logout');
 
     Route::middleware('backend.auth')->group(function () {
 
         Route::redirect('/', '/adminportal/dashboard');
 
         Route::get('dashboard', DashboardController::class)
-            ->name('admin.dashboard');
+            ->name('dashboard');
 
-        Route::get('data', 'ProductController@data')->name('admin.product.data');
-        Route::resource('product', ProductController::class, ['as' => 'admin']);
+        Route::get('data', [ProductController::class,'data'])
+            ->name('product.data');
 
-        Route::resource('media', 'MediaController', ['as' => 'admin']);
+        Route::resource('product', ProductController::class);
 
-        Route::get('data', 'CategoryController@data')->name('admin.category.data');
-        Route::resource('category', 'CategoryController', ['as' => 'admin']);
+        Route::resource('media', MediaController::class);
 
-        Route::post('brand/media', 'BrandController@storeMedia')->name('admin.brand.media');
-        Route::resource('brand', BrandController::class, ['as' => 'admin']);
+        Route::get('data', [CategoryController::class,'data'])
+            ->name('category.data');
 
-        Route::resource('cms-page', CmsPageController::class, ['as' => 'admin']);
+        Route::resource('category', CategoryController::class);
 
-        Route::resource('cms-block', CmsBlockController::class, ['as' => 'admin']);
+        Route::post('brand/media', [BrandController::class,'storeMedia'])
+            ->name('brand.media');
 
-        Route::resource('customer/group', CustomerGroupController::class, ['as' => 'admin']);
+        Route::resource('brand', BrandController::class);
 
-        Route::resource('customer', CustomerController::class, ['as' => 'admin']);
+        Route::resource('cms-page', CmsPageController::class);
 
-        Route::resource('blog', AdminBlogController::class, ['as' => 'admin']);
+        Route::resource('cms-block', CmsBlockController::class);
 
-        Route::resource('vendor', VendorController::class, ['as' => 'admin']);
+        Route::resource('customer/group', CustomerGroupController::class);
 
-        Route::resource('vendor-product', VendorProductController::class, ['as' => 'admin']);
+        Route::resource('customer', CustomerController::class);
 
-        Route::resource('vendor-order', VendorOrderController::class, ['as' => 'admin']);
+        Route::resource('blog', AdminBlogController::class);
 
-        Route::resource('vendor-settlement', VendorSettlementController::class, ['as' => 'admin']);
+        Route::resource('vendor', VendorController::class);
 
-        Route::resource('user', UserController::class, ['as' => 'admin']);
+        Route::resource('vendor-product', VendorProductController::class);
 
-        Route::resource('role', RoleController::class, ['as' => 'admin']);
+        Route::resource('vendor-order', VendorOrderController::class);
 
-        Route::resource('permission', PermissionController::class, ['as' => 'admin']);
+        Route::resource('vendor-settlement', VendorSettlementController::class);
 
-        Route::resource('catalog-price-rule', 'Marketing\CatalogPriceRuleController', ['as' => 'admin']);
+        Route::resource('user', UserController::class);
 
-        Route::resource('cart-price-rule', 'Marketing\CartPriceRuleController', ['as' => 'admin']);
+        Route::resource('role', RoleController::class);
 
-        Route::resource('abandon-cart', AbandonCartController::class, ['as' => 'admin']);
+        Route::resource('permission', PermissionController::class);
 
-        Route::resource('email-template', EmailTemplateController::class, ['as' => 'admin']);
+        Route::resource('catalog-price-rule', CatalogPriceRuleController::class);
 
-        Route::resource('url-rewrite', UrlRewriteController::class, ['as' => 'admin']);
+        Route::resource('cart-price-rule', CartPriceRuleController::class);
 
-        Route::resource('order', OrderController::class, ['as' => 'admin']);
+        Route::resource('abandon-cart', AbandonCartController::class);
 
-        Route::resource('invoice', InvoiceController::class, ['as' => 'admin']);
+        Route::resource('email-template', EmailTemplateController::class);
 
-        Route::resource('shipment', ShipmentController::class, ['as' => 'admin']);
+        Route::resource('url-rewrite', UrlRewriteController::class);
 
-        Route::resource('refund', RefundController::class, ['as' => 'admin']);
+        Route::resource('order', OrderController::class);
 
-        Route::resource('export/export', ExportController::class, ['as' => 'admin']);
+        Route::resource('invoice', InvoiceController::class);
 
-        Route::resource('import/import', ImportController::class, ['as' => 'admin']);
+        Route::resource('shipment', ShipmentController::class);
 
-        Route::resource('configuration', ConfigurationController::class, ['as' => 'admin']);
+        Route::resource('refund', RefundController::class);
 
-    });
+        Route::resource('export/export', ExportController::class);
 
-    Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
-        \UniSharp\LaravelFilemanager\Lfm::routes();
+        Route::resource('import/import', ImportController::class);
+
+        Route::resource('configuration', ConfigurationController::class);
+
     });
 });
 

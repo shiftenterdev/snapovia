@@ -4,14 +4,14 @@
 
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row">
                 <div class="col-sm-6">
                     <a href="{{route('admin.brand.create')}}" class="btn btn-dark">
                         <i class="fas fa-plus"></i> New Brand
                     </a>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="content">
@@ -19,13 +19,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-header border-0 bg-gradient-info d-flex p-0">
-                            <h3 class="card-title p-3"><strong>Brand</strong></h3>
-                        </div>
+                        <x-admin.card.title title="Brand List"/>
                         <div class="card-body table-responsive p-0">
                             <table class="table table-striped table-valign-middle">
                                 <thead>
                                 <tr>
+                                    <th>
+                                        <input type="checkbox">
+                                    </th>
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Logo</th>
@@ -36,11 +37,13 @@
                                 <tbody>
                                 @foreach($brands as $key => $c)
                                     <tr>
+                                        <td><input type="checkbox"></td>
                                         <td>{{$c->id}}</td>
                                         <td>{{$c->name}}</td>
                                         <td>
                                             @if($c->logo)
-                                                <img src="{{ $c->logo->getUrl('thumb') }}" class="img-circle img-size-32 mr-2" alt="">
+                                                <img src="{{ $c->logo->getUrl('thumb') }}"
+                                                     class="img-circle img-size-32 mr-2" alt="">
                                             @endif
                                         </td>
                                         <td>{{$c->identifier}}</td>

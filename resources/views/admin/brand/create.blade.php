@@ -12,9 +12,7 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">New Brand</h3>
-                            </div>
+                            <x-admin.card.title title="New Brand"/>
                             <div class="card-body">
                                 <div class="row">
 
