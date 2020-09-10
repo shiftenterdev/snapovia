@@ -32,25 +32,25 @@ class Cart
 //            $this->create();
     }
 
-
-    public function get()
+    public function addCustomerToQuote($customer_id): void
     {
-        return session(self::QUOTE_SESSION_KEY) ?? null;
+        Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
+            ->update(['customer_id' => $customer_id]);
     }
 
-    private function create(): void
+    public function merge($customer_quote_id): void
     {
-        $customer_id = 0;
-        if (\App\Facades\Customer::check()) {
-            $customer_id = \App\Facades\Customer::user()->customer_id;
-            $quote = Quote::where('customer_id', $customer_id)->first();
-            if (!$quote) {
-                $quote = Quote::create(['customer_ip' => request()->ip(), 'customer_id' => $customer_id]);
+        if (session(self::QUOTE_SESSION_KEY)) {
+            $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
+                ->first();
+            $items = QuoteItems::where('quote_id', $quote->id)->get();
+            foreach ($items as $item) {
+                $item->update(['quote_id' => $customer_quote_id]);
             }
-        }else{
-            $quote = Quote::create(['customer_ip' => request()->ip(), 'customer_id' => $customer_id]);
+            $quote->delete();
         }
-        $this->set($quote);
+        $new_quote = Quote::find($customer_quote_id);
+        $this->set($new_quote);
     }
 
     /**
@@ -77,30 +77,14 @@ class Cart
         return $quote;
     }
 
-    public function addCustomerToQuote($customer_id): void
-    {
-        Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
-            ->update(['customer_id' => $customer_id]);
-    }
-
-    public function merge($customer_quote_id): void
-    {
-        if (session(self::QUOTE_SESSION_KEY)) {
-            $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
-                ->first();
-            $items = QuoteItems::where('quote_id', $quote->id)->get();
-            foreach ($items as $item) {
-                $item->update(['quote_id' => $customer_quote_id]);
-            }
-            $quote->delete();
-        }
-        $new_quote = Quote::find($customer_quote_id);
-        $this->set($new_quote);
-    }
-
     public function count(): int
     {
         return $this->get() ? count($this->get()->items) : 0;
+    }
+
+    public function get()
+    {
+        return session(self::QUOTE_SESSION_KEY) ?? null;
     }
 
     public function addToCart($sku, $qty = 1): void
@@ -152,6 +136,26 @@ class Cart
         return false;
     }
 
+    public function remove(): void
+    {
+        session()->remove(self::QUOTE_SESSION_KEY);
+    }
+
+    public function create(): void
+    {
+        $customer_id = 0;
+        if (\App\Facades\Customer::check()) {
+            $customer_id = \App\Facades\Customer::user()->customer_id;
+            $quote = Quote::where('customer_id', $customer_id)->first();
+            if (!$quote) {
+                $quote = Quote::create(['customer_ip' => request()->ip(), 'customer_id' => $customer_id]);
+            }
+        } else {
+            $quote = Quote::create(['customer_ip' => request()->ip(), 'customer_id' => $customer_id]);
+        }
+        $this->set($quote);
+    }
+
     public function updateQty($sku, $qty)
     {
         $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
@@ -173,9 +177,15 @@ class Cart
         $this->set($quote);
     }
 
-    public function remove(): void
+    /**
+     * @param $coupon_id
+     */
+    public function applyCoupon($coupon_id):void
     {
-        session()->remove(self::QUOTE_SESSION_KEY);
+        if ($this->check()) {
+            Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
+                ->update(['coupon_id'=>$coupon_id]);
+        }
     }
 
     public function toOrder(): ?Order
@@ -189,9 +199,11 @@ class Cart
             $order->status = 'processing';
             $order->payment_status = 'processing';
             $order->delivery_status = 'pending';
-            $order->payment_method = 'cod';
-            $order->shipping_method = 'free';
+            $order->payment_method = request('payment_method', 'cod');
+            $order->shipping_method = request('shipping_method', 'free');
+            $order->notes = request('order_notes');
             $order->save();
+            $grand_total = 0;
             foreach ($quote->items as $item) {
                 $order->items()->create([
                     'product_id'         => $item->product_id,
@@ -203,7 +215,15 @@ class Cart
                     'discount_price'     => $item->discount_price,
                     'product_type'       => $item->product_type,
                 ]);
+
+                $grand_total += $item->qty * $item->price;
             }
+            $tax = tax_balance_amount();
+            $order->update([
+                'grand_total'          => $grand_total,
+                'grand_total_incl_tax' => $grand_total * $tax,
+                'tax'                  => tax_info()['amount'],
+            ]);
             $quote->items()->delete();
             $quote->delete();
             $this->remove();

@@ -14,14 +14,21 @@
 
                     <!-- Text -->
                     <p class="mb-7 text-gray-500">
-                        Your order <span class="text-body text-decoration-underline">{{$order->id}}</span> has been completed.
+                        Your order <span class="text-body text-decoration-underline">
+                            <ins>#{{$order->order_id}}</ins>
+                        </span> has been completed.
                         {{__('Your order details are shown for your personal account.')}}
                     </p>
 
-                    <!-- Button -->
-                    <a class="btn btn-dark" href="{{route('customer.order')}}">
-                        {{__('View My Orders')}}
-                    </a>
+                    @if(Customer::check())
+                        <a class="btn btn-dark" href="{{route('customer.order')}}">
+                            {{__('View My Orders')}}
+                        </a>
+                    @else
+                        <a class="btn btn-dark" href="{{route('customer.create.direct')}}">
+                            {{__('Create a new account')}}
+                        </a>
+                    @endif
 
                 </div>
             </div>

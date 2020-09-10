@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Facade;
  * @method static bool updateQty($sku,$qty)
  * @method static bool addToCart()
  * @method static int count()
+ * @method static void create()
+ * @method static void applyCoupon($coupon_id)
  * @method static Quote get()
  * @method static Order toOrder()
  * @method static void remove()

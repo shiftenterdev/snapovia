@@ -24,6 +24,8 @@ class CreateQuotesTable extends Migration
             $table->integer('shipping_amount')->default(0);
             $table->integer('shipping_amount_incl_tax')->default(0);
             $table->string('payment_method')->nullable();
+            $table->integer('coupon_id')->nullable();
+            $table->integer('coupon_amount')->default(0);
             $table->string('shipping_method')->nullable();
             $table->timestamps();
         });
