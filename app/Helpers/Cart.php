@@ -38,7 +38,7 @@ class Cart
         return session(self::QUOTE_SESSION_KEY) ?? null;
     }
 
-    private function create(): void
+    public function create(): void
     {
         $customer_id = 0;
         if (\App\Facades\Customer::check()) {
@@ -189,8 +189,9 @@ class Cart
             $order->status = 'processing';
             $order->payment_status = 'processing';
             $order->delivery_status = 'pending';
-            $order->payment_method = 'cod';
-            $order->shipping_method = 'free';
+            $order->payment_method = request('payment_method','cod');
+            $order->shipping_method = request('shipping_method','free');
+            $order->notes = request('order_notes');
             $order->save();
             foreach ($quote->items as $item) {
                 $order->items()->create([

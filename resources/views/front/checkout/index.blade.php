@@ -58,13 +58,25 @@
 
                         <!-- Billing details -->
                         <div class="row mb-9">
+                            <div class="col-12">
+
+                                <!-- Email -->
+                                <div class="form-group">
+                                    <label for="checkoutBillingEmail">{{__('Email')}} *</label>
+                                    <input class="form-control form-control-sm" id="checkoutBillingEmail" type="email"
+                                           placeholder="Email" required="" name="shipping[email]"
+                                           value="{{Customer::user()->email ?? ''}}">
+                                </div>
+
+                            </div>
+
                             <div class="col-12 col-md-6">
 
                                 <!-- First Name -->
                                 <div class="form-group">
                                     <label for="checkoutBillingFirstName">{{__('First Name')}} *</label>
                                     <input class="form-control form-control-sm" id="checkoutBillingFirstName"
-                                           type="text" placeholder="First Name" name="billing[first_name]"
+                                           type="text" placeholder="First Name" name="shipping[first_name]"
                                            value="{{Customer::user()->first_name ?? ''}}" required="">
                                 </div>
 
@@ -75,18 +87,8 @@
                                 <div class="form-group">
                                     <label for="checkoutBillingLastName">{{__('Last Name')}} *</label>
                                     <input class="form-control form-control-sm" id="checkoutBillingLastName" type="text"
-                                           placeholder="Last Name" required="" name="billing[last_name]"
+                                           placeholder="Last Name" required="" name="shipping[last_name]"
                                            value="{{Customer::user()->last_name ?? ''}}">
-                                </div>
-
-                            </div>
-                            <div class="col-12">
-
-                                <!-- Email -->
-                                <div class="form-group">
-                                    <label for="checkoutBillingEmail">{{__('Email')}} *</label>
-                                    <input class="form-control form-control-sm" id="checkoutBillingEmail" type="email"
-                                           placeholder="Email" required="" name="billing[email]" value="{{Customer::user()->email ?? ''}}">
                                 </div>
 
                             </div>
@@ -106,7 +108,8 @@
                                 <!-- Address Line 1 -->
                                 <div class="form-group">
                                     <label for="checkoutBillingAddress">{{__('Address Line')}} 1 *</label>
-                                    <input class="form-control form-control-sm" name="billing[address_line_1]" id="checkoutBillingAddress" type="text"
+                                    <input class="form-control form-control-sm" name="shipping[address_line_1]"
+                                           id="checkoutBillingAddress" type="text"
                                            placeholder="Address Line 1" required="">
                                 </div>
 
@@ -116,7 +119,8 @@
                                 <!-- Address Line 2 -->
                                 <div class="form-group">
                                     <label for="checkoutBillingAddressTwo">{{__('Address Line')}} 2</label>
-                                    <input class="form-control form-control-sm" name="billing[address_line_2]" id="checkoutBillingAddressTwo"
+                                    <input class="form-control form-control-sm" name="shipping[address_line_2]"
+                                           id="checkoutBillingAddressTwo"
                                            type="text" placeholder="Address Line 2 (optional)">
                                 </div>
 
@@ -127,7 +131,7 @@
                                 <div class="form-group">
                                     <label for="checkoutBillingTown">{{__('City')}} *</label>
                                     <input class="form-control form-control-sm" id="checkoutBillingTown" type="text"
-                                           placeholder="Town / City" required="" name="billing[city]">
+                                           placeholder="Town / City" required="" name="shipping[city]">
                                 </div>
 
                             </div>
@@ -137,7 +141,7 @@
                                 <div class="form-group">
                                     <label for="checkoutBillingZIP">{{__('Postcode')}} *</label>
                                     <input class="form-control form-control-sm" id="checkoutBillingZIP" type="text"
-                                           placeholder="ZIP / Postcode" required="required" name="billing[city]">
+                                           placeholder="ZIP / Postcode" required="required" name="shipping[postcode]">
                                 </div>
 
                             </div>
@@ -146,7 +150,8 @@
                                 <!-- Country -->
                                 <div class="form-group">
                                     <label for="checkoutBillingCountry">{{__('Country')}} *</label>
-                                    <select name="billing[country]" class="form-control form-control-sm" required id="checkoutBillingCountry">
+                                    <select name="shipping[country]" class="form-control form-control-sm" required
+                                            id="checkoutBillingCountry">
                                         <option value="AR">Argentina</option>
                                         <option value="PR">Portugal</option>
                                         <option value="PO">Poland</option>
@@ -161,7 +166,8 @@
                                 <!-- Mobile Phone -->
                                 <div class="form-group mb-0">
                                     <label for="checkoutBillingPhone">{{__('Mobile Phone')}} *</label>
-                                    <input class="form-control form-control-sm" name="billing[mobile]" id="checkoutBillingPhone" type="tel"
+                                    <input class="form-control form-control-sm" name="shipping[mobile]"
+                                           id="checkoutBillingPhone" type="tel"
                                            placeholder="{{__('Mobile Phone')}}" required="required">
                                 </div>
 
@@ -178,8 +184,9 @@
                                 <tr>
                                     <td>
                                         <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" value="Standard Shipping" id="checkoutShippingStandard"
-                                                   name="shipping" type="radio">
+                                            <input class="custom-control-input" value="Standard Shipping"
+                                                   id="checkoutShippingStandard"
+                                                   name="shipping_method" type="radio">
                                             <label class="custom-control-label text-body text-nowrap"
                                                    for="checkoutShippingStandard">
                                                 {{__('Standard Shipping')}}
@@ -192,8 +199,9 @@
                                 <tr>
                                     <td>
                                         <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" value="Express Shipping" id="checkoutShippingExpress"
-                                                   name="shipping" type="radio">
+                                            <input class="custom-control-input" value="Express Shipping"
+                                                   id="checkoutShippingExpress"
+                                                   name="shipping_method" type="radio">
                                             <label class="custom-control-label text-body text-nowrap"
                                                    for="checkoutShippingExpress">
                                                 Express Shipping
@@ -207,7 +215,7 @@
                                     <td>
                                         <div class="custom-control custom-radio">
                                             <input class="custom-control-input" id="checkoutShippingFree"
-                                                   name="shipping" type="radio" value="Free Shipping">
+                                                   name="shipping_method" type="radio" value="Free Shipping">
                                             <label class="custom-control-label text-body text-nowrap"
                                                    for="checkoutShippingFree">
                                                 Free Shipping
@@ -242,6 +250,30 @@
                             <div class="collapse" id="checkoutShippingAddressCollapse">
                                 <div class="row mt-6">
 
+                                    <div class="col-12 col-md-6">
+
+                                        <!-- First Name -->
+                                        <div class="form-group">
+                                            <label for="checkoutBillingFirstName">{{__('First Name')}} *</label>
+                                            <input class="form-control form-control-sm" id="checkoutBillingFirstName"
+                                                   type="text" placeholder="First Name" name="billing[first_name]"
+                                                   value="{{Customer::user()->first_name ?? ''}}" >
+                                        </div>
+
+                                    </div>
+                                    <div class="col-12 col-md-6">
+
+                                        <!-- Last Name -->
+                                        <div class="form-group">
+                                            <label for="checkoutBillingLastName">{{__('Last Name')}} *</label>
+                                            <input class="form-control form-control-sm" id="checkoutBillingLastName"
+                                                   type="text"
+                                                   placeholder="Last Name"  name="billing[last_name]"
+                                                   value="{{Customer::user()->last_name ?? ''}}">
+                                        </div>
+
+                                    </div>
+
                                     <div class="col-12">
 
                                         <!-- Address Line 1 -->
@@ -249,7 +281,7 @@
                                             <label for="checkoutShippingAddressLineOne">Address Line 1 *</label>
                                             <input class="form-control form-control-sm"
                                                    id="checkoutShippingAddressLineOne" type="text"
-                                                   placeholder="Address Line 1" name="shipping[address_line_1]">
+                                                   placeholder="Address Line 1" name="billing[address_line_1]">
                                         </div>
 
                                     </div>
@@ -260,7 +292,8 @@
                                             <label for="checkoutShippingAddressLineTwo">Address Line 2</label>
                                             <input class="form-control form-control-sm"
                                                    id="checkoutShippingAddressLineTwo" type="text"
-                                                   placeholder="Address Line 2 (optional)" name="shipping[address_line_2]">
+                                                   placeholder="Address Line 2 (optional)"
+                                                   name="billing[address_line_2]">
                                         </div>
 
                                     </div>
@@ -270,7 +303,7 @@
                                         <div class="form-group">
                                             <label for="checkoutShippingAddressTown">Town / City *</label>
                                             <input class="form-control form-control-sm" id="checkoutShippingAddressTown"
-                                                   type="text" placeholder="Town / City" name="shipping[city]">
+                                                   type="text" placeholder="Town / City" name="billing[city]">
                                         </div>
 
                                     </div>
@@ -280,35 +313,48 @@
                                         <div class="form-group">
                                             <label for="checkoutShippingAddressZIP">ZIP / Postcode *</label>
                                             <input class="form-control form-control-sm" id="checkoutShippingAddressZIP"
-                                                   type="text" placeholder="ZIP / Postcode" name="shipping[postcode]">
+                                                   type="text" placeholder="ZIP / Postcode" name="billing[postcode]">
                                         </div>
 
                                     </div>
 
-                                    <div class="col-12">
+                                    <div class="col-12 col-md-6">
 
                                         <!-- Country -->
                                         <div class="form-group">
                                             <label for="checkoutShippingAddressCountry">Country *</label>
                                             <input class="form-control form-control-sm"
                                                    id="checkoutShippingAddressCountry" type="text"
-                                                   placeholder="Country" name="shipping[country]">
+                                                   placeholder="Country" name="billing[country]">
                                         </div>
 
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12 col-md-6">
 
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="hidden" value="0" name="save_this_address">
-                                            <input class="custom-control-input" id="saveThisAddress" value="1"
-                                                   name="save_this_address" type="checkbox">
-                                            <label class="custom-control-label font-size-sm" data-toggle="collapse"
-                                                   for="saveThisAddress">
-                                                {{__('Save this address')}}?
-                                            </label>
+                                        <!-- Country -->
+                                        <div class="form-group">
+                                            <label for="checkoutShippingAddressCountry">Telephone *</label>
+                                            <input class="form-control form-control-sm"
+                                                   id="checkoutShippingAddressCountry" type="text"
+                                                   placeholder="Telephone" name="billing[mobile]">
                                         </div>
 
                                     </div>
+                                    @if(Customer::check())
+                                        <div class="col-12">
+
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="hidden" value="0" name="save_this_address">
+                                                <input class="custom-control-input" id="saveThisAddress" value="1"
+                                                       name="save_this_address" type="checkbox">
+                                                <label class="custom-control-label font-size-sm" data-toggle="collapse"
+                                                       for="saveThisAddress">
+                                                    {{__('Save this address')}}?
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
 
@@ -326,14 +372,15 @@
                                 <div class="custom-control custom-radio">
 
                                     <!-- Input -->
-                                    <input class="custom-control-input" id="checkoutPaymentCard" name="payment"
+                                    <input class="custom-control-input" id="checkoutPaymentCard" name="payment_method"
                                            type="radio" value="card" data-toggle="collapse" data-action="show"
                                            data-target="#checkoutPaymentCardCollapse">
 
                                     <!-- Label -->
                                     <label class="custom-control-label font-size-sm text-body text-nowrap"
                                            for="checkoutPaymentCard">
-                                        Credit Card <img class="ml-2" src="{{asset('frontend/assets/img/brands/color/cards.svg')}}"
+                                        Credit Card <img class="ml-2"
+                                                         src="{{asset('frontend/assets/img/brands/color/cards.svg')}}"
                                                          alt="...">
                                     </label>
 
@@ -401,7 +448,7 @@
                                 <div class="custom-control custom-radio">
 
                                     <!-- Input -->
-                                    <input class="custom-control-input" id="checkoutPaymentPaypal" name="payment"
+                                    <input class="custom-control-input" id="checkoutPaymentPaypal" name="payment_method"
                                            type="radio" data-toggle="collapse" data-action="hide" value="paypal"
                                            data-target="#checkoutPaymentCardCollapse">
 
@@ -420,7 +467,7 @@
                                 <div class="custom-control custom-radio">
 
                                     <!-- Input -->
-                                    <input class="custom-control-input" id="checkoutCOD" name="payment" type="radio"
+                                    <input class="custom-control-input" id="checkoutCOD" name="payment_method" type="radio"
                                            data-toggle="collapse" data-action="hide" value="cod"
                                            data-target="#checkoutPaymentCardCollapse">
 
@@ -438,7 +485,8 @@
                         </div>
 
                         <!-- Notes -->
-                        <textarea class="form-control form-control-sm mb-9 mb-md-0 font-size-xs" name="order_notes" rows="5"
+                        <textarea class="form-control form-control-sm mb-9 mb-md-0 font-size-xs" name="order_notes"
+                                  rows="5"
                                   placeholder="{{__('Order Notes (optional)')}}"></textarea>
 
                     </form>
@@ -495,7 +543,7 @@
                             <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x">
                                 <li class="list-group-item d-flex">
                                     <span>{{__('Subtotal')}}</span> <span
-                                        class="ml-auto font-size-sm">${{amount($cart->grand_total)}}</span>
+                                            class="ml-auto font-size-sm">${{amount($cart->grand_total)}}</span>
                                 </li>
                                 <li class="list-group-item d-flex">
                                     <span>{{__('Tax')}}</span> <span class="ml-auto font-size-sm">$0</span>
@@ -505,7 +553,7 @@
                                 </li>
                                 <li class="list-group-item d-flex font-size-lg font-weight-bold">
                                     <span>{{__('Total')}}</span> <span
-                                        class="ml-auto">${{amount($cart->grand_total_incl_tax)}}</span>
+                                            class="ml-auto">${{amount($cart->grand_total_incl_tax)}}</span>
                                 </li>
                             </ul>
                         </div>

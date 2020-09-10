@@ -130,6 +130,12 @@ Route::prefix('customer')->group(function () {
     Route::post('create', [RegisterController::class,'createPost'])
         ->name('customer.create.post');
 
+    Route::get('create/direct', [RegisterController::class,'createDirect'])
+        ->name('customer.create.direct');
+
+    Route::post('create/direct', [RegisterController::class,'createDirectPost'])
+        ->name('customer.create.direct.post');
+
     Route::get('logout', [LoginController::class,'logout'])
         ->name('customer.logout');
 
