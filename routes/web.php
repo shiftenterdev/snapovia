@@ -269,3 +269,10 @@ Route::prefix('adminportal')->name('admin.')->group(function () {
 
 Route::get('/{url}/{suburl?}/{producturl?}', UrlResolverControllerAlias::class)
     ->name('resolve');
+
+/**
+ * Vue page
+ */
+//Route::get('{path}', function () {
+//    return view('front.layouts.vue');
+//})->where('path', '(.*)');
