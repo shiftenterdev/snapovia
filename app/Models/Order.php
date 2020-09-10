@@ -37,4 +37,9 @@ class Order extends Model
     {
         return $this->hasOne(PaymentInfo::class);
     }
+
+    public function coupon()
+    {
+        return $this->belongsTo(CartPriceRule::class,'coupon_id','id');
+    }
 }

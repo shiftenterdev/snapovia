@@ -17,14 +17,16 @@ class CreateCartRulesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
-            $table->boolean('status');
+            $table->boolean('status')->default(1);
             $table->string('customer_group_id')->nullable();
-            $table->string('cuopon_code');
+            $table->string('coupon_code');
+            $table->integer('per_customer')->default(0);
+            $table->integer('max_use')->default(0);
             $table->datetime('from_date')->nullable();
             $table->datetime('to_date')->nullable();
             $table->integer('discount_amount');
-            $table->string('discount_type');
-            $table->string('conditions');
+            $table->enum('discount_type',['AMOUNT','PERCENT']);
+            $table->string('conditions')->nullable();
             $table->timestamps();
         });
     }

@@ -76,7 +76,7 @@
                                         <div class="col">
 
                                             <!-- Input -->
-                                            <input class="form-control form-control-sm" id="cartCouponCode" type="text" placeholder="{{__('Enter coupon code')}}*">
+                                            <input class="form-control form-control-sm" id="cartCouponCode" type="text" placeholder="{{__('Enter coupon code')}}*" required>
 
                                         </div>
                                         <div class="col-auto">
