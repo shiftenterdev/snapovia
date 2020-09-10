@@ -177,6 +177,17 @@ class Cart
         $this->set($quote);
     }
 
+    /**
+     * @param $coupon_id
+     */
+    public function applyCoupon($coupon_id):void
+    {
+        if ($this->check()) {
+            Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
+                ->update(['coupon_id'=>$coupon_id]);
+        }
+    }
+
     public function toOrder(): ?Order
     {
         if ($this->check()) {
