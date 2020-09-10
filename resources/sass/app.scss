@@ -1,1 +1,34 @@
 //
+.abs-alert {
+  position: fixed;
+  bottom: 20px;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  max-width: 800px;
+  box-shadow: 0 0 20px #aaa;
+}
+.loading {
+  z-index: 100;
+  min-height: 200px;
+  background-size: auto;
+  background: rgba(255, 255, 255, 0.43) url(../img/loader-1.gif) no-repeat center !important;
+}
+.loading > * {
+  visibility: hidden;
+}
+.alert-success{
+  border-radius: 0;
+  border: none;
+  background-color: #ff6f61;
+  color: #fff;
+  font-weight: 500;
+  border-left: 2px solid #1f1f1f;
+}
+.modal-dialog-vertical .modal-content{
+  height: 100%;
+}
+.input-qty{
+  width: 100px;
+}
