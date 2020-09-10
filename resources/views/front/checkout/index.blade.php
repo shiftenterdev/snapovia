@@ -178,6 +178,7 @@
                         <h6 class="mb-7">{{__('Shipping Details')}}</h6>
 
                         <!-- Shipping details -->
+
                         <div class="table-responsive mb-6">
                             <table class="table table-bordered table-sm table-hover mb-0">
                                 <tbody>
@@ -186,7 +187,7 @@
                                         <div class="custom-control custom-radio">
                                             <input class="custom-control-input" value="Standard Shipping"
                                                    id="checkoutShippingStandard"
-                                                   name="shipping_method" type="radio">
+                                                   name="shipping_method" type="radio" data-amount="800">
                                             <label class="custom-control-label text-body text-nowrap"
                                                    for="checkoutShippingStandard">
                                                 {{__('Standard Shipping')}}
@@ -201,7 +202,7 @@
                                         <div class="custom-control custom-radio">
                                             <input class="custom-control-input" value="Express Shipping"
                                                    id="checkoutShippingExpress"
-                                                   name="shipping_method" type="radio">
+                                                   name="shipping_method" type="radio" data-amount="1200 ">
                                             <label class="custom-control-label text-body text-nowrap"
                                                    for="checkoutShippingExpress">
                                                 Express Shipping
@@ -215,7 +216,7 @@
                                     <td>
                                         <div class="custom-control custom-radio">
                                             <input class="custom-control-input" id="checkoutShippingFree"
-                                                   name="shipping_method" type="radio" value="Free Shipping">
+                                                   name="shipping_method" type="radio" value="Free Shipping" data-amount="0">
                                             <label class="custom-control-label text-body text-nowrap"
                                                    for="checkoutShippingFree">
                                                 Free Shipping
@@ -546,14 +547,14 @@
                                             class="ml-auto font-size-sm">${{amount($cart->grand_total)}}</span>
                                 </li>
                                 <li class="list-group-item d-flex">
-                                    <span>{{__('Tax')}}</span> <span class="ml-auto font-size-sm">$0</span>
+                                    <span>{{__('Tax')}}</span> <span class="ml-auto font-size-sm">${{amount(amount($cart->grand_total)*tax_balance_amount())}}</span>
                                 </li>
                                 <li class="list-group-item d-flex">
-                                    <span>{{__('Shipping')}}</span> <span class="ml-auto font-size-sm">$10.00</span>
+                                    <span>{{__('Shipping')}}</span> <span class="ml-auto font-size-sm">$12.00</span>
                                 </li>
                                 <li class="list-group-item d-flex font-size-lg font-weight-bold">
                                     <span>{{__('Total')}}</span> <span
-                                            class="ml-auto">${{amount($cart->grand_total_incl_tax)}}</span>
+                                            class="ml-auto">${{amount(amount($cart->grand_total)*tax_balance_amount())}}</span>
                                 </li>
                             </ul>
                         </div>

@@ -25,7 +25,7 @@
                             {{__('View My Orders')}}
                         </a>
                     @else
-                        <a class="btn btn-dark" href="{{route('customer.account.direct')}}">
+                        <a class="btn btn-dark" href="{{route('customer.create.direct')}}">
                             {{__('Create a new account')}}
                         </a>
                     @endif

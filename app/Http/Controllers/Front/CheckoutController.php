@@ -29,7 +29,7 @@ class CheckoutController extends Controller
             $order->shipping()->create([
                 'first_name'     => $request->shipping['first_name'],
                 'last_name'      => $request->shipping['last_name'],
-//                'email'          => $request->shipping['email'],
+                //                'email'          => $request->shipping['email'],
                 'address_line_1' => $request->shipping['address_line_1'],
                 'address_line_2' => $request->shipping['address_line_2'],
                 'city'           => $request->shipping['city'],
@@ -38,7 +38,7 @@ class CheckoutController extends Controller
                 'postcode'       => $request->shipping['postcode'],
             ]);
 
-            if(!$request->save_this_address){
+            if (!$request->save_this_address) {
 
                 $order->billing()->create([
                     'first_name'     => $request->shipping['first_name'],
@@ -51,7 +51,7 @@ class CheckoutController extends Controller
                     'postcode'       => $request->shipping['postcode'],
                 ]);
 
-            }else {
+            } else {
 
                 $order->billing()->create([
                     'first_name'     => $request->billing['first_name'],
@@ -64,6 +64,17 @@ class CheckoutController extends Controller
                     'postcode'       => $request->billing['postcode'],
                 ]);
 
+            }
+
+            $shipping_amount = $this->getShipping($request->shipping_method);
+
+            if ($shipping_amount) {
+                $order->update([
+                    'shipping_amount'          => $shipping_amount,
+                    'shipping_amount_incl_tax' => $shipping_amount * shipping_tax_balance(),
+                    'grand_total'              => $order->grand_total + $shipping_amount * shipping_tax_balance(),
+                    'grand_total_incl_tax'         => $order->grand_total + $shipping_amount * shipping_tax_balance(),
+                ]);
             }
 
             DB::commit();
@@ -80,9 +91,21 @@ class CheckoutController extends Controller
 
     }
 
+    private function getShipping($shipping)
+    {
+        switch ($shipping){
+            case 'Standard Shipping':
+                return 800;
+            case 'Express Shipping':
+                return 1200;
+            default:
+                return 0;
+        }
+    }
+
     public function cart()
     {
-        if(!Cart::check()){
+        if (!Cart::check()) {
             Cart::create();
         }
         return view('front.checkout.cart');

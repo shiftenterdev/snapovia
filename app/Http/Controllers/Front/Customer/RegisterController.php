@@ -25,6 +25,6 @@ class RegisterController extends Controller
 
     public function createDirectPost(Request $request)
     {
-        
+
     }
 }
