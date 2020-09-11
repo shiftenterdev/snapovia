@@ -21,7 +21,7 @@ class CreateCatalogRulesTable extends Migration
             $table->string('customer_group_id')->nullable();
             $table->datetime('from_date')->nullable();
             $table->datetime('to_date')->nullable();
-            $table->integer('discount_amount');
+            $table->decimal('discount_amount',10,2);
             $table->string('discount_type');
             $table->string('conditions');
             $table->boolean('apply_subsequent_rule')->default(0);

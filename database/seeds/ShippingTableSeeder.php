@@ -15,15 +15,15 @@ class ShippingTableSeeder extends Seeder
             [
                 'title'       => 'Standard Shipping',
                 'description' => 'Delivery in 5 - 7 working days',
-                'amount'      => 8,
+                'amount'      => 8.00,
             ], [
                 'title'       => 'Express Shipping',
                 'description' => 'Delivery in 3 - 5 working days',
-                'amount'      => 12,
+                'amount'      => 12.00,
             ], [
                 'title'       => 'Free Shipping',
                 'description' => 'Delivery in 10 - 14 working days',
-                'amount'      => 0,
+                'amount'      => 0.00,
             ],
         ];
 

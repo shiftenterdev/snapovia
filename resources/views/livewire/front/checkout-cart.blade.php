@@ -1,20 +1,18 @@
 <div>
 
-    <div class="flash-alert" wire:loading wire:target="removeFromCart">
-        Product removing from cart ....
-    </div>
-
     <section class="pt-7 pb-12">
         <div class="container">
             <div class="row">
                 <div class="col-12">
-
-                    <!-- Heading -->
                     <h3 class="mb-10 text-center">{{__('Shopping Cart')}}</h3>
-
                 </div>
             </div>
             <div class="row">
+                <div class="col-12" wire:loading wire:target="removeFromCart">
+                    <div class="alert alert-warning">
+                        Product removing from cart ....
+                    </div>
+                </div>
                 @if(count($cart->items))
                     <div class="col-12 col-md-7">
 
@@ -118,11 +116,11 @@
                                         </li>
                                     @endif
                                     <li class="list-group-item d-flex">
-                                        <span>{{__('Tax')}}</span> <span class="ml-auto font-size-sm">$0</span>
+                                        <span>{{__('Tax('.$tax.'%)')}}</span> <span class="ml-auto font-size-sm">${{$tax_amount}}</span>
                                     </li>
                                     <li class="list-group-item d-flex font-size-lg font-weight-bold">
                                         <span>{{__('Total')}}</span> <span
-                                                class="ml-auto font-size-sm">${{amount($cart->grand_total_incl_tax)}}</span>
+                                                class="ml-auto font-size-sm">${{$sub_total_incl_tax}}</span>
                                     </li>
                                     <li class="list-group-item font-size-sm text-center text-gray-500">
                                         {{__('Shipping cost calculated at Checkout')}} *

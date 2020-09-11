@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-12 text-center">
 
-                    <!-- Heading -->
+
                     <h3 class="mb-10">{{__('My Wishlist')}}</h3>
 
                 </div>
@@ -23,21 +23,21 @@
             <div class="row">
                 <div class="col-12 col-md-3">
 
-                    <!-- Nav -->
+
                     @include('front.customer.partials.menu')
 
                 </div>
                 <div class="col-12 col-md-9 col-lg-8 offset-lg-1">
 
-                    <!-- Products -->
+
                     <div class="row">
 
                         @if(!count(Customer::user()->wishlist))
-                            <div class="col-6 col-md-4">
-                                <div class="alert alert-warning">No items in the wishlist</div>
+                            <div class="col-12">
+                                <div class="alert alert-warning">No items in your wishlist 😔</div>
                             </div>
                         @endif
-                    <!-- Item -->
+
                         @foreach(Customer::user()->wishlist as $product)
                             <div class="col-6 col-md-4">
                                 <div class="card mb-7">
@@ -51,18 +51,18 @@
                                             <i class="fe fe-x"></i>
                                         </a>
 
-                                        <!-- Button -->
+
                                         <button class="btn btn-xs btn-block btn-dark card-btn" data-toggle="modal"
                                                 data-target="#modalProduct">
                                             <i class="fe fe-eye mr-2 mb-1"></i> {{__('Quick View')}}
                                         </button>
 
-                                        <!-- Image -->
+
                                         <img class="card-img-top" src="{{$product->sample_image}}" alt="...">
 
                                     </div>
 
-                                    <!-- Body -->
+
                                     <div class="card-body font-weight-bold text-center">
                                         <a class="text-body" href="/{{$product->url_key}}">{{$product->name}}</a> <br>
                                         <span class="text-muted">${{amount($product->price)}}</span>

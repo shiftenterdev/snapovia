@@ -12,6 +12,7 @@ use App\Models\Order;
 use App\Models\Product;
 use App\Models\Quote;
 use App\Models\QuoteItems;
+use App\Models\Shipping;
 
 
 /**
@@ -84,6 +85,9 @@ class Cart
 
     public function get()
     {
+        if(!$this->check()) {
+            $this->create();
+        }
         return session(self::QUOTE_SESSION_KEY) ?? null;
     }
 
@@ -156,6 +160,22 @@ class Cart
         $this->set($quote);
     }
 
+    public function applyShipping($shipping_id)
+    {
+        $shipping = Shipping::find($shipping_id);
+        $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
+            ->first();
+        $shipping_amount = $shipping->amount;
+        $shipping_amount_incl_tax = $shipping->amount;
+        $quote->update([
+            'shipping_amount'          => $shipping_amount,
+            'shipping_amount_incl_tax' => $shipping_amount_incl_tax,
+            'grand_total'              => $quote->grand_total,
+            'grand_total_incl_tax'     => $quote->grand_total,
+        ]);
+        $this->set($quote);
+    }
+
     public function updateQty($sku, $qty)
     {
         $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
@@ -180,11 +200,11 @@ class Cart
     /**
      * @param $coupon_id
      */
-    public function applyCoupon($coupon_id):void
+    public function applyCoupon($coupon_id): void
     {
         if ($this->check()) {
             Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
-                ->update(['coupon_id'=>$coupon_id]);
+                ->update(['coupon_id' => $coupon_id]);
         }
     }
 

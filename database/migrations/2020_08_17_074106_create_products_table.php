@@ -23,7 +23,7 @@ class CreateProductsTable extends Migration
             $table->boolean('is_new')->default(0);
             $table->boolean('featured')->default(0);
             $table->string('tax_class_id',64)->default('None');
-            $table->decimal('qty')->default(30);
+            $table->integer('qty')->default(30);
             $table->string('color')->nullable();
             $table->string('menufacture')->nullable();
             $table->string('size')->nullable();
@@ -31,8 +31,8 @@ class CreateProductsTable extends Migration
             $table->boolean('enable_stock')->default(1);
             $table->decimal('weight')->default(1);
             $table->integer('visibility')->default(3);
-            $table->integer('price');
-            $table->integer('special_price')->default(0.00);
+            $table->decimal('price',10,2);
+            $table->decimal('special_price')->default(0.00);
             $table->dateTime('special_price_from')->nullable();
             $table->dateTime('special_price_to')->nullable();
             $table->text('short_description')->nullable();
