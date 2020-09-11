@@ -24,7 +24,7 @@ class CreateCartRulesTable extends Migration
             $table->integer('max_use')->default(0);
             $table->datetime('from_date')->nullable();
             $table->datetime('to_date')->nullable();
-            $table->integer('discount_amount');
+            $table->decimal('discount_amount',10,2);
             $table->enum('discount_type',['AMOUNT','PERCENT']);
             $table->string('conditions')->nullable();
             $table->timestamps();

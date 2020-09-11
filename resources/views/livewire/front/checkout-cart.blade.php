@@ -8,10 +8,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-
-                    <!-- Heading -->
                     <h3 class="mb-10 text-center">{{__('Shopping Cart')}}</h3>
-
                 </div>
             </div>
             <div class="row">
@@ -118,11 +115,11 @@
                                         </li>
                                     @endif
                                     <li class="list-group-item d-flex">
-                                        <span>{{__('Tax')}}</span> <span class="ml-auto font-size-sm">$0</span>
+                                        <span>{{__('Tax('.$tax.'%)')}}</span> <span class="ml-auto font-size-sm">${{$tax_amount}}</span>
                                     </li>
                                     <li class="list-group-item d-flex font-size-lg font-weight-bold">
                                         <span>{{__('Total')}}</span> <span
-                                                class="ml-auto font-size-sm">${{amount($cart->grand_total_incl_tax)}}</span>
+                                                class="ml-auto font-size-sm">${{$sub_total_incl_tax}}</span>
                                     </li>
                                     <li class="list-group-item font-size-sm text-center text-gray-500">
                                         {{__('Shipping cost calculated at Checkout')}} *

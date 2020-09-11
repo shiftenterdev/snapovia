@@ -154,7 +154,7 @@ class ProductSeeder extends Seeder
         $sku = 10000;
         for ($i = 1; $i <= env('SAMPLE_PRODUCT_COUNT', 500); $i++) {
             $productType = $this->productType[rand(0, 1)];
-            $price = rand(1000, 99900);
+            $price = rand(10000, 60000)/100;
             $product = \App\Models\Product::create([
                 'sku'               => ++$sku,
                 'name'              => ucfirst($faker->productName),
@@ -198,7 +198,7 @@ class ProductSeeder extends Seeder
                         'is_new'            => rand(0, 1),
                         'featured'          => rand(0, 1),
                         'visibility'        => 1,
-                        'price'             => rand(1000, 99900),
+                        'price'             => rand(10000, 60000)/100,
                         'short_description' => $faker->paragraph,
                         'description'       => $faker->paragraph,
                         'meta_title'        => $faker->word,

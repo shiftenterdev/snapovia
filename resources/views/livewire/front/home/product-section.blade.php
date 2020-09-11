@@ -77,7 +77,7 @@
                                     </a>
                                 </div>
                                 <div class="font-weight-bold text-muted">
-                                    ${{amount($product->price)}}
+                                    ${{$product->price}}
                                 </div>
                             </div>
                         </div>
@@ -149,7 +149,7 @@
 
                                 <!-- Price -->
                                 <div class="font-weight-bold text-muted">
-                                    ${{amount($product->price)}}
+                                    ${{$product->price}}
                                 </div>
 
                             </div>

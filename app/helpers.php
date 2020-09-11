@@ -54,11 +54,18 @@ if (!function_exists('visibility')) {
     }
 }
 
+if (!function_exists('_a')) {
+    function _a($amount)
+    {
+        if (is_float($amount))
+            return number_format($amount,2,'.','');
+        return $amount;
+    }
+}
+
 if (!function_exists('amount')) {
     function amount($amount)
     {
-        if (is_int($amount))
-            return number_format($amount / 100, 2,'.','');
         if (is_float($amount))
             return number_format($amount,2,'.','');
         return $amount;

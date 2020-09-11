@@ -19,7 +19,7 @@ class CartPriceRuleSeeder extends Seeder
             'max_use'           => 10,
             'customer_group_id' => 0,
             'coupon_code'       => '1122G',
-            'discount_amount'   => 20,
+            'discount_amount'   => 20.00,
             'discount_type'     => 'PERCENT',
             'conditions'        => '{}'
         ]);

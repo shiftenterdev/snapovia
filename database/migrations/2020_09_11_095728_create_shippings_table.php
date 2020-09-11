@@ -18,7 +18,7 @@ class CreateShippingsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->boolean('status')->default(1);
-            $table->integer('amount');
+            $table->decimal('amount',10,2);
             $table->integer('country_id')->default(0);
             $table->timestamps();
         });

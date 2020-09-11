@@ -145,15 +145,12 @@
 
                             </div>
                             <div class="col-12">
-
-                                <!-- Mobile Phone -->
                                 <div class="form-group mb-0">
                                     <label for="checkoutBillingPhone">{{__('Mobile Phone')}} *</label>
                                     <input class="form-control form-control-sm" name="shipping[mobile]"
                                            id="checkoutBillingPhone" type="tel"
                                            placeholder="{{__('Mobile Phone')}}" required="required">
                                 </div>
-
                             </div>
                         </div>
 
@@ -171,7 +168,7 @@
                                             <div class="custom-control custom-radio">
                                                 <input class="custom-control-input" value="{{$shippingMethod->id}}"
                                                        id="checkoutShippingStandard{{$loop->iteration}}"
-                                                       name="shipping_method_id" type="radio" data-amount="800">
+                                                       name="shipping_method_id" type="radio" wire:model="shipping_id">
                                                 <label class="custom-control-label text-body text-nowrap"
                                                        for="checkoutShippingStandard{{$loop->iteration}}">
                                                     {{__($shippingMethod->title)}}
@@ -481,6 +478,7 @@
 
                                         <!-- Text -->
                                         <div class="font-size-sm text-muted">
+                                            Qty: {{$product->qty}} <br>
                                             Size: M <br>
                                             Color: Red
                                         </div>
@@ -498,18 +496,24 @@
                             <ul class="list-group list-group-sm list-group-flush-y list-group-flush-x">
                                 <li class="list-group-item d-flex">
                                     <span>{{__('Subtotal')}}</span> <span
-                                            class="ml-auto font-size-sm">${{amount($cart->grand_total)}}</span>
+                                            class="ml-auto font-size-sm">${{$sub_total}}</span>
                                 </li>
+                                @if($tax)
+                                    <li class="list-group-item d-flex">
+                                        <span>{{__('Subtotal incl Tax')}}</span> <span
+                                                class="ml-auto font-size-sm">${{$sub_total_incl_tax}}</span>
+                                    </li>
                                 <li class="list-group-item d-flex">
-                                    <span>{{__('Tax')}}</span> <span
-                                            class="ml-auto font-size-sm">${{amount(amount($cart->grand_total)*tax_balance_amount())}}</span>
+                                    <span>{{__('Tax('.$tax.'%)')}}</span> <span
+                                            class="ml-auto font-size-sm">${{$tax_amount}}</span>
                                 </li>
+                                @endif
                                 <li class="list-group-item d-flex">
-                                    <span>{{__('Shipping')}}</span> <span class="ml-auto font-size-sm">$12.00</span>
+                                    <span>{{__('Shipping')}}</span> <span class="ml-auto font-size-sm">${{$shipping_amount}}</span>
                                 </li>
                                 <li class="list-group-item d-flex font-size-lg font-weight-bold">
                                     <span>{{__('Total')}}</span> <span
-                                            class="ml-auto">${{amount(amount($cart->grand_total)*tax_balance_amount())}}</span>
+                                            class="ml-auto">${{$grand_total_incl_tax}}</span>
                                 </li>
                             </ul>
                         </div>
