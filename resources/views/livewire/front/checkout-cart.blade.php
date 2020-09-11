@@ -78,7 +78,7 @@
                                         <div class="col">
                                             <input class="form-control form-control-sm" wire:model="coupon_code"
                                                    id="cartCouponCode" type="text"
-                                                   placeholder="{{__('Enter coupon code')}}*" required>
+                                                   placeholder="{{__('Enter coupon code')}}*">
 
                                         </div>
                                         <div class="col-auto">

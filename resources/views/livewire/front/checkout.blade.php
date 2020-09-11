@@ -11,7 +11,12 @@
                                data-toggle="modal"
                                href="#modalCustomerLogin">{{__('Click here to login')}}</a>
                         </p>
-                        <livewire:front.checkout.login/>
+                        <div class="modal fade" id="modalCustomerLogin" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <livewire:front.checkout.login/>
+                            </div>
+                        </div>
+
                     @endif
                 </div>
                 @if(session()->has('error'))
@@ -132,11 +137,9 @@
                                     <label for="checkoutBillingCountry">{{__('Country')}} *</label>
                                     <select name="shipping[country]" class="form-control form-control-sm" required
                                             id="checkoutBillingCountry">
-                                        <option value="AR">Argentina</option>
-                                        <option value="PR">Portugal</option>
-                                        <option value="PO">Poland</option>
-                                        <option value="AU">Australia</option>
-                                        <option value="SV">Sweden</option>
+                                        @foreach(get_all_countries() as $country)
+                                        <option value="{{$country->iso}}">{!! $country->name !!}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
@@ -162,53 +165,23 @@
                         <div class="table-responsive mb-6">
                             <table class="table table-bordered table-sm table-hover mb-0">
                                 <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" value="Standard Shipping"
-                                                   id="checkoutShippingStandard"
-                                                   name="shipping_method" type="radio" data-amount="800">
-                                            <label class="custom-control-label text-body text-nowrap"
-                                                   for="checkoutShippingStandard">
-                                                {{__('Standard Shipping')}}
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>Delivery in 5 - 7 working days</td>
-                                    <td>$8.00</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" value="Express Shipping"
-                                                   id="checkoutShippingExpress"
-                                                   name="shipping_method" type="radio" data-amount="1200 ">
-                                            <label class="custom-control-label text-body text-nowrap"
-                                                   for="checkoutShippingExpress">
-                                                Express Shipping
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>Delivery in 3 - 5 working days</td>
-                                    <td>$12.00</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="custom-control custom-radio">
-                                            <input class="custom-control-input" id="checkoutShippingFree"
-                                                   name="shipping_method" type="radio" value="Free Shipping" data-amount="0">
-                                            <label class="custom-control-label text-body text-nowrap"
-                                                   for="checkoutShippingFree">
-                                                Free Shipping
-                                            </label>
-                                        </div>
-                                    </td>
-                                    <td>Living won't the He one every subdue
-                                        meat replenish face was you morning
-                                        firmament darkness.
-                                    </td>
-                                    <td>$0.00</td>
-                                </tr>
+                                @foreach($shippingMethods as $shippingMethod)
+                                    <tr>
+                                        <td>
+                                            <div class="custom-control custom-radio">
+                                                <input class="custom-control-input" value="{{$shippingMethod->id}}"
+                                                       id="checkoutShippingStandard{{$loop->iteration}}"
+                                                       name="shipping_method_id" type="radio" data-amount="800">
+                                                <label class="custom-control-label text-body text-nowrap"
+                                                       for="checkoutShippingStandard{{$loop->iteration}}">
+                                                    {{__($shippingMethod->title)}}
+                                                </label>
+                                            </div>
+                                        </td>
+                                        <td>{!! $shippingMethod->description !!}</td>
+                                        <td>${{$shippingMethod->amount}}</td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -238,7 +211,7 @@
                                             <label for="checkoutBillingFirstName">{{__('First Name')}} *</label>
                                             <input class="form-control form-control-sm" id="checkoutBillingFirstName"
                                                    type="text" placeholder="First Name" name="billing[first_name]"
-                                                   value="{{Customer::user()->first_name ?? ''}}" >
+                                                   value="{{Customer::user()->first_name ?? ''}}">
                                         </div>
 
                                     </div>
@@ -249,7 +222,7 @@
                                             <label for="checkoutBillingLastName">{{__('Last Name')}} *</label>
                                             <input class="form-control form-control-sm" id="checkoutBillingLastName"
                                                    type="text"
-                                                   placeholder="Last Name"  name="billing[last_name]"
+                                                   placeholder="Last Name" name="billing[last_name]"
                                                    value="{{Customer::user()->last_name ?? ''}}">
                                         </div>
 
@@ -448,7 +421,8 @@
                                 <div class="custom-control custom-radio">
 
                                     <!-- Input -->
-                                    <input class="custom-control-input" id="checkoutCOD" name="payment_method" type="radio"
+                                    <input class="custom-control-input" id="checkoutCOD" name="payment_method"
+                                           type="radio"
                                            data-toggle="collapse" data-action="hide" value="cod"
                                            data-target="#checkoutPaymentCardCollapse">
 
@@ -527,7 +501,8 @@
                                             class="ml-auto font-size-sm">${{amount($cart->grand_total)}}</span>
                                 </li>
                                 <li class="list-group-item d-flex">
-                                    <span>{{__('Tax')}}</span> <span class="ml-auto font-size-sm">${{amount(amount($cart->grand_total)*tax_balance_amount())}}</span>
+                                    <span>{{__('Tax')}}</span> <span
+                                            class="ml-auto font-size-sm">${{amount(amount($cart->grand_total)*tax_balance_amount())}}</span>
                                 </li>
                                 <li class="list-group-item d-flex">
                                     <span>{{__('Shipping')}}</span> <span class="ml-auto font-size-sm">$12.00</span>
