@@ -138,7 +138,7 @@
                                     <select name="shipping[country]" class="form-control form-control-sm" required
                                             id="checkoutBillingCountry">
                                         @foreach(get_all_countries() as $country)
-                                        <option value="{{$country->iso}}">{!! $country->name !!}</option>
+                                        <option value="{{$country->iso}}">{{$country->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>

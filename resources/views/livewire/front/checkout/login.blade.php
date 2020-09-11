@@ -1,7 +1,7 @@
 <div class="modal-content">
 
     <!-- Close -->
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <button type="button" class="customer-modal-close close" data-dismiss="modal" aria-label="Close">
         <i class="fe fe-x" aria-hidden="true"></i>
     </button>
 
@@ -45,3 +45,5 @@
     </div>
 
 </div>
+
+

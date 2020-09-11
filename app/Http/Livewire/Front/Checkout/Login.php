@@ -31,6 +31,7 @@ class Login extends Component
             ]);
 
             if(Customer::attempt(['email'=>$this->email,'password'=>$this->password])){
+                $this->dispatchBrowserEvent('closeLoginModal');
                 $this->emitUp('refreshCheckout');
             }
         }catch (\Exception $e) {

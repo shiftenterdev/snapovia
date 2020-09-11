@@ -15,3 +15,11 @@
 
     <x-front.shopping-info/>
 @endsection
+
+@section('script')
+    <script>
+        window.addEventListener('closeLoginModal', event => {
+            document.querySelector('.customer-modal-close').click();
+        });
+    </script>
+@endsection
