@@ -72,32 +72,6 @@ if (!function_exists('amount')) {
     }
 }
 
-if (!function_exists('tax_info')) {
-    function tax_info()
-    {
-        return [
-            'amount'               => 15,
-            'apply_shipping'       => true,
-            'apply_after_shipping' => true,
-        ];
-    }
-}
-
-if (!function_exists('tax_balance_amount')) {
-    function tax_balance_amount()
-    {
-        return tax_info()['amount'] ? ((float)(1 + (0.01 * tax_info()['amount']))) : 1;
-    }
-}
-
-if (!function_exists('shipping_tax_balance')) {
-    function shipping_tax_balance()
-    {
-        return tax_info()['apply_shipping'] ? ((float)(1 + (0.01 * tax_info()['apply_shipping']))) : 1;
-    }
-}
-
-
 if(!function_exists('get_all_countries')){
     function get_all_countries()
     {

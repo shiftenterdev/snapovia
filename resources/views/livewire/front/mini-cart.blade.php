@@ -36,8 +36,8 @@
                                 <!--Footer -->
                                 <div class="d-flex align-items-center">
 
-                                    <!-- Select -->
-                                    <input type="number" class="form-control input-qty" value="{{$product->qty}}">
+                                    <!-- Qty -->
+                                    <input type="number" wire:input.debounce.500ms="updateQty({{$product->sku}},$event.target.value)" class="form-control input-qty" value="{{$product->qty}}">
 
                                     <!-- Remove -->
                                     <a class="font-size-xs text-gray-400 ml-auto" wire:click="removeFromCart({{$product->sku}})" href="javascript:">

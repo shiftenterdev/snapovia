@@ -48,7 +48,7 @@
                                             <!--Footer -->
                                             <div class="d-flex align-items-center">
 
-                                                <input type="number" class="form-control input-qty"
+                                                <input type="number" wire:input.debounce.1s="updateQty({{$product->sku}},$event.target.value)" class="form-control input-qty"
                                                        value="{{$product->qty}}">
 
                                                 <!-- Remove -->
@@ -89,7 +89,7 @@
                             </div>
 
                             <div class="col-12 col-md-auto">
-                                <button class="btn btn-sm btn-outline-dark">{{__('Update Cart')}}</button>
+                                <button class="btn btn-sm btn-outline-dark" type="button">{{__('Update Cart')}}</button>
                             </div>
                             @if(session()->has('success'))
                                 <div class="col-12 my-3">
