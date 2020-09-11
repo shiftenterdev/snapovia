@@ -10,7 +10,7 @@ use Livewire\Component;
 class Checkout extends Component
 {
 
-    public $tax = 15,
+    public $tax = 0,
         $cart = [],
         $sub_total = 0,
         $sub_total_incl_tax = 0,
@@ -25,6 +25,7 @@ class Checkout extends Component
 
     public function mount()
     {
+        $this->tax = config('site.sales.tax');
         $this->cart = Cart::get();
         $this->cartCalculate();
     }

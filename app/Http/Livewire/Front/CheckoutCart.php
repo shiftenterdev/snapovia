@@ -14,7 +14,7 @@ class CheckoutCart extends Component
         $sub_total = 0,
         $sub_total_incl_tax = 0,
         $tax_amount = 0,
-        $tax = 15;
+        $tax = 0;
 
 
     public function updated($field)
@@ -26,6 +26,7 @@ class CheckoutCart extends Component
 
     public function mount()
     {
+        $this->tax = config('site.sales.tax');
         $this->cart = Cart::get();
         $this->cartCalculate();
     }
