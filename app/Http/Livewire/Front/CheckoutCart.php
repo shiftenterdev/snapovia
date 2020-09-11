@@ -43,6 +43,13 @@ class CheckoutCart extends Component
         return view('livewire.front.checkout-cart');
     }
 
+    public function updateQty($sku,$qty)
+    {
+        Cart::updateQty($sku,$qty);
+        $this->cart = Cart::get();
+        $this->cartCalculate();
+    }
+
     public function applyCoupon()
     {
         $rule = CartPriceRule::where('coupon_code', $this->coupon_code)

@@ -85,10 +85,44 @@ class Cart
 
     public function get()
     {
-        if(!$this->check()) {
+        if (!$this->check()) {
             $this->create();
         }
         return session(self::QUOTE_SESSION_KEY) ?? null;
+    }
+
+    public function check()
+    {
+        if (session(self::QUOTE_SESSION_KEY)) {
+            $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
+                ->first();
+            if (!$quote) {
+                $this->remove();
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public function remove(): void
+    {
+        session()->remove(self::QUOTE_SESSION_KEY);
+    }
+
+    public function create(): void
+    {
+        $customer_id = 0;
+        if (\App\Facades\Customer::check()) {
+            $customer_id = \App\Facades\Customer::user()->customer_id;
+            $quote = Quote::where('customer_id', $customer_id)->first();
+            if (!$quote) {
+                $quote = Quote::create(['customer_ip' => request()->ip(), 'customer_id' => $customer_id]);
+            }
+        } else {
+            $quote = Quote::create(['customer_ip' => request()->ip(), 'customer_id' => $customer_id]);
+        }
+        $this->set($quote);
     }
 
     public function addToCart($sku, $qty = 1): void
@@ -126,40 +160,6 @@ class Cart
         $this->set($quote);
     }
 
-    public function check()
-    {
-        if (session(self::QUOTE_SESSION_KEY)) {
-            $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
-                ->first();
-            if (!$quote) {
-                $this->remove();
-                return false;
-            }
-            return true;
-        }
-        return false;
-    }
-
-    public function remove(): void
-    {
-        session()->remove(self::QUOTE_SESSION_KEY);
-    }
-
-    public function create(): void
-    {
-        $customer_id = 0;
-        if (\App\Facades\Customer::check()) {
-            $customer_id = \App\Facades\Customer::user()->customer_id;
-            $quote = Quote::where('customer_id', $customer_id)->first();
-            if (!$quote) {
-                $quote = Quote::create(['customer_ip' => request()->ip(), 'customer_id' => $customer_id]);
-            }
-        } else {
-            $quote = Quote::create(['customer_ip' => request()->ip(), 'customer_id' => $customer_id]);
-        }
-        $this->set($quote);
-    }
-
     public function applyShipping($shipping_id)
     {
         $shipping = Shipping::find($shipping_id);
@@ -176,8 +176,12 @@ class Cart
         $this->set($quote);
     }
 
-    public function updateQty($sku, $qty)
+    public function updateQty($sku, $qty = 1)
     {
+        $qty = abs($qty);
+        if ($qty < 1) {
+            $qty = 1;
+        }
         $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
             ->firstOrFail();
         $quote->items()->where('sku', $sku)->update([
