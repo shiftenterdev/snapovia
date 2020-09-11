@@ -6,9 +6,12 @@
                     <h3 class="mb-4">{{__('Checkout')}}</h3>
                     @if(!Customer::check())
                         <p class="mb-10">
-                            {{__('Already have an account')}}? <a class="font-weight-bold text-reset"
-                                                                  href="{{route('customer.login')}}?source=checkout">{{__('Click here to login')}}</a>
+                            {{__('Already have an account')}}?
+                            <a class="font-weight-bold text-reset"
+                               data-toggle="modal"
+                               href="#modalCustomerLogin">{{__('Click here to login')}}</a>
                         </p>
+                        <x-front.customer-login/>
                     @endif
                 </div>
                 @if(session()->has('error'))
