@@ -7,9 +7,14 @@ return [
     'meta_name'        => '',
     'meta_description' => '',
 
+    'deal'     => [
+        'live'  => true,
+        'title' => '⚡️ Happy Holiday Deals on Everything ⚡️'
+    ],
+
 
     // Store Information
-    'store'            => [
+    'store'    => [
         'address'   => 'St. Street',
         'city'      => 'Adelate',
         'postcode'  => '12345',
@@ -20,13 +25,13 @@ return [
 
 
     //Catalog
-    'catalog'          => [
+    'catalog'  => [
         'product_price' => 'exclude_tax', //'exclude_tax','include_tax'
     ],
 
 
     // Sales Information
-    'sales'            => [
+    'sales'    => [
         'tax'                 => '12.5',
         'shipping_inclue_tax' => true,
         'apply_tax_on'        => 'sub_total',//'grand_total','sub_total'
@@ -34,7 +39,7 @@ return [
     ],
 
     //Customer Section
-    'customer'         => [
+    'customer' => [
         'prefix'       => false,
         'postfix'      => false,
         'middle_name'  => false,
@@ -45,12 +50,12 @@ return [
     ],
 
     // Checkout
-    'checkout'         => [
+    'checkout' => [
 
     ],
 
     //Development
-    'dev'              => [
+    'dev'      => [
 
     ],
 ];
