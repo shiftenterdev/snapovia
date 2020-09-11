@@ -2,23 +2,7 @@
 <footer class="bg-dark bg-cover @@classList" style="background-image: url(/frontend/assets/img/patterns/pattern-2.svg)">
     <div class="py-12 border-bottom border-gray-700">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-10 col-lg-8 col-xl-6">
-                    <h5 class="mb-7 text-center text-white">{{__('Want style Ideas and Treats?')}}</h5>
-                    <form class="mb-11">
-                        <div class="form-row align-items-start">
-                            <div class="col">
-                                <input type="email" class="form-control form-control-gray-700 form-control-lg"
-                                       placeholder="{{__('Enter Email')}} *" required>
-                            </div>
-                            <div class="col-auto">
-                                <button type="submit" class="btn btn-gray-500 btn-lg">{{__('Subscribe')}}</button>
-                            </div>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
+            <livewire:front.subscription/>
             <div class="row">
                 <div class="col-12 col-md-3">
 
