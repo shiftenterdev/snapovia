@@ -4,11 +4,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10 col-lg-8 col-xl-6">
-
-                    <!-- Heading -->
                     <h5 class="mb-7 text-center text-white">{{__('Want style Ideas and Treats?')}}</h5>
-
-                    <!-- Form -->
                     <form class="mb-11">
                         <div class="form-row align-items-start">
                             <div class="col">

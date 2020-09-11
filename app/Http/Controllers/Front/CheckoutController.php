@@ -15,7 +15,7 @@ class CheckoutController extends Controller
         if (!Cart::check() || !count($cart->items)) {
             return redirect()->route('cart');
         }
-        return view('front.checkout.index', compact('cart'));
+        return view('front.checkout.index');
     }
 
     public function submit(OrderSubmitRequest $request)
