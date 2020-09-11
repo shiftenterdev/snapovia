@@ -1,9 +1,5 @@
 <div>
 
-    <div class="flash-alert" wire:loading wire:target="removeFromCart">
-        Product removing from cart ....
-    </div>
-
     <section class="pt-7 pb-12">
         <div class="container">
             <div class="row">
@@ -12,6 +8,11 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-12" wire:loading wire:target="removeFromCart">
+                    <div class="alert alert-warning">
+                        Product removing from cart ....
+                    </div>
+                </div>
                 @if(count($cart->items))
                     <div class="col-12 col-md-7">
 
