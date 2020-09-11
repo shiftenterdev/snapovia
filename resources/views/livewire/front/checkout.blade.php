@@ -11,7 +11,7 @@
                                data-toggle="modal"
                                href="#modalCustomerLogin">{{__('Click here to login')}}</a>
                         </p>
-                        <x-front.customer-login/>
+                        <livewire:front.checkout.login/>
                     @endif
                 </div>
                 @if(session()->has('error'))

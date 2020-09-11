@@ -10,7 +10,9 @@ class Checkout extends Component
 {
 
     public $tax = 0,
-        $shipping = 0, $email = '', $password = '',$customer = [];
+        $shipping = 0,$customer = (object)[];
+
+    protected $listeners = ['refreshCheckout'];
 
     public function render()
     {
@@ -19,17 +21,9 @@ class Checkout extends Component
     }
 
 
-    public function CustomerLogin()
+    public function refreshCheckout()
     {
-        $credentials = [
-            'email'    => $this->email,
-            'password' => $this->password
-        ];
-
-        if (Customer::attempt($credentials)) {
-            $this->customer = Customer::user();
-        }
-        session()->flash('error', 'Login failed');
+        $this->customer = Customer::user();
     }
 
 
