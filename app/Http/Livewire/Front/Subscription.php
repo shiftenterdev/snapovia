@@ -11,7 +11,11 @@ class Subscription extends Component
     public function updated($field)
     {
         $this->validateOnly($field, [
-            'email' => 'email|required',
+            'email' => 'email|unique:subscriptions',
+        ], [
+            'email.unique'   => 'This email already subscribed',
+            'email.required' => 'Email Address required',
+            'email.email'    => 'Please check your email address.'
         ]);
     }
 
@@ -20,17 +24,16 @@ class Subscription extends Component
         return view('livewire.front.subscription');
     }
 
-    public function submit()
+    public function subscribe()
     {
-        try {
-            $this->validate([
-                'email' => 'required|email',
-            ]);
 
-            \App\Models\Subscription::create(['email' => $this->email]);
-            session()->flush('success', 'Subscription completed successfully');
-        }catch (\Exception $e){
-            session()->flush('error', 'you are already subscribed');
-        }
+        $this->validate([
+            'email' => 'required|email|unique:subscriptions',
+        ]);
+
+        \App\Models\Subscription::create(['email' => $this->email]);
+        $this->reset();
+        session()->flash('success', 'Subscription completed successfully');
+
     }
 }
