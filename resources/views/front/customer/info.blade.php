@@ -1,25 +1,12 @@
 @extends('front.layouts.default')
 @section('title','My Account Info | ')
 @section('content')
-    <nav class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
 
-                    <!-- Breadcrumb -->
-                    <ol class="breadcrumb mb-0 font-size-xs text-gray-400">
-                        <li class="breadcrumb-item">
-                            <a class="text-gray-400" href="{{route('welcome')}}">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active">
-                            {{__('My Account')}}
-                        </li>
-                    </ol>
-
-                </div>
-            </div>
-        </div>
-    </nav>
+    <x-front.breadcrumb>
+        <x-slot name="active">
+            {{__('My Account')}}
+        </x-slot>
+    </x-front.breadcrumb>
 
     <section class="pt-7 pb-12">
         <div class="container">

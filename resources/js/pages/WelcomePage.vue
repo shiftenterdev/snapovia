@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <BaseLayout>
+
         <HighlightMessage/>
 
         <Banner/>
@@ -15,7 +16,8 @@
         <Review/>
 
         <Brand/>
-    </div>
+
+    </BaseLayout>
 </template>
 
 <script>
@@ -27,8 +29,11 @@
     import Brand from "../components/Home/Brand";
     import Banner from "../components/Home/Banner";
     import HighlightMessage from "../components/Home/HighlightMessage";
+    import BaseLayout from "../layouts/BaseLayout";
+
     export default {
         components: {
+            BaseLayout,
             HighlightMessage,
             Banner,
             Feature,
@@ -36,7 +41,7 @@
             ProductSection,
             Countdown,
             Review,
-            Brand
+            Brand,
         }
     }
 </script>

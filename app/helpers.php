@@ -58,9 +58,9 @@ if (!function_exists('amount')) {
     function amount($amount)
     {
         if (is_int($amount))
-            return number_format($amount / 100, 2);
+            return number_format($amount / 100, 2,'.','');
         if (is_float($amount))
-            return number_format($amount,2);
+            return number_format($amount,2,'.','');
         return $amount;
     }
 }
@@ -87,5 +87,13 @@ if (!function_exists('shipping_tax_balance')) {
     function shipping_tax_balance()
     {
         return tax_info()['apply_shipping'] ? ((float)(1 + (0.01 * tax_info()['apply_shipping']))) : 1;
+    }
+}
+
+
+if(!function_exists('get_all_countries')){
+    function get_all_countries()
+    {
+        return \App\Models\Country::select(['iso','name'])->get();
     }
 }
