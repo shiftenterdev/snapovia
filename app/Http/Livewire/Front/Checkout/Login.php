@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Front\Checkout;
 
+use App\Facades\Cart;
 use App\Facades\Customer;
 use Livewire\Component;
 
@@ -31,11 +32,17 @@ class Login extends Component
             ]);
 
             if(Customer::attempt(['email'=>$this->email,'password'=>$this->password])){
-                $this->dispatchBrowserEvent('closeLoginModal');
-                $this->emitUp('refreshCheckout');
+                $this->updateStatus();
             }
         }catch (\Exception $e) {
             session()->flash('error', 'Customer Login failed');
         }
+    }
+
+    private function updateStatus()
+    {
+        $this->dispatchBrowserEvent('closeLoginModal');
+        $this->dispatchBrowserEvent('cart-updated', ['count' => Cart::count()]);
+        $this->emitUp('refreshCheckout');
     }
 }

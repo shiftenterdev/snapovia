@@ -19,7 +19,7 @@
 @section('script')
     <script>
         window.addEventListener('closeLoginModal', event => {
-            document.querySelector('.customer-modal-close').click();
+            document.querySelector('#modalCustomerLogin .close').click();
         });
     </script>
 @endsection
