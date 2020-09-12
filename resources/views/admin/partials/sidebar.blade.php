@@ -1,14 +1,11 @@
 <aside class="main-sidebar sidebar-dark-primary">
-    <!-- Brand Logo -->
     <a href="{{route('admin.dashboard')}}" class="brand-link">
         <img src="{{asset('adminhtml/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle"
              style="opacity: .8">
         <span class="brand-text">{{env('APP_NAME')}} Admin</span>
     </a>
 
-    <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent nav-flat" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
@@ -16,9 +13,7 @@
                 <li class="nav-item">
                     <a href="{{route('admin.dashboard')}}" class="nav-link {{request()->is('adminportal/dashboard')?'active':''}}">
                         <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Dashboard
-                        </p>
+                        <p>Dashboard</p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
@@ -59,19 +54,16 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.invoice.index')}}" class="nav-link {{request()->is('adminportal/invoice*')?'active':''}}">
-
                                 <p>Invoice</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.shipment.index')}}" class="nav-link {{request()->is('adminportal/shipment*')?'active':''}}">
-
                                 <p>Shipment</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.refund.index')}}" class="nav-link {{request()->is('adminportal/refund*')?'active':''}}">
-
                                 <p>Refund</p>
                             </a>
                         </li>
@@ -100,25 +92,21 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.abandon-cart.index')}}" class="nav-link {{request()->is('adminportal/abandon-cart*')?'active':''}}">
-
                                 <p>Abandon Cart</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.email-template.index')}}" class="nav-link {{request()->is('adminportal/email-template*')?'active':''}}">
-
                                 <p>Email Template</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.email-template.index')}}" class="nav-link {{request()->is('adminportal/newsletter*')?'active':''}}">
-
-                                <p>Newsletter</p>
+                            <a href="{{route('admin.subscribers.index')}}" class="nav-link {{request()->is('adminportal/subscribers*')?'active':''}}">
+                                <p>Subscribers</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('admin.url-rewrite.index')}}" class="nav-link {{request()->is('adminportal/url-rewrite*')?'active':''}}">
-
                                 <p>Url Rewrite</p>
                             </a>
                         </li>
@@ -277,7 +265,5 @@
                 </li>
             </ul>
         </nav>
-        <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
 </aside>
