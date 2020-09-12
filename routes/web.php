@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\MediaController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RefundController;
+use App\Http\Controllers\Admin\SubscriberController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\ShipmentController;
 use App\Http\Controllers\Admin\UserController;
@@ -248,6 +249,8 @@ Route::prefix('adminportal')->name('admin.')->group(function () {
         Route::resource('abandon-cart', AbandonCartController::class);
 
         Route::resource('email-template', EmailTemplateController::class);
+
+        Route::resource('subscribers', SubscriberController::class);
 
         Route::resource('url-rewrite', UrlRewriteController::class);
 

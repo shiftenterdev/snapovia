@@ -5,6 +5,8 @@
  */
 namespace App\Http\Livewire\Front;
 
+use App\Mail\SubscriptionMail;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class Subscription extends Component
@@ -35,6 +37,7 @@ class Subscription extends Component
         ]);
 
         \App\Models\Subscription::create(['email' => $this->email]);
+        Mail::to($this->email)->queue(new SubscriptionMail());
         $this->reset();
         session()->flash('success', 'Subscription completed successfully');
 
