@@ -3,27 +3,31 @@
 @section('title','Configuration')
 
 @section('content')
-    <!-- Content Header (Page header) -->
+
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <a href="{{route('admin.cms-block.create')}}" class="btn btn-dark">
+                    <h1 class="m-0 text-dark">Configuration</h1>
+                </div>
+                <div class="col-sm-6">
+                    <a href="{{route('admin.cms-block.create')}}" class="btn btn-dark float-sm-right">
                         <i class="fas fa-save"></i> Save onfiguration
                     </a>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.content-header -->
+
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-4">
+                    <h4>Basic Information</h4>
+                    <p>Info text</p>
+                </div>
+                <div class="col-8">
                     <div class="card">
-                        <div class="card-header p-0 bg-gradient-info d-flex">
-                            <h3 class="card-title p-3"><strong>Basic</strong></h3>
-                        </div>
                         <div class="card-body table-responsive">
                             <div class="form-group">
                                 <label for="">Shop Title</label>
@@ -53,12 +57,14 @@
                     </div>
                 </div>
             </div>
+            <hr>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-4">
+                    <h4>Catalog</h4>
+                    <p>Info text</p>
+                </div>
+                <div class="col-8">
                     <div class="card">
-                        <div class="card-header p-0 bg-gradient-info d-flex">
-                            <h3 class="card-title p-3"><strong>Catalog</strong></h3>
-                        </div>
                         <div class="card-body table-responsive">
                             <div class="form-group">
                                 <label for="">Manage Inventory</label>
@@ -68,12 +74,14 @@
                     </div>
                 </div>
             </div>
+            <hr>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-4">
+                    <h4>Sales</h4>
+                    <p>Info text</p>
+                </div>
+                <div class="col-8">
                     <div class="card">
-                        <div class="card-header p-0 bg-gradient-info d-flex">
-                            <h3 class="card-title p-3"><strong>Sales</strong></h3>
-                        </div>
                         <div class="card-body table-responsive">
                             <div class="form-group">
                                 <label for="">Order Prefix</label>
@@ -83,12 +91,14 @@
                     </div>
                 </div>
             </div>
+            <hr>
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-4">
+                    <h4>Customer</h4>
+                    <p>Info text</p>
+                </div>
+                <div class="col-8">
                     <div class="card">
-                        <div class="card-header p-0 bg-gradient-info d-flex">
-                            <h3 class="card-title p-3"><strong>Customer</strong></h3>
-                        </div>
                         <div class="card-body table-responsive">
                             <div class="form-group">
                                 <label for="">Customer Name Prefix</label>

@@ -7,6 +7,7 @@ return [
     'meta_name'        => '',
     'meta_description' => '',
 
+    //Promo/Deal for the shop
     'deal'     => [
         'live'  => true,
         'title' => '⚡️ Happy Holiday Deals on Everything ⚡️'
@@ -26,15 +27,23 @@ return [
 
     //Catalog
     'catalog'  => [
-        'product_price' => 'exclude_tax', //'exclude_tax','include_tax'
+        //Front Area
+        'product_price'          => 'exclude_tax', //'exclude_tax','include_tax'
+        'display_out_of_stock'   => true,
+        'manage_inventory'       => true,
+
+        //Admin area
+        'product_grid_per_page'  => 20,
+        'category_grid_per_page' => 20,
     ],
 
 
     // Sales Information
     'sales'    => [
-        'tax'                 => '12.5',
-        'shipping_inclue_tax' => true,
-        'apply_tax_on'        => 'sub_total',//'grand_total','sub_total'
+        'tax'                      => '12.5',
+        'shipping_inclue_tax'      => true,
+        'apply_tax_on'             => 'sub_total',//'grand_total','sub_total'
+        'apply_tax_after_discount' => true,
 
     ],
 
@@ -49,13 +58,30 @@ return [
         'country'      => true
     ],
 
+    //Vendor Section
+    'vendor'   => [
+        'enable'                          => true,
+        'enable_login'                    => false,
+        'enable_registration'             => false,
+        'registration_approval_required'  => true,
+        'order_confirm_approval_required' => true,
+    ],
+
     // Checkout
     'checkout' => [
 
     ],
 
+    //Admin
+    'admin'    => [
+        'password_update'       => 'recommended',//'recommended','force'
+        'password_update_cycle' => '30',//in days, 0 for disable
+        'customer_notification' => true,
+        'order_notification'    => true,
+    ],
+
     //Development
     'dev'      => [
-
+        'show_debug_tool' => env('APP_DEBUG', false),
     ],
 ];
