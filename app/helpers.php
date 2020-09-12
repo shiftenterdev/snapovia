@@ -75,6 +75,8 @@ if (!function_exists('amount')) {
 if(!function_exists('get_all_countries')){
     function get_all_countries()
     {
-        return \App\Models\Country::select(['iso','name'])->get();
+        return cache()->remember('countries',60*60*24,function(){
+            return \App\Models\Country::select(['iso','name'])->get();
+        });
     }
 }

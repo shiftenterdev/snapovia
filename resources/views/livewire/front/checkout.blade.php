@@ -43,17 +43,42 @@
 
                         <!-- Billing details -->
                         <div class="row mb-9">
-                            <div class="col-12">
+                            @if(Customer::check())
 
-                                <!-- Email -->
-                                <div class="form-group">
-                                    <label for="checkoutBillingEmail">{{__('Email')}} *</label>
-                                    <input class="form-control form-control-sm" id="checkoutBillingEmail" type="email"
-                                           placeholder="Email" required="" name="shipping[email]"
-                                           value="{{Customer::user()->email ?? ''}}">
+                                <div class="col-12">
+
+                                    <!-- Email -->
+                                    <div class="form-group">
+                                        <label for="checkoutBillingEmail">{{__('Email')}} *</label>
+                                        <input class="form-control form-control-sm" id="checkoutBillingEmail"
+                                               type="email"
+                                               placeholder="Email" required=""
+                                               name="shipping[email]"
+                                               value="{{Customer::user()->email ?? ''}}">
+                                    </div>
+
                                 </div>
 
-                            </div>
+                            @else
+                                <div class="col-12">
+
+                                    <!-- Email -->
+                                    <div class="form-group">
+                                        <label for="checkoutBillingEmail">{{__('Email')}} *</label>
+                                        <input class="form-control form-control-sm" id="checkoutBillingEmail"
+                                               type="email"
+                                               placeholder="Email" wire:model.lazy="email" required=""
+                                               name="shipping[email]">
+                                    </div>
+
+                                </div>
+
+                                @if($guest_notify)
+                                    <div class="col-12">
+                                        <div class="alert alert-info">{!! $guest_notify !!}</div>
+                                    </div>
+                                @endif
+                            @endif
 
                             <div class="col-12 col-md-6">
 
@@ -138,7 +163,7 @@
                                     <select name="shipping[country]" class="form-control form-control-sm" required
                                             id="checkoutBillingCountry">
                                         @foreach(get_all_countries() as $country)
-                                        <option value="{{$country->iso}}">{{$country->name}}</option>
+                                            <option value="{{$country->iso}}">{{$country->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -503,13 +528,14 @@
                                         <span>{{__('Subtotal incl Tax')}}</span> <span
                                                 class="ml-auto font-size-sm">${{$sub_total_incl_tax}}</span>
                                     </li>
-                                <li class="list-group-item d-flex">
-                                    <span>{{__('Tax('.$tax.'%)')}}</span> <span
-                                            class="ml-auto font-size-sm">${{$tax_amount}}</span>
-                                </li>
+                                    <li class="list-group-item d-flex">
+                                        <span>{{__('Tax('.$tax.'%)')}}</span> <span
+                                                class="ml-auto font-size-sm">${{$tax_amount}}</span>
+                                    </li>
                                 @endif
                                 <li class="list-group-item d-flex">
-                                    <span>{{__('Shipping')}}</span> <span class="ml-auto font-size-sm">${{$shipping_amount}}</span>
+                                    <span>{{__('Shipping')}}</span> <span
+                                            class="ml-auto font-size-sm">${{$shipping_amount}}</span>
                                 </li>
                                 <li class="list-group-item d-flex font-size-lg font-weight-bold">
                                     <span>{{__('Total')}}</span> <span

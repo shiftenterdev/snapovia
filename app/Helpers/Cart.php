@@ -80,7 +80,7 @@ class Cart
 
     public function count(): int
     {
-        return $this->get() ? count($this->get()->items) : 0;
+        return count(session(self::QUOTE_SESSION_KEY)->items) ?? 0;
     }
 
     public function get()

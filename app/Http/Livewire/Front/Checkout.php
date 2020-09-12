@@ -16,6 +16,8 @@ class Checkout extends Component
         $sub_total_incl_tax = 0,
         $tax_amount = 0,
         $grand_total = 0,
+        $email = '',
+        $guest_notify = '',
         $grand_total_incl_tax = 0,
         $shipping_amount = 0,
         $shipping_id = null,
@@ -32,7 +34,9 @@ class Checkout extends Component
 
     public function render()
     {
-        $shippingMethods = Shipping::get();
+        $shippingMethods = cache()->remember('shipping_method',60*60,function(){
+            return Shipping::get();
+        });
         return view('livewire.front.checkout', compact('shippingMethods'));
     }
 
@@ -42,6 +46,18 @@ class Checkout extends Component
         Cart::applyShipping($value);
         $this->cart = Cart::get();
         $this->cartCalculate();
+    }
+
+    public function updatedEmail($value)
+    {
+        $exists = \App\Models\Customer::where('email',$value)
+            ->first();
+        if($exists){
+            $this->guest_notify = 'You are already registered. Do you want to login ? <a data-toggle="modal"
+                               href="#modalCustomerLogin"><ins>Click  to Login</ins></a>';
+        }else{
+            $this->guest_notify = '';
+        }
     }
 
 

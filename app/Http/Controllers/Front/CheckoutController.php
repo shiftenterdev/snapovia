@@ -11,8 +11,7 @@ class CheckoutController extends Controller
 {
     public function index()
     {
-        $cart = Cart::get();
-        if (!Cart::check() || !count($cart->items)) {
+        if (!Cart::count()) {
             return redirect()->route('cart');
         }
         return view('front.checkout.index');
