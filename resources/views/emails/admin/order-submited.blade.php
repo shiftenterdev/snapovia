@@ -1,7 +1,7 @@
 @component('mail::message')
-# Hi, {{$order->shipping->first_name}}
+# Hi, System Admin
 
-## Your order(#{{$order->order_id}}) processed successfully.
+## New order(#{{$order->order_id}}) processed successfully.
 
 ### Shipping
 {{$order->shipping->first_name.' '.$order->shipping->last_name}},
@@ -18,15 +18,20 @@ T:{{$order->shipping->telephone}}
 T:{{$order->billing->telephone}}
 
 @component('mail::table')
-| Item       |   Sku   | Qty         |Unit Price| Row total  |
-| ---------- |:-------:| -----------:|:---------|:-----------|
+| Item      |   Sku   | Qty         |Unit Price| Row total  |
+|:----------|:-------:|:-----------:|---------:|-----------:|
 @foreach($order->items as $item)
 | {{$item->name}} | {{$item->sku}} | {{$item->qty}} | {{$item->price}} | {{$item->price * $item->qty}} |
 @endforeach
-|      |  |       | Sub total   | $100 |
-|      |  |       | Tax         |   $0 |
-|      |  |       | Grand total | $200 |
+|      |  |       | Sub total                                 | {{$order->grand_total}} |
+|      |  |       | Tax({{config('site.sales.tax')}}%)        | {{$order->tax}} |
+|      |  |       | Shipping                                  | {{$order->shipping_amount_incl_tax}} |
+|      |  |       | Grand total                               | {{$order->grand_total_incl_tax}} |
 @endcomponent
+
+@if($order->notes)
+### Note: {{$order->notes}}
+@endif
 
 You will be notified futher progress by email.
 

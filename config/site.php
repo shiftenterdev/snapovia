@@ -2,20 +2,19 @@
 
 return [
 
-
     'name'             => 'Snapovia ',
     'meta_name'        => '',
     'meta_description' => '',
 
     //Promo/Deal for the shop
-    'deal'     => [
+    'deal'             => [
         'live'  => true,
         'title' => '⚡️ Happy Holiday Deals on Everything ⚡️'
     ],
 
 
     // Store Information
-    'store'    => [
+    'store'            => [
         'address'   => 'St. Street',
         'city'      => 'Adelate',
         'postcode'  => '12345',
@@ -26,7 +25,7 @@ return [
 
 
     //Catalog
-    'catalog'  => [
+    'catalog'          => [
         //Front Area
         'product_price'          => 'exclude_tax', //'exclude_tax','include_tax'
         'display_out_of_stock'   => true,
@@ -39,7 +38,7 @@ return [
 
 
     // Sales Information
-    'sales'    => [
+    'sales'            => [
         'tax'                      => '12.5',
         'shipping_inclue_tax'      => true,
         'apply_tax_on'             => 'sub_total',//'grand_total','sub_total'
@@ -48,7 +47,7 @@ return [
     ],
 
     //Customer Section
-    'customer' => [
+    'customer'         => [
         'prefix'       => false,
         'postfix'      => false,
         'middle_name'  => false,
@@ -59,7 +58,7 @@ return [
     ],
 
     //Vendor Section
-    'vendor'   => [
+    'vendor'           => [
         'enable'                          => true,
         'enable_login'                    => false,
         'enable_registration'             => false,
@@ -68,12 +67,13 @@ return [
     ],
 
     // Checkout
-    'checkout' => [
+    'checkout'         => [
 
     ],
 
     //Admin
-    'admin'    => [
+    'admin'            => [
+        'email'                 => 'bappa2du@gmail.com',
         'password_update'       => 'recommended',//'recommended','force'
         'password_update_cycle' => '30',//in days, 0 for disable
         'customer_notification' => true,
@@ -81,7 +81,7 @@ return [
     ],
 
     //Development
-    'dev'      => [
+    'dev'              => [
         'show_debug_tool' => env('APP_DEBUG', false),
     ],
 ];

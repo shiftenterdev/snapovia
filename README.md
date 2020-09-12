@@ -71,6 +71,24 @@ $ php artisan serve
 > Login: `customer@mail.com` \
 > Password: `password`
 
+## For Queue to work
+Set in `.env` file
+```sh
+QUEUE_CONNECTION=database
+```
+Then run (in console or cron job)
+```sh
+php artisan queue:work
+```
+To check the failed jobs
+```sh
+php artisan queue:failed 
+``` 
+To send them in queue list again
+```sh
+php artisan queue:retry all 
+```
+
 
 ## Want to contribute in `shiftenterdev/butikshop`
 

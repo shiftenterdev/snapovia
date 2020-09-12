@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Events\OrderSubmitted;
 use App\Facades\Cart;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderSubmitRequest;
+use App\Models\Shipping;
 use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
@@ -28,7 +30,6 @@ class CheckoutController extends Controller
             $order->shipping()->create([
                 'first_name'     => $request->shipping['first_name'],
                 'last_name'      => $request->shipping['last_name'],
-                //                'email'          => $request->shipping['email'],
                 'address_line_1' => $request->shipping['address_line_1'],
                 'address_line_2' => $request->shipping['address_line_2'],
                 'city'           => $request->shipping['city'],
@@ -65,20 +66,23 @@ class CheckoutController extends Controller
 
             }
 
-            $shipping_amount = $this->getShipping($request->shipping_method);
+            $shipping_amount = $this->getShipping($request->shipping_method_id);
+
+            $tax = config('site.sales.tax');
 
             if ($shipping_amount) {
                 $order->update([
                     'shipping_amount'          => $shipping_amount,
-                    'shipping_amount_incl_tax' => $shipping_amount * shipping_tax_balance(),
-                    'grand_total'              => $order->grand_total + $shipping_amount * shipping_tax_balance(),
-                    'grand_total_incl_tax'         => $order->grand_total + $shipping_amount * shipping_tax_balance(),
+                    'shipping_amount_incl_tax' => $shipping_amount + $shipping_amount / 100 * $tax,
+                    'grand_total'              => $order->grand_total + $shipping_amount + $shipping_amount / 100 * $tax,
+                    'grand_total_incl_tax'     => $order->grand_total + $shipping_amount + $shipping_amount / 100 * $tax,
                 ]);
             }
 
             DB::commit();
 
             if ($order) {
+                event(new OrderSubmitted($order));
                 return view('front.checkout.success', compact('order'));
             }
             return redirect()->back()->with('error', __('Order cannot complete at this moment'));
@@ -90,16 +94,9 @@ class CheckoutController extends Controller
 
     }
 
-    private function getShipping($shipping)
+    private function getShipping($shipping_id)
     {
-        switch ($shipping){
-            case 'Standard Shipping':
-                return 800;
-            case 'Express Shipping':
-                return 1200;
-            default:
-                return 0;
-        }
+        return Shipping::find($shipping_id)->amount;
     }
 
     public function cart()

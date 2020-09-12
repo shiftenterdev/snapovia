@@ -83,12 +83,39 @@ class Cart
         return count(session(self::QUOTE_SESSION_KEY)->items) ?? 0;
     }
 
-    public function get()
+    public function addToCart($sku, $qty = 1): void
     {
         if (!$this->check()) {
             $this->create();
         }
-        return session(self::QUOTE_SESSION_KEY) ?? null;
+        $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
+            ->first();
+        $product = Product::whereSku($sku)->first();
+
+        $item = QuoteItems::where('quote_id', $quote->id)
+            ->where('product_id', $product->id)
+            ->first();
+
+        if (empty($item)) {
+            $quote->items()->Create(
+                [
+                    'product_id'     => $product->id,
+                    'name'           => $product->name,
+                    'sku'            => $product->sku,
+                    'product_type'   => $product->product_type,
+                    'qty'            => $qty,
+                    'price'          => $product->price,
+                    'discount_price' => 0
+                ]
+            );
+        } else {
+            $quote->items()->where('product_id', $product->id)->Update(
+                [
+                    'qty' => $item->qty + $qty,
+                ]
+            );
+        }
+        $this->set($quote);
     }
 
     public function check()
@@ -121,41 +148,6 @@ class Cart
             }
         } else {
             $quote = Quote::create(['customer_ip' => request()->ip(), 'customer_id' => $customer_id]);
-        }
-        $this->set($quote);
-    }
-
-    public function addToCart($sku, $qty = 1): void
-    {
-        if (!$this->check()) {
-            $this->create();
-        }
-        $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
-            ->first();
-        $product = Product::whereSku($sku)->first();
-
-        $item = QuoteItems::where('quote_id', $quote->id)
-            ->where('product_id', $product->id)
-            ->first();
-
-        if (empty($item)) {
-            $quote->items()->Create(
-                [
-                    'product_id'     => $product->id,
-                    'name'           => $product->name,
-                    'sku'            => $product->sku,
-                    'product_type'   => $product->product_type,
-                    'qty'            => $qty,
-                    'price'          => $product->price,
-                    'discount_price' => 0
-                ]
-            );
-        } else {
-            $quote->items()->where('product_id', $product->id)->Update(
-                [
-                    'qty' => $item->qty + $qty,
-                ]
-            );
         }
         $this->set($quote);
     }
@@ -222,6 +214,10 @@ class Cart
             $order->customer_id = \App\Facades\Customer::check() ? \App\Facades\Customer::user()->id : 0;
             $order->status = 'processing';
             $order->payment_status = 'processing';
+            $order->email = request('email');
+            $order->delivery_status = 'pending';
+            $order->shipping_amount = $quote->shipping_amount;
+            $order->shipping_amount_incl_tax = $quote->shipping_amount_incl_tax;
             $order->delivery_status = 'pending';
             $order->payment_method = request('payment_method', 'cod');
             $order->shipping_method = request('shipping_method', 'free');
@@ -242,11 +238,11 @@ class Cart
 
                 $grand_total += $item->qty * $item->price;
             }
-            $tax = tax_balance_amount();
+            $tax = config('site.sales.tax');
             $order->update([
                 'grand_total'          => $grand_total,
-                'grand_total_incl_tax' => $grand_total * $tax,
-                'tax'                  => tax_info()['amount'],
+                'grand_total_incl_tax' => $grand_total + $grand_total / 100 * $tax,
+                'tax'                  => $grand_total / 100 * $tax,
             ]);
             $quote->items()->delete();
             $quote->delete();
@@ -255,6 +251,14 @@ class Cart
 
         }
         return null;
+    }
+
+    public function get()
+    {
+        if (!$this->check()) {
+            $this->create();
+        }
+        return session(self::QUOTE_SESSION_KEY) ?? null;
     }
 
 }
