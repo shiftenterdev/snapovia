@@ -1,11 +1,14 @@
 {
-    "name": "shiftenterdev/butikshop",
+    "name": "shiftenterdev/snapovia",
     "type": "project",
     "description": "The customized ecommerce framework based on laravel",
     "keywords": [
         "framework",
         "ecommerce",
         "butikshop",
+        "snapovia",
+        "opensource",
+        "free ecommerce package",
         "laravel ecommerce",
         "eshop",
         "e-commerce",

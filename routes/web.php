@@ -269,9 +269,8 @@ Route::prefix('adminportal')->name('admin.')->group(function () {
 });
 
 //Test routes
-Route::get('mail',function (){
+Route::get('test-mail',function (){
     event(new \App\Events\CustomerRegistered(\App\Models\Customer::find(1)));
-//    Mail::to('bappa2du@gmail.com')->queue(new \App\Mail\CustomerRegistrationMail());
     return 'event processed successfully';
 });
 
