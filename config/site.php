@@ -26,15 +26,23 @@ return [
 
     //Catalog
     'catalog'  => [
-        'product_price' => 'exclude_tax', //'exclude_tax','include_tax'
+        //Front Area
+        'product_price'          => 'exclude_tax', //'exclude_tax','include_tax'
+        'display_out_of_stock'   => true,
+        'manage_inventory'       => true,
+
+        //Admin area
+        'product_grid_per_page'  => 20,
+        'category_grid_per_page' => 20,
     ],
 
 
     // Sales Information
     'sales'    => [
-        'tax'                 => '12.5',
-        'shipping_inclue_tax' => true,
-        'apply_tax_on'        => 'sub_total',//'grand_total','sub_total'
+        'tax'                      => '12.5',
+        'shipping_inclue_tax'      => true,
+        'apply_tax_on'             => 'sub_total',//'grand_total','sub_total'
+        'apply_tax_after_discount' => true,
 
     ],
 
@@ -56,6 +64,6 @@ return [
 
     //Development
     'dev'      => [
-
+        'show_debug_tool' => env('APP_DEBUG',false),
     ],
 ];

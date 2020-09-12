@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static bool check()
  * @method static bool removeFromCart($sku)
  * @method static bool updateQty($sku,$qty)
- * @method static bool addToCart($sku)
+ * @method static bool addToCart($sku,$qty=1)
  * @method static int count()
  * @method static void applyShipping($shipping_id)
  * @method static void create()
