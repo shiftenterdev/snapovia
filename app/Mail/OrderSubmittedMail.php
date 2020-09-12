@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class OrderCompleteMail extends Mailable
+class OrderSubmittedMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -36,6 +36,6 @@ class OrderCompleteMail extends Mailable
     public function build()
     {
         return $this->subject('🛍 Order #'.$this->order->order_id.' placed on Snapovia')
-            ->markdown('emails.customer.order-complete');
+            ->markdown('emails.admin.order-submited');
     }
 }

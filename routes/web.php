@@ -48,6 +48,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\CmsPageController;
 use App\Http\Controllers\Admin\CmsBlockController;
 use App\Http\Controllers\Admin\DashboardController;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/locale/{p}', LanguageController::class)
@@ -267,6 +268,14 @@ Route::prefix('adminportal')->name('admin.')->group(function () {
     });
 });
 
+//Test routes
+Route::get('mail',function (){
+    event(new \App\Events\CustomerRegistered(\App\Models\Customer::find(1)));
+//    Mail::to('bappa2du@gmail.com')->queue(new \App\Mail\CustomerRegistrationMail());
+    return 'event processed successfully';
+});
+
+// Url resolver
 Route::get('/{url}/{suburl?}/{producturl?}', UrlResolverControllerAlias::class)
     ->name('resolve');
 

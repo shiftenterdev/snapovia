@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->string('order_id');
             $table->string('invoice_id');
             $table->string('customer_ip',32);
+            $table->string('email');
             $table->string('order_status')->default('processing');
             $table->string('payment_status')->default('processing');
             $table->string('status')->default('processing');

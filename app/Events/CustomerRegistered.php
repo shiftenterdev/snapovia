@@ -5,6 +5,7 @@
  */
 namespace App\Events;
 
+use App\Models\Customer;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -18,13 +19,19 @@ class CustomerRegistered
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
+     * @var Customer
+     */
+    public $customer;
+
+    /**
      * Create a new event instance.
      *
-     * @return void
+     * @param Customer $customer
      */
-    public function __construct()
+    public function __construct(Customer $customer)
     {
         //
+        $this->customer = $customer;
     }
 
     /**

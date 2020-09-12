@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Customer;
 use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -15,17 +16,16 @@ class CustomerRegistrationMail extends Mailable
     /**
      * @var User
      */
-    public $user;
+    public $customer;
 
     /**
      * Create a new message instance.
      *
-     * @param User $user
+     * @param Customer $customer
      */
-    public function __construct(User $user)
+    public function __construct(Customer $customer)
     {
-        //
-        $this->user = $user;
+        $this->customer = $customer;
     }
 
     /**
@@ -35,6 +35,7 @@ class CustomerRegistrationMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.customer.registration');
+        return $this->subject('😀 Resgistration success Welcome to Snapovia')
+            ->markdown('emails.customer.registration');
     }
 }

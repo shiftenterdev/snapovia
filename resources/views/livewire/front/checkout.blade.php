@@ -53,7 +53,7 @@
                                         <input class="form-control form-control-sm" id="checkoutBillingEmail"
                                                type="email"
                                                placeholder="Email" required=""
-                                               name="shipping[email]"
+                                               name="email"
                                                value="{{Customer::user()->email ?? ''}}">
                                     </div>
 
@@ -68,7 +68,7 @@
                                         <input class="form-control form-control-sm" id="checkoutBillingEmail"
                                                type="email"
                                                placeholder="Email" wire:model.lazy="email" required=""
-                                               name="shipping[email]">
+                                               name="email">
                                     </div>
 
                                 </div>
