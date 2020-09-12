@@ -6,9 +6,9 @@
 <a href="https://img.shields.io/badge/Development-onprogress-orange"><img src="https://img.shields.io/badge/Development-onprogress-orange" alt=""></a>
 </p>
 
-## Snapovia(Previously Butikshop) [Under development..]
+## Snapovia [Under development..]
 
-Sanpovia(single store based) is an ecommerce framework built with laravel and idea from Magento. This combination makes a new ecommerce platfrom which will be faster and optimized in process and user experience. 
+Snapovia(single store based) is an ecommerce framework built with laravel and idea from Magento. This combination makes a new ecommerce platform which will be faster and optimized in process and user experience. 
 We will have the following features:
 
 - Laravel framework
@@ -23,25 +23,37 @@ We will have the following features:
 
 ## Contributors
 
-<a href="https://github.com/shiftenterdev/butikshop/graphs/contributors">
+<a href="https://github.com/shiftenterdev/snapovia/graphs/contributors">
   <img src="https://contributors-img.web.app/image?repo=shiftenterdev/butikshop" />
 </a>
 
 ## Specification
 
-|Framework|Laravel|
-|---|---|
+|Info|Details|
+|:---|:---|
+|Project|Ecommerce|
+|Type|Single store mode|
+|Framework|Laravel 7.x|
+|Database|Mysql 5.7|
+|PHP|7.2|
+|Admin panel|Yes|
+|Vendor|Yes|
+|Frontend|Blade & Vue|
+|Livewire|1.x|
+|Spatie Media Library|7.x|
+|Spatie Permission|3.x|
+|Unisharp File manager|2.x|
 
 ## Installation
 
 ```shell script
 # Using git clone
-$ git clone https://github.com/shiftenterdev/butikshop.git
+$ git clone https://github.com/shiftenterdev/snapovia.git
 
 # Using composer
-$ composer create-project shiftenterdev/butikshop
+$ composer create-project shiftenterdev/snapovia
 
-$ cd butikshop
+$ cd snapovia
 $ composer install
 $ cp .env.example .env
 $ php artisan key:generate
@@ -90,7 +102,7 @@ php artisan queue:retry all
 ```
 
 
-## Want to contribute in `shiftenterdev/butikshop`
+## Want to contribute in *Snapovia*
 
 Contribution will be encouraged and welcomed. Here are the steps of contribution:
 
