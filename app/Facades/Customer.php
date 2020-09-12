@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Facade;
  * Class Customer
  * @package App\Facades
  * @method static bool attempt($credentials)
+ * @method static \App\Models\Customer create(array $data)
  * @method static bool check()
  * @method static bool login($credentials)
  * @method static void logout()

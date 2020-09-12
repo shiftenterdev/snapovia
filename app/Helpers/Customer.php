@@ -4,6 +4,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  * @author Iftakharul Alam Bappa <info@shiftenter.dev> 
  */
+
 namespace App\Helpers;
 
 use App\Models\Quote;
@@ -18,13 +19,13 @@ class Customer
      * @param $credentials
      * @return bool
      */
-    public function attempt($credentials):bool
+    public function attempt($credentials): bool
     {
-        if(isset($credentials['email']) && isset($credentials['password'])){
+        if (isset($credentials['email']) && isset($credentials['password'])) {
             $customer = \App\Models\Customer::whereEmail($credentials['email'])
                 ->whereStatus(1)
                 ->first();
-            if($customer){
+            if ($customer) {
                 if (Hash::check($credentials['password'], $customer->password)) {
                     $this->update($customer);
                     $this->mergeCart($customer->id);
@@ -37,14 +38,37 @@ class Customer
         return false;
     }
 
-
-    public function login($credentials):bool
+    /**
+     * Update customer object
+     * @param \App\Models\Customer $customer
+     */
+    public function update(\App\Models\Customer $customer): void
     {
-        if(isset($credentials['email']) && isset($credentials['password'])){
+        session([self::CUSTOMER_SESSION_KEY => $customer]);
+    }
+
+    /**
+     * Merge cart with existing cart
+     * @param int $customer_id
+     * @return void
+     */
+    private function mergeCart($customer_id)
+    {
+        $existing_quote = Quote::where('customer_id', $customer_id)->first();
+        if ($existing_quote) {
+            \App\Facades\Cart::merge($existing_quote->id);
+        } else {
+            \App\Facades\Cart::addCustomerToQuote($customer_id);
+        }
+    }
+
+    public function login($credentials): bool
+    {
+        if (isset($credentials['email']) && isset($credentials['password'])) {
             $customer = \App\Models\Customer::whereEmail($credentials['email'])
                 ->whereStatus(1)
                 ->first();
-            if($customer){
+            if ($customer) {
                 if (Hash::check($credentials['password'], $customer->password)) {
                     return true;
                 }
@@ -56,18 +80,9 @@ class Customer
     }
 
     /**
-     * Check if customer logged-in
-     * @return bool
-     */
-    public function check():bool
-    {
-        return session()->has(self::CUSTOMER_SESSION_KEY);
-    }
-
-    /**
      * Logout customer
      */
-    public function logout():void
+    public function logout(): void
     {
         session()->remove(self::CUSTOMER_SESSION_KEY);
     }
@@ -76,37 +91,40 @@ class Customer
      * Get customer object
      * @return \App\Models\Customer
      */
-    public function user():?\App\Models\Customer
+    public function user(): ?\App\Models\Customer
     {
-        if(!$this->check()){
+        if (!$this->check()) {
             return null;
         }
         $customer = \App\Models\Customer::find(session(self::CUSTOMER_SESSION_KEY)->customer_id);
         $this->update($customer);
-        return session(self::CUSTOMER_SESSION_KEY)??null;
+        return session(self::CUSTOMER_SESSION_KEY) ?? null;
     }
 
     /**
-     * Update customer object
-     * @param \App\Models\Customer $customer
+     * Check if customer logged-in
+     * @return bool
      */
-    public function update(\App\Models\Customer $customer):void
+    public function check(): bool
     {
-        session([self::CUSTOMER_SESSION_KEY=>$customer]);
+        return session()->has(self::CUSTOMER_SESSION_KEY);
     }
 
     /**
-     * Merge cart with existing cart
-     * @param  int $customer_id
-     * @return void
+     * @param array $data
+     * @return \App\Models\Customer
      */
-    private function mergeCart($customer_id)
+    public function create(array $data): \App\Models\Customer
     {
-        $existing_quote = Quote::where('customer_id',$customer_id)->first();
-        if($existing_quote){
-            \App\Facades\Cart::merge($existing_quote->id);
-        }else {
-            \App\Facades\Cart::addCustomerToQuote($customer_id);
-        }
+        $customer =  \App\Models\Customer::create([
+            'first_name' => $data['first_name'],
+            'last_name'  => $data['last_name'],
+            'email'      => $data['email'],
+            'password'   => bcrypt($data['password']),
+        ]);
+
+        $this->login($data);
+
+        return $customer;
     }
 }
