@@ -42,7 +42,7 @@
 <script src="{{asset('frontend/assets/libs/list.js/dist/list.min.js')}}" defer></script>
 <script src="{{asset('frontend/assets/libs/jarallax/dist/jarallax.min.js')}}"></script>
 <script src="{{asset('frontend/assets/libs/highlightjs/highlight.pack.min.js')}}"></script>
-<script src="{{asset('frontend/assets/js/myozeshop.js')}}"></script>
+<script src="{{asset('frontend/assets/js/snapovia.js')}}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

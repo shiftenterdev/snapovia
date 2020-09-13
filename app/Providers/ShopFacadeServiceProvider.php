@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
 
-class CartFacadeServiceProvider extends ServiceProvider
+class ShopFacadeServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -14,9 +14,9 @@ class CartFacadeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        App::bind('cart',function() {
-            return new \App\Helpers\Cart;
-        });
+        $this->app->bind('cart',\App\Helpers\Cart::class);
+        $this->app->bind('customer',\App\Helpers\Customer::class);
+        $this->app->bind('vendor',\App\Helpers\Vendor::class);
     }
 
     /**

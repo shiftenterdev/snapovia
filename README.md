@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/shiftenterdev/butikshop/blob/master/public/Snapovia.png?raw=true" width="300"></p>
+<p align="center"><img src="https://github.com/shiftenterdev/butikshop/blob/master/public/snapovia.png?raw=true" width="300"></p>
 
 <p align="center">
 <a href="https://travis-ci.org/shiftenterdev/butikshop"><img src="https://travis-ci.org/shiftenterdev/butikshop.svg?branch=master" alt=""></a>
@@ -43,6 +43,7 @@ We will have the following features:
 |Spatie Media Library|7.x|
 |Spatie Permission|3.x|
 |Unisharp File manager|2.x|
+|Payment |COD,Stripe,Paypal|
 
 ## Installation
 

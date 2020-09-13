@@ -79,6 +79,9 @@ Route::get('checkout/mini-cart', [CartController::class, 'miniCartInfo'])
 Route::get('checkout', [CheckoutController::class, 'index'])
     ->name('checkout');
 
+Route::get('checkout/payment', [CheckoutController::class, 'submitWithPayment'])
+    ->name('checkout.payment');
+
 Route::post('checkout', [CheckoutController::class, 'submit'])
     ->name('checkout.submit');
 
