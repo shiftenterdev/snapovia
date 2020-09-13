@@ -10,7 +10,7 @@ class SubscriberController extends Controller
 {
     public function index()
     {
-        $subscribers = Subscription::get();
-        return view('admin.subscriber.index',compact('subscribers'));
+        $subscribers = Subscription::paginate(20);
+        return view('admin.marketing.subscriber.index',compact('subscribers'));
     }
 }

@@ -22,7 +22,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header p-0 d-flex bg-gradient-info">
-                            <h3 class="card-title p-3"><strong>Customer Group</strong></h3>
+                            <h3 class="card-title p-3"><strong>Blogs</strong></h3>
                         </div>
                         <div class="card-body table-responsive p-0">
                             <table class="table table-striped table-valign-middle">

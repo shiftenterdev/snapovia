@@ -14,7 +14,7 @@ class VendorSettlementController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.vendor.settlement.index');
     }
 
     /**

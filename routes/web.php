@@ -183,7 +183,7 @@ Route::prefix('customer')->group(function () {
 
 });
 
-Route::prefix('adminportal')->name('admin.')->group(function () {
+Route::prefix(config('site.admin_url'))->name('admin.')->group(function () {
 
     Route::get('forgot-password', [AuthController::class,'forgotPassword'])
         ->name('forgot.password');

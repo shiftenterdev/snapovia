@@ -5,6 +5,7 @@ return [
     'name'             => 'Snapovia ',
     'meta_name'        => '',
     'meta_description' => '',
+    'admin_url'        => env('ADMIN_URL', 'adminportal'),
 
     //Promo/Deal for the shop
     'deal'             => [
