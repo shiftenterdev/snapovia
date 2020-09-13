@@ -15,6 +15,7 @@ return [
 
     // Store Information
     'store'            => [
+        'currency'  => 'usd',
         'address'   => 'St. Street',
         'city'      => 'Adelate',
         'postcode'  => '12345',

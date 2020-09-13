@@ -174,9 +174,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\CartFacadeServiceProvider::class,
-        App\Providers\CustomerFacadeServiceProvider::class,
-        App\Providers\VendorFacadeServiceProvider::class,
+        App\Providers\ShopFacadeServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
 
     ],

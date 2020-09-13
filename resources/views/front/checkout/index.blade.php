@@ -22,4 +22,18 @@
             document.querySelector('#modalCustomerLogin .close').click();
         });
     </script>
+    <script src="https://js.stripe.com/v3"></script>
+    <script>
+        let stripe = Stripe('{{env('STRIPE_KEY')}}');
+
+        let checkoutButton = document.getElementById('stripe-checkout');
+
+        checkoutButton.addEventListener('click', function() {
+            stripe.redirectToCheckout({
+                sessionId: '{{$session_id}}'
+            }).then(function (result) {
+                alert(result.error.message);
+            });
+        });
+    </script>
 @endsection

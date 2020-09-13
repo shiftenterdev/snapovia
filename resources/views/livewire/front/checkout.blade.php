@@ -348,14 +348,14 @@
                                 <div class="custom-control custom-radio">
 
                                     <!-- Input -->
-                                    <input class="custom-control-input" id="checkoutPaymentCard" name="payment_method"
-                                           type="radio" value="card" data-toggle="collapse" data-action="show"
-                                           data-target="#checkoutPaymentCardCollapse">
+                                    <input class="custom-control-input" id="stripe-checkout" name="payment_method"
+                                           type="radio" value="card" _data-toggle="collapse" _data-action="show"
+                                           _data-target="#checkoutPaymentCardCollapse">
 
                                     <!-- Label -->
                                     <label class="custom-control-label font-size-sm text-body text-nowrap"
                                            for="checkoutPaymentCard">
-                                        Credit Card <img class="ml-2"
+                                        Debit/Credit Card <img class="ml-2"
                                                          src="{{asset('frontend/assets/img/brands/color/cards.svg')}}"
                                                          alt="...">
                                     </label>
@@ -363,9 +363,9 @@
                                 </div>
 
                             </div>
-                            <div class="list-group-item collapse py-0" id="checkoutPaymentCardCollapse">
+                            <!--<div class="list-group-item collapse py-0" id="checkoutPaymentCardCollapse">
 
-                                <!-- Form -->
+
                                 <div class="form-row py-5">
                                     <div class="col-12">
                                         <div class="form-group mb-4">
@@ -417,7 +417,7 @@
                                     </div>
                                 </div>
 
-                            </div>
+                            </div> -->
                             <div class="list-group-item">
 
                                 <!-- Radio -->

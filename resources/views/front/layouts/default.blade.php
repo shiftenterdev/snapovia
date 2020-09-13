@@ -57,7 +57,7 @@
 <script src="{{asset('frontend/assets/libs/flickity-fade/flickity-fade.js')}}"></script>
 <script src="{{asset('frontend/assets/js/theme.min.js')}}"></script>
 <livewire:scripts/>
-<script src="{{asset('frontend/assets/js/myozeshop.js')}}"></script>
+<script src="{{asset('frontend/assets/js/snapovia.js')}}"></script>
 @yield('script')
 </body>
 </html>
