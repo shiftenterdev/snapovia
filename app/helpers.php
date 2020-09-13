@@ -80,3 +80,12 @@ if(!function_exists('get_all_countries')){
         });
     }
 }
+
+if(!function_exists('active_menu')){
+    function active_menu($url)
+    {
+        return request()->is(config('site.admin_url').'/'.$url)?'active':'';
+    }
+}
+
+

@@ -11,7 +11,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="{{route('admin.dashboard')}}" class="nav-link {{request()->is('adminportal/dashboard')?'active':''}}">
+                    <a href="{{route('admin.dashboard')}}" class="nav-link {{active_menu('dashboard')}}">
                         <i class="nav-icon fas fa-th"></i>
                         <p>Dashboard</p>
                     </a>
@@ -26,12 +26,12 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.product.index')}}" class="nav-link {{request()->is('adminportal/product*')?'active':''}}">
+                            <a href="{{route('admin.product.index')}}" class="nav-link {{active_menu('product*')}}">
                                 <p>Product</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.category.index')}}" class="nav-link {{request()->is('adminportal/category*')?'active':''}}">
+                            <a href="{{route('admin.category.index')}}" class="nav-link {{active_menu('category*')}}">
                                 <p>Category</p>
                             </a>
                         </li>
@@ -47,23 +47,23 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.order.index')}}" class="nav-link {{request()->is('adminportal/order*')?'active':''}}">
+                            <a href="{{route('admin.order.index')}}" class="nav-link {{active_menu('order*')}}">
 
                                 <p>Order</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.invoice.index')}}" class="nav-link {{request()->is('adminportal/invoice*')?'active':''}}">
+                            <a href="{{route('admin.invoice.index')}}" class="nav-link {{active_menu('invoice*')}}">
                                 <p>Invoice</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.shipment.index')}}" class="nav-link {{request()->is('adminportal/shipment*')?'active':''}}">
+                            <a href="{{route('admin.shipment.index')}}" class="nav-link {{active_menu('shipment*')}}">
                                 <p>Shipment</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.refund.index')}}" class="nav-link {{request()->is('adminportal/refund*')?'active':''}}">
+                            <a href="{{route('admin.refund.index')}}" class="nav-link {{active_menu('refund*')}}">
                                 <p>Refund</p>
                             </a>
                         </li>
@@ -79,41 +79,41 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.cart-price-rule.index')}}" class="nav-link {{request()->is('adminportal/cart-price-rule*')?'active':''}}">
+                            <a href="{{route('admin.cart-price-rule.index')}}" class="nav-link {{active_menu('cart-price-rule*')}}">
 
                                 <p>Cart Price Rule</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.catalog-price-rule.index')}}" class="nav-link {{request()->is('adminportal/catalog-price-rule*')?'active':''}}">
+                            <a href="{{route('admin.catalog-price-rule.index')}}" class="nav-link {{active_menu('catalog-price-rule*')}}">
 
                                 <p>Catalog Price Rule</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.abandon-cart.index')}}" class="nav-link {{request()->is('adminportal/abandon-cart*')?'active':''}}">
+                            <a href="{{route('admin.abandon-cart.index')}}" class="nav-link {{active_menu('abandon-cart*')}}">
                                 <p>Abandon Cart</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.email-template.index')}}" class="nav-link {{request()->is('adminportal/email-template*')?'active':''}}">
+                            <a href="{{route('admin.email-template.index')}}" class="nav-link {{active_menu('email-template*')}}">
                                 <p>Email Template</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.subscribers.index')}}" class="nav-link {{request()->is('adminportal/subscribers*')?'active':''}}">
+                            <a href="{{route('admin.subscribers.index')}}" class="nav-link {{active_menu('subscribers*')}}">
                                 <p>Subscribers</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.url-rewrite.index')}}" class="nav-link {{request()->is('adminportal/url-rewrite*')?'active':''}}">
+                            <a href="{{route('admin.url-rewrite.index')}}" class="nav-link {{active_menu('url-rewrite*')}}">
                                 <p>Url Rewrite</p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('admin.brand.index')}}" class="nav-link {{request()->is('adminportal/brand*')?'active':''}}">
+                    <a href="{{route('admin.brand.index')}}" class="nav-link {{active_menu('brand*')}}">
                         <i class="nav-icon fas fa-bookmark"></i>
                         <p>
                             Brand
@@ -130,13 +130,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.cms-page.index')}}" class="nav-link {{request()->is('adminportal/cms-page*')?'active':''}}">
+                            <a href="{{route('admin.cms-page.index')}}" class="nav-link {{active_menu('cms-page*')}}">
 
                                 <p>Cms Page</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.cms-block.index')}}" class="nav-link {{request()->is('adminportal/cms-block*')?'active':''}}">
+                            <a href="{{route('admin.cms-block.index')}}" class="nav-link {{active_menu('cms-block*')}}">
 
                                 <p>Cms Block</p>
                             </a>
@@ -153,24 +153,24 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.customer.index')}}" class="nav-link {{request()->is('adminportal/customer')?'active':''}}">
+                            <a href="{{route('admin.customer.index')}}" class="nav-link {{active_menu('customer')}}">
                                 <p>Customer List</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.customer.create')}}" class="nav-link {{request()->is('adminportal/customer/create')?'active':''}}">
+                            <a href="{{route('admin.customer.create')}}" class="nav-link {{active_menu('customer/create')}}">
                                 <p>Add Customer</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.group.index')}}" class="nav-link {{request()->is('adminportal/customer/group')?'active':''}}">
+                            <a href="{{route('admin.group.index')}}" class="nav-link {{active_menu('customer/group')}}">
                                 <p>Customer Group</p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('admin.blog.index')}}" class="nav-link {{request()->is('adminportal/blog*')?'active':''}}">
+                    <a href="{{route('admin.blog.index')}}" class="nav-link {{active_menu('blog*')}}">
                         <i class="nav-icon fas fa-book-reader"></i>
                         <p>
                             Blog
@@ -187,22 +187,22 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.vendor.index')}}" class="nav-link {{request()->is('adminportal/vendor*')?'active':''}}">
+                            <a href="{{route('admin.vendor.index')}}" class="nav-link {{active_menu('vendor')}}">
                                 <p>Vendor List</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.vendor-product.index')}}" class="nav-link {{request()->is('adminportal/vendor-product*')?'active':''}}">
+                            <a href="{{route('admin.vendor-product.index')}}" class="nav-link {{active_menu('vendor-product*')}}">
                                 <p>Vendor Product</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.vendor-order.index')}}" class="nav-link {{request()->is('adminportal/vendor-order*')?'active':''}}">
+                            <a href="{{route('admin.vendor-order.index')}}" class="nav-link {{active_menu('vendor-order*')}}">
                                 <p>Vendor Order</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.vendor-settlement.index')}}" class="nav-link {{request()->is('adminportal/vendor-settlement*')?'active':''}}">
+                            <a href="{{route('admin.vendor-settlement.index')}}" class="nav-link {{active_menu('vendor-settlement*')}}">
                                 <p>Vendor Settlement</p>
                             </a>
                         </li>
@@ -256,7 +256,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('admin.configuration.index')}}" class="nav-link {{request()->is('adminportal/configuration*')?'active':''}}">
+                    <a href="{{route('admin.configuration.index')}}" class="nav-link {{active_menu('configuration*')}}">
                         <i class="nav-icon fas fa-cogs"></i>
                         <p>
                             Configuration
