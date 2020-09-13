@@ -50,13 +50,14 @@ return [
 
     //Customer Section
     'customer'         => [
-        'prefix'       => false,
-        'postfix'      => false,
-        'middle_name'  => false,
-        'company_name' => false,
-        'vat_id'       => false,
-        'dob'          => true,
-        'country'      => true
+        'prefix'             => false,
+        'postfix'            => false,
+        'middle_name'        => false,
+        'company_name'       => false,
+        'vat_id'             => false,
+        'dob'                => true,
+        'country'            => true,
+        'email_verification' => false,
     ],
 
     //Vendor Section

@@ -3,36 +3,21 @@
 @section('title','Cms Page | ')
 
 @section('content')
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <a href="{{route('admin.cms-page.create')}}" class="btn btn-dark">
-                        <i class="fas fa-plus"></i> New Page
-                    </a>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Cms Page</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+
+    <x-admin.c-header title="CMS Page">
+        <a href="{{route('admin.cms-page.create')}}" class="btn btn-dark">
+            <i class="fas fa-plus"></i> New Page
+        </a>
+    </x-admin.c-header>
+
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-header p-0 bg-gradient-info d-flex">
-                            <h3 class="card-title p-3"><strong>CMS Page</strong></h3>
-                        </div>
-                        <div class="card-body table-responsive p-0">
+                        <div class="card-body table-responsive p-0 radius-top">
                             <table class="table table-striped table-valign-middle">
-                                <thead>
+                                <thead class="bg-gray-dark">
                                 <tr>
                                     <th>ID</th>
                                     <th>Title</th>

@@ -340,6 +340,7 @@
                         <!-- Heading -->
                         <h6 class="mb-7">{{__('Payment')}}</h6>
 
+
                         <!-- List group -->
                         <div class="list-group list-group-sm mb-7">
                             <div class="list-group-item">
@@ -348,76 +349,22 @@
                                 <div class="custom-control custom-radio">
 
                                     <!-- Input -->
-                                    <input class="custom-control-input" id="stripe-checkout" name="payment_method"
-                                           type="radio" value="card" _data-toggle="collapse" _data-action="show"
-                                           _data-target="#checkoutPaymentCardCollapse">
+                                    <input class="custom-control-input" id="checkoutPaymentCard" name="payment_method"
+                                           type="radio" data-toggle="collapse" wire:model="payment_method"
+                                           data-action="hide" value="card"
+                                           data-target="#checkoutPaymentCardCollapse">
 
                                     <!-- Label -->
                                     <label class="custom-control-label font-size-sm text-body text-nowrap"
                                            for="checkoutPaymentCard">
                                         Debit/Credit Card <img class="ml-2"
-                                                         src="{{asset('frontend/assets/img/brands/color/cards.svg')}}"
-                                                         alt="...">
+                                                               src="{{asset('frontend/assets/img/brands/color/cards.svg')}}"
+                                                               alt="...">
                                     </label>
 
                                 </div>
 
                             </div>
-                            <!--<div class="list-group-item collapse py-0" id="checkoutPaymentCardCollapse">
-
-
-                                <div class="form-row py-5">
-                                    <div class="col-12">
-                                        <div class="form-group mb-4">
-                                            <label class="sr-only" for="checkoutPaymentCardNumber">Card Number</label>
-                                            <input class="form-control form-control-sm" id="checkoutPaymentCardNumber"
-                                                   type="text" name="card_no" placeholder="Card Number *">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group mb-4">
-                                            <label class="sr-only" for="checkoutPaymentCardName">Name on Card</label>
-                                            <input class="form-control form-control-sm" id="checkoutPaymentCardName"
-                                                   type="text" name="name_on_card" placeholder="Name on Card *">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-4">
-                                        <div class="form-group mb-md-0">
-                                            <label class="sr-only" for="checkoutPaymentMonth">Month</label>
-                                            <select class="custom-select custom-select-sm" id="checkoutPaymentMonth">
-                                                <option>January</option>
-                                                <option>February</option>
-                                                <option>March</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-4">
-                                        <div class="form-group mb-md-0">
-                                            <label class="sr-only" for="checkoutPaymentCardYear">Year</label>
-                                            <select class="custom-select custom-select-sm" id="checkoutPaymentCardYear">
-                                                <option>2017</option>
-                                                <option>2018</option>
-                                                <option>2019</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-4">
-                                        <div class="input-group input-group-merge">
-                                            <input class="form-control form-control-sm" id="checkoutPaymentCardCVV"
-                                                   type="text" name="card_ccv" placeholder="CVV *">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text" data-toggle="popover"
-                                                      data-placement="top" data-trigger="hover"
-                                                      data-content="The CVV Number on your credit card or debit card is a 3 digit number on VISA, MasterCard and Discover branded credit and debit cards."
-                                                      data-original-title="" title="">
-                                                    <i class="fe fe-help-circle"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div> -->
                             <div class="list-group-item">
 
                                 <!-- Radio -->
@@ -425,7 +372,8 @@
 
                                     <!-- Input -->
                                     <input class="custom-control-input" id="checkoutPaymentPaypal" name="payment_method"
-                                           type="radio" data-toggle="collapse" data-action="hide" value="paypal"
+                                           type="radio" data-toggle="collapse" wire:model="payment_method"
+                                           data-action="hide" value="paypal"
                                            data-target="#checkoutPaymentCardCollapse">
 
                                     <!-- Label -->
@@ -445,7 +393,8 @@
                                     <!-- Input -->
                                     <input class="custom-control-input" id="checkoutCOD" name="payment_method"
                                            type="radio"
-                                           data-toggle="collapse" data-action="hide" value="cod"
+                                           data-toggle="collapse" wire:model="payment_method" data-action="hide"
+                                           value="cod"
                                            data-target="#checkoutPaymentCardCollapse">
 
                                     <!-- Label -->
@@ -552,10 +501,11 @@
                         described in our privacy policy.')}}
                     </p>
 
-                    <!-- Button -->
+
                     <button class="btn btn-block btn-dark" form="orderSubmit" type="submit">
                         {{__('Place Order')}}
                     </button>
+
 
                 </div>
             </div>

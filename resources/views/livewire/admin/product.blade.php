@@ -91,7 +91,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-body table-responsive p-0 radious-top">
+                    <div class="card-body table-responsive p-0 radius-top">
                         <table class="table table-striped table-valign-middle">
                             <thead class="bg-dark">
                             <tr>

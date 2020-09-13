@@ -3,30 +3,21 @@
 @section('title','Cms Block | ')
 
 @section('content')
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6">
-                    <a href="{{route('admin.cms-block.create')}}" class="btn btn-dark">
-                        <i class="fas fa-plus"></i> New Block
-                    </a>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+
+    <x-admin.header title="CMS Block">
+        <a href="{{route('admin.cms-block.create')}}" class="btn btn-dark">
+            <i class="fas fa-plus"></i> New Block
+        </a>
+    </x-admin.header>
+
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-header p-0 bg-gradient-info d-flex">
-                            <h3 class="card-title p-3"><strong>CMS Block</strong></h3>
-                        </div>
-                        <div class="card-body table-responsive p-0">
+                        <div class="card-body table-responsive p-0 radius-top">
                             <table class="table table-striped table-valign-middle">
-                                <thead>
+                                <thead class="bg-gray-dark">
                                 <tr>
                                     <th>ID</th>
                                     <th>Title</th>

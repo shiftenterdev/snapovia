@@ -44,6 +44,24 @@ class CheckoutController extends Controller
         return view('front.checkout.cart');
     }
 
+    public function paymentIntent(Request $request)
+    {
+        \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+
+        $paymentIntent = \Stripe\PaymentIntent::create([
+            'amount'         => 1200,
+            'currency'       => $request->currency,
+//            'hidePostalCode' => true,
+        ]);
+
+        $output = [
+            'publishableKey' => env('STRIPE_KEY'),
+            'clientSecret'   => $paymentIntent->client_secret,
+        ];
+
+        return response()->json($output, 200);
+    }
+
     public function submitWithPayment()
     {
         $quote = Cart::get();
