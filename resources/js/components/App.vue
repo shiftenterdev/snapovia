@@ -1,11 +1,5 @@
 <template>
-    <div>
-        <Navbar/>
-        <Minicart/>
-        <Search/>
-        <router-view></router-view>
-        <Footer/>
-    </div>
+    <router-view></router-view>
 </template>
 
 
@@ -14,15 +8,18 @@
     import Footer from './Footer'
     import Minicart from './global/Minicart'
     import Search from './global/Search'
+
     export default {
-        components:{
+        components: {
             Navbar,
             Footer,
             Minicart,
             Search
         },
-        computed : {
-            isLoggedIn : function(){ return this.$store.getters.isLoggedIn}
+        computed: {
+            isLoggedIn: function () {
+                return this.$store.getters.isLoggedIn
+            }
         },
         created: function () {
             axios.interceptors.response.use(undefined, function (err) {
@@ -34,7 +31,7 @@
                 });
             });
         },
-        methods:{
+        methods: {
             logout: function () {
                 this.$store.dispatch('logout')
                     .then(() => {

@@ -899,6 +899,8 @@
             </div>
         </div>
     </section>
+    @include('front.partials.size-chart')
+    @include('front.partials.waitlist')
 @endsection
 
 @section('script')

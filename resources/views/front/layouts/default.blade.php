@@ -22,28 +22,16 @@
 </head>
 <body>
 
-<!-- MODALS -->
-
-@include('front.partials.newsletter')
-
-@include('front.partials.quick-view')
-
-@include('front.partials.search')
-
-@include('front.partials.mini-cart')
-
-@include('front.partials.sidebar')
-
-@include('front.partials.size-chart')
-
-@include('front.partials.waitlist')
-
-@include('front.partials.navbar')
+<x-front.newsletter/>
+<x-front.quick-view/>
+<x-front.search/>
+<x-front.mini-cart/>
+<x-front.m-sidebar/>
+<x-front.navbar/>
 
 @yield('content')
 
-@include('front.partials.footer')
-
+<x-front.footer/>
 <!--script-->
 <script src="{{asset('frontend/assets/libs/jquery/dist/jquery.min.js')}}"></script>
 <script src="{{asset('frontend/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js')}}"></script>

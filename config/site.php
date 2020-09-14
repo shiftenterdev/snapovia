@@ -5,6 +5,7 @@ return [
     'name'             => 'Snapovia ',
     'meta_name'        => '',
     'meta_description' => '',
+    'frontend'         => env('FRONTEND_VIEW', 'blade'), //'blade','vue'
     'admin_url'        => env('ADMIN_URL', 'adminportal'),
 
     //Promo/Deal for the shop
