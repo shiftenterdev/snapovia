@@ -8,6 +8,7 @@
 namespace App\Helpers;
 
 
+use App\Models\CartPriceRule;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Quote;
@@ -199,8 +200,10 @@ class Cart
     public function applyCoupon($coupon_id): void
     {
         if ($this->check()) {
-            Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
-                ->update(['coupon_id' => $coupon_id]);
+            $rule = CartPriceRule::find($coupon_id);
+            $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
+                ->update(['coupon_id' => $coupon_id, 'coupon_amount' => $rule->discount_amount]);
+//            $this->set($quote);
         }
     }
 
