@@ -13,6 +13,4 @@
             </div>
         </div>
     </section>
-
-    @include('front.customer.auth.password-reset')
 @endsection

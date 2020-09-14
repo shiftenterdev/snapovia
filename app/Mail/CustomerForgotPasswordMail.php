@@ -7,18 +7,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class CustomerForgetPasswordMail extends Mailable
+class CustomerForgotPasswordMail extends Mailable
 {
     use Queueable, SerializesModels;
+
+    public $token;
 
     /**
      * Create a new message instance.
      *
-     * @return void
+     * @param $token
      */
-    public function __construct()
+    public function __construct($token)
     {
-        //
+        $this->token = $token;
     }
 
     /**
@@ -28,6 +30,7 @@ class CustomerForgetPasswordMail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->subject('Password Reset Request')
+            ->markdown('emails.customer.forgot-password');
     }
 }

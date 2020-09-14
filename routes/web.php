@@ -154,7 +154,7 @@ Route::prefix('customer')->group(function () {
     Route::post('forgotpasswordpost', [PasswordController::class,'forgotPasswordPost'])
         ->name('forgot.password.post');
 
-    Route::get('{customer_id}/password/resetLinkToken/{token}', [PasswordController::class,'createPassword'])
+    Route::get('password/resetLinkToken/{token}', [PasswordController::class,'createPassword'])
         ->name('create.password');
 
     Route::post('createpasswordpost', [PasswordController::class,'createPasswordPost'])

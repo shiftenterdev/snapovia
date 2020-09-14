@@ -8,7 +8,7 @@ Your registration successfully completed!
 To login your account click the button below.
 
 @component('mail::button', ['url' => route('customer.login'),'color' => 'success'])
-    Login
+Login
 @endcomponent
 
 Thanks,<br>
