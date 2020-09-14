@@ -1,4 +1,3 @@
-<!-- Newsletter: Horizontal -->
 <div class="modal fade" id="modalNewsletterHorizontal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -35,8 +34,10 @@
                                 <div class="col">
 
                                     <!-- Input -->
-                                    <label class="sr-only" for="modalNewsletterHorizontalEmail">{{__('Enter Email')}} *</label>
-                                    <input class="form-control form-control-sm" id="modalNewsletterHorizontalEmail" type="email" placeholder="{{__('Enter Email
+                                    <label class="sr-only" for="modalNewsletterHorizontalEmail">{{__('Enter Email')}}
+                                        *</label>
+                                    <input class="form-control form-control-sm" id="modalNewsletterHorizontalEmail"
+                                           type="email" placeholder="{{__('Enter Email
 Enter Email')}} *">
 
                                 </div>
@@ -89,7 +90,8 @@ Enter Email')}} *">
             </button>
 
             <!-- Body -->
-            <div class="modal-body mt-2 mr-2 ml-2 py-10 bg-cover text-center text-white" style="background-image: url(./front/assets/img/covers/cover-26.jpg);">
+            <div class="modal-body mt-2 mr-2 ml-2 py-10 bg-cover text-center text-white"
+                 style="background-image: url(./front/assets/img/covers/cover-26.jpg);">
 
                 <!-- Heading -->
                 <h4>Subscribe to Newsletter and get 15% Discount</h4>
@@ -111,7 +113,8 @@ Enter Email')}} *">
 
                             <!-- Input -->
                             <label class="sr-only" for="modalNewsletterVerticalEmail">Enter Email *</label>
-                            <input class="form-control form-control-sm" id="modalNewsletterVerticalEmail" type="email" placeholder="Enter Email *">
+                            <input class="form-control form-control-sm" id="modalNewsletterVerticalEmail" type="email"
+                                   placeholder="Enter Email *">
 
                         </div>
                         <div class="col-auto">
