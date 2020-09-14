@@ -13,7 +13,7 @@ class CartPriceRuleController extends Controller
      */
     public function index()
     {
-        $cartPrices = CartPriceRule::get();
+        $cartPrices = CartPriceRule::paginate();
         return view('admin.marketing.cart-price-rule.index',compact('cartPrices'));
     }
 

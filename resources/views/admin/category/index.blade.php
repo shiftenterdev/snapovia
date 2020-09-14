@@ -2,17 +2,11 @@
 @section('title','Category | ')
 @section('content')
 
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <a href="{{route('admin.category.create')}}" class="btn btn-dark">
-                        <i class="fas fa-plus"></i> New Category
-                    </a>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
+    <x-admin.header title="Categories">
+        <a href="{{route('admin.category.create')}}" class="btn btn-dark">
+            <i class="fas fa-plus"></i> New Category
+        </a>
+    </x-admin.header>
 
     <div class="content">
         <div class="container-fluid">
@@ -62,10 +56,9 @@
                         </div>
                     </div>
                     <div class="card">
-                        <x-admin.card.title title="Categories"/>
-                        <div class="card-body table-responsive p-0">
+                        <div class="card-body table-responsive p-0 radius-top">
                             <table class="table table-striped table-valign-middle">
-                                <thead class="bg-dark">
+                                <thead class="bg-gray-dark">
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>

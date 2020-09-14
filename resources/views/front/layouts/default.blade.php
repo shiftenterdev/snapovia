@@ -24,9 +24,9 @@
 
 <!-- MODALS -->
 
-{{--@include('front.partials.newsletter')--}}
+@include('front.partials.newsletter')
 
-{{--@include('front.partials.quick-view')--}}
+@include('front.partials.quick-view')
 
 @include('front.partials.search')
 

@@ -2,27 +2,20 @@
 @section('title','Brand | ')
 @section('content')
 
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6">
-                    <a href="{{route('admin.brand.create')}}" class="btn btn-dark">
-                        <i class="fas fa-plus"></i> New Brand
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <x-admin.header title="Brands">
+        <a href="{{route('admin.brand.create')}}" class="btn btn-dark">
+            <i class="fas fa-plus"></i> New Brand
+        </a>
+    </x-admin.header>
 
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <x-admin.card.title title="Brand List"/>
-                        <div class="card-body table-responsive p-0">
+                        <div class="card-body table-responsive p-0 radius-top">
                             <table class="table table-striped table-valign-middle">
-                                <thead>
+                                <thead class="bg-gray-dark">
                                 <tr>
                                     <th>
                                         <input type="checkbox">

@@ -14,7 +14,7 @@ class VendorOrderController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.vendor.order.index');
     }
 
     /**

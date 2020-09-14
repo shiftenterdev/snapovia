@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\OrderSubmitted;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ConfigurationController;
@@ -90,6 +91,9 @@ Route::get('checkout/success', [CheckoutController::class, 'success'])
 
 Route::post('cart/remove-item', [CartController::class, 'removeItem'])
     ->name('cart.remove.item');
+
+Route::post('payment-intent', [CheckoutController::class, 'paymentIntent'])
+    ->name('cart.update.item');
 
 Route::post('cart/update-item', [CartController::class, 'updateItem'])
     ->name('cart.update.item');
@@ -183,7 +187,7 @@ Route::prefix('customer')->group(function () {
 
 });
 
-Route::prefix('adminportal')->name('admin.')->group(function () {
+Route::prefix(config('site.admin_url'))->name('admin.')->group(function () {
 
     Route::get('forgot-password', [AuthController::class,'forgotPassword'])
         ->name('forgot.password');
@@ -276,7 +280,8 @@ Route::prefix('adminportal')->name('admin.')->group(function () {
 
 //Test routes
 Route::get('test-mail',function (){
-    event(new \App\Events\CustomerRegistered(\App\Models\Customer::find(1)));
+    //event(new \App\Events\CustomerRegistered(\App\Models\Customer::find(1)));
+    event(new OrderSubmitted(\App\Models\Order::find(1)));
     return 'event processed successfully';
 });
 

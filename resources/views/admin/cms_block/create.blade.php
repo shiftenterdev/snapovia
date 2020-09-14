@@ -1,18 +1,11 @@
 @extends('admin.layouts.app')
 @section('title','Create Cms Block | ')
 @section('content')
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <button type="submit" class="btn btn-dark"><i class="fas fa-save"></i> Save</button>
-                    <button type="button" class="btn btn-default" onclick="history.back()">Go Back</button>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+
+    <x-admin.header title="Create Block">
+        <button type="submit" class="btn btn-dark"><i class="fas fa-save"></i> Save</button>
+        <button type="button" class="btn btn-default" onclick="history.back()">Go Back</button>
+    </x-admin.header>
 
     <div class="content">
         <div class="container-fluid">
@@ -22,9 +15,6 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-header p-0 d-flex bg-gradient-info">
-                                <h3 class="card-title p-3"><strong>New Cms Block</strong></h3>
-                            </div>
                             <div class="card-body">
                                 <div class="row">
 

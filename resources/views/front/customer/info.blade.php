@@ -21,23 +21,31 @@
             <div class="row">
                 <div class="col-12 col-md-3">
 
-                    <!-- Nav -->
                     @include('front.customer.partials.menu')
 
                 </div>
                 <div class="col-12 col-md-9 col-lg-8 offset-lg-1">
 
-                    <!-- Form -->
+                    @if(session()->has('success'))
+                        <div class="row">
+                            <div class="col-12">
+                                <x-alert type="success">
+                                    {{session('success')}}
+                                </x-alert>
+                            </div>
+                        </div>
+                    @endif
+
                     <form>
                         <div class="row">
                             <div class="col-12 col-md-6">
-
-                                <!-- Email -->
                                 <div class="form-group">
                                     <label for="accountFirstName">
                                         {{__('First Name')}} *
                                     </label>
-                                    <input class="form-control form-control-sm" id="accountFirstName" type="text" placeholder="{{__('First Name')}} *" value="{{$customer->first_name}}" required="">
+                                    <input class="form-control form-control-sm" id="accountFirstName" type="text"
+                                           placeholder="{{__('First Name')}} *" value="{{$customer->first_name}}"
+                                           required="">
                                 </div>
 
                             </div>
@@ -48,7 +56,9 @@
                                     <label for="accountLastName">
                                         {{__('Last Name')}} *
                                     </label>
-                                    <input class="form-control form-control-sm" id="accountLastName" type="text" placeholder="{{__('Last Name')}} *" value="{{$customer->last_name}}" required="required">
+                                    <input class="form-control form-control-sm" id="accountLastName" type="text"
+                                           placeholder="{{__('Last Name')}} *" value="{{$customer->last_name}}"
+                                           required="required">
                                 </div>
 
                             </div>
@@ -59,7 +69,9 @@
                                     <label for="accountEmail">
                                         {{__('Email Address')}} *
                                     </label>
-                                    <input class="form-control form-control-sm" id="accountEmail" type="email" placeholder="{{__('Email Address')}} *" value="{{$customer->email}}" required="required">
+                                    <input class="form-control form-control-sm" id="accountEmail" type="email"
+                                           placeholder="{{__('Email Address')}} *" value="{{$customer->email}}"
+                                           required="required">
                                 </div>
 
                             </div>
@@ -70,7 +82,8 @@
                                     <label for="accountPassword">
                                         {{__('Current Password')}} *
                                     </label>
-                                    <input class="form-control form-control-sm" id="accountPassword" type="password" placeholder="{{__('Current Password')}} *" required="">
+                                    <input class="form-control form-control-sm" id="accountPassword" type="password"
+                                           placeholder="{{__('Current Password')}} *" required="">
                                 </div>
 
                             </div>
@@ -81,7 +94,8 @@
                                     <label for="AccountNewPassword">
                                         {{__('New Password')}} *
                                     </label>
-                                    <input class="form-control form-control-sm" id="AccountNewPassword" type="password" placeholder="{{__('New Password')}} *" required="">
+                                    <input class="form-control form-control-sm" id="AccountNewPassword" type="password"
+                                           placeholder="{{__('New Password')}} *" required="">
                                 </div>
 
                             </div>

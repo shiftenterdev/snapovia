@@ -25,18 +25,33 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Customer</th>
-                                        <th>Customer IP</th>
-                                        <th>Subtotal</th>
-                                        <th>Total</th>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Discount</th>
+                                        <th>Type</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-
+                                    @foreach($catalogPricePules as $item)
+                                        <tr>
+                                            <td>{{$item->id}}</td>
+                                            <td>{{$item->name}}</td>
+                                            <td>{{$item->description}}</td>
+                                            <td>{{$item->discount_amount}}</td>
+                                            <td>{{$item->discount_type}}</td>
+                                            <td>{{$item->status==1?'Active':'Inactive'}}</td>
+                                            <td>
+                                                <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
+                                <div class="card-footer clearfix flex">
+                                    <x-admin.pagination :collection="$catalogPricePules"/>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -9,14 +9,12 @@ use Illuminate\Http\Request;
 class CatalogPriceRuleController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
-        $catalogPricePules = CatalogPriceRule::get();
-        return view('admin.marketing.cart-price-rule.index',compact('catalogPricePules'));
+        $catalogPricePules = CatalogPriceRule::paginate();
+        return view('admin.marketing.catalog-price-rule.index',compact('catalogPricePules'));
     }
 
     /**
@@ -26,7 +24,7 @@ class CatalogPriceRuleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.marketing.catalog-price-rule.index');
     }
 
     /**

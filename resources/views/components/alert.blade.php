@@ -1,5 +1,6 @@
-@if($title)
-    <div class="alert alert-{{$title}}">
-        <strong>Whoops!</strong> Something went wrong!
-    </div>
-@endif
+<div class="alert alert-{{$type}} alert-dismissible fade show" role="alert">
+    {{$slot}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>

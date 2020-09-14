@@ -1,36 +1,22 @@
 @extends('admin.layouts.app')
 @section('title','Create Product | ')
 @section('content')
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Products</h1>
-                </div><!-- /.col -->
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Create Product</li>
-                    </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+
+    <x-admin.header title="New Product">
+        <button type="button" class="btn btn-warning" onclick="history.back()">Cancel</button>
+        <button type="submit" form="newProductForm" class="btn btn-info">{{$name??'Save'}}</button>
+    </x-admin.header>
 
     <div class="content">
         <div class="container-fluid">
-            <form action="{{route('admin.product.create')}}" method="post" autocomplete="off"
+            <form action="{{route('admin.product.create')}}" id="newProductForm" method="post" autocomplete="off"
                   enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
-                            <x-admin.card.title title="New Product"/>
-                            <div class="card-body table-responsive">
+                            <div class="card-body">
                                 <div class="row">
-
                                     <div class="col-4">
                                         <div class="form-group">
                                             <div class="custom-control custom-switch">
@@ -128,10 +114,10 @@
                         @if(count($attributes))
                             <div class="card">
                                 <x-admin.card.title title="Attributes"/>
-                                <div class="card-body table-responsive">
+                                <div class="card-body">
                                     <div class="row">
-                                        <div class="col-5">
-                                            @foreach($attributes as $attribute)
+                                        @foreach($attributes as $attribute)
+                                            <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="">{{$attribute->name}}</label>
                                                     @if($attribute->attribute_field_type=='text')
@@ -143,7 +129,7 @@
                                                             <option value="">Select</option>
                                                             @foreach($attribute->options as $option)
                                                                 <option
-                                                                    value="{{$option->id}}">{{$option->option_value}}</option>
+                                                                        value="{{$option->id}}">{{$option->option_value}}</option>
                                                             @endforeach
                                                         </select>
                                                     @elseif($attribute->attribute_field_type=='textarea')
@@ -151,13 +137,11 @@
                                                                   class="form-control form-control-sm editor"
                                                                   placeholder="Short Description"></textarea>
                                                     @elseif($attribute->attribute_field_type=='radio')
-
-
-
                                                     @endif
                                                 </div>
-                                            @endforeach
-                                        </div>
+                                            </div>
+                                        @endforeach
+
                                     </div>
                                 </div>
                             </div>
@@ -234,9 +218,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="card-footer clearfix">
-                                <x-admin.form.button></x-admin.form.button>
                             </div>
                         </div>
                     </div>

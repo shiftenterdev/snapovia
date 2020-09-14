@@ -107,3 +107,7 @@ ul.pagination{
     align-items: center;
     justify-content: space-between;
 }
+
+.radius-top{
+    border-radius: .25rem .25rem 0 0;
+}

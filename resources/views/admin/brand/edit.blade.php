@@ -2,7 +2,7 @@
 @section('title','Update Brand | ')
 @section('content')
 
-    <x-admin.c-header title="Brand"/>
+    <x-admin.header title="Edit Brand"/>
 
     <div class="content">
         <div class="container-fluid">
@@ -13,9 +13,6 @@
                 <div class="row">
                     <div class="col-lg-8">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Update Brand</h3>
-                            </div>
                             <div class="card-body">
                                 <div class="row">
 

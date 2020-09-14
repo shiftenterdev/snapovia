@@ -3,6 +3,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  * @author Iftakharul Alam Bappa <info@shiftenter.dev> 
  */
+
 namespace App\Http\Livewire\Front;
 
 use App\Facades\Cart;
@@ -23,6 +24,7 @@ class Checkout extends Component
         $guest_notify = '',
         $grand_total_incl_tax = 0,
         $shipping_amount = 0,
+        $payment_method = 'cod',
         $shipping_id = null,
         $customer = null;
 
@@ -35,14 +37,23 @@ class Checkout extends Component
         $this->cartCalculate();
     }
 
+    private function cartCalculate()
+    {
+        $this->sub_total = _a($this->cart->grand_total);
+        $this->sub_total_incl_tax = _a($this->cart->grand_total + $this->cart->grand_total / 100 * $this->tax);
+        $this->tax_amount = _a(($this->sub_total / 100) * $this->tax);
+        $this->shipping_amount = _a($this->cart->shipping_amount);
+        $this->grand_total = _a($this->cart->grand_total + $this->cart->grand_total / 100 * $this->tax + $this->cart->shipping_amount);
+        $this->grand_total_incl_tax = _a($this->cart->grand_total + $this->cart->grand_total / 100 * $this->tax + $this->cart->shipping_amount);
+    }
+
     public function render()
     {
-        $shippingMethods = cache()->remember('shipping_method',60*60,function(){
+        $shippingMethods = cache()->remember('shipping_method', 60 * 60, function () {
             return Shipping::get();
         });
         return view('livewire.front.checkout', compact('shippingMethods'));
     }
-
 
     public function updatedShippingId($value)
     {
@@ -51,32 +62,29 @@ class Checkout extends Component
         $this->cartCalculate();
     }
 
+    public function updatePaymentMethod($value)
+    {
+        $this->show_card = false;
+        if ($value == 'card') {
+            $this->show_card = true;
+        }
+    }
+
     public function updatedEmail($value)
     {
-        $exists = \App\Models\Customer::where('email',$value)
+        $exists = \App\Models\Customer::where('email', $value)
             ->first();
-        if($exists){
+        if ($exists) {
             $this->guest_notify = 'You are already registered. Do you want to login ? <a data-toggle="modal"
                                href="#modalCustomerLogin"><ins>Click  to Login</ins></a>';
-        }else{
+        } else {
             $this->guest_notify = '';
         }
     }
 
-
     public function refreshCheckout()
     {
         $this->customer = Customer::user();
-    }
-
-    private function cartCalculate()
-    {
-        $this->sub_total = _a($this->cart->grand_total);
-        $this->sub_total_incl_tax = _a($this->cart->grand_total + $this->cart->grand_total/100*$this->tax);
-        $this->tax_amount = _a(($this->sub_total/100)*$this->tax);
-        $this->shipping_amount = _a($this->cart->shipping_amount);
-        $this->grand_total = _a($this->cart->grand_total + $this->cart->grand_total/100*$this->tax + $this->cart->shipping_amount);
-        $this->grand_total_incl_tax = _a($this->cart->grand_total + $this->cart->grand_total/100*$this->tax + $this->cart->shipping_amount);
     }
 
 

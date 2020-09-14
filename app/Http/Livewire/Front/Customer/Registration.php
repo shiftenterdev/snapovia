@@ -27,11 +27,10 @@ class Registration extends Component
             'last_name'  => 'alpha_num|required',
             'password'   => 'min:6|required'
         ]);
-
         $customer = Customer::create($validated_fields);
-
         event(new CustomerRegistered($customer));
-
+        Customer::attempt($validated_fields);
+        session()->flush('success','Your registration completed successfully');
         return redirect()->route('customer.info');
     }
 }
