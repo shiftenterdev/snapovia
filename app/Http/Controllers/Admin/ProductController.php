@@ -13,24 +13,6 @@ class ProductController extends Controller
 {
     public function index()
     {
-//        $products = Product::query();
-//        $products->when(request('sku') != '', function ($q) {
-//            return $q->where('sku', request('sku'));
-//        });
-//        $products->when(request('name') != '', function ($q) {
-//            return $q->where('name', request('name'));
-//        });
-//        $products->when(request('status') != '', function ($q) {
-//            return $q->where('status', request('status'));
-//        });
-//        $products->when(request('visibility') != '', function ($q) {
-//            return $q->where('visibility', request('visibility'));
-//        });
-//        $products = $products->select(['name', 'visibility', 'product_type', 'id', 'special_price', 'price', 'sku', 'status', 'qty'])
-//            ->paginate(20);
-//        return view('admin.product.index')->with([
-//            'products' => $products
-//        ]);
         return view('admin.product.index');
     }
 
@@ -62,7 +44,8 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::get();
-        return view('admin.product.edit', compact('product', 'categories'));
+        $attributes = Attribute::product();
+        return view('admin.product.edit', compact('product', 'categories','attributes'));
     }
 
     public function update(ProductRequest $request, Product $product)

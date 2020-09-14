@@ -2,21 +2,17 @@
 
 namespace App\Models;
 
+use App\QueryFilters\Email;
+use App\QueryFilters\OrderId;
+use App\QueryFilters\OrderStatus;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pipeline\Pipeline;
 
 class Order extends Model
 {
     protected $guarded = [];
 
-//    public static function boot()
-//    {
-//        parent::boot();
-//
-//        static::created(function ($model) {
-//            $model->order_id = '1' . str_pad($model->id, 6, 0, STR_PAD_LEFT);
-//            $model->invoice_id = '1' . str_pad($model->id, 6, 0, STR_PAD_LEFT);
-//        });
-//    }
+    protected $paginateCount = 15;
 
     protected static function booted()
     {
@@ -25,6 +21,19 @@ class Order extends Model
             $order->order_id = $last_id + 10000;
             $order->invoice_id = $last_id + 10000;
         });
+    }
+
+    public function scopeGrid($query)
+    {
+        return app(Pipeline::class)
+            ->send($query)
+            ->through([
+                OrderStatus::class,
+                OrderId::class,
+                Email::class,
+            ])
+            ->thenReturn()
+            ->paginate($this->paginateCount);
     }
 
     public function items()

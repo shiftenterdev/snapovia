@@ -14,11 +14,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-
                         <div class="card-body">
                             <form action="" method="get" autocomplete="off">
                                 <div class="row">
-
                                     <div class="col-3">
                                         <div class="form-group">
                                             <label for="">Firstname</label>

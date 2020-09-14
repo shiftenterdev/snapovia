@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 
 class Customer extends Model
 {
-    protected $paginateCount = 15;
+    protected $paginateCount = 20;
 
     protected $fillable = [
         'first_name',
