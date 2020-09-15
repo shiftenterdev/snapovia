@@ -2,19 +2,21 @@
 @section('title','Create Category | ')
 @section('content')
 
-    <x-admin.c-header title="Category"/>
+    <x-admin.header title="Category">
+        <button type="button" class="btn btn-default" onclick="history.back()">Cancel
+        </button>
+        <button type="submit" form="categoryForm" class="btn btn-dark">Save</button>
+    </x-admin.header>
 
     <div class="content">
         <div class="container-fluid">
-            <form action="{{route('admin.category.create')}}" method="post" autocomplete="off"
+            <form action="{{route('admin.category.create')}}" id="categoryForm" method="post" autocomplete="off"
                   enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-header p-0 d-flex bg-gradient-gray">
-                                <h3 class="card-title p-3"><strong>New Category</strong></h3>
-                            </div>
+
                             <div class="card-body">
                                 <div class="row">
 
@@ -57,11 +59,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header p-0 d-flex bg-gradient-gray">
-                                <h3 class="card-title p-3"><strong>Image</strong></h3>
-                            </div>
+
                             <div class="card-body">
                                 <div class="row">
 
@@ -77,11 +75,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header p-0 d-flex bg-gradient-gray">
-                                <h3 class="card-title p-3"><strong>Description</strong></h3>
-                            </div>
+
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12">
@@ -93,11 +87,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header p-0 d-flex bg-gradient-gray">
-                                <h3 class="card-title p-3"><strong>Meta</strong></h3>
-                            </div>
+
                             <div class="card-body">
                                 <div class="row">
 
@@ -122,15 +112,6 @@
                                                       placeholder="Meta Keywords"></textarea>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-default" onclick="history.back()">Cancel
-                                    </button>
-                                    <button type="submit" class="btn btn-outline-primary">Save</button>
                                 </div>
                             </div>
                         </div>

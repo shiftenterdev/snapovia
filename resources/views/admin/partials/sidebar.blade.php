@@ -153,17 +153,17 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.customer.index')}}" class="nav-link {{active_menu('customer')}}">
+                            <a href="{{route('admin.customer.index')}}" class="nav-link {{active_menu('customer.index')}}">
                                 <p>Customer List</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.customer.create')}}" class="nav-link {{active_menu('customer/create')}}">
+                            <a href="{{route('admin.customer.create')}}" class="nav-link {{active_menu('customer.create')}}">
                                 <p>Add Customer</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.group.index')}}" class="nav-link {{active_menu('customer/group')}}">
+                            <a href="{{route('admin.group.index')}}" class="nav-link {{active_menu('group.index')}}">
                                 <p>Customer Group</p>
                             </a>
                         </li>

@@ -1,68 +1,54 @@
 @extends('admin.layouts.app')
 
 @section('content')
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <a href="{{route('admin.role.create')}}" class="btn btn-dark">
-                        <i class="fas fa-plus"></i> New Role
-                    </a>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header p-0 d-flex bg-gradient-info">
-                                <h3 class="card-title p-3"><strong>Roles</strong></h3>
-                            </div>
-                            <div class="card-body table-responsive p-0">
-                                <table class="table table-striped table-valign-middle">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>User</th>
-                                        <th>Permissions</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach($roles as $key => $role)
-                                        <tr>
-                                            <td>{{$loop->iteration}}</td>
-                                            <td>{{$role->name}}</td>
-                                            <td>
-                                                @foreach($role->users as $user)
-                                                    <span class="badge badge-info">{{$user->email}}</span>
-                                                @endforeach
-                                            </td>
-                                            <td>
-                                                @foreach($role->permissions as $user)
-                                                    <span class="badge badge-warning">{{$user->name}}</span>
-                                                @endforeach
-                                            </td>
-                                            <td>
-                                                <a href="{{route('admin.role.edit',$role->id)}}" class="text-muted">
-                                                    <i class="fas fa-pen"></i>
-                                                </a> &nbsp;
-                                                <a href="{{route('admin.role.destroy',$role->id)}}" class="text-muted">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <x-admin.header title="Roles">
+        <a href="{{route('admin.role.create')}}" class="btn btn-dark">
+            <i class="fas fa-plus"></i> New Role
+        </a>
+    </x-admin.header>
+
+    <x-admin.content>
+        <div class="card">
+            <div class="card-body table-responsive p-0 radius-top">
+                <table class="table table-striped table-valign-middle">
+                    <thead class="bg-gray-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>User</th>
+                        <th>Permissions</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($roles as $key => $role)
+                        <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$role->name}}</td>
+                            <td>
+                                @foreach($role->users as $user)
+                                    <span class="badge badge-info">{{$user->email}}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach($role->permissions as $user)
+                                    <span class="badge badge-warning">{{$user->name}}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                <a href="{{route('admin.role.edit',$role->id)}}" class="text-muted">
+                                    <i class="fas fa-pen"></i>
+                                </a> &nbsp;
+                                <a href="{{route('admin.role.destroy',$role->id)}}" class="text-muted">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
-    </div>
+    </x-admin.content>
+
 @endsection
