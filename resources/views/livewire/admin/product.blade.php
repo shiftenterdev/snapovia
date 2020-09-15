@@ -118,7 +118,7 @@
                                             <a href="{{$product->base_image->url}}" target="_blank">
                                                 <img src="{{$product->base_image->thumbnail}}" alt=""
                                                      class="img-thumbnail"
-                                                     width="80px">
+                                                     width="50px">
                                             </a>
                                         @else
                                             <img src="{{$product->sample_image}}" alt="" class="img-thumbnail"
@@ -146,10 +146,8 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="card-footer clearfix flex">
-                        <x-admin.pagination :collection="$products"/>
-                    </div>
                 </div>
+                <x-admin.pagination :collection="$products"/>
             </div>
         </div>
     </div>

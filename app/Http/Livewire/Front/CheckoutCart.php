@@ -12,6 +12,7 @@ use Livewire\Component;
 class CheckoutCart extends Component
 {
     public $coupon_amount = 0,
+        $coupon_type = '',
         $coupon_code = '',
         $cart = [],
         $sub_total = 0,
@@ -20,12 +21,12 @@ class CheckoutCart extends Component
         $tax = 0;
 
 
-    public function updated($field)
-    {
-        $this->validateOnly($field, [
-            'coupon_code' => 'required|min:2'
-        ]);
-    }
+//    public function updated($field)
+//    {
+//        $this->validateOnly($field, [
+//            'coupon_code' => 'required|min:2'
+//        ]);
+//    }
 
     public function mount()
     {
@@ -60,11 +61,14 @@ class CheckoutCart extends Component
             ->first();
 
         if ($rule) {
+            $this->coupon_type = $rule->discount_type;
             $this->coupon_amount = $rule->discount_amount;
             Cart::applyCoupon($rule->id);
             $this->cart = Cart::get();
             $this->cartCalculate();
             session()->flash('success', 'Coupon code: <strong>' . $this->coupon_code . '</strong> Applied successfully');
+        }else{
+            session()->flash('error','Sorry, Invalid Coupon applied');
         }
     }
 
