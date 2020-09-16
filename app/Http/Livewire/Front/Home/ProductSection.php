@@ -27,6 +27,7 @@ class ProductSection extends Component
     {
         Cart::addToCart($sku);
         $this->emit('updateMiniCart');
+        $this->dispatchBrowserEvent('remove-cart-notification');
         session()->flash('success', 'Product added to cart 😀');
     }
 }

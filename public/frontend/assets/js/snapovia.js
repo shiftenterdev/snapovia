@@ -6,3 +6,10 @@ window.addEventListener('cart-updated', event => {
 window.addEventListener('show-minicart', event => {
     document.getElementById('mini-cart-item-count').click();
 });
+
+window.addEventListener('remove-cart-notification', event => {
+    setTimeout(()=>{
+        document.querySelector('.alert .close').click();
+    },5000)
+});
+

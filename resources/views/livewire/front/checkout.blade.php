@@ -44,21 +44,27 @@
                         <!-- Billing details -->
                         <div class="row mb-9">
                             @if(Customer::check())
-
-                                <div class="col-12">
-
-                                    <!-- Email -->
-                                    <div class="form-group">
-                                        <label for="checkoutBillingEmail">{{__('Email')}} *</label>
-                                        <input class="form-control form-control-sm" id="checkoutBillingEmail"
-                                               type="email"
-                                               placeholder="Email" required=""
-                                               name="email"
-                                               value="{{Customer::user()->email ?? ''}}">
+                                @foreach(Customer::user()->address as $address)
+                                    <div class="col-12 col-lg-6">
+                                        <div class="card card-lg bg-light mb-8">
+                                            <div class="card-body">
+                                                <p class="text-muted mb-0">
+                                                    {{$address->first_name.' '.$address->last_name}} <br>
+                                                    {{$address->address_line_1}} <br>
+                                                    {{$address->city}} <br>
+                                                    {{$address->postcode}} <br>
+                                                    {{$address->country}} <br>
+                                                    {{$address->telephone}}
+                                                </p>
+                                                <div class="card-action card-action-right">
+                                                    <button class="btn btn-xs btn-circle btn-white-primary" type="button">
+                                                        <i class="fe fe-check"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                </div>
-
+                                @endforeach
                             @else
                                 <div class="col-12">
 
@@ -79,7 +85,8 @@
                                     </div>
                                 @endif
                             @endif
-
+                        </div>
+                        <div class="row mb-9">
                             <div class="col-12 col-md-6">
 
                                 <!-- First Name -->
