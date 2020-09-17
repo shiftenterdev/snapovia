@@ -42,23 +42,9 @@
                 </div>
                 <div class="col-12 col-md-auto">
                     <div class="form-group">
-                        <a class="font-size-sm text-reset" data-toggle="modal"
-                           href="#modalPasswordReset">{{__('Forgot Password')}}?</a>
+                        <a class="font-size-sm text-reset"
+                           href="{{route('forgot.password')}}">{{__('Forgot Password')}}?</a>
                     </div>
-                    <div class="modal fade" id="modalPasswordReset" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <i class="fe fe-x" aria-hidden="true"></i>
-                                </button>
-                                <div class="modal-header line-height-fixed font-size-lg">
-                                    <strong class="mx-auto">{{__('Forgot Password')}}?</strong>
-                                </div>
-                                <livewire:front.customer.forgot-password/>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
                 <div class="col-12">
                     <button class="btn btn-sm btn-dark" type="submit">
