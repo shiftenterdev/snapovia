@@ -25,6 +25,6 @@
     <x-front.home.reviews/>
 
     <!-- BRANDS -->
-    <x-front.home.brands/>
+    <x-front.instagram/>
 
 @endsection
