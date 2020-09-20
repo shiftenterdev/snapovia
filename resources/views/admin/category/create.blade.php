@@ -2,11 +2,11 @@
 @section('title','Create Category | ')
 @section('content')
 
-    <x-admin.header title="Category">
+    <x-admin-header title="Category">
         <button type="button" class="btn btn-default" onclick="history.back()">Cancel
         </button>
         <button type="submit" form="categoryForm" class="btn btn-dark">Save</button>
-    </x-admin.header>
+    </x-admin-header>
 
     <div class="content">
         <div class="container-fluid">

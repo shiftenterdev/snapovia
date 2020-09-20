@@ -2,13 +2,13 @@
 @section('title','Edit Category | ')
 @section('content')
 
-    <x-admin.header title="Update Category">
+    <x-admin-header title="Update Category">
         <button type="button" class="btn btn-default" onclick="history.back()">Cancel
         </button>
         <button type="submit" form="categoryForm" class="btn btn-dark">Save</button>
-    </x-admin.header>
+    </x-admin-header>
 
-    <x-admin.content>
+    <x-admin-content>
         <form action="{{route('admin.category.update',$category->id)}}" id="categoryForm" method="post" autocomplete="off"
               enctype="multipart/form-data">
             @csrf
@@ -112,7 +112,7 @@
                 </div>
             </div>
         </form>
-    </x-admin.content>
+    </x-admin-content>
 
 @endsection
 
