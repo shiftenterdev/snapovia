@@ -33,4 +33,10 @@ class CustomerGroupController extends Controller
     {
 
     }
+
+    public function delete(CustomerGroup $customerGroup)
+    {
+        $customerGroup->delete();
+        return redirect()->back();
+    }
 }

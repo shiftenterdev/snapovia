@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CustomerLoginRequest;
 use App\Http\Requests\CustomerRequest;
 use App\Models\Customer;
-use App\User;
+use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
@@ -27,7 +26,12 @@ class CustomerController extends Controller
 
     }
 
-    public function edit(User $user)
+    public function edit(Customer $customer)
+    {
+        return view('admin.customer.edit',$customer);
+    }
+
+    public function update(Request $request,Customer $customer)
     {
 
     }
