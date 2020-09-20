@@ -26,4 +26,24 @@ class UserController extends Controller
             'users'=>$this->userRepository->paginate(20)
         ]);
     }
+
+    public function create()
+    {
+        return view('admin.user.create');
+    }
+
+    public function store(Request $request)
+    {
+
+    }
+
+    public function edit(User $user)
+    {
+        return view('admin.user.edit',compact('user'));
+    }
+
+    public function update(Request $request,User $user)
+    {
+
+    }
 }

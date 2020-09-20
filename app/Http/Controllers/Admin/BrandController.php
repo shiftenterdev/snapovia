@@ -57,9 +57,10 @@ class BrandController extends Controller
             ->with('success', 'Brand updated successfully');
     }
 
-    public function destroy($id)
+    public function destroy(Brand $brand)
     {
-        Brand::destroy($id);
-        return redirect()->route('admin.brand')->with('success', 'Brand updated successfully');
+        $brand->delete();
+        session()->flash('success', 'Brand updated successfully');
+        return redirect()->back();
     }
 }

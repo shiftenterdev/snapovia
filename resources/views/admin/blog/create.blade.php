@@ -1,10 +1,10 @@
 @extends('admin.layouts.app')
 @section('title','Create Cms Block | ')
 @section('content')
-    <x-admin.header title="New Blog">
+    <x-admin-header title="New Blog">
         <button type="submit" class="btn btn-dark"><i class="fas fa-save"></i> Save</button>
         <button type="button" class="btn btn-default" onclick="history.back()">Go Back</button>
-    </x-admin.header>
+    </x-admin-header>
 
     <div class="content">
         <div class="container-fluid">

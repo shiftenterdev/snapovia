@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ShopFacadeServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
+        App\Providers\BladeComponentServiceProvider::class,
 
     ],
 

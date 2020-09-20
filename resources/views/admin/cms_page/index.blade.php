@@ -4,13 +4,13 @@
 
 @section('content')
 
-    <x-admin.header title="CMS Page">
+    <x-admin-header title="CMS Page">
         <a href="{{route('admin.cms-page.create')}}" class="btn btn-dark">
             <i class="fas fa-plus"></i> New Page
         </a>
-    </x-admin.header>
+    </x-admin-header>
 
-    <x-admin.content>
+    <x-admin-content>
         <div class="card">
             <div class="card-body table-responsive p-0 radius-top">
                 <table class="table table-striped table-valign-middle">
@@ -44,6 +44,6 @@
                 </table>
             </div>
         </div>
-    </x-admin.content>
+    </x-admin-content>
 
 @endsection

@@ -2,11 +2,11 @@
 @section('title','Product | ')
 @section('content')
 
-    <x-admin.header title="Products">
+    <x-admin-header title="Products">
         <a href="{{route('admin.product.create')}}" class="btn btn-dark">
             <i class="fas fa-plus"></i> Add New Product
         </a>
-    </x-admin.header>
+    </x-admin-header>
 
     <livewire:admin.product />
 

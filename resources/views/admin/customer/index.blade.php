@@ -2,14 +2,14 @@
 
 @section('content')
 
-    <x-admin.header title="Customers">
+    <x-admin-header title="Customers">
         <a href="{{route('admin.customer.create')}}" class="btn btn-dark">
             <i class="fas fa-plus"></i> New Customer
         </a>
-    </x-admin.header>
+    </x-admin-header>
 
 
-    <x-admin.content>
+    <x-admin-content>
         <div class="card">
             <div class="card-body">
                 <form action="" method="get" autocomplete="off">
@@ -92,5 +92,5 @@
                 <x-admin.pagination :collection="$customers"/>
             </div>
         </div>
-    </x-admin.content>
+    </x-admin-content>
 @endsection

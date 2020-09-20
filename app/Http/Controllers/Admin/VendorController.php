@@ -18,4 +18,9 @@ class VendorController extends Controller
     {
         return view('admin.vendor.create');
     }
+
+    public function store(Request $request)
+    {
+        return redirect()->route('admin.vendor.index');
+    }
 }

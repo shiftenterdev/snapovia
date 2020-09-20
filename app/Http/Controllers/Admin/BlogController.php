@@ -40,4 +40,11 @@ class BlogController extends Controller
             'success' => "Blog Updated successfully"
         ]);
     }
+
+    public function delete(Blog $blog)
+    {
+        $blog->delete();
+        session()->flush('success','Blog deleted successfully');
+        return redirect()->back();
+    }
 }

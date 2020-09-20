@@ -42,4 +42,10 @@ class CmsBlockController extends Controller
             'success' => "Block Updated successfully"
         ]);
     }
+
+    public function delete(CmsBlock $cmsBlock)
+    {
+        $cmsBlock->delete();
+        return redirect()->back();
+    }
 }

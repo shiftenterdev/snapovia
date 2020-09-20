@@ -195,14 +195,23 @@ if (config('site.frontend') == 'blade') {
 
 Route::prefix(config('site.admin_url'))->name('admin.')->group(function () {
 
-    Route::get('forgot-password', [AuthController::class, 'forgotPassword'])
-        ->name('forgot.password');
-
     Route::get('login', [AuthController::class, 'login'])
         ->name('login');
 
     Route::post('login', [AuthController::class, 'loginPost'])
         ->name('login.post');
+
+    Route::get('forgot-password', [AuthController::class, 'forgotPassword'])
+        ->name('forgot.password');
+
+    Route::post('forgotpassword', [AuthController::class, 'forgotPasswordPost'])
+        ->name('forgot.password.post');
+
+    Route::get('createpassword/{token}', [AuthController::class, 'createPassword'])
+        ->name('create.password');
+
+    Route::post('createpassword', [AuthController::class, 'createPasswordPost'])
+        ->name('create.password.post');
 
     Route::get('logout', [AuthController::class, 'logout'])
         ->name('logout');

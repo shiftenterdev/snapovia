@@ -2,13 +2,13 @@
 @section('title','Category | ')
 @section('content')
 
-    <x-admin.header title="Categories">
+    <x-admin-header title="Categories">
         <a href="{{route('admin.category.create')}}" class="btn btn-dark">
             <i class="fas fa-plus"></i> New Category
         </a>
-    </x-admin.header>
+    </x-admin-header>
 
-    <x-admin.content>
+    <x-admin-content>
         <div class="card">
 
             <div class="card-body">
@@ -89,5 +89,5 @@
             </div>
         </div>
         <x-admin.pagination :collection="$categories"/>
-    </x-admin.content>
+    </x-admin-content>
 @endsection
