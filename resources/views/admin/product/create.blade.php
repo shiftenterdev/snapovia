@@ -2,10 +2,10 @@
 @section('title','Create Product | ')
 @section('content')
 
-    <x-admin.header title="New Product">
+    <x-admin-header title="New Product">
         <button type="button" class="btn btn-warning" onclick="history.back()">Cancel</button>
         <button type="submit" form="newProductForm" class="btn btn-info">{{$name??'Save'}}</button>
-    </x-admin.header>
+    </x-admin-header>
 
     <div class="content">
         <div class="container-fluid">
@@ -112,114 +112,104 @@
                         </div>
 
                         @if(count($attributes))
-                            <div class="card">
-                                <x-admin.card.title title="Attributes"/>
-                                <div class="card-body">
-                                    <div class="row">
-                                        @foreach($attributes as $attribute)
-                                            <div class="col-6">
-                                                <div class="form-group">
-                                                    <label for="">{{$attribute->name}}</label>
-                                                    @if($attribute->attribute_field_type=='text')
-                                                        <input type="text" name="{{$attribute->slug}}"
-                                                               class="form-control form-control-sm">
-                                                    @elseif($attribute->attribute_field_type=='select')
-                                                        <select name="{{$attribute->slug}}"
-                                                                class="form-control form-control-sm" id="">
-                                                            <option value="">Select</option>
-                                                            @foreach($attribute->options as $option)
-                                                                <option
-                                                                        value="{{$option->id}}">{{$option->option_value}}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    @elseif($attribute->attribute_field_type=='textarea')
-                                                        <textarea name="short_description"
-                                                                  class="form-control form-control-sm editor"
-                                                                  placeholder="Short Description"></textarea>
-                                                    @elseif($attribute->attribute_field_type=='radio')
-                                                    @endif
-                                                </div>
+                            <x-admin-card title="Attributes">
+                                <div class="row">
+                                    @foreach($attributes as $attribute)
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label for="">{{$attribute->name}}</label>
+                                                @if($attribute->attribute_field_type=='text')
+                                                    <input type="text" name="{{$attribute->slug}}"
+                                                           class="form-control form-control-sm">
+                                                @elseif($attribute->attribute_field_type=='select')
+                                                    <select name="{{$attribute->slug}}"
+                                                            class="form-control form-control-sm" id="">
+                                                        <option value="">Select</option>
+                                                        @foreach($attribute->options as $option)
+                                                            <option
+                                                                    value="{{$option->id}}">{{$option->option_value}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                @elseif($attribute->attribute_field_type=='textarea')
+                                                    <textarea name="short_description"
+                                                              class="form-control form-control-sm editor"
+                                                              placeholder="Short Description"></textarea>
+                                                @elseif($attribute->attribute_field_type=='radio')
+                                                @endif
                                             </div>
-                                        @endforeach
+                                        </div>
+                                    @endforeach
 
-                                    </div>
                                 </div>
-                            </div>
+                            </x-admin-card>
+
                         @endif
-                        <div class="card">
-                            <x-admin.card.title title="Configuration"/>
-                        </div>
+                        <x-admin-card title="Configuration"/>
 
-                        <div class="card">
-                            <x-admin.card.title title="Media"/>
-                            <div class="card-body table-responsive">
-                                <div class="row">
+                        <x-admin-card title="Media">
+                            <div class="row">
 
-                                    <div class="col-12">
-                                        <div class="form-group" id="holder">
-                                            {{--                                            <input type="hidden" id="thumbnail" class="form-control form-control-sm"--}}
-                                            {{--                                                   name="image" placeholder="Image">--}}
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="button" id="lfm" data-input="thumbnail" data-preview="holder"
-                                                    class="btn btn-sm btn-outline-info">Upload Image
-                                            </button>
-                                        </div>
+                                <div class="col-12">
+                                    <div class="form-group" id="holder">
+                                        {{--                                            <input type="hidden" id="thumbnail" class="form-control form-control-sm"--}}
+                                        {{--                                                   name="image" placeholder="Image">--}}
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" id="lfm" data-input="thumbnail" data-preview="holder"
+                                                class="btn btn-sm btn-outline-info">Upload Image
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card">
-                            <x-admin.card.title title="Description"/>
-                            <div class="card-body table-responsive">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="">Short Description</label>
-                                            <textarea name="short_description"
-                                                      class="form-control form-control-sm editor"
-                                                      placeholder="Short Description"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="">Description</label>
-                                            <textarea name="description" class="form-control form-control-sm editor"
-                                                      placeholder="Description"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <x-admin.card.title title="Meta Information"/>
-                            <div class="card-body table-responsive">
-                                <div class="row">
+                        </x-admin-card>
 
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <label for="">Meta Title</label>
-                                            <input type="text" name="meta_title" class="form-control form-control-sm"
-                                                   placeholder="Meta Title" required>
-                                        </div>
+
+                        <x-admin-card title="Description">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="">Short Description</label>
+                                        <textarea name="short_description"
+                                                  class="form-control form-control-sm editor"
+                                                  placeholder="Short Description"></textarea>
                                     </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="">Meta Description</label>
-                                            <textarea name="meta_description" class="form-control form-control-sm"
-                                                      placeholder="Meta Description"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="form-group">
-                                            <label for="">Meta Keywords</label>
-                                            <textarea name="meta_description" class="form-control form-control-sm"
-                                                      placeholder="Meta Keywords"></textarea>
-                                        </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="">Description</label>
+                                        <textarea name="description" class="form-control form-control-sm editor"
+                                                  placeholder="Description"></textarea>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </x-admin-card>
+
+                        <x-admin-card title="Meta Information">
+                            <div class="row">
+
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="">Meta Title</label>
+                                        <input type="text" name="meta_title" class="form-control form-control-sm"
+                                               placeholder="Meta Title" required>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="">Meta Description</label>
+                                        <textarea name="meta_description" class="form-control form-control-sm"
+                                                  placeholder="Meta Description"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="">Meta Keywords</label>
+                                        <textarea name="meta_description" class="form-control form-control-sm"
+                                                  placeholder="Meta Keywords"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </x-admin-card>
                     </div>
                 </div>
             </form>

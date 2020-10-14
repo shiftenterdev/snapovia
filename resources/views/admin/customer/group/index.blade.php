@@ -2,11 +2,11 @@
 
 @section('content')
 
-    <x-admin.header title="Customer Group">
+    <x-admin-header title="Customer Group">
         <a href="{{route('admin.customer.create')}}" class="btn btn-dark">
             <i class="fas fa-plus"></i> New Customer Group
         </a>
-    </x-admin.header>
+    </x-admin-header>
 
     <div class="content">
         <div class="container-fluid">
