@@ -187,7 +187,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.vendor.index')}}" class="nav-link {{active_menu('vendor')}}">
+                            <a href="{{route('admin.vendor.index')}}" class="nav-link {{active_menu('vendor.index')}}">
                                 <p>Vendor List</p>
                             </a>
                         </li>
