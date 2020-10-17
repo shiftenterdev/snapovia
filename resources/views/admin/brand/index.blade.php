@@ -38,10 +38,10 @@
                             </td>
                             <td>{{$c->identifier}}</td>
                             <td>
-                                <a href="{{route('admin.brand.edit',$c->id)}}" class="text-muted">
+                                <a href="{{route('admin.brand.edit',$c->id)}}" class="text-dark">
                                     <i class="fas fa-pen"></i>
                                 </a> &nbsp;
-                                <a href="{{route('admin.brand.destroy',$c->id)}}" class="text-muted">
+                                <a href="{{route('admin.brand.destroy',$c->id)}}" class="text-danger">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </td>
@@ -49,11 +49,10 @@
                     @endforeach
                     </tbody>
                 </table>
-                <div class="card-footer flex clearfix">
-                    <x-admin.pagination :collection="$brands"/>
-                </div>
-
             </div>
+        </div>
+        <div class="flex clearfix">
+            <x-admin.pagination :collection="$brands"/>
         </div>
     </x-admin-content>
 @endsection
