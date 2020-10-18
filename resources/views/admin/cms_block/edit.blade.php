@@ -1,18 +1,11 @@
 @extends('admin.layouts.app')
 @section('title','Update Cms Block | ')
 @section('content')
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <button type="submit" class="btn btn-dark"><i class="fas fa-save"></i> Update</button>
-                    <button type="button" class="btn btn-default" onclick="history.back()">Go Back</button>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+
+    <x-admin-header title="Create Block">
+        <button type="submit" class="btn btn-dark"><i class="fas fa-save"></i> Update</button>
+        <button type="button" class="btn btn-default" onclick="history.back()">Go Back</button>
+    </x-admin-header>
 
     <div class="content">
         <div class="container-fluid">
