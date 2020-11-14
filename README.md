@@ -33,16 +33,16 @@ We will have the following features:
 |:---|:---|
 |Project|Ecommerce|
 |Type|Single store mode|
-|Framework|Laravel 7.x|
+|Framework|Laravel 8.x|
 |Database|Mysql 5.7|
-|PHP|7.2|
+|PHP|^7.3|
 |Admin panel|Yes|
 |Vendor|Yes|
 |Frontend|Blade & Vue|
-|Livewire|1.x|
+|Livewire|2.x|
 |Spatie Media Library|7.x|
 |Spatie Permission|3.x|
-|Unisharp File manager|2.x|
+|Unisharp File manager|dev-master|
 |Payment |COD,Stripe,Paypal|
 
 ## Installation
