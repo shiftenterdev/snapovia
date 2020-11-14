@@ -47,6 +47,31 @@ We will have the following features:
 
 ## Installation
 
+### Using Docker
+```shell script
+# Using git clone
+$ git clone https://github.com/shiftenterdev/snapovia.git
+$ cd snapovia
+$ composer install
+$ cp .env.docker .env
+
+$ docker-compose build
+$ docker-compose up -d
+
+$ docker-compose exec php php /var/www/artisan migrate:fresh --seed
+# If you want to excute direct shell command
+# $ docker-compose exec {container_name} /bin/sh
+$ docker-compose exec php /bin/sh
+# Then execute as 
+$ php artisan migrate:fresh --seed
+
+# migrate without sample-data
+$ php artisan migrate:fresh
+```
+**Now serve http://127.0.0.1:8088**
+
+### General
+
 ```shell script
 # Using git clone
 $ git clone https://github.com/shiftenterdev/snapovia.git
