@@ -47,3 +47,9 @@ services:
       - "9000:9000"
     networks:
       - snapovia
+
+  redis:
+    image: redis:alpine
+    container_name: redisserver
+    ports:
+    - "6379:6379"
