@@ -13,9 +13,9 @@ class CustomerLoginTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testCustomerLoginPage()
     {
-        $response = $this->get('/customer/account/login');
+        $response = $this->get('/customer/login');
 
         $response->assertStatus(200);
     }

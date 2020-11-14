@@ -6,16 +6,16 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class AdminLoginTest extends TestCase
+class TermsAndConditionPageTest extends TestCase
 {
     /**
      * A basic feature test example.
      *
      * @return void
      */
-    public function testAdminLoginPage()
+    public function testTermsAndConditionPage()
     {
-        $response = $this->get('/adminportal/login');
+        $response = $this->get('/terms');
 
         $response->assertStatus(200);
     }
