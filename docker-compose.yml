@@ -48,8 +48,20 @@ services:
     networks:
       - snapovia
 
+  npm:
+    image: node:12-alpine
+    container_name: npm
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    entrypoint: ['npm', '--no-bin-links']
+    networks:
+      - snapovia
+
   redis:
     image: redis:alpine
     container_name: redisserver
     ports:
-    - "6379:6379"
+      - "6379:6379"
+    networks:
+      - snapovia

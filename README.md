@@ -67,6 +67,9 @@ $ php artisan migrate:fresh --seed
 
 # migrate without sample-data
 $ php artisan migrate:fresh
+
+$ docker-compose run npm install --save
+$ docker-compose run npm run production
 ```
 **Now serve http://127.0.0.1:8088**
 
