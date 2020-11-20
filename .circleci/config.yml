@@ -16,7 +16,7 @@ jobs:
           name: "Prepare Environment"
           command: |
             sudo apt update
-            sudo docker-php-ext-install zip
+            sudo docker-php-ext-install zip exif intl
 
       # Download and cache dependencies
       - restore_cache:
