@@ -1,4 +1,5 @@
 <?php
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -55,21 +56,21 @@ class UserSeeder extends Seeder
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
         // create demo users
-        $user = Factory(App\User::class)->create([
+        $user = \App\Models\User::create([
             'name'     => 'Example User',
             'password' => bcrypt('password'),
             'email'    => 'test@example.com',
         ]);
         $user->assignRole($role1);
 
-        $user = Factory(App\User::class)->create([
+        $user = \App\Models\User::create([
             'name'     => 'Example Admin User',
             'password' => bcrypt('password'),
             'email'    => 'admin@example.com',
         ]);
         $user->assignRole($role2);
 
-        $user = Factory(App\User::class)->create([
+        $user = \App\Models\User::create([
             'name'     => 'Super-Admin',
             'password' => bcrypt('password'),
             'email'    => 'super@admin.com',
