@@ -1,5 +1,8 @@
 <?php
-
+/**
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @author Iftakharul Alam Bappa <info@shiftenter.dev> 
+ */
 namespace App\Models;
 
 use App\QueryFilters\Email;
@@ -53,7 +56,7 @@ class Order extends Model
 
     public function paymentInfo()
     {
-        return $this->hasOne(PaymentInfo::class);
+        return $this->hasOne(Payment::class);
     }
 
     public function coupon()
