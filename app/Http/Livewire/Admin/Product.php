@@ -9,6 +9,8 @@ class Product extends Component
 {
     use WithPagination;
 
+    protected $paginationTheme = 'bootstrap';
+
     public $search = [
         'sku'          => '',
         'name'         => '',

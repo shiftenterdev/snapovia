@@ -223,7 +223,7 @@
 @endsection
 
 @section('script')
-    <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"></script>
     <script src="{{asset('adminhtml/plugins/select2/js/select2.full.min.js')}}"></script>
     <script>
         $('.select2').select2();

@@ -9,7 +9,7 @@
                 </h3>
 
                 <!-- Counter -->
-                <div class="d-flex mb-9" data-countdown data-date="Jan 5, 2021 15:37:25">
+                <div class="d-flex mb-9" data-countdown data-date="Jan 5, 2022 15:37:25">
                     <div class="text-center">
                         <div class="font-size-h1 font-weight-bolder text-primary" data-days>00</div>
                         <div class="heading-xxs text-muted">{{__('Days')}}</div>
