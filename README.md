@@ -58,10 +58,10 @@ $ cp .env.docker .env
 $ docker-compose build
 $ docker-compose up -d
 
-$ docker-compose exec php php /var/www/artisan migrate:fresh --seed
-# If you want to excute direct shell command
+$ docker-compose exec app php /var/www/artisan migrate:fresh --seed
+# If you want to execute direct shell command
 # $ docker-compose exec {container_name} /bin/sh
-$ docker-compose exec php /bin/sh
+$ docker-compose exec app /bin/sh
 # Then execute as 
 $ php artisan migrate:fresh --seed
 
