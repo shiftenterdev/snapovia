@@ -25,9 +25,9 @@ RUN apk update && apk add --no-cache \
     php7-session \
     php7-zlib
 
-# Add and Enable PHP-PDO Extenstions
-RUN docker-php-ext-install pdo pdo_mysql
-RUN docker-php-ext-enable pdo_mysql
+# Add and Enable required Extenstions
+RUN docker-php-ext-install pdo pdo_mysql exif
+RUN docker-php-ext-enable pdo_mysql exif
 
 # Add imagick
 RUN apk add --update --no-cache autoconf g++ imagemagick imagemagick-dev libtool make pcre-dev \

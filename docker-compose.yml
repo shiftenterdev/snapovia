@@ -6,13 +6,14 @@ networks:
 
 services:
   nginx:
-    image: nginx:stable-alpine
-    container_name: webserver
+    image: nginx:alpine
+    container_name: nginx
     ports:
-      - "8088:80"
+      - "80:80"
+      - "443:443"
     volumes:
       - .:/var/www/html
-      - ./data/nginx/snapovia.conf:/etc/nginx/conf.d/
+      - ./docker/nginx/:/etc/nginx/conf.d/
     depends_on:
       - database
       - app
@@ -28,11 +29,11 @@ services:
     ports:
       - "4306:3306"
     volumes:
-      - ./data/db:/var/lib/mysql
+      - ./docker/db:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: dailymart
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: snapoviadb
+      MYSQL_USER: snapovia
+      MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: root
     networks:
       - snapovia
