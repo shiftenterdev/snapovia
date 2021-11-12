@@ -60,8 +60,8 @@ $ docker-compose up -d
 
 $ docker-compose exec app php /var/www/artisan migrate:fresh --seed
 # If you want to execute direct shell command
-# $ docker-compose exec {container_name} /bin/sh
-$ docker-compose exec app /bin/sh
+# $ docker-compose exec {container_name} sh
+$ docker-compose exec app sh
 # Then execute as 
 $ php artisan migrate:fresh --seed
 
@@ -71,7 +71,7 @@ $ php artisan migrate:fresh
 $ docker-compose run npm install --save
 $ docker-compose run npm run production
 ```
-**Now serve http://127.0.0.1:8088**
+**Now serve http://snapovia.local/**
 
 ### General
 

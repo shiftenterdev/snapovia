@@ -52,12 +52,11 @@ services:
       - snapovia
 
   npm:
-    image: node:12-alpine
+    image: node:14-alpine
     container_name: npm
     volumes:
       - .:/var/www/html
     working_dir: /var/www/html
-    entrypoint: ['npm', '--no-bin-links']
     networks:
       - snapovia
 
