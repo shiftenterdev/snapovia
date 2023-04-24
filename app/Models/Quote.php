@@ -6,7 +6,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Webpatser\Uuid\Uuid;
+use Illuminate\Support\Str;
 
 class Quote extends Model
 {
@@ -20,7 +20,7 @@ class Quote extends Model
     {
         parent::boot();
         self::creating(function ($model) {
-            $model->quote_id = (string)Uuid::generate();
+            $model->quote_id = (string) Str::uuid();
         });
     }
 

@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+
 
 class Brand extends Model implements HasMedia
 {
-    use HasMediaTrait;
+    use InteractsWithMedia;
 
     protected $guarded = [];
 
@@ -42,7 +43,7 @@ class Brand extends Model implements HasMedia
         return $this->belongsTo(Brand::class);
     }
 
-    public function registerMediaConversions(Media $media = null)
+    public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('thumb')->width(50)->height(50);
     }
