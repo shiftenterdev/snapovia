@@ -2,45 +2,48 @@ version: '3'
 
 networks:
   snapovia:
+    driver: bridge
 
 services:
   nginx:
-    image: nginx:stable-alpine
-    container_name: webserver
+    image: nginx:alpine
+    container_name: nginx
     ports:
-      - "8088:80"
+      - "80:80"
+      - "443:443"
     volumes:
       - .:/var/www/html
-      - ./data/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/nginx/:/etc/nginx/conf.d/
     depends_on:
-      - mysql
-      - php
+      - database
+      - app
     networks:
       - snapovia
 
 
-  mysql:
-    image: mysql:5.7
+  database:
+    image: mariadb:10.5.8
     container_name: mysqldb
     restart: unless-stopped
     tty: true
     ports:
       - "4306:3306"
     volumes:
-      - ./data/db:/var/lib/mysql
+      - ./docker/db:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: butikshop
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: snapoviadb
+      MYSQL_USER: snapovia
+      MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: root
     networks:
       - snapovia
 
-  php:
+  app:
     build:
-      context: ./data
+      context: ./docker
       dockerfile: Dockerfile
-    container_name: php
+    image: snapovia/php
+    container_name: app
     volumes:
       - .:/var/www/html
     ports:
@@ -49,12 +52,11 @@ services:
       - snapovia
 
   npm:
-    image: node:12-alpine
+    image: node:14-alpine
     container_name: npm
     volumes:
       - .:/var/www/html
     working_dir: /var/www/html
-    entrypoint: ['npm', '--no-bin-links']
     networks:
       - snapovia
 

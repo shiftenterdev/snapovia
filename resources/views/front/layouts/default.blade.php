@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{asset('frontend/assets/fonts/feather/feather.css')}}">
     <livewire:styles/>
     <link rel="stylesheet" href="{{asset('frontend/assets/css/theme.min.css')}}">
-    <link rel="stylesheet" href="{{asset('frontend/assets/css/custom.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/custom.min.css')}}">
 </head>
 <body>
 
