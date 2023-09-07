@@ -21,7 +21,7 @@
     },
     "dependencies": {
         "flickity": "^2.2.1",
-        "swiper": "^6.2.0",
+        "swiper": "^6.5.1",
         "vue": "^2.6.11",
         "vue-router": "^3.4.3",
         "vuex": "^3.5.1"
