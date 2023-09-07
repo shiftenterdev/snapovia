@@ -16,17 +16,17 @@ class CreateOrderBillingsTable extends Migration
         Schema::create('order_billings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
-            $table->string('prefix',10)->nullable();
-            $table->string('first_name',64);
-            $table->string('last_name',64);
-            $table->string('middle_name',64)->nullable();
-            $table->string('company_name',64)->nullable();
+            $table->string('prefix', 10)->nullable();
+            $table->string('first_name', 64);
+            $table->string('last_name', 64);
+            $table->string('middle_name', 64)->nullable();
+            $table->string('company_name', 64)->nullable();
             $table->string('address_line_1');
             $table->string('address_line_2')->nullable();
             $table->string('city');
-            $table->string('country',32)->nullable();
-            $table->string('postcode',20)->nullable();
-            $table->string('telephone',32);
+            $table->string('country', 32)->nullable();
+            $table->string('postcode', 20)->nullable();
+            $table->string('telephone', 32);
             $table->timestamps();
         });
     }

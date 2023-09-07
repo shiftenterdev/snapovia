@@ -15,7 +15,7 @@ class CreateCustomerGroupsTable extends Migration
     {
         Schema::create('customer_groups', function (Blueprint $table) {
             $table->id();
-            $table->string('title',32);
+            $table->string('title', 32);
             $table->timestamps();
         });
     }
