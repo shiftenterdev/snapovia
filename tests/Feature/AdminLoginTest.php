@@ -1,22 +1,6 @@
 <?php
 
-namespace Tests\Feature;
-
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
-
-class AdminLoginTest extends TestCase
-{
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testAdminLoginPage()
-    {
-        $response = $this->get('/adminportal/login');
-
-        $response->assertStatus(200);
-    }
-}
+test('Test admin login page', function () {
+    $this->get('/adminportal/login')
+        ->assertStatus(200);
+});
