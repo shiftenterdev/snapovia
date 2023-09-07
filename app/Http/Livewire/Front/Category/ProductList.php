@@ -11,9 +11,11 @@ class ProductList extends Component
 {
     use WithPagination;
 
-    public $sort_by = 'name_asc',
-        $category_id = null,
-        $categoryTitle = 'All products';
+    public $sort_by = 'name_asc';
+
+    public $category_id = null;
+
+    public $categoryTitle = 'All products';
 
     protected $updatesQueryString = ['sort_by'];
 
@@ -28,6 +30,7 @@ class ProductList extends Component
     {
         $products = \App\Models\Product::front($this->sort_by, $this->category_id)
             ->paginate(18);
+
         return view('livewire.front.category.product-list', compact('products'));
     }
 
@@ -40,8 +43,9 @@ class ProductList extends Component
 
     public function updateProductList($category_id = 0)
     {
-        if ($category_id)
+        if ($category_id) {
             $category = Category::find($category_id);
+        }
         $this->categoryTitle = $category->name ?? 'All products';
         $this->category_id = $category_id;
     }

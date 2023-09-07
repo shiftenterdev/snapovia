@@ -12,7 +12,7 @@ class CustomerController extends Controller
     public function index()
     {
         return view('admin.customer.index')->with([
-            'customers' => Customer::grid()
+            'customers' => Customer::grid(),
         ]);
     }
 
@@ -28,10 +28,10 @@ class CustomerController extends Controller
 
     public function edit(Customer $customer)
     {
-        return view('admin.customer.edit',$customer);
+        return view('admin.customer.edit', $customer);
     }
 
-    public function update(Request $request,Customer $customer)
+    public function update(Request $request, Customer $customer)
     {
 
     }

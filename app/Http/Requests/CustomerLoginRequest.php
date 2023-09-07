@@ -3,6 +3,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  * @author Iftakharul Alam Bappa <info@shiftenter.dev> 
  */
+
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -27,9 +28,9 @@ class CustomerLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'    => 'email|required',
+            'email' => 'email|required',
             'password' => 'min:6|required',
-            'source'   => 'alpha_num',
+            'source' => 'alpha_num',
         ];
     }
 

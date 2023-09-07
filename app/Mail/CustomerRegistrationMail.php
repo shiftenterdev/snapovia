@@ -5,7 +5,6 @@ namespace App\Mail;
 use App\Models\Customer;
 use App\User;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -20,8 +19,6 @@ class CustomerRegistrationMail extends Mailable
 
     /**
      * Create a new message instance.
-     *
-     * @param Customer $customer
      */
     public function __construct(Customer $customer)
     {

@@ -3,11 +3,8 @@
 namespace App\Listeners;
 
 use App\Events\OrderSubmitted;
-use App\Mail\CustomerRegistrationMail;
 use App\Mail\OrderCompleteMail;
 use App\Mail\OrderSubmittedMail;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 
 class SendOrderSubmissionNotification
@@ -25,7 +22,6 @@ class SendOrderSubmissionNotification
     /**
      * Handle the event.
      *
-     * @param  OrderSubmitted  $event
      * @return void
      */
     public function handle(OrderSubmitted $event)

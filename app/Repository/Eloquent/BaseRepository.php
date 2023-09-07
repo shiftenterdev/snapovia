@@ -15,26 +15,18 @@ class BaseRepository implements EloquentRepositoryInterface
 
     /**
      * BaseRepository constructor.
-     *
-     * @param Model $model
      */
     public function __construct(Model $model)
     {
         $this->model = $model;
     }
 
-    /**
-     * @param array $attributes
-     *
-     * @return Model
-     */
     public function create(array $attributes): Model
     {
         return $this->model->create($attributes);
     }
 
     /**
-     * @param $id
      * @return Model
      */
     public function find($id): ?Model
@@ -42,36 +34,22 @@ class BaseRepository implements EloquentRepositoryInterface
         return $this->model->find($id);
     }
 
-    /**
-     * @param $count
-     * @return LengthAwarePaginator|null
-     */
     public function paginate($count): ?LengthAwarePaginator
     {
         return $this->model->paginate($count);
     }
 
-    /**
-     * @param Model $model
-     * @return Model|null
-     */
     public function edit(Model $model): ?Model
     {
         return $this->model;
     }
 
-    /**
-     * @param array $attributes
-     * @return bool
-     */
     public function update(array $attributes): bool
     {
         return $this->model->update($attributes);
     }
 
     /**
-     * @param Model $model
-     * @return bool|null
      * @throws \Exception
      */
     public function destroy(Model $model): ?bool

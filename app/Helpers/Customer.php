@@ -16,8 +16,6 @@ class Customer
 
     /**
      * Login customer
-     * @param $credentials
-     * @return bool
      */
     public function attempt($credentials): bool
     {
@@ -29,18 +27,21 @@ class Customer
                 if (Hash::check($credentials['password'], $customer->password)) {
                     $this->update($customer);
                     $this->mergeCart($customer->id);
+
                     return true;
                 }
+
                 return false;
             }
+
             return false;
         }
+
         return false;
     }
 
     /**
      * Update customer object
-     * @param \App\Models\Customer $customer
      */
     public function update(\App\Models\Customer $customer): void
     {
@@ -49,7 +50,8 @@ class Customer
 
     /**
      * Merge cart with existing cart
-     * @param int $customer_id
+     *
+     * @param  int  $customer_id
      * @return void
      */
     private function mergeCart($customer_id)
@@ -72,10 +74,13 @@ class Customer
                 if (Hash::check($credentials['password'], $customer->password)) {
                     return true;
                 }
+
                 return false;
             }
+
             return false;
         }
+
         return false;
     }
 
@@ -89,38 +94,35 @@ class Customer
 
     /**
      * Get customer object
+     *
      * @return \App\Models\Customer
      */
     public function user(): ?\App\Models\Customer
     {
-        if (!$this->check()) {
+        if (! $this->check()) {
             return null;
         }
         $customer = \App\Models\Customer::find(session(self::CUSTOMER_SESSION_KEY)->customer_id);
         $this->update($customer);
+
         return session(self::CUSTOMER_SESSION_KEY) ?? null;
     }
 
     /**
      * Check if customer logged-in
-     * @return bool
      */
     public function check(): bool
     {
         return session()->has(self::CUSTOMER_SESSION_KEY);
     }
 
-    /**
-     * @param array $data
-     * @return \App\Models\Customer
-     */
     public function create(array $data): \App\Models\Customer
     {
-        $customer =  \App\Models\Customer::create([
+        $customer = \App\Models\Customer::create([
             'first_name' => $data['first_name'],
-            'last_name'  => $data['last_name'],
-            'email'      => $data['email'],
-            'password'   => bcrypt($data['password']),
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
         ]);
 
         $this->login($data);

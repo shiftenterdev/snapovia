@@ -11,8 +11,6 @@ class HeaderComponent extends Component
 
     /**
      * Create a new component instance.
-     *
-     * @param $title
      */
     public function __construct($title)
     {

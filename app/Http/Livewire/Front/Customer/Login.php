@@ -7,8 +7,9 @@ use Livewire\Component;
 
 class Login extends Component
 {
-    public $email = '', $password = '';
+    public $email = '';
 
+    public $password = '';
 
     public function render()
     {
@@ -18,13 +19,13 @@ class Login extends Component
     public function login()
     {
         $validatedField = $this->validate([
-            'email'    => 'email|required',
-            'password' => 'min:6|required'
+            'email' => 'email|required',
+            'password' => 'min:6|required',
         ]);
         if (Customer::attempt($validatedField)) {
-//            if($request->source){
-//                return redirect($request->source);
-//            }
+            //            if($request->source){
+            //                return redirect($request->source);
+            //            }
             return redirect()->route('customer.info');
         }
         session()->flash('error', 'Invalid Login attempt');

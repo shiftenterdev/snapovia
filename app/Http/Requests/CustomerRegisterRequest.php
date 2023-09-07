@@ -3,6 +3,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  * @author Iftakharul Alam Bappa <info@shiftenter.dev> 
  */
+
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -27,11 +28,11 @@ class CustomerRegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'      => 'email|required|unique:customers',
+            'email' => 'email|required|unique:customers',
             'first_name' => 'required|min:3|max:20|alpha',
-            'last_name'  => 'required|min:3|max:20|alpha',
-            'password'   => 'confirmed|min:6',
-            'redirect'   => 'alpha_num',
+            'last_name' => 'required|min:3|max:20|alpha',
+            'password' => 'confirmed|min:6',
+            'redirect' => 'alpha_num',
         ];
     }
 
@@ -39,7 +40,7 @@ class CustomerRegisterRequest extends FormRequest
     {
         return [
             'email.unique' => 'Email address already exists',
-            'password'     => 'Password must be confirmed'
+            'password' => 'Password must be confirmed',
         ];
     }
 }

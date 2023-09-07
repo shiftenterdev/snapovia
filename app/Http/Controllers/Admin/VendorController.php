@@ -11,7 +11,8 @@ class VendorController extends Controller
     public function index()
     {
         $vendors = Vendor::get();
-        return view('admin.vendor.index',compact('vendors'));
+
+        return view('admin.vendor.index', compact('vendors'));
     }
 
     public function create()

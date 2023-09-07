@@ -11,7 +11,7 @@ class CmsBlockController extends Controller
     public function index()
     {
         return view('admin.cms_block.index')->with([
-            'blocks'=>CmsBlock::get()
+            'blocks' => CmsBlock::get(),
         ]);
     }
 
@@ -23,29 +23,32 @@ class CmsBlockController extends Controller
     public function store(CmsBlockRequest $request)
     {
         CmsBlock::create($request->except('_token'));
+
         return redirect()->route('admin.cms-block')->with([
-            'success' => "Block Created successfully"
+            'success' => 'Block Created successfully',
         ]);
     }
 
     public function edit(CmsBlock $cmsBlock)
     {
         return view('admin.cms_block.edit')->with([
-            'block' => $cmsBlock
+            'block' => $cmsBlock,
         ]);
     }
 
     public function update(CmsBlockRequest $request, CmsBlock $cmsBlock)
     {
         $cmsBlock->update($request->except('_token'));
+
         return redirect()->route('admin.cms-block')->with([
-            'success' => "Block Updated successfully"
+            'success' => 'Block Updated successfully',
         ]);
     }
 
     public function delete(CmsBlock $cmsBlock)
     {
         $cmsBlock->delete();
+
         return redirect()->back();
     }
 }

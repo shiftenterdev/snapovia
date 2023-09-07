@@ -15,7 +15,7 @@ class CatItem extends Component
     public function mount($category)
     {
         $this->category = $category;
-        $this->category_id = request('category_id',$this->category_id);
+        $this->category_id = request('category_id', $this->category_id);
     }
 
     public function render()
@@ -25,7 +25,7 @@ class CatItem extends Component
 
     public function updatedCategoryId($value)
     {
-        $this->emit('updateProductList',$value);
-        $this->emit('updateCategoryList',$value);
+        $this->emit('updateProductList', $value);
+        $this->emit('updateCategoryList', $value);
     }
 }

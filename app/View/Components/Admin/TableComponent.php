@@ -6,7 +6,6 @@ use Illuminate\View\Component;
 
 class TableComponent extends Component
 {
-
     public $title;
 
     /**

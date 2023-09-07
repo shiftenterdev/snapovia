@@ -4,6 +4,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  * @author Iftakharul Alam Bappa <info@shiftenter.dev> 
  */
+
 namespace App\Helpers;
 
 use Illuminate\Support\Facades\Hash;
@@ -14,32 +15,33 @@ class Vendor
 
     /**
      * Login vendor
-     * @param $credentials
-     * @return bool
      */
-    public function attempt($credentials):bool
+    public function attempt($credentials): bool
     {
-        if(isset($credentials['email']) && isset($credentials['password'])){
+        if (isset($credentials['email']) && isset($credentials['password'])) {
             $vendor = \App\Models\Vendor::whereEmail($credentials['email'])
                 ->whereStatus(1)
                 ->first();
-            if($vendor){
+            if ($vendor) {
                 if (Hash::check($credentials['password'], $vendor->password)) {
                     $this->update($vendor);
+
                     return true;
                 }
+
                 return false;
             }
+
             return false;
         }
+
         return false;
     }
 
     /**
      * Check if vendor logged-in
-     * @return bool
      */
-    public function check():bool
+    public function check(): bool
     {
         return session()->has(self::VENDOR_SESSION_KEY);
     }
@@ -47,26 +49,26 @@ class Vendor
     /**
      * Logout vendor
      */
-    public function logout():void
+    public function logout(): void
     {
         session()->remove(self::VENDOR_SESSION_KEY);
     }
 
     /**
      * Get vendor object
+     *
      * @return \App\Models\Vendor
      */
-    public function user():?\App\Models\Vendor
+    public function user(): ?\App\Models\Vendor
     {
-        return session(self::VENDOR_SESSION_KEY)??null;
+        return session(self::VENDOR_SESSION_KEY) ?? null;
     }
 
     /**
      * Update vendor object
-     * @param \App\Models\Vendor $vendor
      */
-    public function update(\App\Models\Vendor $vendor):void
+    public function update(\App\Models\Vendor $vendor): void
     {
-        session([self::VENDOR_SESSION_KEY=>$vendor]);
+        session([self::VENDOR_SESSION_KEY => $vendor]);
     }
 }

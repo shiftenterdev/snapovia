@@ -11,24 +11,27 @@ class LoginController extends Controller
 {
     public function index()
     {
-        if(Customer::check()){
+        if (Customer::check()) {
             return redirect()->route('customer.info');
         }
+
         return view('front.customer.auth.login');
     }
 
     public function login(CustomerLoginRequest $request)
     {
-        if(Customer::check()){
+        if (Customer::check()) {
             return redirect()->route('customer.info');
         }
         $request->validated();
-        if(Customer::attempt($request)){
-            if($request->source){
+        if (Customer::attempt($request)) {
+            if ($request->source) {
                 return redirect($request->source);
             }
+
             return redirect()->route('customer.info');
         }
+
         return redirect()->back()->withError('Invalid Login attempt');
     }
 
@@ -36,6 +39,7 @@ class LoginController extends Controller
     {
         Customer::logout();
         Cart::remove();
+
         return redirect()->route('customer.login');
     }
 }

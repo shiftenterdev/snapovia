@@ -17,40 +17,40 @@ trait OrderProcessTrait
             $order = Cart::toOrder();
 
             $order->shipping()->create([
-                'first_name'     => $request->shipping['first_name'],
-                'last_name'      => $request->shipping['last_name'],
+                'first_name' => $request->shipping['first_name'],
+                'last_name' => $request->shipping['last_name'],
                 'address_line_1' => $request->shipping['address_line_1'],
                 'address_line_2' => $request->shipping['address_line_2'],
-                'city'           => $request->shipping['city'],
-                'country'        => $request->shipping['country'],
-                'telephone'      => $request->shipping['mobile'],
-                'postcode'       => $request->shipping['postcode'],
+                'city' => $request->shipping['city'],
+                'country' => $request->shipping['country'],
+                'telephone' => $request->shipping['mobile'],
+                'postcode' => $request->shipping['postcode'],
             ]);
 
-            if (!$request->save_this_address) {
+            if (! $request->save_this_address) {
 
                 $order->billing()->create([
-                    'first_name'     => $request->shipping['first_name'],
-                    'last_name'      => $request->shipping['last_name'],
+                    'first_name' => $request->shipping['first_name'],
+                    'last_name' => $request->shipping['last_name'],
                     'address_line_1' => $request->shipping['address_line_1'],
                     'address_line_2' => $request->shipping['address_line_2'],
-                    'city'           => $request->shipping['city'],
-                    'country'        => $request->shipping['country'],
-                    'telephone'      => $request->shipping['mobile'],
-                    'postcode'       => $request->shipping['postcode'],
+                    'city' => $request->shipping['city'],
+                    'country' => $request->shipping['country'],
+                    'telephone' => $request->shipping['mobile'],
+                    'postcode' => $request->shipping['postcode'],
                 ]);
 
             } else {
 
                 $order->billing()->create([
-                    'first_name'     => $request->billing['first_name'],
-                    'last_name'      => $request->billing['last_name'],
+                    'first_name' => $request->billing['first_name'],
+                    'last_name' => $request->billing['last_name'],
                     'address_line_1' => $request->billing['address_line_1'],
                     'address_line_2' => $request->billing['address_line_2'],
-                    'city'           => $request->billing['city'],
-                    'country'        => $request->billing['country'],
-                    'telephone'      => $request->billing['mobile'],
-                    'postcode'       => $request->billing['postcode'],
+                    'city' => $request->billing['city'],
+                    'country' => $request->billing['country'],
+                    'telephone' => $request->billing['mobile'],
+                    'postcode' => $request->billing['postcode'],
                 ]);
 
             }
@@ -61,18 +61,20 @@ trait OrderProcessTrait
 
             if ($shipping_amount) {
                 $order->update([
-                    'shipping_amount'          => $shipping_amount,
+                    'shipping_amount' => $shipping_amount,
                     'shipping_amount_incl_tax' => $shipping_amount + $shipping_amount / 100 * $tax,
-                    'grand_total'              => $order->grand_total + $shipping_amount + $shipping_amount / 100 * $tax,
-                    'grand_total_incl_tax'     => $order->grand_total + $shipping_amount + $shipping_amount / 100 * $tax,
+                    'grand_total' => $order->grand_total + $shipping_amount + $shipping_amount / 100 * $tax,
+                    'grand_total_incl_tax' => $order->grand_total + $shipping_amount + $shipping_amount / 100 * $tax,
                 ]);
             }
 
             DB::commit();
+
             return $order;
         } catch (\Exception $exception) {
             DB::rollBack();
             logger($exception->getMessage());
+
             return null;
         }
     }

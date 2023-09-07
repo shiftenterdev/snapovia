@@ -14,7 +14,8 @@ class BrandController extends Controller
     public function index()
     {
         $brands = Brand::paginate(20);
-        return view('admin.brand.index',compact('brands'));
+
+        return view('admin.brand.index', compact('brands'));
     }
 
     public function create()
@@ -31,6 +32,7 @@ class BrandController extends Controller
                     ->toMediaCollection('brand');
             }
             session()->flash('success', 'Brand created successfully');
+
             return redirect()->route('admin.brand.index');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
@@ -39,17 +41,18 @@ class BrandController extends Controller
 
     public function edit(Brand $brand)
     {
-        return view('admin.brand.edit',compact('brand'));
+        return view('admin.brand.edit', compact('brand'));
     }
 
     public function update(BrandRequest $request, Brand $brand)
     {
-        $brand->update($request->except('_token','logo'));
+        $brand->update($request->except('_token', 'logo'));
         if ($request->file('logo', false)) {
             $brand->addMedia($request->file('logo'))
                 ->toMediaCollection('brand');
         }
         session()->flash('success', 'Brand updated successfully');
+
         return redirect()->route('admin.brand.index');
     }
 
@@ -57,6 +60,7 @@ class BrandController extends Controller
     {
         $brand->delete();
         session()->flash('success', 'Brand updated successfully');
+
         return redirect()->back();
     }
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -17,6 +16,7 @@ class HomeController extends Controller
             ->orderBy('id', 'desc')
             ->limit(8)
             ->get();
+
         return response()->json($data, 200);
     }
 }

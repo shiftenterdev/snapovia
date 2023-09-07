@@ -3,6 +3,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  * @author Iftakharul Alam Bappa <info@shiftenter.dev> 
  */
+
 namespace App\Http\Livewire\Front\Catalog;
 
 use App\Facades\Cart;
@@ -11,7 +12,9 @@ use Livewire\Component;
 
 class Product extends Component
 {
-    public $product,$qty=1;
+    public $product;
+
+    public $qty = 1;
 
     public function mount($product)
     {
@@ -25,21 +28,21 @@ class Product extends Component
 
     public function addToCart($sku)
     {
-        Cart::addToCart($sku,$this->qty);
+        Cart::addToCart($sku, $this->qty);
         $this->emit('updateMiniCart');
         session()->flash('success', 'Product added to cart 😀');
     }
 
     /**
-     * @param $sku
      * @return \Illuminate\Http\RedirectResponse|null
      */
     public function addToWishlist($sku)
     {
-        if(!Customer::check()){
+        if (! Customer::check()) {
             return redirect()->route('customer.login');
         }
         session()->flash('success', 'Product added to your wishlist 😀');
+
         return null;
     }
 }

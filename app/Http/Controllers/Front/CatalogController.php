@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
-
     public function category(Request $request)
     {
         $query = Category::query();
@@ -21,7 +20,7 @@ class CatalogController extends Controller
             $query = $query->where('id', 1);
         }
         $category = $query->select(['id', 'name', 'url_key'])
-            ->with(['childCategories'=>function($query){
+            ->with(['childCategories' => function ($query) {
                 $query->withCount('products');
             }])
             ->firstOrFail();

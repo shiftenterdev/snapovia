@@ -13,15 +13,14 @@ use Stripe\Stripe;
 
 class CheckoutController extends Controller
 {
-
     use OrderProcessTrait;
-
 
     public function index()
     {
-        if (!Cart::count()) {
+        if (! Cart::count()) {
             return redirect()->route('cart');
         }
+
         return view('front.checkout.index');
     }
 
@@ -30,17 +29,20 @@ class CheckoutController extends Controller
         $order = $this->processOrder($request);
         if ($order != null) {
             event(new OrderSubmitted($order));
+
             return view('front.checkout.success', compact('order'));
         }
+
         return redirect()->back()->with('error', 'Sorry your order cannot processed at this moment');
 
     }
 
     public function cart()
     {
-        if (!Cart::check()) {
+        if (! Cart::check()) {
             Cart::create();
         }
+
         return view('front.checkout.cart');
     }
 
@@ -49,14 +51,14 @@ class CheckoutController extends Controller
         \Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
 
         $paymentIntent = \Stripe\PaymentIntent::create([
-            'amount'         => 1200,
-            'currency'       => $request->currency,
-//            'hidePostalCode' => true,
+            'amount' => 1200,
+            'currency' => $request->currency,
+            //            'hidePostalCode' => true,
         ]);
 
         $output = [
             'publishableKey' => env('STRIPE_KEY'),
-            'clientSecret'   => $paymentIntent->client_secret,
+            'clientSecret' => $paymentIntent->client_secret,
         ];
 
         return response()->json($output, 200);
@@ -69,25 +71,25 @@ class CheckoutController extends Controller
         session(['grand_amount' => $quote->grand_total_incl_tax]);
         $session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
-            'line_items'           => [
+            'line_items' => [
                 [
                     'price_data' => [
-                        'currency'     => config('site.store.currency'),
-                        'unit_amount'  => session('grand_amount'),
+                        'currency' => config('site.store.currency'),
+                        'unit_amount' => session('grand_amount'),
                         'product_data' => [
-                            'name'        => config('app.name'),
+                            'name' => config('app.name'),
                             'description' => 'Order Total Amount',
-                            'images'      => [route('welcome') . '/snapovia.png'],
+                            'images' => [route('welcome').'/snapovia.png'],
                         ],
                     ],
-                    'quantity'   => 1,
+                    'quantity' => 1,
                 ],
             ],
-            'locale'               => 'en',
+            'locale' => 'en',
             //'livemode'             => false,
-            'mode'                 => 'payment',
-            'success_url'          => route('checkout.success'),
-            'cancel_url'           => route('checkout').'?payment=failed',
+            'mode' => 'payment',
+            'success_url' => route('checkout.success'),
+            'cancel_url' => route('checkout').'?payment=failed',
         ]);
 
         return view('user.payment.index', ['session_id' => $session->id]);
@@ -97,14 +99,16 @@ class CheckoutController extends Controller
     {
         if (session('subscription_amount')) {
             Payment::create([
-                'order_id'       => $request->order->id,
-                'status'         => 'COMPLETE',
+                'order_id' => $request->order->id,
+                'status' => 'COMPLETE',
                 'payment_method' => $request->order->payment_method,
-                'amount'         => $request->order->grand_total_incl_vat,
+                'amount' => $request->order->grand_total_incl_vat,
             ]);
             session(['subscription_amount' => null]);
+
             return view('front.checkout.success');
         }
+
         return view('front.checkout.success');
     }
 }
