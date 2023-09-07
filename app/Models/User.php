@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
-use Webpatser\Uuid\Uuid;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -47,7 +47,7 @@ class User extends Authenticatable
     {
         parent::boot();
         self::creating(function ($model){
-            $model->uuid = (string) Uuid::generate();
+            $model->uuid = (string) Str::uuid();
         });
     }
 
