@@ -30,24 +30,13 @@ jobs:
           DB_CONNECTION: sqlite
           DB_DATABASE: database/database.sqlite
         run: vendor/bin/pest
+      - name: Install PHP_CodeSniffer
+        run: |
+          curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+          php phpcs.phar --version
 
-  composer:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Source checkout
-        uses: actions/checkout@v3
-
-      - name: Installing Composer dependencies
-        uses: php-actions/composer@v6
+      - uses: thenabeel/action-phpcs@v8
         with:
-          working_dir: .
-          php_version: 8.1
-          php_extensions: imap pcntl xdebug zip exif
-        env:
-          COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
-
-      - name: Create Composer dependencies artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: vendors
-          path: vendor
+          files: "**.php" # you may customize glob as needed
+          phpcs_path: php phpcs.phar
+          standard: phpcs.xml
