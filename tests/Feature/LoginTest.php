@@ -1,6 +1,6 @@
 <?php
 
-test('Test Contact page', function () {
+test('Go to homepage', function () {
     $this->get('/')
         ->assertStatus(200);
 });
