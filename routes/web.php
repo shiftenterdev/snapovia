@@ -12,7 +12,6 @@ use App\Http\Controllers\Front\UrlResolverController as UrlResolverControllerAli
 use App\Http\Controllers\Front\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
-
 // Blade view
 if (config('site.frontend') == 'blade') {
 
@@ -90,13 +89,13 @@ if (config('site.frontend') == 'blade') {
 
     Route::prefix('customer')->group(function () {
 
-        include __DIR__ . '/customer.php';
+        include __DIR__.'/customer.php';
 
     });
 
     Route::prefix('vendor')->group(function () {
 
-        include __DIR__ . '/vendor.php';
+        include __DIR__.'/vendor.php';
 
     });
 
@@ -112,11 +111,12 @@ Route::prefix(config('site.admin_url'))->name('admin.')->group(function () {
 Route::get('test-mail', function () {
     //event(new \App\Events\CustomerRegistered(\App\Models\Customer::find(1)));
     event(new OrderSubmitted(\App\Models\Order::find(1)));
+
     return 'event processed successfully';
 });
 
 if (config('site.frontend') == 'blade') {
-// Url resolver
+    // Url resolver
     Route::get('/{url}/{suburl?}/{producturl?}', UrlResolverControllerAlias::class)
         ->name('resolve');
 }

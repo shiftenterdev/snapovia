@@ -3,12 +3,12 @@
 use App\Http\Controllers\Front\Customer\AddressController;
 use App\Http\Controllers\Front\Customer\HomeController;
 use App\Http\Controllers\Front\Customer\LoginController;
+use App\Http\Controllers\Front\Customer\OrderController as CustomerOrderController;
 use App\Http\Controllers\Front\Customer\PasswordController;
 use App\Http\Controllers\Front\Customer\PaymentMethodsController;
 use App\Http\Controllers\Front\Customer\RegisterController;
 use App\Http\Controllers\Front\Customer\ReviewController;
 use App\Http\Controllers\Front\Customer\WishlistController;
-use App\Http\Controllers\Front\Customer\OrderController as CustomerOrderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('login', [LoginController::class, 'index'])

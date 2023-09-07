@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CmsBlockController;
@@ -30,7 +31,6 @@ use App\Http\Controllers\Admin\VendorController;
 use App\Http\Controllers\Admin\VendorOrderController;
 use App\Http\Controllers\Admin\VendorProductController;
 use App\Http\Controllers\Admin\VendorSettlementController;
-use App\Http\Controllers\Admin\BlogController as AdminBlogController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('login', [AuthController::class, 'login'])
