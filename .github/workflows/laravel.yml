@@ -42,7 +42,7 @@ jobs:
         with:
           working_dir: .
           php_version: 8.1
-          php_extensions: imap pcntl xdebug zip
+          php_extensions: imap pcntl xdebug zip exif
         env:
           COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
 
