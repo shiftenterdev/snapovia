@@ -14,25 +14,15 @@ if (! function_exists('status')) {
 if (! function_exists('current_language')) {
     function current_language()
     {
-        switch (session('locale')) {
-            case 'en':
-                return __('English');
-                break;
-            case 'sv':
-                return __('Swedish');
-                break;
-            case 'bn':
-                return __('Bangla');
-                break;
-            case 'no':
-                return __('Norwegian');
-                break;
-            case 'da':
-                return __('Danish');
-                break;
-            default:
-                return __('English');
-        }
+        return match (session('locale')) {
+            'en' => __('English'),
+            'sv' => __('Swedish'),
+            'bn' => __('Bangla'),
+            'no' => __('Norwegian'),
+            'da' => __('Danish'),
+            'nl' => __('Dutch'),
+            default => __('English'),
+        };
     }
 }
 

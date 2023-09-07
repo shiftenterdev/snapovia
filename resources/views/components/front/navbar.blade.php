@@ -11,12 +11,7 @@
             <ul class="nav nav-divided navbar-nav mr-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">{{current_language()}}</a>
-                    <div class="dropdown-menu minw-0">
-                        <a class="dropdown-item" href="{{route('lang','en')}}">{{__('English')}}</a>
-                        <a class="dropdown-item" href="{{route('lang','sv')}}">{{__('Swedish')}}</a>
-                        <a class="dropdown-item" href="{{route('lang','da')}}">{{__('Danish')}}</a>
-                        <a class="dropdown-item" href="{{route('lang','no')}}">{{__('Norwegian')}}</a>
-                    </div>
+                    <x-front.language />
                 </li>
             </ul>
 
