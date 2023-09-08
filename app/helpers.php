@@ -1,7 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\App;
+
 if (! function_exists('status')) {
-    function status($status)
+    function status($status): string
     {
         if ($status == 1) {
             return '<span class="badge badge-success">Active</span>';
@@ -12,16 +14,16 @@ if (! function_exists('status')) {
 }
 
 if (! function_exists('current_language')) {
-    function current_language()
+    function current_language(): string
     {
-        return match (session('locale')) {
+        $locale = session('locale') ?? App::getLocale();
+        return match ($locale) {
             'en' => __('English'),
             'sv' => __('Swedish'),
             'bn' => __('Bangla'),
             'no' => __('Norwegian'),
             'da' => __('Danish'),
             'nl' => __('Dutch'),
-            default => __('English'),
         };
     }
 }
@@ -39,7 +41,7 @@ if (! function_exists('visibility')) {
 }
 
 if (! function_exists('_a')) {
-    function _a($amount)
+    function _a($amount): float
     {
         if (is_float($amount)) {
             return number_format($amount, 2, '.', '');
@@ -50,7 +52,7 @@ if (! function_exists('_a')) {
 }
 
 if (! function_exists('amount')) {
-    function amount($amount)
+    function amount($amount): float
     {
         if (is_float($amount)) {
             return number_format($amount, 2, '.', '');

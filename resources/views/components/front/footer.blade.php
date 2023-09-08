@@ -142,7 +142,7 @@
 
                     <!-- Copyright -->
                     <p class="mb-3 mb-md-0 font-size-xxs text-muted">
-                        Snapovia © 2020 {{__('All rights reserved')}}.
+                        Snapovia © {{date('Y')}} {{__('All rights reserved')}}.
                     </p>
 
                 </div>
