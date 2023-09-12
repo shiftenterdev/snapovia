@@ -7,13 +7,6 @@ use App\Repository\CartRepositoryInterface;
 
 class CartRepository extends BaseRepository implements CartRepositoryInterface
 {
-    /**
-     * CartRepository constructor.
-     */
-    public function __construct(Quote $model)
-    {
-        parent::__construct($model);
-    }
 
     public function add(array $attributes): Quote
     {
