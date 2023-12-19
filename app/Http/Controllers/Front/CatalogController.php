@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CatalogController extends Controller
@@ -26,7 +27,7 @@ class CatalogController extends Controller
             }])
             ->firstOrFail();
 
-        $products = \App\Models\Product::with(['categories' => function ($query) {
+        $products = Product::with(['categories' => function ($query) {
             $query->select(['name', 'url_key']);
         }])->front($sort_by, $category->id)
             ->paginate(18);

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 
 
 // Blade view
-if (config('site.frontend') == 'blade') {
+if (config('site.frontend') === 'blade') {
 
     Route::get('/locale/{p}', LanguageController::class)
         ->name('lang');
@@ -115,14 +115,14 @@ Route::get('test-mail', function () {
     return 'event processed successfully';
 });
 
-if (config('site.frontend') == 'blade') {
+if (config('site.frontend') === 'blade') {
 // Url resolver
     Route::get('/{url}/{suburl?}/{producturl?}', UrlResolverControllerAlias::class)
         ->name('resolve');
 }
 
 // Vue Frontend
-if (config('site.frontend') == 'vue') {
+if (config('site.frontend') === 'vue') {
     Route::get('{path}', function () {
         return view('front.layouts.vue');
     })->where('path', '(.*)');

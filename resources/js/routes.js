@@ -11,6 +11,7 @@ import SearchPage from './pages/SearchPage'
 import CartPage from './pages/CartPage'
 import CheckoutPage from './pages/CheckoutPage'
 import CheckoutSuccessPage from './pages/CheckoutSuccessPage'
+import CategoryPage from "./pages/category/CategoryPage.vue";
 
 
 
@@ -31,6 +32,11 @@ let routes = new VueRouter({
             name: 'faq',
             path: '/faq',
             component: FaqPage
+        },
+        {
+            name: 'category',
+            path: '/category/:category',
+            component: CategoryPage
         },
         {
             name: 'contact',
