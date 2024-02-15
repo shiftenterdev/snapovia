@@ -62,7 +62,7 @@
 @endsection
 
 @section('script')
-    <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="https://cdn.tinymce.com/5/tinymce.min.js"></script>
     <script>
         let editor_config = {
             path_absolute: "/",
