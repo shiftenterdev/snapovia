@@ -31,7 +31,7 @@ class Category extends Model
 
     public function parentCategory()
     {
-        return $this->belongsTo(Category::class,'parent_id');
+        return $this->belongsTo(Category::class, 'parent_id');
     }
 
     public function childCategories()
@@ -41,8 +41,7 @@ class Category extends Model
 
     public function getTreeAttribute()
     {
-        foreach ($this->childCategories() as $child)
-        {
+        foreach ($this->childCategories() as $child) {
             return '';
         }
     }

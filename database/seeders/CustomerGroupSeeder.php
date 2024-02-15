@@ -1,5 +1,7 @@
 <?php
+
 namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class CustomerGroupSeeder extends Seeder
@@ -11,7 +13,7 @@ class CustomerGroupSeeder extends Seeder
      */
     public function run()
     {
-        $groups = ['Not Logged in','General','Private','Company','Offer'];
+        $groups = ['Not Logged in', 'General', 'Private', 'Company', 'Offer'];
         foreach ($groups as $group) {
             \App\Models\CustomerGroup::create(['title' => $group]);
         }

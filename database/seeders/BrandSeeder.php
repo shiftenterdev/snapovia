@@ -1,7 +1,9 @@
 <?php
+
 namespace Database\Seeders;
-use Illuminate\Database\Seeder;
+
 use Faker\Factory as Faker;
+use Illuminate\Database\Seeder;
 
 class BrandSeeder extends Seeder
 {
@@ -15,7 +17,7 @@ class BrandSeeder extends Seeder
         $faker = Faker::create();
         for ($i = 1; $i <= 50; $i++) {
             $brand = \App\Models\Brand::create([
-                'name'        => ucfirst($faker->word),
+                'name' => ucfirst($faker->word),
                 'description' => $faker->paragraph,
             ]);
         }

@@ -21,9 +21,9 @@ class CreateQuoteItemsTable extends Migration
             $table->string('name');
             $table->enum('product_type', ['simple', 'configurable', 'grouped', 'virtual']);
             $table->string('product_attributes')->nullable();
-            $table->decimal('price',10,2);
+            $table->decimal('price', 10, 2);
             $table->integer('qty');
-            $table->decimal('discount_price',10,2)->default(0);
+            $table->decimal('discount_price', 10, 2)->default(0);
             $table->timestamps();
         });
     }

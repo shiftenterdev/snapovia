@@ -16,7 +16,8 @@ class UrlRewriteController extends Controller
     public function index()
     {
         $urlRewrites = UrlRewrite::get();
-        return view('admin.marketing.url-rewrite.index',compact('urlRewrites'));
+
+        return view('admin.marketing.url-rewrite.index', compact('urlRewrites'));
     }
 
     /**
@@ -32,7 +33,6 @@ class UrlRewriteController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -65,7 +65,6 @@ class UrlRewriteController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

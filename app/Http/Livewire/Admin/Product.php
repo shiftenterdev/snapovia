@@ -12,20 +12,20 @@ class Product extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $search = [
-        'sku'          => '',
-        'name'         => '',
-        'status'       => '',
-        'price'        => '',
-        'visibility'   => '',
-        'id'           => '',
-        'product_type' => ''
+        'sku' => '',
+        'name' => '',
+        'status' => '',
+        'price' => '',
+        'visibility' => '',
+        'id' => '',
+        'product_type' => '',
     ];
 
     protected $updatesQueryString = ['search'];
 
-//    protected $updatesQueryString = [
-//        'search[name]' => ['except' => ''],
-//    ];
+    //    protected $updatesQueryString = [
+    //        'search[name]' => ['except' => ''],
+    //    ];
 
     public function mount()
     {

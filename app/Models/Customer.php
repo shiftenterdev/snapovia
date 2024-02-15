@@ -18,14 +18,14 @@ class Customer extends Model
         'first_name',
         'last_name',
         'email',
-        'password'
+        'password',
     ];
 
     public static function boot()
     {
         parent::boot();
 
-        static::creating(function ($model){
+        static::creating(function ($model) {
             $model->customer_group_id = 1;
             $model->api_token = Str::random(60);
         });
@@ -57,6 +57,6 @@ class Customer extends Model
 
     public function wishlist()
     {
-        return $this->belongsToMany(Product::class,'wishlists');
+        return $this->belongsToMany(Product::class, 'wishlists');
     }
 }

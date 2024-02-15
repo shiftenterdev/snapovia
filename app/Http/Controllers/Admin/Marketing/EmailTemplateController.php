@@ -16,7 +16,8 @@ class EmailTemplateController extends Controller
     public function index()
     {
         $templates = EmailTemplate::get();
-        return view('admin.marketing.email-template.index',compact('templates'));
+
+        return view('admin.marketing.email-template.index', compact('templates'));
     }
 
     /**
@@ -32,7 +33,6 @@ class EmailTemplateController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -65,7 +65,6 @@ class EmailTemplateController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

@@ -20,10 +20,10 @@ class CreateOrderItemsTable extends Migration
             $table->string('sku');
             $table->string('name');
             $table->enum('product_type', ['simple', 'configurable', 'grouped', 'virtual']);
-            $table->decimal('price',10,2);
+            $table->decimal('price', 10, 2);
             $table->string('product_attributes')->nullable();
             $table->integer('qty');
-            $table->decimal('discount_price',10,2)->default(0);
+            $table->decimal('discount_price', 10, 2)->default(0);
             $table->timestamps();
         });
     }

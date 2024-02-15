@@ -10,12 +10,12 @@ class Attribute extends Model
 
     public function scopeProduct($query)
     {
-        return $query->where('entity_type','product')->get();
+        return $query->where('entity_type', 'product')->get();
     }
 
-    public function scopeProductAttribute($query,$slug)
+    public function scopeProductAttribute($query, $slug)
     {
-        return $query->where('entity_type','product')
+        return $query->where('entity_type', 'product')
             ->whereSlug($slug);
     }
 

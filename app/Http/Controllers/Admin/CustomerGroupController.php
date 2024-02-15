@@ -11,7 +11,8 @@ class CustomerGroupController extends Controller
     public function index()
     {
         $customerGroups = CustomerGroup::get();
-        return view('admin.customer.group.index',compact('customerGroups'));
+
+        return view('admin.customer.group.index', compact('customerGroups'));
     }
 
     public function create()
@@ -26,10 +27,10 @@ class CustomerGroupController extends Controller
 
     public function edit(CustomerGroup $customerGroup)
     {
-        return view('admin.customer.group.edit',compact($customerGroup));
+        return view('admin.customer.group.edit', compact($customerGroup));
     }
 
-    public function update(CustomerGroup $customerGroup,Request $request)
+    public function update(CustomerGroup $customerGroup, Request $request)
     {
 
     }
@@ -37,6 +38,7 @@ class CustomerGroupController extends Controller
     public function delete(CustomerGroup $customerGroup)
     {
         $customerGroup->delete();
+
         return redirect()->back();
     }
 }

@@ -3,6 +3,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  * @author Iftakharul Alam Bappa <info@shiftenter.dev> 
  */
+
 namespace App\Console\Commands;
 
 use App\Models\Quote;
@@ -41,8 +42,9 @@ class ClearEmptyQuote extends Command
      */
     public function handle()
     {
-        Quote::where('grand_total',0)->where('customer_id',0)->delete();
+        Quote::where('grand_total', 0)->where('customer_id', 0)->delete();
         $this->info('All empty quote cleared successfully');
+
         return 0;
     }
 }

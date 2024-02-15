@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Http\Controllers\Front\Customer;
-
 
 use App\Facades\Customer;
 use App\Http\Controllers\Controller;
@@ -12,7 +10,7 @@ class HomeController extends Controller
     public function index()
     {
         return view('front.customer.dashboard')->with([
-            'customer' => Customer::user()
+            'customer' => Customer::user(),
         ]);
     }
 

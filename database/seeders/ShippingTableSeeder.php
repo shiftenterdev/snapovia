@@ -1,5 +1,7 @@
 <?php
+
 namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class ShippingTableSeeder extends Seeder
@@ -13,24 +15,24 @@ class ShippingTableSeeder extends Seeder
     {
         $shippings = [
             [
-                'title'       => 'Standard Shipping',
+                'title' => 'Standard Shipping',
                 'description' => 'Delivery in 5 - 7 working days',
-                'amount'      => 8.00,
+                'amount' => 8.00,
             ], [
-                'title'       => 'Express Shipping',
+                'title' => 'Express Shipping',
                 'description' => 'Delivery in 3 - 5 working days',
-                'amount'      => 12.00,
+                'amount' => 12.00,
             ], [
-                'title'       => 'Free Shipping',
+                'title' => 'Free Shipping',
                 'description' => 'Delivery in 10 - 14 working days',
-                'amount'      => 0.00,
+                'amount' => 0.00,
             ],
         ];
 
         foreach ($shippings as $shipping) {
             \App\Models\Shipping::create([
-                'title'       => $shipping['title'],
-                'amount'      => $shipping['amount'],
+                'title' => $shipping['title'],
+                'amount' => $shipping['amount'],
                 'description' => $shipping['description'],
             ]);
         }

@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\OrderShipped;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class SendShipmentNotification
 {
@@ -21,7 +19,6 @@ class SendShipmentNotification
     /**
      * Handle the event.
      *
-     * @param  OrderShipped  $event
      * @return void
      */
     public function handle(OrderShipped $event)

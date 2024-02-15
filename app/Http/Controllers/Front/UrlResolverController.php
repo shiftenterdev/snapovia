@@ -23,6 +23,7 @@ class UrlResolverController extends Controller
         if ($entity == 'page') {
             return $this->page($request, $request->path());
         }
+
         return view('errors.404');
     }
 
@@ -32,13 +33,14 @@ class UrlResolverController extends Controller
         $popular_products = cache()->remember('popular_products', 60 * 60, function () {
             return Product::home(4);
         });
+
         return view('front.catalog.product', compact('product', 'popular_products'));
     }
 
     public function category(Request $request, $url_key)
     {
         $sort_by = $request->sort_by ?? 'name_asc';
-        $category = Category::with(['childCategories'=>function($query){
+        $category = Category::with(['childCategories' => function ($query) {
             $query->withCount('products');
         }])
             ->where('url_key', $url_key)
@@ -57,6 +59,7 @@ class UrlResolverController extends Controller
     public function page(Request $request, $url_key)
     {
         $page = CmsPage::where('url_key', $url_key)->firstOrFail();
+
         return view('front.cms-page.view', compact('page'));
     }
 }

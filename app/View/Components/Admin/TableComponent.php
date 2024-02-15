@@ -6,13 +6,12 @@ use Illuminate\View\Component;
 
 class TableComponent extends Component
 {
-
     public $title;
 
     /**
      * Create a new component instance.
      *
-     * @param $title
+     * @param  $title
      */
     public function __construct()
     {

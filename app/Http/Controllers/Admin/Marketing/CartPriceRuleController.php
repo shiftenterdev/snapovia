@@ -14,7 +14,8 @@ class CartPriceRuleController extends Controller
     public function index()
     {
         $cartPrices = CartPriceRule::paginate();
-        return view('admin.marketing.cart-price-rule.index',compact('cartPrices'));
+
+        return view('admin.marketing.cart-price-rule.index', compact('cartPrices'));
     }
 
     /**
@@ -30,7 +31,6 @@ class CartPriceRuleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -63,7 +63,6 @@ class CartPriceRuleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

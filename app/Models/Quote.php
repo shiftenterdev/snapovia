@@ -3,6 +3,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  * @author Iftakharul Alam Bappa <info@shiftenter.dev> 
  */
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -34,10 +35,10 @@ class Quote extends Model
         $product = $this->product($sku);
         $this->items()->create([
             'product_id' => $product->id,
-            'name'       => $product->name,
-            'price'      => amount($product->price),
-            'qty'        => $qty,
-            'subtotal'   => (int)$qty * amount($product->price)
+            'name' => $product->name,
+            'price' => amount($product->price),
+            'qty' => $qty,
+            'subtotal' => (int) $qty * amount($product->price),
         ]);
     }
 

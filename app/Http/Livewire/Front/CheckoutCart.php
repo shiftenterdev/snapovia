@@ -3,6 +3,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  * @author Iftakharul Alam Bappa <info@shiftenter.dev> 
  */
+
 namespace App\Http\Livewire\Front;
 
 use App\Facades\Cart;
@@ -11,22 +12,28 @@ use Livewire\Component;
 
 class CheckoutCart extends Component
 {
-    public $coupon_amount = 0,
-        $coupon_type = '',
-        $coupon_code = '',
-        $cart = [],
-        $sub_total = 0,
-        $sub_total_incl_tax = 0,
-        $tax_amount = 0,
-        $tax = 0;
+    public $coupon_amount = 0;
 
+    public $coupon_type = '';
 
-//    public function updated($field)
-//    {
-//        $this->validateOnly($field, [
-//            'coupon_code' => 'required|min:2'
-//        ]);
-//    }
+    public $coupon_code = '';
+
+    public $cart = [];
+
+    public $sub_total = 0;
+
+    public $sub_total_incl_tax = 0;
+
+    public $tax_amount = 0;
+
+    public $tax = 0;
+
+    //    public function updated($field)
+    //    {
+    //        $this->validateOnly($field, [
+    //            'coupon_code' => 'required|min:2'
+    //        ]);
+    //    }
 
     public function mount()
     {
@@ -47,9 +54,9 @@ class CheckoutCart extends Component
         return view('livewire.front.checkout-cart');
     }
 
-    public function updateQty($sku,$qty)
+    public function updateQty($sku, $qty)
     {
-        Cart::updateQty($sku,$qty);
+        Cart::updateQty($sku, $qty);
         $this->cart = Cart::get();
         $this->cartCalculate();
     }
@@ -66,9 +73,9 @@ class CheckoutCart extends Component
             Cart::applyCoupon($rule->id);
             $this->cart = Cart::get();
             $this->cartCalculate();
-            session()->flash('success', 'Coupon code: <strong>' . $this->coupon_code . '</strong> Applied successfully');
-        }else{
-            session()->flash('error','Sorry, Invalid Coupon applied');
+            session()->flash('success', 'Coupon code: <strong>'.$this->coupon_code.'</strong> Applied successfully');
+        } else {
+            session()->flash('error', 'Sorry, Invalid Coupon applied');
         }
     }
 

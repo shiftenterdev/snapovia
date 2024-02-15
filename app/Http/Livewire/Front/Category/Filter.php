@@ -23,8 +23,9 @@ class Filter extends Component
         $category = Category::where('id', $this->category_id)
             ->select(['id', 'name', 'url_key'])
             ->first();
+
         return view('livewire.front.category.filter')->with([
-            'category'=>$category
+            'category' => $category,
         ]);
     }
 

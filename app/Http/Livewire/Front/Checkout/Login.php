@@ -8,13 +8,15 @@ use Livewire\Component;
 
 class Login extends Component
 {
-    public $email = '',$password = '';
+    public $email = '';
+
+    public $password = '';
 
     public function updated($field)
     {
-        $this->validateOnly($field,[
-           'email'=>'email|required',
-           'password'=>'min:6|required'
+        $this->validateOnly($field, [
+            'email' => 'email|required',
+            'password' => 'min:6|required',
         ]);
     }
 
@@ -25,16 +27,16 @@ class Login extends Component
 
     public function login()
     {
-        try{
+        try {
             $this->validate([
-                'email'=>'email|required',
-                'password'=>'min:6|required'
+                'email' => 'email|required',
+                'password' => 'min:6|required',
             ]);
 
-            if(Customer::attempt(['email'=>$this->email,'password'=>$this->password])){
+            if (Customer::attempt(['email' => $this->email, 'password' => $this->password])) {
                 $this->updateStatus();
             }
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             session()->flash('error', 'Customer Login failed');
         }
     }

@@ -3,8 +3,6 @@
 namespace App\Listeners;
 
 use App\Events\PaymentSuccess;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 
 class SendPaymentSuccessNotification
 {
@@ -21,7 +19,6 @@ class SendPaymentSuccessNotification
     /**
      * Handle the event.
      *
-     * @param  PaymentSuccess  $event
      * @return void
      */
     public function handle(PaymentSuccess $event)

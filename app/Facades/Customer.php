@@ -6,12 +6,11 @@
 
 namespace App\Facades;
 
-
 use Illuminate\Support\Facades\Facade;
 
 /**
  * Class Customer
- * @package App\Facades
+ *
  * @method static bool attempt($credentials)
  * @method static \App\Models\Customer create(array $data)
  * @method static bool check()

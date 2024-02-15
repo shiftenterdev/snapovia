@@ -17,18 +17,20 @@ class AuthController extends Controller
     public function loginPost(AdminLoginRequest $request)
     {
         $credentials = [
-            'email'    => $request->email,
-            'password' => $request->password
+            'email' => $request->email,
+            'password' => $request->password,
         ];
         if (Auth::attempt($credentials)) {
             return redirect()->route('admin.dashboard');
         }
+
         return redirect()->back();
     }
 
     public function logout()
     {
         Auth::logout();
+
         return redirect()->route('admin.login');
     }
 

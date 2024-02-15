@@ -23,13 +23,13 @@ class CreateCustomersTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->dateTime('email_verified_at')->nullable();
-            $table->enum('gender',['male','female']);
+            $table->enum('gender', ['male', 'female']);
             $table->date('dob')->nullable();
             $table->string('country')->default('US');
             $table->string('vat_id')->nullable();
             $table->boolean('status')->default(1);
             $table->string('reset_token')->nullable();
-            $table->string('api_token',60)->nullable();
+            $table->string('api_token', 60)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

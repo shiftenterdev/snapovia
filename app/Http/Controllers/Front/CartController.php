@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Front;
 
 use App\Facades\Cart;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CartRequest;
-use App\Models\Quote;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -18,6 +16,7 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
         Cart::addToCart($request->sku);
-        return redirect()->back()->with('success','Product Added to cart');
+
+        return redirect()->back()->with('success', 'Product Added to cart');
     }
 }

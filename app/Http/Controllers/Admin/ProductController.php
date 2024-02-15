@@ -25,6 +25,7 @@ class ProductController extends Controller
     {
         $categories = Category::get();
         $attributes = Attribute::product();
+
         return view('admin.product.create')->with([
             'categories' => $categories,
             'attributes' => $attributes,
@@ -35,6 +36,7 @@ class ProductController extends Controller
     {
         try {
             Product::create($request->except('_token'));
+
             return redirect()->route('admin.product')->with('success', 'Product created successfully');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());
@@ -45,12 +47,14 @@ class ProductController extends Controller
     {
         $categories = Category::get();
         $attributes = Attribute::product();
-        return view('admin.product.edit', compact('product', 'categories','attributes'));
+
+        return view('admin.product.edit', compact('product', 'categories', 'attributes'));
     }
 
     public function update(ProductRequest $request, Product $product)
     {
         $product->update($request);
+
         return redirect()->route('admin.product.index')
             ->with('message', 'Product updated successfully');
     }

@@ -1,5 +1,7 @@
 <?php
+
 namespace Database\Seeders;
+
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -23,19 +25,18 @@ class CmsSeeder extends Seeder
             $url_key = Str::slug($page);
 
             $model = \App\Models\CmsPage::create([
-                'title'           => $page,
-                'url_key'         => $url_key,
-                'meta_title'      => $page,
+                'title' => $page,
+                'url_key' => $url_key,
+                'meta_title' => $page,
                 'content_heading' => $faker->sentence,
-                'content'         => $faker->paragraph(6)
+                'content' => $faker->paragraph(6),
             ]);
 
-
             \App\Models\UrlResolver::create([
-                'entity_id'   => $model->id,
+                'entity_id' => $model->id,
                 'entity_type' => 'page',
-                'url_key'     => $url_key,
-                'url_path'    => null
+                'url_key' => $url_key,
+                'url_path' => null,
             ]);
         }
     }

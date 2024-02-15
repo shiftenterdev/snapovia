@@ -7,7 +7,6 @@
 
 namespace App\Helpers;
 
-
 use App\Models\CartPriceRule;
 use App\Models\Order;
 use App\Models\Product;
@@ -15,14 +14,11 @@ use App\Models\Quote;
 use App\Models\QuoteItems;
 use App\Models\Shipping;
 
-
 /**
  * Class Cart
- * @package App\Helpers
  */
 class Cart
 {
-
     const QUOTE_SESSION_KEY = '_quote';
 
     /**
@@ -30,8 +26,8 @@ class Cart
      */
     public function __construct()
     {
-//        if ($this->get() === null)
-//            $this->create();
+        //        if ($this->get() === null)
+        //            $this->create();
     }
 
     public function addCustomerToQuote($customer_id): void
@@ -55,9 +51,6 @@ class Cart
         $this->set($new_quote);
     }
 
-    /**
-     * @param $cart
-     */
     private function set($cart): void
     {
         $cart = $this->refreshCart($cart->id);
@@ -76,6 +69,7 @@ class Cart
             $grand_total_incl_tax = $subtotal + $tax;
             $quote->update(['grand_total' => $subtotal, 'grand_total_incl_tax' => $grand_total_incl_tax]);
         }
+
         return $quote;
     }
 
@@ -86,7 +80,7 @@ class Cart
 
     public function addToCart($sku, $qty = 1): void
     {
-        if (!$this->check()) {
+        if (! $this->check()) {
             $this->create();
         }
         $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
@@ -100,13 +94,13 @@ class Cart
         if (empty($item)) {
             $quote->items()->Create(
                 [
-                    'product_id'     => $product->id,
-                    'name'           => $product->name,
-                    'sku'            => $product->sku,
-                    'product_type'   => $product->product_type,
-                    'qty'            => $qty,
-                    'price'          => $product->price,
-                    'discount_price' => 0
+                    'product_id' => $product->id,
+                    'name' => $product->name,
+                    'sku' => $product->sku,
+                    'product_type' => $product->product_type,
+                    'qty' => $qty,
+                    'price' => $product->price,
+                    'discount_price' => 0,
                 ]
             );
         } else {
@@ -124,12 +118,15 @@ class Cart
         if (session(self::QUOTE_SESSION_KEY)) {
             $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
                 ->first();
-            if (!$quote) {
+            if (! $quote) {
                 $this->remove();
+
                 return false;
             }
+
             return true;
         }
+
         return false;
     }
 
@@ -144,7 +141,7 @@ class Cart
         if (\App\Facades\Customer::check()) {
             $customer_id = \App\Facades\Customer::user()->customer_id;
             $quote = Quote::where('customer_id', $customer_id)->first();
-            if (!$quote) {
+            if (! $quote) {
                 $quote = Quote::create(['customer_ip' => request()->ip(), 'customer_id' => $customer_id]);
             }
         } else {
@@ -161,10 +158,10 @@ class Cart
         $shipping_amount = $shipping->amount;
         $shipping_amount_incl_tax = $shipping->amount;
         $quote->update([
-            'shipping_amount'          => $shipping_amount,
+            'shipping_amount' => $shipping_amount,
             'shipping_amount_incl_tax' => $shipping_amount_incl_tax,
-            'grand_total'              => $quote->grand_total,
-            'grand_total_incl_tax'     => $quote->grand_total,
+            'grand_total' => $quote->grand_total,
+            'grand_total_incl_tax' => $quote->grand_total,
         ]);
         $this->set($quote);
     }
@@ -183,9 +180,6 @@ class Cart
         $this->set($quote);
     }
 
-    /**
-     * @param $productSku
-     */
     public function removeFromCart($productSku): void
     {
         $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
@@ -194,16 +188,13 @@ class Cart
         $this->set($quote);
     }
 
-    /**
-     * @param $coupon_id
-     */
     public function applyCoupon($coupon_id): void
     {
         if ($this->check()) {
             $rule = CartPriceRule::find($coupon_id);
             $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
                 ->update(['coupon_id' => $coupon_id, 'coupon_amount' => $rule->discount_amount]);
-//            $this->set($quote);
+            //            $this->set($quote);
         }
     }
 
@@ -229,39 +220,41 @@ class Cart
             $grand_total = 0;
             foreach ($quote->items as $item) {
                 $order->items()->create([
-                    'product_id'         => $item->product_id,
-                    'sku'                => $item->sku,
-                    'name'               => $item->name,
-                    'price'              => $item->price,
-                    'qty'                => $item->qty,
+                    'product_id' => $item->product_id,
+                    'sku' => $item->sku,
+                    'name' => $item->name,
+                    'price' => $item->price,
+                    'qty' => $item->qty,
                     'product_attributes' => $item->product_attributes,
-                    'discount_price'     => $item->discount_price,
-                    'product_type'       => $item->product_type,
+                    'discount_price' => $item->discount_price,
+                    'product_type' => $item->product_type,
                 ]);
 
                 $grand_total += $item->qty * $item->price;
             }
             $tax = config('site.sales.tax');
             $order->update([
-                'grand_total'          => $grand_total,
+                'grand_total' => $grand_total,
                 'grand_total_incl_tax' => $grand_total + $grand_total / 100 * $tax,
-                'tax'                  => $grand_total / 100 * $tax,
+                'tax' => $grand_total / 100 * $tax,
             ]);
             $quote->items()->delete();
             $quote->delete();
             $this->remove();
+
             return $order;
 
         }
+
         return null;
     }
 
     public function get()
     {
-        if (!$this->check()) {
+        if (! $this->check()) {
             $this->create();
         }
+
         return session(self::QUOTE_SESSION_KEY) ?? null;
     }
-
 }

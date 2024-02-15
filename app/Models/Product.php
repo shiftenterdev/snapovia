@@ -3,15 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Product extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
     const CATALOG = [2, 4];
+
     const SEARCH = [1, 4];
 
     public $guarded = [];
@@ -20,7 +21,7 @@ class Product extends Model implements HasMedia
 
     protected $appends = [
         'base_image',
-        'sample_image'
+        'sample_image',
     ];
 
     public function categories()
@@ -43,6 +44,7 @@ class Product extends Model implements HasMedia
         return $query->when($search['id'] != '', function ($q) use ($search) {
             if (trim(strpos($search['id'], '-'))) {
                 $ids = explode('-', $search['id']);
+
                 return $q->whereBetween('id', [$ids[0], $ids[1]]);
             } else {
                 return $q->where('id', $search['id']);
@@ -54,7 +56,7 @@ class Product extends Model implements HasMedia
         })->when($search['product_type'] != '', function ($q) use ($search) {
             return $q->where('product_type', $search['product_type']);
         })->when($search['name'] != '', function ($q) use ($search) {
-            return $q->where('name', 'LIKE', '%' . $search['name'] . '%');
+            return $q->where('name', 'LIKE', '%'.$search['name'].'%');
         })->when($search['status'] != '', function ($q) use ($search) {
             return $q->where('status', $search['status']);
         })->when($search['visibility'] != '', function ($q) use ($search) {
@@ -67,14 +69,15 @@ class Product extends Model implements HasMedia
     {
         if ($search) {
             return $query->where(function ($q) use ($search) {
-                $q->where('name', 'LIKE', '%' . $search . '%')
-                    ->orWhere('sku', 'LIKE', $search . '%');
+                $q->where('name', 'LIKE', '%'.$search.'%')
+                    ->orWhere('sku', 'LIKE', $search.'%');
             })
                 ->whereStatus(1)
                 ->whereIn('visibility', self::SEARCH)
                 ->select(['name', 'product_type', 'special_price', 'price', 'sku', 'id', 'url_key'])
                 ->paginate(6);
         }
+
         return [];
     }
 
@@ -88,27 +91,28 @@ class Product extends Model implements HasMedia
             ->get();
     }
 
-    public function scopeFront($query,$sortBy,$category_id=null)
+    public function scopeFront($query, $sortBy, $category_id = null)
     {
         return $query->whereStatus(1)
 //            ->whereIn('visibility', self::CATALOG)
-            ->when($category_id,function ($query) use ($category_id){
-                $query->whereHas('categories',function ($q) use ($category_id){
-                    if($category_id==1){
+            ->when($category_id, function ($query) use ($category_id) {
+                $query->whereHas('categories', function ($q) use ($category_id) {
+                    if ($category_id == 1) {
                         $q->where('categories.parent_id', $category_id);
-                    }else {
+                    } else {
                         $q->where('categories.id', $category_id);
                     }
                 });
             })
             ->sort($sortBy)
-            ->select(['name', 'id', 'price', 'sku', 'url_key','qty']);
+            ->select(['name', 'id', 'price', 'sku', 'url_key', 'qty']);
     }
 
     public function scopeSort($query, $sort_by)
     {
-        return $query->when($sort_by, function ($q)use ($sort_by) {
-            $sort = explode('_',$sort_by);
+        return $query->when($sort_by, function ($q) use ($sort_by) {
+            $sort = explode('_', $sort_by);
+
             return $q->orderBy($sort[0], $sort[1]);
         });
     }
@@ -120,7 +124,7 @@ class Product extends Model implements HasMedia
 
     public function relatedProducts()
     {
-//        return $this->hasMany(Product::class, 'parent_id');
+        //        return $this->hasMany(Product::class, 'parent_id');
     }
 
     public function reviews()
@@ -133,7 +137,7 @@ class Product extends Model implements HasMedia
         return $this->belongsTo(Product::class, 'parent_id');
     }
 
-    public function registerMediaConversions(Media $media = null): void
+    public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('thumb')->width(150)->height(150);
     }
@@ -158,7 +162,7 @@ class Product extends Model implements HasMedia
 
     public function getSampleImageAttribute()
     {
-        return '/sample-data/products/' . ($this->id % 50) . '.jpg';
+        return '/sample-data/products/'.($this->id % 50).'.jpg';
     }
 
     public function attributes()

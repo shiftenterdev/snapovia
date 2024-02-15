@@ -11,7 +11,8 @@ class TaxClassController extends Controller
     public function index()
     {
         $tax = TaxClass::get();
-        return view('admin.tax.index',compact('tax'));
+
+        return view('admin.tax.index', compact('tax'));
     }
 
     public function create()
@@ -26,10 +27,10 @@ class TaxClassController extends Controller
 
     public function edit(TaxClass $taxClass)
     {
-        return view('admin.tax.edit',compact('taxClass'));
+        return view('admin.tax.edit', compact('taxClass'));
     }
 
-    public function update(Request $request,TaxClass $taxClass)
+    public function update(Request $request, TaxClass $taxClass)
     {
 
     }

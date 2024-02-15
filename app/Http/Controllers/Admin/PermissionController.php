@@ -11,7 +11,7 @@ class PermissionController extends Controller
     public function index()
     {
         return view('admin.permission.index')->with([
-            'permissions'=>Permission::get()
+            'permissions' => Permission::get(),
         ]);
     }
 
@@ -22,19 +22,21 @@ class PermissionController extends Controller
 
     public function store(Request $request)
     {
-        Permission::create(['name'=>$request->name]);
+        Permission::create(['name' => $request->name]);
+
         return redirect()->route('admin.permission.index')
             ->withSuccess('Permission created successfully');
     }
 
     public function edit(Permission $permission)
     {
-        return view('admin.permission.edit',compact('permission'));
+        return view('admin.permission.edit', compact('permission'));
     }
 
-    public function update(Request $request,Permission $permission)
+    public function update(Request $request, Permission $permission)
     {
-        $permission->update(['name'=>$request->name]);
+        $permission->update(['name' => $request->name]);
+
         return redirect()->route('admin.permission.index')
             ->withSuccess('Permission created successfully');
     }

@@ -12,14 +12,15 @@ class RoleController extends Controller
     public function index()
     {
         return view('admin.role.index')->with([
-            'roles'=>Role::get()
+            'roles' => Role::get(),
         ]);
     }
 
     public function create()
     {
         $permissions = Permission::get();
-        return view('admin.role.create',compact('permissions'));
+
+        return view('admin.role.create', compact('permissions'));
     }
 
     public function store(Request $request)
@@ -31,10 +32,11 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         $permissions = Permission::get();
-        return view('admin.role.edit',compact('role','permissions'));
+
+        return view('admin.role.edit', compact('role', 'permissions'));
     }
 
-    public function update(Request $request,Role $role)
+    public function update(Request $request, Role $role)
     {
         return redirect()->route('admin.role.index')
             ->withSuccess('Role created successfully');

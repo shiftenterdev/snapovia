@@ -9,8 +9,6 @@ class CartRepository extends BaseRepository implements CartRepositoryInterface
 {
     /**
      * CartRepository constructor.
-     *
-     * @param Quote $model
      */
     public function __construct(Quote $model)
     {

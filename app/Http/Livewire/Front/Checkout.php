@@ -13,20 +13,31 @@ use Livewire\Component;
 
 class Checkout extends Component
 {
+    public $tax = 0;
 
-    public $tax = 0,
-        $cart = [],
-        $sub_total = 0,
-        $sub_total_incl_tax = 0,
-        $tax_amount = 0,
-        $grand_total = 0,
-        $email = '',
-        $guest_notify = '',
-        $grand_total_incl_tax = 0,
-        $shipping_amount = 0,
-        $payment_method = 'cod',
-        $shipping_id = null,
-        $customer = null;
+    public $cart = [];
+
+    public $sub_total = 0;
+
+    public $sub_total_incl_tax = 0;
+
+    public $tax_amount = 0;
+
+    public $grand_total = 0;
+
+    public $email = '';
+
+    public $guest_notify = '';
+
+    public $grand_total_incl_tax = 0;
+
+    public $shipping_amount = 0;
+
+    public $payment_method = 'cod';
+
+    public $shipping_id = null;
+
+    public $customer = null;
 
     protected $listeners = ['refreshCheckout'];
 
@@ -52,6 +63,7 @@ class Checkout extends Component
         $shippingMethods = cache()->remember('shipping_method', 60 * 60, function () {
             return Shipping::get();
         });
+
         return view('livewire.front.checkout', compact('shippingMethods'));
     }
 
@@ -86,6 +98,4 @@ class Checkout extends Component
     {
         $this->customer = Customer::user();
     }
-
-
 }

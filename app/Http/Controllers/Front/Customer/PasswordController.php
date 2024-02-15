@@ -11,7 +11,6 @@ use Illuminate\Support\Str;
 
 class PasswordController extends Controller
 {
-
     public function forgotPassword()
     {
         return view('front.customer.auth.forgot-password');
@@ -20,11 +19,11 @@ class PasswordController extends Controller
     public function forgotPasswordPost(Request $request)
     {
         $request->validate([
-            'email'=>'email|required'
+            'email' => 'email|required',
         ]);
 
-        $customer = Customer::where('email',$request->email)->first();
-        if($customer) {
+        $customer = Customer::where('email', $request->email)->first();
+        if ($customer) {
             if ($customer->reset_token == null) {
                 $reset_token = Str::random('60');
                 Mail::to($request->email)->queue(new CustomerForgotPasswordMail($reset_token));
@@ -34,18 +33,20 @@ class PasswordController extends Controller
                 session()->flash('error', 'Your previous request still pending');
             }
         }
+
         return redirect()->back();
     }
 
     public function createPassword($token)
     {
         $customer = Customer::where('reset_token', $token)->first();
-        if($customer) {
+        if ($customer) {
             return view('front.customer.auth.create-password')->with([
-                'token' => $customer->reset_token
+                'token' => $customer->reset_token,
             ]);
-        }else{
-            session()->flash('message','Password reset link expired');
+        } else {
+            session()->flash('message', 'Password reset link expired');
+
             return redirect()->route('customer.login');
         }
     }
@@ -53,7 +54,7 @@ class PasswordController extends Controller
     public function createPasswordPost(Request $request)
     {
         $request->validate([
-            'password' => 'min:6|required|confirmed'
+            'password' => 'min:6|required|confirmed',
         ]);
         Customer::where('token', $request->token)->update(['password' => bcrypt($request->password)]);
 

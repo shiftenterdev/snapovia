@@ -3,6 +3,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
  * @author Iftakharul Alam Bappa <info@shiftenter.dev> 
  */
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -23,6 +24,7 @@ class CustomerController extends Controller
                 return response()->json(['token' => $customer->api_token], 200);
             }
         }
+
         return response()->json('Authorization Failed', 400);
     }
 
@@ -30,6 +32,7 @@ class CustomerController extends Controller
     {
         try {
             $customer = Customer::create($request->only(['first_name', 'last_name', 'email', 'password']));
+
             return response()->json(['token' => $customer->api_token], 200);
         } catch (\Exception $exception) {
             return response()->json($exception->getMessage(), 403);

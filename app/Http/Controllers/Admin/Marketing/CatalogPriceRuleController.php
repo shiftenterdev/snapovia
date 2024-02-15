@@ -14,7 +14,8 @@ class CatalogPriceRuleController extends Controller
     public function index()
     {
         $catalogPricePules = CatalogPriceRule::paginate();
-        return view('admin.marketing.catalog-price-rule.index',compact('catalogPricePules'));
+
+        return view('admin.marketing.catalog-price-rule.index', compact('catalogPricePules'));
     }
 
     /**
@@ -30,7 +31,6 @@ class CatalogPriceRuleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -63,7 +63,6 @@ class CatalogPriceRuleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

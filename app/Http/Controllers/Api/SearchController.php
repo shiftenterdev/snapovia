@@ -7,13 +7,17 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
-    public function quickSearch(Request $request){
+    public function quickSearch(Request $request)
+    {
         $response = \App\Models\Product::search($request->search);
+
         return response()->json($response, 200);
     }
 
-    public function search(Request $request){
+    public function search(Request $request)
+    {
         $response = \App\Models\Product::search($request->search);
+
         return response()->json($response, 200);
     }
 }

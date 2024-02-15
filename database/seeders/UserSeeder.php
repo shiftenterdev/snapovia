@@ -1,4 +1,5 @@
 <?php
+
 namespace Database\Seeders;
 
 use App\Models\User;
@@ -58,26 +59,25 @@ class UserSeeder extends Seeder
 
         // create demo users
         $user = User::create([
-            'name'     => 'Example User',
+            'name' => 'Example User',
             'password' => bcrypt('password'),
-            'email'    => 'test@example.com',
+            'email' => 'test@example.com',
         ]);
         $user->assignRole($role1);
 
         $user = User::create([
-            'name'     => 'Example Admin User',
+            'name' => 'Example Admin User',
             'password' => bcrypt('password'),
-            'email'    => 'admin@example.com',
+            'email' => 'admin@example.com',
         ]);
         $user->assignRole($role2);
 
         $user = User::create([
-            'name'     => 'Super-Admin',
+            'name' => 'Super-Admin',
             'password' => bcrypt('password'),
-            'email'    => 'super@admin.com',
+            'email' => 'super@admin.com',
         ]);
         $user->assignRole($role3);
-
 
     }
 }

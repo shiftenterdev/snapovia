@@ -31,7 +31,6 @@ class NewsletterController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -42,7 +41,6 @@ class NewsletterController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Admin\Newsletter  $newsletter
      * @return \Illuminate\Http\Response
      */
     public function show(Newsletter $newsletter)
@@ -53,7 +51,6 @@ class NewsletterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Admin\Newsletter  $newsletter
      * @return \Illuminate\Http\Response
      */
     public function edit(Newsletter $newsletter)
@@ -64,8 +61,6 @@ class NewsletterController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Admin\Newsletter  $newsletter
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Newsletter $newsletter)
@@ -76,7 +71,6 @@ class NewsletterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Admin\Newsletter  $newsletter
      * @return \Illuminate\Http\Response
      */
     public function destroy(Newsletter $newsletter)

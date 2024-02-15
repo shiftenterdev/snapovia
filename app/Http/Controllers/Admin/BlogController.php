@@ -11,7 +11,7 @@ class BlogController extends Controller
     public function index()
     {
         return view('admin.blog.index')->with([
-            'blogs'=>Blog::get()
+            'blogs' => Blog::get(),
         ]);
     }
 
@@ -23,28 +23,31 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         Blog::create($request->except('_token'));
+
         return redirect()->route('admin.blog.index')->with([
-            'success' => "Blog Created successfully"
+            'success' => 'Blog Created successfully',
         ]);
     }
 
     public function edit(Blog $blog)
     {
-        return view('admin.blog.edit',compact('blog'));
+        return view('admin.blog.edit', compact('blog'));
     }
 
     public function update(Request $request, Blog $blog)
     {
         $blog->update($request->except('_token'));
+
         return redirect()->route('admin.blog.index')->with([
-            'success' => "Blog Updated successfully"
+            'success' => 'Blog Updated successfully',
         ]);
     }
 
     public function delete(Blog $blog)
     {
         $blog->delete();
-        session()->flush('success','Blog deleted successfully');
+        session()->flush('success', 'Blog deleted successfully');
+
         return redirect()->back();
     }
 }

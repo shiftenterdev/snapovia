@@ -8,9 +8,10 @@ class UrlResolver extends Model
 {
     protected $guarded = [];
 
-    public function scopeRedirect($query,$url_key)
+    public function scopeRedirect($query, $url_key)
     {
-        $entity = $query->where('url_key',$url_key)->firstOrFail();
+        $entity = $query->where('url_key', $url_key)->firstOrFail();
+
         return $entity->entity_type;
     }
 }
