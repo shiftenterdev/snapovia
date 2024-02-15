@@ -31,7 +31,7 @@
                         <label class="block text-sm">
                             <span class="text-gray-700 dark:text-gray-400">Email</span>
                             <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                   placeholder="User Email" type="email" name="email" required/>
+                                   placeholder="User Email" type="email" name="email" value="super@admin.com" required/>
                             @error('email')
                             <span class="text-xs text-red-600 dark:text-red-400">
                               {{$message}}
@@ -42,6 +42,7 @@
                             <span class="text-gray-700 dark:text-gray-400">Password</span>
                             <input class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
                                    placeholder="***************"
+                                   value="password"
                                    type="password" name="password" required/>
                             @error('password')
                             <span class="text-xs text-red-600 dark:text-red-400">
