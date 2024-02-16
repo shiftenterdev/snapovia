@@ -2,26 +2,49 @@
 
 use App\Models\User;
 
-test('Test admin login page', function () {
-    $this->get('/adminportal/login')
+it('User can see login page', function () {
+    $this->get(route('admin.login'))
         ->assertStatus(200);
 });
 
-test('User can login and logout', function () {
-    $user = User::factory()->create(['name' => 'Nama Member', 'email' => 'email@mail.com']);
 
-    $this->visit(route('login'));
+it('User can login and logout', function () {
+    $user = User::factory()->create(['name' => 'Test user', 'email' => 'bappa@mail.com']);
 
-    $this->submitForm(__('auth.login'), [
-        'email' => 'email@mail.com',
-        'password' => 'secret',
-    ]);
+    $this->get(route('admin.login'))->assertStatus(200);
 
-    $this->see(__('auth.welcome', ['name' => $user->name]));
-    $this->seePageIs(route('home'));
-    $this->seeIsAuthenticated();
+    $this->post(route('admin.login.post'), [
+        'email' => 'bappa@mail.com',
+        'password' => 'password',
+    ])->assertRedirect(route('admin.dashboard'));
 
-    $this->press(__('auth.logout'));
+    $this->assertAuthenticated();
+    $this->assertAuthenticatedAs($user);
 
-    $this->seePageIs(route('welcome'));
+    $this->get(route('admin.logout'))->assertRedirect(route('admin.login'));
+    $this->assertGuest();
+});
+
+it('User can not login with wrong credentials', function () {
+    $this->post(route('admin.login.post'), [
+        'email' => 'bappa@mail.com',
+        'password' => 'wrong-password',
+    ])->assertRedirect(route('admin.login'));
+    $this->assertGuest();
+});
+
+it('Inactive user can not login', function () {
+    User::factory()->create(['name' => 'Test user', 'email' => 'demo@mail.com', 'status' => 0]);
+
+    $this->post(route('admin.login.post'), [
+        'email' => 'demo@mail.com',
+        'password' => 'password',
+    ])->assertRedirect(route('admin.login'));
+    $this->assertGuest();
+});
+
+it('Authenticated user redirects to dashboard', function () {
+    $this->loginAsUser();
+    $this->get(route('admin.login'))
+        ->assertRedirect(route('admin.dashboard'));
 });

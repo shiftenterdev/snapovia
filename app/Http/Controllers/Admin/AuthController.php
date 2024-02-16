@@ -14,17 +14,19 @@ class AuthController extends Controller
         return view('admin.auth.login');
     }
 
+    protected function credentials(Request $request): array
+    {
+        return ['email' => $request->email, 'password' => $request->password, 'status' => 1];
+    }
+
     public function loginPost(AdminLoginRequest $request)
     {
-        $credentials = [
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($this->credentials($request))) {
             return redirect()->route('admin.dashboard');
         }
 
-        return redirect()->back();
+        return redirect()->route('admin.login')
+            ->with('error', 'Invalid email or password');
     }
 
     public function logout()

@@ -68,7 +68,7 @@
 
                 @if(count($response) > 5)
                 <!-- Button -->
-                    <a class="btn btn-link px-0 text-reset" href="{{route('search.index')}}?search={{$search}}">
+                    <a class="btn btn-link px-0 text-reset" href="{{route('search')}}?search={{$search}}">
                         View All <i class="fe fe-arrow-right ml-2"></i>
                     </a>
                 @endif

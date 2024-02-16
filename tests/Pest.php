@@ -11,6 +11,7 @@
 |
 */
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(
@@ -44,7 +45,10 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function loginAsUser(User $user = null): User
 {
-    // ..
+    $user = $user ?? User::factory()->create();
+    test()->actingAs($user);
+
+    return $user;
 }

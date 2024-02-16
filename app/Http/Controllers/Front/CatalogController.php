@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class CatalogController extends Controller
 {
-    public function category(Request $request)
+    public function __invoke(Request $request)
     {
         $query = Category::query();
 

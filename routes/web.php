@@ -21,11 +21,11 @@ if (config('site.frontend') === 'blade') {
     Route::get('/', WelcomeController::class)
         ->name('welcome');
 
-    Route::get('category', [CatalogController::class, 'category'])
+    Route::get('category', CatalogController::class)
         ->name('category');
 
-    Route::resource('search', SearchController::class)
-        ->only(['index', 'show']);
+    Route::get('search', SearchController::class)
+        ->name('search');
 
     Route::post('product/variants', [CatalogController::class, 'getVariant'])
         ->name('product.variant');

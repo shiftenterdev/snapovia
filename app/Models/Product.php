@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -11,9 +13,9 @@ class Product extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
-    const CATALOG = [2, 4];
+    public const CATALOG = [2, 4];
 
-    const SEARCH = [1, 4];
+    public const SEARCH = [1, 4];
 
     public $guarded = [];
 
@@ -24,12 +26,12 @@ class Product extends Model implements HasMedia
         'sample_image',
     ];
 
-    public function categories()
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
     }
 
-    public function associcatedProducts()
+    public function associcatedProducts(): HasMany
     {
         return $this->hasMany(Product::class, 'parent_id');
     }
