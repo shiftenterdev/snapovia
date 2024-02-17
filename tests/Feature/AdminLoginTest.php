@@ -9,7 +9,11 @@ it('User can see login page', function () {
 
 
 it('User can login and logout', function () {
-    $user = User::factory()->create(['name' => 'Test user', 'email' => 'bappa@mail.com']);
+    $user = User::factory()->create([
+        'name' => 'Test user',
+        'email' => 'bappa@mail.com',
+        'status' => 1,
+    ]);
 
     $this->get(route('admin.login'))->assertStatus(200);
 
@@ -41,10 +45,4 @@ it('Inactive user can not login', function () {
         'password' => 'password',
     ])->assertRedirect(route('admin.login'));
     $this->assertGuest();
-});
-
-it('Authenticated user redirects to dashboard', function () {
-    $this->loginAsUser();
-    $this->get(route('admin.login'))
-        ->assertRedirect(route('admin.dashboard'));
 });

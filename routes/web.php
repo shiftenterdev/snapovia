@@ -21,16 +21,16 @@ if (config('site.frontend') === 'blade') {
     Route::get('/', WelcomeController::class)
         ->name('welcome');
 
-    Route::get('category', CatalogController::class)
+    Route::get('/category', CatalogController::class)
         ->name('category');
 
-    Route::get('search', SearchController::class)
+    Route::get('/search', SearchController::class)
         ->name('search');
 
-    Route::post('product/variants', [CatalogController::class, 'getVariant'])
+    Route::post('/product/variants', [CatalogController::class, 'getVariant'])
         ->name('product.variant');
 
-    Route::get('checkout/cart', [CheckoutController::class, 'cart'])
+    Route::get('/checkout/cart', [CheckoutController::class, 'cart'])
         ->name('cart');
 
     Route::post('add-to-cart', [CartController::class, 'addToCart'])
