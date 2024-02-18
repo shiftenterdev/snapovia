@@ -89,13 +89,13 @@ if (config('site.frontend') === 'blade') {
 
     Route::prefix('customer')->group(function () {
 
-        include __DIR__.'/customer.php';
+        include __DIR__ . '/customer.php';
 
     });
 
     Route::prefix('vendor')->group(function () {
 
-        include __DIR__.'/vendor.php';
+        include __DIR__ . '/vendor.php';
 
     });
 
@@ -103,7 +103,7 @@ if (config('site.frontend') === 'blade') {
 
 Route::prefix(config('site.admin_url'))->name('admin.')->group(function () {
 
-    include __DIR__.'/admin.php';
+    include __DIR__ . '/admin.php';
 
 });
 

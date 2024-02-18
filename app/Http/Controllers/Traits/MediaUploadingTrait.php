@@ -15,7 +15,7 @@ trait MediaUploadingTrait
         // Validates file size
         if (request()->has('size')) {
             $this->validate(request(), [
-                'file' => 'max:'.request()->input('size') * 1024,
+                'file' => 'max:' . request()->input('size') * 1024,
             ]);
         }
 
@@ -33,7 +33,7 @@ trait MediaUploadingTrait
         $path = storage_path('tmp/uploads');
 
         try {
-            if (! file_exists($path) && ! mkdir($path, 0755, true) && ! is_dir($path)) {
+            if (!file_exists($path) && !mkdir($path, 0755, true) && !is_dir($path)) {
                 throw new \RuntimeException(sprintf('Directory "%s" was not created', $path));
             }
 
@@ -42,7 +42,7 @@ trait MediaUploadingTrait
 
         $file = $request->file('file');
 
-        $name = uniqid('', true).'_'.trim($file->getClientOriginalName());
+        $name = uniqid('', true) . '_' . trim($file->getClientOriginalName());
 
         $file->move($path, $name);
 

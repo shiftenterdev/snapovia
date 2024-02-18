@@ -46,7 +46,7 @@ class ProductSeeder extends Seeder
          */
         foreach ($this->attributes as $name => $attribute_options) {
             $fieldType = 'select';
-            if (! is_array($attribute_options)) {
+            if (!is_array($attribute_options)) {
                 $fieldType = $attribute_options;
             }
             $attribute = Attribute::create([
@@ -109,8 +109,8 @@ class ProductSeeder extends Seeder
                 $childCategory = $category->childCategories()->create([
                     'name' => ucfirst($level3),
                     'description' => $faker->paragraph,
-                    'url_key' => Str::slug($level3.++$i),
-                    'url_path' => $category->url_path.'/'.Str::slug($level3.$i),
+                    'url_key' => Str::slug($level3 . ++$i),
+                    'url_path' => $category->url_path . '/' . Str::slug($level3 . $i),
                     'meta_title' => ucfirst($level3),
                     'meta_description' => $faker->paragraph,
                     'position' => $i,
@@ -131,8 +131,8 @@ class ProductSeeder extends Seeder
                     $grandChildCategory = $childCategory->childCategories()->create([
                         'name' => ucfirst($level5),
                         'description' => $faker->paragraph,
-                        'url_key' => Str::slug($faker->word.++$i),
-                        'url_path' => $category->url_path.'/'.$childCategory->url_path.'/'.Str::slug($level5.$i),
+                        'url_key' => Str::slug($faker->word . ++$i),
+                        'url_path' => $category->url_path . '/' . $childCategory->url_path . '/' . Str::slug($level5 . $i),
                         'meta_title' => ucfirst($level5),
                         'meta_description' => $faker->paragraph,
                         'position' => $i,

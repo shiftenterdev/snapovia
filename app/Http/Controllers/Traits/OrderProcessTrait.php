@@ -28,7 +28,7 @@ trait OrderProcessTrait
                 'postcode' => $request->shipping['postcode'],
             ]);
 
-            if (! $request->save_this_address) {
+            if (!$request->save_this_address) {
 
                 $order->billing()->create([
                     'first_name' => $request->shipping['first_name'],

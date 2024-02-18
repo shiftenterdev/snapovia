@@ -7,7 +7,6 @@ it('User can see login page', function () {
         ->assertStatus(200);
 });
 
-
 it('User can login and logout', function () {
     $user = User::factory()->create([
         'name' => 'Test user',

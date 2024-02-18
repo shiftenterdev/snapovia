@@ -38,7 +38,7 @@ class Subscription extends Component
         ]);
 
         \App\Models\Subscription::create(['email' => $this->email]);
-        Mail::to($this->email)->queue(new SubscriptionMail());
+        Mail::to($this->email)->queue(new SubscriptionMail);
         $this->reset();
         session()->flash('success', 'Subscription completed successfully');
 

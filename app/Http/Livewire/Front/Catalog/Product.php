@@ -38,11 +38,10 @@ class Product extends Component
      */
     public function addToWishlist($sku)
     {
-        if (! Customer::check()) {
+        if (!Customer::check()) {
             return redirect()->route('customer.login');
         }
         session()->flash('success', 'Product added to your wishlist 😀');
 
-        return null;
     }
 }

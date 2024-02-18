@@ -80,7 +80,7 @@ class Cart
 
     public function addToCart($sku, $qty = 1): void
     {
-        if (! $this->check()) {
+        if (!$this->check()) {
             $this->create();
         }
         $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
@@ -118,7 +118,7 @@ class Cart
         if (session(self::QUOTE_SESSION_KEY)) {
             $quote = Quote::where('quote_id', session(self::QUOTE_SESSION_KEY)->quote_id)
                 ->first();
-            if (! $quote) {
+            if (!$quote) {
                 $this->remove();
 
                 return false;
@@ -141,7 +141,7 @@ class Cart
         if (\App\Facades\Customer::check()) {
             $customer_id = \App\Facades\Customer::user()->customer_id;
             $quote = Quote::where('customer_id', $customer_id)->first();
-            if (! $quote) {
+            if (!$quote) {
                 $quote = Quote::create(['customer_ip' => request()->ip(), 'customer_id' => $customer_id]);
             }
         } else {
@@ -203,7 +203,7 @@ class Cart
         if ($this->check()) {
             $quote = $this->get();
 
-            $order = new Order();
+            $order = new Order;
             $order->customer_ip = request()->ip();
             $order->customer_id = \App\Facades\Customer::check() ? \App\Facades\Customer::user()->id : 0;
             $order->status = 'processing';
@@ -251,7 +251,7 @@ class Cart
 
     public function get()
     {
-        if (! $this->check()) {
+        if (!$this->check()) {
             $this->create();
         }
 

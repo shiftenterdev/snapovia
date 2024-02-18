@@ -11,7 +11,7 @@ class SearchController extends Controller
     public function __invoke(Request $request)
     {
         $products = Product::whereStatus(1)
-            ->where('name', 'LIKE', '%'.$request->search.'%')
+            ->where('name', 'LIKE', '%' . $request->search . '%')
             ->select(['name', 'id', 'price', 'sku'])
             ->paginate(18);
         $categories = [];

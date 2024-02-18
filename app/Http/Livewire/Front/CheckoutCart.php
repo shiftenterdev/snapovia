@@ -73,7 +73,7 @@ class CheckoutCart extends Component
             Cart::applyCoupon($rule->id);
             $this->cart = Cart::get();
             $this->cartCalculate();
-            session()->flash('success', 'Coupon code: <strong>'.$this->coupon_code.'</strong> Applied successfully');
+            session()->flash('success', 'Coupon code: <strong>' . $this->coupon_code . '</strong> Applied successfully');
         } else {
             session()->flash('error', 'Sorry, Invalid Coupon applied');
         }

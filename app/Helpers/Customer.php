@@ -97,7 +97,7 @@ class Customer
      */
     public function user(): ?\App\Models\Customer
     {
-        if (! $this->check()) {
+        if (!$this->check()) {
             return null;
         }
         $customer = \App\Models\Customer::find(session(self::CUSTOMER_SESSION_KEY)->customer_id);
