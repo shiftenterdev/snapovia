@@ -2,11 +2,11 @@
 
 @section('content')
 
-    <x-admin.header title="Orders">
+    <x-admin-header title="Orders">
         <a href="" class="btn btn-dark">
             <i class="fas fa-upload"></i> Export Order
         </a>
-    </x-admin.header>
+    </x-admin-header>
 
     <div class="content">
         <div class="container-fluid">

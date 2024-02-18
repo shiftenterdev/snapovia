@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Attribute;
+use App\Models\Category;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -13,7 +15,7 @@ class ProductSeeder extends Seeder
      *
      * @return void
      */
-    public $attributes = [
+    public array $attributes = [
         'Color' => ['Blue', 'Green', 'Red', 'White', 'Purple', 'Violet', 'Pink', 'Gray', 'Navy Blue'],
         'Size' => ['22', '23', '25', 'M', 'L', 'XL', 'XXL', 'S'],
         'Manufacture' => ['BD', 'US', 'IN', 'SE', 'UK'],
@@ -21,7 +23,7 @@ class ProductSeeder extends Seeder
         'Weight' => 'text',
     ];
 
-    public $categories = [
+    public array $categories = [
         'Man\'s Fashion' => ['Top' => ['Shirt', 'T-shirt'], 'Bottom' => ['Pants'], 'Trends' => ['Tie', 'Cap']],
         'Women\'s Clothing' => ['Top' => ['Saree', 'Tops', 'Tee'], 'Bottom' => ['Pant', 'Palajo', 'Lehenga', 'Skirt']],
         'Computer & Office' => ['Boys' => ['Shirt', 'Pants'], 'Girls' => ['Skirt', 'Dress']],
@@ -31,9 +33,9 @@ class ProductSeeder extends Seeder
         'Consumer Electronics' => ['Refregerator' => ['Apple', 'Samsung', 'LG'], 'Washing Machine' => ['Nokia', 'Erricson']],
     ];
 
-    public $productType = ['simple', 'configurable'];
+    public array $productType = ['simple', 'configurable'];
 
-    public function run()
+    public function run(): void
     {
         $faker = Faker::create();
         $faker->addProvider(new \Bezhanov\Faker\Provider\Commerce($faker));
@@ -44,10 +46,10 @@ class ProductSeeder extends Seeder
          */
         foreach ($this->attributes as $name => $attribute_options) {
             $fieldType = 'select';
-            if (! is_array($attribute_options)) {
+            if (!is_array($attribute_options)) {
                 $fieldType = $attribute_options;
             }
-            $attribute = \App\Models\Attribute::create([
+            $attribute = Attribute::create([
                 'name' => $name,
                 'label' => $name,
                 'slug' => Str::slug($name),
@@ -68,7 +70,7 @@ class ProductSeeder extends Seeder
          */
         $i = 1;
 
-        \App\Models\Category::create([
+        Category::create([
             'name' => 'Root',
             'description' => $faker->paragraph,
             'url_key' => 'root',
@@ -82,14 +84,14 @@ class ProductSeeder extends Seeder
 
         foreach ($this->categories as $level1 => $level2) {
 
-            $category = \App\Models\Category::create([
+            $category = Category::create([
                 'name' => ucfirst($level1),
                 'description' => $faker->paragraph,
                 'url_key' => Str::slug($level1),
                 'url_path' => Str::slug($level1),
                 'meta_title' => ucfirst($faker->word),
                 'meta_description' => $faker->paragraph,
-                'featured' => rand(0, 1),
+                'featured' => random_int(0, 1),
                 'parent_id' => 1,
                 'position' => $i++,
                 'status' => 1,
@@ -107,12 +109,12 @@ class ProductSeeder extends Seeder
                 $childCategory = $category->childCategories()->create([
                     'name' => ucfirst($level3),
                     'description' => $faker->paragraph,
-                    'url_key' => Str::slug($level3.++$i),
-                    'url_path' => $category->url_path.'/'.Str::slug($level3.$i),
+                    'url_key' => Str::slug($level3 . ++$i),
+                    'url_path' => $category->url_path . '/' . Str::slug($level3 . $i),
                     'meta_title' => ucfirst($level3),
                     'meta_description' => $faker->paragraph,
                     'position' => $i,
-                    'featured' => rand(0, 1),
+                    'featured' => random_int(0, 1),
                     'status' => 1,
                 ]);
 
@@ -129,12 +131,12 @@ class ProductSeeder extends Seeder
                     $grandChildCategory = $childCategory->childCategories()->create([
                         'name' => ucfirst($level5),
                         'description' => $faker->paragraph,
-                        'url_key' => Str::slug($faker->word.++$i),
-                        'url_path' => $category->url_path.'/'.$childCategory->url_path.'/'.Str::slug($level5.$i),
+                        'url_key' => Str::slug($faker->word . ++$i),
+                        'url_path' => $category->url_path . '/' . $childCategory->url_path . '/' . Str::slug($level5 . $i),
                         'meta_title' => ucfirst($level5),
                         'meta_description' => $faker->paragraph,
                         'position' => $i,
-                        'featured' => rand(0, 1),
+                        'featured' => random_int(0, 1),
                         'status' => 1,
                     ]);
                     \App\Models\UrlResolver::create([
@@ -155,21 +157,21 @@ class ProductSeeder extends Seeder
          */
         $sku = 10000;
         for ($i = 1; $i <= env('SAMPLE_PRODUCT_COUNT', 500); $i++) {
-            $productType = $this->productType[rand(0, 1)];
-            $price = rand(10000, 60000) / 100;
+            $productType = $this->productType[random_int(0, 1)];
+            $price = random_int(10000, 60000) / 100;
             $product = \App\Models\Product::create([
                 'sku' => ++$sku,
                 'name' => ucfirst($faker->productName),
                 'url_key' => $faker->uuid,
                 'product_type' => $productType,
-                'qty' => rand(5, 100),
+                'qty' => random_int(5, 100),
                 //                'color'             => $productType == 'simple' ? $this->color[rand(0, count($this->color) - 1)] : null,
                 //                'size'              => $productType == 'simple' ? $this->size[rand(0, count($this->size) - 1)] : null,
-                'is_new' => rand(0, 1),
-                'featured' => rand(0, 1),
+                'is_new' => random_int(0, 1),
+                'featured' => random_int(0, 1),
                 'price' => $price,
-                'visibility' => rand(2, 4),
-                'special_price' => $productType == 'simple' ? $price * (rand(99, 50) / 100) : 0,
+                'visibility' => random_int(2, 4),
+                'special_price' => $productType === 'simple' ? $price * (random_int(50, 99) / 100) : 0,
                 'short_description' => $faker->paragraph,
                 'description' => $faker->paragraph,
                 'meta_title' => $faker->word,
@@ -181,26 +183,26 @@ class ProductSeeder extends Seeder
                 'entity_type' => 'product',
                 'url_key' => $product->url_key,
             ]);
-            $cat_id = $category_ids[rand(0, count($category_ids) - 1)];
+            $cat_id = $category_ids[random_int(0, count($category_ids) - 1)];
             $product->categories()->sync($cat_id);
 
             /**
              * Associated products
              */
-            if ($productType == 'configurable') {
+            if ($productType === 'configurable') {
                 for ($j = 1; $j <= 5; $j++) {
                     $associatedProduct = $product->associcatedProducts()->create([
                         'sku' => ++$sku,
                         'name' => ucfirst($faker->productName),
                         'url_key' => $faker->uuid,
                         'product_type' => 'simple',
-                        'qty' => rand(5, 100),
+                        'qty' => random_int(5, 100),
                         //                        'color'             => $this->color[rand(0, count($this->color) - 1)],
                         //                        'size'              => $this->size[rand(0, count($this->size) - 1)],
-                        'is_new' => rand(0, 1),
-                        'featured' => rand(0, 1),
+                        'is_new' => random_int(0, 1),
+                        'featured' => random_int(0, 1),
                         'visibility' => 1,
-                        'price' => rand(10000, 60000) / 100,
+                        'price' => random_int(10000, 60000) / 100,
                         'short_description' => $faker->paragraph,
                         'description' => $faker->paragraph,
                         'meta_title' => $faker->word,
@@ -210,8 +212,8 @@ class ProductSeeder extends Seeder
                     //                    $associatedProduct->attributes()->create([
                     //
                     //                    ]);
-                    $color = \App\Models\Attribute::productAttribute('color')->firstOrFail();
-                    $size = \App\Models\Attribute::productAttribute('size')->firstOrFail();
+                    $color = Attribute::productAttribute('color')->firstOrFail();
+                    $size = Attribute::productAttribute('size')->firstOrFail();
 
                     $associatedProduct->attributes()->sync([$size->id, $color->id]);
 

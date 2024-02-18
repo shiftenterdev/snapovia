@@ -1,10 +1,10 @@
 @extends('admin.layouts.app')
 @section('title','Create Product | ')
 @section('content')
-    <x-admin.header title="Edit Product">
+    <x-admin-header title="Edit Product">
         <button type="button" class="btn btn-warning" onclick="history.back()">Cancel</button>
         <button type="submit" class="btn btn-info">{{$name??'Save'}}</button>
-    </x-admin.header>
+    </x-admin-header>
 
     <div class="content">
         <div class="container-fluid">
@@ -107,17 +107,17 @@
                         </div>
                         @if(count($attributes))
                             <div class="card">
-                                <x-admin.card.title title="Attributes"/>
+                                <x-admin-card title="Attributes"/>
                                 <div class="card-body">
                                     <div class="row">
                                         @foreach($attributes as $attribute)
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="">{{$attribute->name}}</label>
-                                                    @if($attribute->attribute_field_type=='text')
+                                                    @if($attribute->attribute_field_type==='text')
                                                         <input type="text" name="{{$attribute->slug}}"
                                                                class="form-control form-control-sm">
-                                                    @elseif($attribute->attribute_field_type=='select')
+                                                    @elseif($attribute->attribute_field_type==='select')
                                                         <select name="{{$attribute->slug}}"
                                                                 class="form-control form-control-sm" id="">
                                                             <option value="">Select</option>
@@ -126,11 +126,11 @@
                                                                         value="{{$option->id}}">{{$option->option_value}}</option>
                                                             @endforeach
                                                         </select>
-                                                    @elseif($attribute->attribute_field_type=='textarea')
+                                                    @elseif($attribute->attribute_field_type==='textarea')
                                                         <textarea name="short_description"
                                                                   class="form-control form-control-sm editor"
                                                                   placeholder="Short Description"></textarea>
-                                                    @elseif($attribute->attribute_field_type=='radio')
+                                                    @elseif($attribute->attribute_field_type==='radio')
                                                     @endif
                                                 </div>
                                             </div>
@@ -140,7 +140,7 @@
                             </div>
                         @endif
                         <div class="card">
-                            <x-admin.card.title title="Media"/>
+                            <x-admin-card title="Media"/>
                             <div class="card-body">
                                 <div class="row">
 
@@ -159,7 +159,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <x-admin.card.title title="description"/>
+                            <x-admin-card title="description"/>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-12">
@@ -181,7 +181,7 @@
                             </div>
                         </div>
                         <div class="card">
-                            <x-admin.card.title title="Meta Information"/>
+                            <x-admin-card title="Meta Information"/>
                             <div class="card-body">
                                 <div class="row">
 
@@ -222,7 +222,7 @@
 @endsection
 
 @section('script')
-    <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js"></script>
     <script src="{{asset('adminhtml/plugins/select2/js/select2.full.min.js')}}"></script>
     <script>
         $('.select2').select2();

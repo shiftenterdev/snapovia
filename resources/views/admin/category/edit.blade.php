@@ -117,7 +117,7 @@
 @endsection
 
 @section('script')
-    <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js"></script>
     <script>
         tinymce.init({
             selector: "textarea.editor",

@@ -30,6 +30,7 @@
         "unisharp/laravel-filemanager": "^2.6"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest",
         "barryvdh/laravel-debugbar": "^3.8",
         "fakerphp/faker": "^1.21",
         "laravel/pint": "^1.13",
@@ -81,6 +82,8 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ]
+        ],
+        "test": "vendor/bin/pest",
+        "pint": "vendor/bin/pint"
     }
 }

@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Traits;
 
 use App\Facades\Cart;
+use App\Models\Order;
 use App\Models\Shipping;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 trait OrderProcessTrait
 {
-    protected function processOrder(Request $request)
+    protected function processOrder(Request $request): ?Order
     {
         try {
             DB::beginTransaction();

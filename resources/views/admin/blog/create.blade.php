@@ -62,7 +62,7 @@
 @endsection
 
 @section('script')
-    <script src="https://cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js"></script>
     <script>
         let editor_config = {
             path_absolute: "/",
@@ -75,7 +75,7 @@
             ],
             toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | link image",
             relative_urls: false,
-            file_browser_callback: function (field_name, url, type, win) {
+            file_browser_callback: function (field_name, url, type) {
                 let x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
                 let y = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
 

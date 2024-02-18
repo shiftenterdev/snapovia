@@ -6,17 +6,18 @@
 
 namespace App\Http\Livewire\Front;
 
+use App\Models\Product;
 use Livewire\Component;
 
 class Search extends Component
 {
-    public $search = '';
+    public string $search = '';
 
-    protected $updatesQueryString = ['search'];
+    protected array $updatesQueryString = ['search'];
 
     public function render()
     {
-        $response = \App\Models\Product::search($this->search);
+        $response = Product::search($this->search);
 
         return view('livewire.front.search', compact('response'));
     }

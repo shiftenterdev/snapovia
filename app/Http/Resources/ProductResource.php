@@ -20,7 +20,7 @@ class ProductResource extends JsonResource
             'price' => $this->price,
             'image' => $this->base_image,
             'short_description' => $this->short_description,
-            'url' => route('welcome').'/api/products/'.$this->url_key,
+            'url' => route('welcome') . '/api/products/' . $this->url_key,
         ];
     }
 }

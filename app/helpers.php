@@ -1,9 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\App;
-
-if (! function_exists('status')) {
-    function status($status): string
+if (!function_exists('status')) {
+    function status($status)
     {
         if ($status == 1) {
             return '<span class="badge badge-success">Active</span>';
@@ -13,35 +11,52 @@ if (! function_exists('status')) {
     }
 }
 
-if (! function_exists('current_language')) {
-    function current_language(): string
+if (!function_exists('current_language')) {
+    function current_language()
     {
-        $locale = session('locale') ?? App::getLocale();
-        return match ($locale) {
-            'en' => __('English'),
-            'sv' => __('Swedish'),
-            'bn' => __('Bangla'),
-            'no' => __('Norwegian'),
-            'da' => __('Danish'),
-            'nl' => __('Dutch'),
-        };
+        switch (session('locale')) {
+            case 'en':
+                return __('English');
+                break;
+            case 'sv':
+                return __('Swedish');
+                break;
+            case 'bn':
+                return __('Bangla');
+                break;
+            case 'no':
+                return __('Norwegian');
+                break;
+            case 'da':
+                return __('Danish');
+                break;
+            default:
+                return __('English');
+        }
     }
 }
 
-if (! function_exists('visibility')) {
-    function visibility($visibility): string
+if (!function_exists('visibility')) {
+    function visibility($visibility)
     {
-        return match ($visibility) {
-            1 => '<span class="badge badge-danger">Not visible</span>',
-            2 => '<span class="badge badge-info">Catalog</span>',
-            3 => '<span class="badge badge-info">Search</span>',
-            default => '<span class="badge badge-success">Catalog, Search</span>',
-        };
+        switch ($visibility) {
+            case 1:
+                return '<span class="badge badge-danger">Not visible</span>';
+                break;
+            case 2:
+                return '<span class="badge badge-info">Catalog</span>';
+                break;
+            case 3:
+                return '<span class="badge badge-info">Search</span>';
+                break;
+            default:
+                return '<span class="badge badge-success">Catalog, Search</span>';
+        }
     }
 }
 
-if (! function_exists('_a')) {
-    function _a($amount): float
+if (!function_exists('_a')) {
+    function _a($amount)
     {
         if (is_float($amount)) {
             return number_format($amount, 2, '.', '');
@@ -51,8 +66,8 @@ if (! function_exists('_a')) {
     }
 }
 
-if (! function_exists('amount')) {
-    function amount($amount): float
+if (!function_exists('amount')) {
+    function amount($amount)
     {
         if (is_float($amount)) {
             return number_format($amount, 2, '.', '');
@@ -62,7 +77,7 @@ if (! function_exists('amount')) {
     }
 }
 
-if (! function_exists('get_all_countries')) {
+if (!function_exists('get_all_countries')) {
     function get_all_countries()
     {
         return cache()->remember('countries', 60 * 60 * 24, function () {
@@ -71,10 +86,10 @@ if (! function_exists('get_all_countries')) {
     }
 }
 
-if (! function_exists('active_menu')) {
+if (!function_exists('active_menu')) {
     function active_menu($url)
     {
-        return request()->routeIs('admin.'.$url) ? 'active' : '';
+        return request()->routeIs('admin.' . $url) ? 'active' : '';
         //return request()->is(config('site.admin_url').'/'.$url)?'active':'';
     }
 }

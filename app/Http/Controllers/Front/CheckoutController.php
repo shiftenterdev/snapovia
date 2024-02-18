@@ -17,7 +17,7 @@ class CheckoutController extends Controller
 
     public function index()
     {
-        if (! Cart::count()) {
+        if (!Cart::count()) {
             return redirect()->route('cart');
         }
 
@@ -39,7 +39,7 @@ class CheckoutController extends Controller
 
     public function cart()
     {
-        if (! Cart::check()) {
+        if (!Cart::check()) {
             Cart::create();
         }
 
@@ -79,7 +79,7 @@ class CheckoutController extends Controller
                         'product_data' => [
                             'name' => config('app.name'),
                             'description' => 'Order Total Amount',
-                            'images' => [route('welcome').'/snapovia.png'],
+                            'images' => [route('welcome') . '/snapovia.png'],
                         ],
                     ],
                     'quantity' => 1,
@@ -89,7 +89,7 @@ class CheckoutController extends Controller
             //'livemode'             => false,
             'mode' => 'payment',
             'success_url' => route('checkout.success'),
-            'cancel_url' => route('checkout').'?payment=failed',
+            'cancel_url' => route('checkout') . '?payment=failed',
         ]);
 
         return view('user.payment.index', ['session_id' => $session->id]);

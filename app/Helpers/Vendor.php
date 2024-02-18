@@ -56,8 +56,6 @@ class Vendor
 
     /**
      * Get vendor object
-     *
-     * @return \App\Models\Vendor
      */
     public function user(): ?\App\Models\Vendor
     {

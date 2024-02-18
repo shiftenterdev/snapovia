@@ -11,7 +11,7 @@ class TableComponent extends Component
     /**
      * Create a new component instance.
      *
-     * @param $title
+     * @param  $title
      */
     public function __construct()
     {

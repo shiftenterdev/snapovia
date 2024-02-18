@@ -42,7 +42,7 @@ class Brand extends Model implements HasMedia
         return $this->belongsTo(Brand::class);
     }
 
-    public function registerMediaConversions(Media $media = null): void
+    public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('thumb')->width(50)->height(50);
     }

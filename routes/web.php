@@ -13,7 +13,7 @@ use App\Http\Controllers\Front\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 // Blade view
-if (config('site.frontend') == 'blade') {
+if (config('site.frontend') === 'blade') {
 
     Route::get('/locale/{p}', LanguageController::class)
         ->name('lang');
@@ -21,16 +21,16 @@ if (config('site.frontend') == 'blade') {
     Route::get('/', WelcomeController::class)
         ->name('welcome');
 
-    Route::get('category', [CatalogController::class, 'category'])
+    Route::get('/category', CatalogController::class)
         ->name('category');
 
-    Route::resource('search', SearchController::class)
-        ->only(['index', 'show']);
+    Route::get('/search', SearchController::class)
+        ->name('search');
 
-    Route::post('product/variants', [CatalogController::class, 'getVariant'])
+    Route::post('/product/variants', [CatalogController::class, 'getVariant'])
         ->name('product.variant');
 
-    Route::get('checkout/cart', [CheckoutController::class, 'cart'])
+    Route::get('/checkout/cart', [CheckoutController::class, 'cart'])
         ->name('cart');
 
     Route::post('add-to-cart', [CartController::class, 'addToCart'])
@@ -89,13 +89,13 @@ if (config('site.frontend') == 'blade') {
 
     Route::prefix('customer')->group(function () {
 
-        include __DIR__.'/customer.php';
+        include __DIR__ . '/customer.php';
 
     });
 
     Route::prefix('vendor')->group(function () {
 
-        include __DIR__.'/vendor.php';
+        include __DIR__ . '/vendor.php';
 
     });
 
@@ -103,7 +103,7 @@ if (config('site.frontend') == 'blade') {
 
 Route::prefix(config('site.admin_url'))->name('admin.')->group(function () {
 
-    include __DIR__.'/admin.php';
+    include __DIR__ . '/admin.php';
 
 });
 
@@ -115,14 +115,14 @@ Route::get('test-mail', function () {
     return 'event processed successfully';
 });
 
-if (config('site.frontend') == 'blade') {
+if (config('site.frontend') === 'blade') {
     // Url resolver
     Route::get('/{url}/{suburl?}/{producturl?}', UrlResolverControllerAlias::class)
         ->name('resolve');
 }
 
 // Vue Frontend
-if (config('site.frontend') == 'vue') {
+if (config('site.frontend') === 'vue') {
     Route::get('{path}', function () {
         return view('front.layouts.vue');
     })->where('path', '(.*)');

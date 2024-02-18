@@ -8,6 +8,9 @@ class RefundController extends Controller
 {
     public function index()
     {
-        return view('admin.sales.order.index');
+        $orders = collect([]);
+
+        return view('admin.sales.order.index')
+            ->with(compact('orders'));
     }
 }

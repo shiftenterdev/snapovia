@@ -32,7 +32,7 @@ class OrderCompleteMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('🛍 Order #'.$this->order->order_id.' placed on Snapovia')
+        return $this->subject('🛍 Order #' . $this->order->order_id . ' placed on Snapovia')
             ->markdown('emails.customer.order-complete');
     }
 }

@@ -83,13 +83,13 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <router-link class="nav-link" href="/women/tops-women">Women</router-link>
+                            <router-link class="nav-link" :to="{name: 'category', params: { category: 'women' }}">Women</router-link>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link" href="/men/tops-men/hoodies-and-sweatshirts-men">Men</a>
+                            <router-link class="nav-link" :to="{name: 'category', params: { category: 'men' }}">Men</router-link>
                         </li>
                         <li class="nav-item dropdown">
-                            <router-link class="nav-link" :to="{name:'gear'}">Gear</router-link>
+                            <router-link class="nav-link" :to="{name:'category',params: { category: 'gear' }}">Gear</router-link>
                         </li>
 
                         <li class="nav-item dropdown position-static">

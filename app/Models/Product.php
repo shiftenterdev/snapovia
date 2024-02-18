@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -11,9 +13,9 @@ class Product extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
-    const CATALOG = [2, 4];
+    public const CATALOG = [2, 4];
 
-    const SEARCH = [1, 4];
+    public const SEARCH = [1, 4];
 
     public $guarded = [];
 
@@ -24,12 +26,12 @@ class Product extends Model implements HasMedia
         'sample_image',
     ];
 
-    public function categories()
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class);
     }
 
-    public function associcatedProducts()
+    public function associcatedProducts(): HasMany
     {
         return $this->hasMany(Product::class, 'parent_id');
     }
@@ -56,7 +58,7 @@ class Product extends Model implements HasMedia
         })->when($search['product_type'] != '', function ($q) use ($search) {
             return $q->where('product_type', $search['product_type']);
         })->when($search['name'] != '', function ($q) use ($search) {
-            return $q->where('name', 'LIKE', '%'.$search['name'].'%');
+            return $q->where('name', 'LIKE', '%' . $search['name'] . '%');
         })->when($search['status'] != '', function ($q) use ($search) {
             return $q->where('status', $search['status']);
         })->when($search['visibility'] != '', function ($q) use ($search) {
@@ -69,8 +71,8 @@ class Product extends Model implements HasMedia
     {
         if ($search) {
             return $query->where(function ($q) use ($search) {
-                $q->where('name', 'LIKE', '%'.$search.'%')
-                    ->orWhere('sku', 'LIKE', $search.'%');
+                $q->where('name', 'LIKE', '%' . $search . '%')
+                    ->orWhere('sku', 'LIKE', $search . '%');
             })
                 ->whereStatus(1)
                 ->whereIn('visibility', self::SEARCH)
@@ -137,7 +139,7 @@ class Product extends Model implements HasMedia
         return $this->belongsTo(Product::class, 'parent_id');
     }
 
-    public function registerMediaConversions(Media $media = null): void
+    public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('thumb')->width(150)->height(150);
     }
@@ -162,7 +164,7 @@ class Product extends Model implements HasMedia
 
     public function getSampleImageAttribute()
     {
-        return '/sample-data/products/'.($this->id % 50).'.jpg';
+        return '/sample-data/products/' . ($this->id % 50) . '.jpg';
     }
 
     public function attributes()

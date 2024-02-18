@@ -203,7 +203,7 @@ class Cart
         if ($this->check()) {
             $quote = $this->get();
 
-            $order = new Order();
+            $order = new Order;
             $order->customer_ip = request()->ip();
             $order->customer_id = \App\Facades\Customer::check() ? \App\Facades\Customer::user()->id : 0;
             $order->status = 'processing';

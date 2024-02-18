@@ -8,9 +8,18 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class BaseRepository implements EloquentRepositoryInterface
 {
+    /**
+     * @var Model
+     */
+    protected $model;
 
-    public function __construct(protected readonly Model $model)
-    {}
+    /**
+     * BaseRepository constructor.
+     */
+    public function __construct(Model $model)
+    {
+        $this->model = $model;
+    }
 
     public function create(array $attributes): Model
     {
@@ -37,6 +46,9 @@ class BaseRepository implements EloquentRepositoryInterface
         return $this->model->update($attributes);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function destroy(Model $model): ?bool
     {
         return $this->model->delete();

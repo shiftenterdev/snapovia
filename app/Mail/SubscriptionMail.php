@@ -27,7 +27,7 @@ class SubscriptionMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('🎁 '.config('app.name').' Subscription')
+        return $this->subject('🎁 ' . config('app.name') . ' Subscription')
             ->markdown('emails.customer.subscription');
     }
 }
