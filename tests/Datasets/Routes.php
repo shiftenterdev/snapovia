@@ -9,7 +9,6 @@ dataset('routes', static function () {
         '/contact',
         '/shipping-and-returns',
         '/terms',
-        '/category',
         '/privacy-policy',
     ];
 });
