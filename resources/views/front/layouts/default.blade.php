@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="{{asset('frontend/assets/libs/highlightjs/styles/vs2015.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/assets/libs/flickity-fade/flickity-fade.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/assets/fonts/feather/feather.css')}}">
-    <livewire:styles/>
+    @livewireStyles
+    @vite('resources/js/app.js')
     <link rel="stylesheet" href="{{asset('frontend/assets/css/theme.min.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/assets/css/custom.min.css')}}">
 </head>
@@ -44,7 +45,7 @@
 <script src="{{asset('frontend/assets/libs/highlightjs/highlight.pack.min.js')}}"></script>
 <script src="{{asset('frontend/assets/libs/flickity-fade/flickity-fade.js')}}"></script>
 <script src="{{asset('frontend/assets/js/theme.min.js')}}"></script>
-<livewire:scripts/>
+@livewireScripts
 <script src="{{asset('frontend/assets/js/snapovia.js')}}"></script>
 @yield('script')
 </body>
