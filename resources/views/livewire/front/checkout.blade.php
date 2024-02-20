@@ -73,7 +73,7 @@
                                         <label for="checkoutBillingEmail">{{__('Email')}} *</label>
                                         <input class="form-control form-control-sm" id="checkoutBillingEmail"
                                                type="email"
-                                               placeholder="Email" wire:model.lazy="email" required=""
+                                               placeholder="Email" wire:model.blur="email" required=""
                                                name="email">
                                     </div>
 
@@ -200,7 +200,7 @@
                                             <div class="custom-control custom-radio">
                                                 <input class="custom-control-input" value="{{$shippingMethod->id}}"
                                                        id="checkoutShippingStandard{{$loop->iteration}}"
-                                                       name="shipping_method_id" type="radio" wire:model="shipping_id">
+                                                       name="shipping_method_id" type="radio" wire:model.live="shipping_id">
                                                 <label class="custom-control-label text-body text-nowrap"
                                                        for="checkoutShippingStandard{{$loop->iteration}}">
                                                     {{__($shippingMethod->title)}}
@@ -357,7 +357,7 @@
 
                                     <!-- Input -->
                                     <input class="custom-control-input" id="checkoutPaymentCard" name="payment_method"
-                                           type="radio" data-toggle="collapse" wire:model="payment_method"
+                                           type="radio" data-toggle="collapse" wire:model.live="payment_method"
                                            data-action="hide" value="card"
                                            data-target="#checkoutPaymentCardCollapse">
 
@@ -379,7 +379,7 @@
 
                                     <!-- Input -->
                                     <input class="custom-control-input" id="checkoutPaymentPaypal" name="payment_method"
-                                           type="radio" data-toggle="collapse" wire:model="payment_method"
+                                           type="radio" data-toggle="collapse" wire:model.live="payment_method"
                                            data-action="hide" value="paypal"
                                            data-target="#checkoutPaymentCardCollapse">
 
@@ -400,7 +400,7 @@
                                     <!-- Input -->
                                     <input class="custom-control-input" id="checkoutCOD" name="payment_method"
                                            type="radio"
-                                           data-toggle="collapse" wire:model="payment_method" data-action="hide"
+                                           data-toggle="collapse" wire:model.live="payment_method" data-action="hide"
                                            value="cod"
                                            data-target="#checkoutPaymentCardCollapse">
 

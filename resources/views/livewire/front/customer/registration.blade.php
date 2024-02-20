@@ -21,7 +21,7 @@
                         </label>
                         <input class="form-control form-control-sm" name="first_name"
                                id="registerFirstName" type="text" placeholder="{{__('First Name')}} *"
-                               wire:model="first_name">
+                               wire:model.live="first_name">
                     </div>
 
                 </div>
@@ -34,7 +34,7 @@
                         </label>
                         <input class="form-control form-control-sm" name="last_name"
                                id="registerLastName" type="text" placeholder="{{__('Last Name')}} *"
-                               wire:model="last_name">
+                               wire:model.live="last_name">
                     </div>
 
                 </div>
@@ -46,7 +46,7 @@
                             {{__('Email Address')}} *
                         </label>
                         <input class="form-control form-control-sm" name="email" id="registerEmail"
-                               type="email" placeholder="{{__('Email Address')}} *" wire:model="email">
+                               type="email" placeholder="{{__('Email Address')}} *" wire:model.live="email">
                     </div>
 
                 </div>
@@ -59,7 +59,7 @@
                         </label>
                         <input class="form-control form-control-sm" name="password"
                                id="registerPassword" type="password" placeholder="{{__('Password')}} *"
-                               wire:model="password">
+                               wire:model.live="password">
                     </div>
 
                 </div>
@@ -72,7 +72,7 @@
                         </label>
                         <input class="form-control form-control-sm" name="password_confirmation"
                                id="registerPasswordConfirm" type="password"
-                               placeholder="{{__('Confirm Password')}} *" wire:model="password_confirmation">
+                               placeholder="{{__('Confirm Password')}} *" wire:model.live="password_confirmation">
                     </div>
 
                 </div>

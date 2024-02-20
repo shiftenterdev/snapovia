@@ -137,7 +137,7 @@
                                 <div class="form-row mb-7">
                                     @if($product->qty > 0)
                                         <div class="col-12 col-lg-auto">
-                                            <select class="custom-select mb-2" wire:model="qty" name="quantity"
+                                            <select class="custom-select mb-2" wire:model.live="qty" name="quantity"
                                                     id="productQty" required>
                                                 <option value="1" selected>1</option>
                                                 <option value="2">2</option>

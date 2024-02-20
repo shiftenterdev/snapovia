@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Front\Customer;
+namespace App\Livewire\Front\Customer;
 
 use App\Events\CustomerRegistered;
 use App\Facades\Customer;

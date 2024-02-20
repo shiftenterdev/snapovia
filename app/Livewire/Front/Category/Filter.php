@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Front\Category;
+namespace App\Livewire\Front\Category;
 
 use App\Models\Category;
 use Livewire\Component;

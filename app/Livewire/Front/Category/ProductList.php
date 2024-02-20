@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Front\Category;
+namespace App\Livewire\Front\Category;
 
 use App\Facades\Cart;
 use App\Models\Category;

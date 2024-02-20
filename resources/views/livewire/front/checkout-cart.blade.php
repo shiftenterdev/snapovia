@@ -74,7 +74,7 @@
                                 </label>
                                 <div class="row form-row">
                                     <div class="col">
-                                        <input class="form-control form-control-sm" wire:model="coupon_code"
+                                        <input class="form-control form-control-sm" wire:model.live="coupon_code"
                                                id="cartCouponCode" type="text"
                                                placeholder="{{__('Enter coupon code')}}*">
                                     </div>

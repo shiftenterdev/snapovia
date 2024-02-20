@@ -30,7 +30,7 @@
                             @foreach($category->childCategories as $parentIndex => $child_category)
                                 <li class="list-styled-item">
                                     <label class="list-styled-link" href="javascript:">
-                                        <input type="checkbox" wire:model="category_id" wire:key="'category'.$child_category->id" value="{{$child_category->id}}" hidden>
+                                        <input type="checkbox" wire:model.live="category_id" wire:key="'category'.$child_category->id" value="{{$child_category->id}}" hidden>
                                         {{$child_category->name}} ({{$child_category->products->count()}})
                                     </label>
                                 </li>

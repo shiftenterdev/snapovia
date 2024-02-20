@@ -4,7 +4,7 @@
  * @author Iftakharul Alam Bappa <info@shiftenter.dev> 
  */
 
-namespace App\Http\Livewire\Front\Home;
+namespace App\Livewire\Front\Home;
 
 use App\Facades\Cart;
 use App\Models\Product;

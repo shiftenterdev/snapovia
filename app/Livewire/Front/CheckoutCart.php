@@ -4,7 +4,7 @@
  * @author Iftakharul Alam Bappa <info@shiftenter.dev> 
  */
 
-namespace App\Http\Livewire\Front;
+namespace App\Livewire\Front;
 
 use App\Facades\Cart;
 use App\Models\CartPriceRule;

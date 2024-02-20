@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Front\Category\Filter;
+namespace App\Livewire\Front\Category\Filter;
 
 use Livewire\Component;
 
