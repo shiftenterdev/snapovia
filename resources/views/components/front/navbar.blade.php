@@ -272,7 +272,7 @@
 
                                                         <!-- Image -->
                                                         <img class="card-img"
-                                                             src="front/assets/img/products/product-110.jpg" alt="...">
+                                                             src="{{asset('frontend/assets/img/products/product-110.jpg')}}" alt="...">
 
                                                         <!-- Overlay -->
                                                         <div
