@@ -29,21 +29,21 @@ We will have the following features:
 
 ## Specification
 
-|Info|Details|
-|:---|:---|
-|Project|Ecommerce|
-|Type|Single store mode|
-|Framework|Laravel 8.x|
-|Database|Mysql 5.7|
-|PHP|^7.3|
-|Admin panel|Yes|
-|Vendor|Yes|
-|Frontend|Blade & Vue|
-|Livewire|2.x|
-|Spatie Media Library|7.x|
-|Spatie Permission|3.x|
-|Unisharp File manager|dev-master|
-|Payment |COD,Stripe,Paypal|
+| Info                  | Details           |
+|:----------------------|:------------------|
+| Project               | Ecommerce         |
+| Type                  | Single store mode |
+| Framework             | Laravel 10.x      |
+| Database              | Mysql 5.7         |
+| PHP                   | ^8.1              |
+| Admin panel           | Yes               |
+| Vendor                | Yes               |
+| Frontend              | Blade & Vue       |
+| Livewire              | 3.x               |
+| Spatie Media Library  | 7.x               |
+| Spatie Permission     | 3.x               |
+| Unisharp File manager | dev-master        |
+| Payment               | COD,Stripe,Paypal |
 
 ## Installation
 
@@ -55,54 +55,17 @@ $ cd snapovia
 $ composer install
 $ cp .env.docker .env
 
-$ docker-compose build
-$ docker-compose up -d
+$ sail up
+# OR in detach mode
+$ sail up -d
 
-$ docker-compose exec app php /var/www/artisan migrate:fresh --seed
-# If you want to execute direct shell command
-# $ docker-compose exec {container_name} sh
-$ docker-compose exec app sh
-# Then execute as 
-$ php artisan migrate:fresh --seed
+$ ./vendor/bin/sail artisan migrate:fresh --seed
 
-# migrate without sample-data
-$ php artisan migrate:fresh
-
-$ docker-compose run npm install --save
-$ docker-compose run npm run production
+$ ./vendor/bin/sail run serve
+# OR using yarn
+$ ./vendor/bin/sail yarn
 ```
-**Now serve http://snapovia.local/**
-
-### General
-
-```shell script
-# Using git clone
-$ git clone https://github.com/shiftenterdev/snapovia.git
-
-# Using composer
-$ composer create-project shiftenterdev/snapovia
-
-$ cd snapovia
-$ composer install
-$ cp .env.example .env
-$ php artisan key:generate
-
-# create database add it .env file
-
-# migrate database with sample-data
-$ php artisan migrate:fresh --seed
-
-# migrate without sample-data
-$ php artisan migrate:fresh
-
-# install node modules for vue(optional)[On progress...]
-$ npm i --save
-$ npm run production
-
-# finally run the buit-in server
-$ php artisan serve
-```
-**Now serve http://127.0.0.1:8000**
+**Now serve http://localhost:8000/**
 
 > Admin url: http://127.0.0.1:8000/adminportal/login \
 > Login: `super@admin.com` \
@@ -119,15 +82,15 @@ QUEUE_CONNECTION=database
 ```
 Then run (in console or cron job)
 ```sh
-php artisan queue:work
+sail artisan queue:work
 ```
 To check the failed jobs
 ```sh
-php artisan queue:failed 
+sail artisan queue:failed 
 ``` 
 To send them in queue list again
 ```sh
-php artisan queue:retry all 
+sail artisan queue:retry all 
 ```
 
 
