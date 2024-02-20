@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Front\Checkout;
+namespace App\Livewire\Front\Checkout;
 
 use App\Facades\Cart;
 use App\Facades\Customer;

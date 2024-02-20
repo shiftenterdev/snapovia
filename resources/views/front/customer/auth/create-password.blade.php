@@ -29,7 +29,7 @@
                                                 {{__('Confirm Password')}} *
                                             </label>
                                             <input class="form-control form-control-sm" id="loginPassword"
-                                                   name="password_confirmation" type="password" wire:model="password" placeholder="{{__('Confirm Password')}} *">
+                                                   name="password_confirmation" type="password" wire:model.live="password" placeholder="{{__('Confirm Password')}} *">
                                         </div>
                                     </div>
                                     <div class="col-12">

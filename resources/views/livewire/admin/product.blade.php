@@ -9,35 +9,35 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="">Product ID</label>
-                                    <input type="text" wire:model.lazy="search.id"
+                                    <input type="text" wire:model.blur="search.id"
                                            class="form-control form-control-sm">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="">Sku</label>
-                                    <input type="text" wire:model.lazy="search.sku"
+                                    <input type="text" wire:model.blur="search.sku"
                                            class="form-control form-control-sm">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="">Name</label>
-                                    <input type="text" wire:model.lazy="search.name"
+                                    <input type="text" wire:model.blur="search.name"
                                            class="form-control form-control-sm">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="">Price</label>
-                                    <input type="text" wire:model.lazy="search.price"
+                                    <input type="text" wire:model.blur="search.price"
                                            class="form-control form-control-sm">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="">Visibility</label>
-                                    <select wire:model.lazy="search.visibility" name="visibility"
+                                    <select wire:model.blur="search.visibility" name="visibility"
                                             class="form-control form-control-sm" id="">
                                         <option value="">Select</option>
                                         <option value="1">Not
@@ -56,7 +56,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="">Product Type </label>
-                                    <select wire:model.lazy="search.product_type" class="form-control form-control-sm"
+                                    <select wire:model.blur="search.product_type" class="form-control form-control-sm"
                                             id="">
                                         <option value="">Select</option>
                                         <option value="simple">simple</option>
@@ -68,7 +68,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="">Status </label>
-                                    <select wire:model.lazy="search.status" name="status"
+                                    <select wire:model.blur="search.status" name="status"
                                             class="form-control form-control-sm" id="">
                                         <option value="">Select</option>
                                         <option value="1">Active</option>

@@ -16,7 +16,7 @@
                         <label class="sr-only" for="loginEmail">
                             {{__('Email Address')}} *
                         </label>
-                        <input class="form-control form-control-sm" id="loginEmail" wire:model="email" name="email"
+                        <input class="form-control form-control-sm" id="loginEmail" wire:model.live="email" name="email"
                                type="email" placeholder="{{__('Email Address')}} *">
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                             {{__('Password')}} *
                         </label>
                         <input class="form-control form-control-sm" id="loginPassword"
-                               name="password" type="password" wire:model="password" placeholder="{{__('Password')}} *">
+                               name="password" type="password" wire:model.live="password" placeholder="{{__('Password')}} *">
                     </div>
                 </div>
                 <div class="col-12 col-md">

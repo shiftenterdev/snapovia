@@ -29,7 +29,7 @@
         <div class="col-12 col-md-auto">
 
             <!-- Select -->
-            <select class="custom-select custom-select-xs" wire:model="sort_by">
+            <select class="custom-select custom-select-xs" wire:model.live="sort_by">
                 <option value="name_asc">Most popular</option>
                 <option value="price_asc">Price ascending</option>
                 <option value="price_desc">Price descending</option>
