@@ -30,16 +30,16 @@
         "unisharp/laravel-filemanager": "^2.6.4"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-latest",
         "barryvdh/laravel-debugbar": "^3.8",
         "fakerphp/faker": "^1.21",
         "laravel/pint": "^1.13",
-        "laravel/sail": "^1.18",
+        "laravel/sail": "^1.27",
         "mbezhanov/faker-provider-collection": "^2.0",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^7.0",
         "pestphp/pest": "^2.16",
         "phpunit/phpunit": "^10.1",
+        "roave/security-advisories": "dev-latest",
         "spatie/laravel-ignition": "^2.0"
     },
     "config": {
