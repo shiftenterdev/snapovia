@@ -17,9 +17,7 @@
     <link rel="stylesheet" href="{{asset('frontend/assets/libs/flickity-fade/flickity-fade.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/assets/fonts/feather/feather.css')}}">
     @livewireStyles
-    @vite(['resources/js/app.js'])
-    <link rel="stylesheet" href="{{asset('frontend/assets/css/theme.min.css')}}">
-    <link rel="stylesheet" href="{{asset('frontend/assets/css/custom.min.css')}}">
+    @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 <body>
 

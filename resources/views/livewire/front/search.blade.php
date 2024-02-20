@@ -25,7 +25,7 @@
                 </select>
             </div>
             <div class="input-group input-group-merge">
-                <input class="form-control top-search" wire:model.debounce.500ms="search" type="search"
+                <input class="form-control top-search" wire:model.live.debounce.500ms="search" type="search"
                        placeholder="{{__('Search')}}">
                 <div class="input-group-append">
                     <button class="btn btn-outline-border" type="submit">
