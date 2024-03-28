@@ -61,6 +61,7 @@ class UserSeeder extends Seeder
         $user = User::create([
             'name' => 'Example User',
             'password' => bcrypt('password'),
+            'status' => 1,
             'email' => 'test@example.com',
         ]);
         $user->assignRole($role1);
@@ -68,6 +69,7 @@ class UserSeeder extends Seeder
         $user = User::create([
             'name' => 'Example Admin User',
             'password' => bcrypt('password'),
+            'status' => 1,
             'email' => 'admin@example.com',
         ]);
         $user->assignRole($role2);
@@ -75,6 +77,7 @@ class UserSeeder extends Seeder
         $user = User::create([
             'name' => 'Super-Admin',
             'password' => bcrypt('password'),
+            'status' => 1,
             'email' => 'super@admin.com',
         ]);
         $user->assignRole($role3);
