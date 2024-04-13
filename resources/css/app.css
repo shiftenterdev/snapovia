@@ -1,2 +1,9 @@
 @import "theme.css";
 @import "custom.css";
+@import "libs/feather/feather.css";
+@import "libs/fortawesome/fontawesome-free/css/all.min.css";
+@import "libs/flickity/dist/flickity.min.css";
+@import "libs/fancyapps/fancybox/dist/jquery.fancybox.min.css";
+@import "libs/simplebar/dist/simplebar.min.css";
+@import "libs/highlightjs/styles/vs2015.css";
+@import "libs/flickity-fade/flickity-fade.css";
