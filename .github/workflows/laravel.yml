@@ -16,13 +16,27 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Check PHP version
-        run: php -v
+      - name: Install PHP extensions
+        run: |
+          apt-get update
+          apt-get install -y \
+            unzip git curl libzip-dev libpng-dev libxml2-dev zlib1g-dev libonig-dev libcurl4-openssl-dev \
+            libpq-dev libjpeg-dev libfreetype6-dev
+          docker-php-ext-install \
+            pdo pdo_mysql zip pcntl mbstring dom curl libxml gd
+
+      - name: Set PHP ini values
+        run: echo "error_reporting=E_ALL" > "$PHP_INI_DIR/conf.d/error_reporting.ini"
+
       - name: Install Composer
         run: |
-          php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-          php composer-setup.php --install-dir=/usr/local/bin --filename=composer
-          php -r "unlink('composer-setup.php');"
+          curl -sS https://getcomposer.org/installer | php
+          mv composer.phar /usr/local/bin/composer
+
+      - name: Check PHP and Composer
+        run: |
+          php -v
+          composer --version
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.test', '.env');"
       - name: Install Dependencies
