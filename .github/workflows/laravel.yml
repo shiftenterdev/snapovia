@@ -14,10 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: 8.3.18
-          tools: ''
+        run: |
+          sudo add-apt-repository ppa:ondrej/php -y
+          sudo apt update
+          sudo apt install php8.3=8.3.18-1+ubuntu22.04.1+deb.sury.org+1 -y
+          php -v
       - name: Check PHP version
         run: php -v
       - name: Copy .env
